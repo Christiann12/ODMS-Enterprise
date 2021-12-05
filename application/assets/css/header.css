@@ -1,0 +1,32 @@
+/* Default Nav Bar Design */
+.navcolor {
+    transition: 350ms ease;background:transparent !important;
+}
+.navcolor::after {
+    background-color: grey; bottom: 0; content: ''; display: block; height: 1px; left: 50%; position: absolute; transform: translate(-50%,0);width: 95%;
+}
+/* Changes Nav Bar Design after scrolling for 100px */
+.navcolor.scrolled {
+    transition: 350ms ease; background: white !important; box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+}
+.navcolor.scrolled::after {
+    display: none; height: 0px;
+}
+.navbar-brand {
+    color: white !important;
+}
+.nav-link {
+    color: white !important; margin-left: 30px;
+}
+.toggler {
+    color: white !important;
+}
+.navbar-brand.scrolled {
+    color: black !important;
+}
+.nav-link.scrolled {
+    margin-left: 30px; color: black !important;
+}
+.toggler.scrolled {
+    color: black !important;
+}

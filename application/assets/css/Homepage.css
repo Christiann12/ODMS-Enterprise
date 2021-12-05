@@ -1,0 +1,43 @@
+/* Banner Css */
+.homepageBanner {
+    position: relative; width: 100%; height: 950px;  background-color:green; 
+}
+.homepageBanner .bannerBackground {
+    position: absolute; top: 0; left: 0;width:100%; height:100%; background-size: cover; background-position: center top;
+}
+.homepageBanner .bannerBackgroundOverlay {
+    position: absolute; top: 0; left: 0;width:100%; height:100%; background-color: black; opacity: 0.5;
+}
+.homepageBanner .bannerContainerDiv {
+    position: absolute; top: 0; left: 0;width:100%; height:100%; 
+}
+.homepageBanner .bannerContainerDiv .bannerCenterDiv {
+    margin-top: 300px;
+}
+.homepageBanner .bannerContainerDiv .bannerCenterDiv center{
+    color: white; margin-top: 50px; margin-bottom: 50px;
+}
+.homepageBanner .bannerContainerDiv .bannerSubText {
+    font-size: 10px; font-weight: bold; opacity: 0.8; letter-spacing: 4px;
+}
+.homepageBanner .bannerContainerDiv .bannerMainText {
+    font-size: 90px; font-weight: bold;
+}
+/* Section 1 Css */
+.homePageSection1 {
+    width: 85%; height: 750px;
+    /* border: 5px solid black; */
+}
+.homePageSection1 .header {
+    margin-top: 100px; font-weight: bold; margin-bottom: 15px;
+}
+.homePageSection1 .divider1 {
+    width: 15%; height: 0px; border: 1px solid grey;  margin-bottom: 30px;
+}
+.homePageSection1 .listContainer {
+    background-color: green; width: 100%; height: 70%;
+}
+/* Section 2 Css */
+.homePageSection2 {
+    width: 85%; height: 750px; border: 5px solid blue; margin-bottom: 50px;
+}
