@@ -3,6 +3,5 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
 <div>
-    <?php echo($test); ?>
-    <?php echo($hello); ?>
+    <P>Home Page</P>
 </div>
