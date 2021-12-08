@@ -39,12 +39,12 @@
 		
 
 		<script>
-			$(window).scroll(function(){
-				$('nav').toggleClass('scrolled', $(this).scrollTop() > 100);
-				$('.navbar-brand').toggleClass('scrolled', $(this).scrollTop() > 100);
-				$('.nav-link').toggleClass('scrolled', $(this).scrollTop() > 100);
-				// $('.nav').classList.remove('.navbar-dark', $(this).scrollTop() > 100);
-			});
+			// $(window).scroll(function(){
+			// 	$('nav').toggleClass('scrolled', $(this).scrollTop() > 100);
+			// 	$('.navbar-brand').toggleClass('scrolled', $(this).scrollTop() > 100);
+			// 	$('.nav-link').toggleClass('scrolled', $(this).scrollTop() > 100);
+			// 	// $('.nav').classList.remove('.navbar-dark', $(this).scrollTop() > 100);
+			// });
 			
 			document.onkeydown = function(e) {
 				if(event.keyCode == 123) {
