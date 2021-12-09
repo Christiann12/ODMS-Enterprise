@@ -18,6 +18,7 @@
     padding:0; margin:0; line-height: 13px; font-size:15px;
 }
 /* Default Nav Bar Design */
+
 .navcolor {
     background-color: #4b4e30; padding: 25px; margin-top:-16px;
 }
@@ -25,8 +26,28 @@
     color: white !important;
 }
 .nav-link {
-    color:#ccac46 !important; margin-left: 30px; margin-left: 50px; margin-right: 50px;
+    color:#ccac46 !important;
+}
+.divicon{
+    margin-right: 10px;
+}
+.navbar-nav > li{
+    padding-left:40px;
+    padding-right:40px;
+  }
+@media (min-width: 576px) {
+    
 }
 
+@media (min-width: 768px) {
+   
+}
 
+@media (min-width: 992px) { 
+    
+}
+
+@media (min-width: 1200px) { 
+    
+}
 

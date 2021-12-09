@@ -1,34 +1,13 @@
 <!-- Footer -->
 <footer>
-	<div class="container">
-		<div class="row">
-			<div class="col-12 col-sm-6 col-md-4 col-lg-4 left">
-				<p class="pt-2 titlePar">Navigate to:</p>
-				<ul class="navigation pt-3">
-					<li><a href="<?php echo base_url() ?>main/index/HomePage" class="navFooter" onclick="setActive(1)">Home</a></li>
-					<li><a href="<?php echo base_url() ?>main/index/FAQ" class="navFooter" onclick="setActive(2)">FAQs</a></li>
-					<li><a href="<?php echo base_url() ?>main/index/FinancialAssistance" class="navFooter" onclick="setActive(3)">Financial Assistance</a></li>
-					<li><a href="<?php echo base_url() ?>main/index/Ping" class="navFooter" onclick="setActive(4)">Ping</a></li>
-					<li><a href="<?php echo base_url() ?>main/index/Transaction" class="navFooter" onclick="setActive(5)">Transaction</a></li>
-					<li><a href="<?php echo base_url() ?>main/index/Tips" class="navFooter" onclick="setActive(6)">Tips</a></li>
-					<li><a href="<?php echo base_url() ?>main/index/Support" class="navFooter" onclick="setActive(7)">Support</a></li>
-				</ul>
-			</div>
-			<div class="col-12 col-sm-6 col-md-4 col-lg-4 mid">
-				<p class="pt-2 titlePar">Follow us:</p>
-				<ul class="social pt-3">
-					<li><a href="" target="_blank"><i class="fab fa-facebook"></i></a></li>
-					<li><a href="" target="_blank"><i class="fab fa-twitter"></i></a></li>
-					<li><a href="" target="_blank"><i class="fab fa-instagram"></i></a></li>
-				</ul>
-			</div>
-			<div class="col-12 col-sm-12 col-md-4 col-lg-4 right">
-				<p class="pt-2 titlePar">Contact us:</p>
-				<ul class="contact pt-3">
-					<li><i class="fas fa-envelope icon"></i><p class="contactp align-middle pl-2">companyname@domain.com</p></li>
-					<li><i class="fas fa-phone icon"></i><p class="contactp align-middle pl-2">09xx-xxx-xxxx</p></li>
-				</ul>
-				
+	<div class="footer d-flex justify-content-between">
+		<p class="footer-text">
+			Copyright © 2021 ODMS Enterprise. All rights reserved.
+		</p>
+		<div>
+			<i class="fa fa-facebook-square footer-icons"aria-hidden="true"></i>
+			<i class="fa fa-twitter-square footer-icons"aria-hidden="true" style="margin-left: 10px; margin-right:10px;"></i> 
+			<i class="fa fa-linkedin-square footer-icons"aria-hidden="true"></i>  
 		</div>
 	</div>
 </footer>
@@ -42,7 +21,7 @@
 			// $(window).scroll(function(){
 			// 	$('nav').toggleClass('scrolled', $(this).scrollTop() > 100);
 			// 	$('.navbar-brand').toggleClass('scrolled', $(this).scrollTop() > 100);
-			// 	$('.nav-link').toggleClass('scrolled', $(this).scrollTop() > 100);
+			// 	$('.nav-link').toggleClass('s crolled', $(this).scrollTop() > 100);
 			// 	// $('.nav').classList.remove('.navbar-dark', $(this).scrollTop() > 100);
 			// });
 			

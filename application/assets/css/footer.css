@@ -1,0 +1,18 @@
+/* Footer Design */
+.footer{
+    background-color: #4b4e30;
+    color:#ccac46;
+    padding: 35px;
+    /* height: 90px; */
+}
+
+.footer .footer-text{
+    float: left;
+    margin:0;
+    font-size: 10px;
+}
+
+.footer .icons{
+    float: right;
+    margin:0;
+}
