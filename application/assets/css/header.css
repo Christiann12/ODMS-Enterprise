@@ -1,32 +1,53 @@
+/* Top Bar Design */
+.top-bar{
+    padding: 13px;
+}
+.top-bar .top-bar-title{
+    font-weight: bold;
+}
+.top-bar .text-container{
+    display: inline-block; color: black !important;
+}
+.top-bar .icon{
+    font-size:28px; color:#F6C510;
+}
+.top-bar .text-title{
+    padding:0; margin:0; line-height: 13px; font-size:10px; font-weight: bold;
+}
+.top-bar .text-desc{
+    padding:0; margin:0; line-height: 13px; font-size:15px;
+}
 /* Default Nav Bar Design */
+
 .navcolor {
-    transition: 350ms ease;background:transparent !important;
-}
-.navcolor::after {
-    background-color: grey; bottom: 0; content: ''; display: block; height: 1px; left: 50%; position: absolute; transform: translate(-50%,0);width: 95%;
-}
-/* Changes Nav Bar Design after scrolling for 100px */
-.navcolor.scrolled {
-    transition: 350ms ease; background: white !important; box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-}
-.navcolor.scrolled::after {
-    display: none; height: 0px;
+    background-color: #4b4e30; padding: 25px; margin-top:-16px;
 }
 .navbar-brand {
     color: white !important;
 }
 .nav-link {
-    color: white !important; margin-left: 30px;
+    color:#ccac46 !important;
 }
-.toggler {
-    color: white !important;
+.divicon{
+    margin-right: 10px;
 }
-.navbar-brand.scrolled {
-    color: black !important;
+.navbar-nav > li{
+    padding-left:40px;
+    padding-right:40px;
+  }
+@media (min-width: 576px) {
+    
 }
-.nav-link.scrolled {
-    margin-left: 30px; color: black !important;
+
+@media (min-width: 768px) {
+   
 }
-.toggler.scrolled {
-    color: black !important;
+
+@media (min-width: 992px) { 
+    
 }
+
+@media (min-width: 1200px) { 
+    
+}
+
