@@ -9,7 +9,7 @@ class Main extends CI_Controller {
 		$data['hello'] = "world";
 		$this->load->helper('url');
 		$this->load->view('HeaderNFooter/Header.php');
-		$this->load->view('ClientPages/main.php', $data);
+		$this->load->view('ClientPages/support.php', $data);
 		$this->load->view('HeaderNFooter/Footer.php');
 	}
 }

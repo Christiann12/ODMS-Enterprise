@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/header.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/footer.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/Homepage.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/support.css">
 	</head>
 <body style="font-family: Montserrat;" >
 <!-- oncontextmenu="return false;" -->
