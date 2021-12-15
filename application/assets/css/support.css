@@ -1,0 +1,919 @@
+*{
+    margin:0;
+    padding:0;  
+}
+.faqtitle .faqsub .content{
+    margin-top: 50px;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 34px;
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 5px;
+}
+
+.faq{
+    margin-top: 10%;
+    margin-left: 40%;
+}
+
+.faqaccordion {
+    font-family: 'Montserrat', sans-serif;
+    background-color: white;
+    color: #111111;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    height: 80px;
+    text-align: left !important;
+    outline: none !important;
+    font-size: 20px;
+    font-weight: 600;
+    transition: 0.4s;
+    border-bottom-color: #F6C510 !important;
+    border-width: 3px !important;
+    text-decoration: none!important;
+  }
+
+  .faqaccordion a{
+    font-size: 20px;
+    margin-left: 50px;
+    margin-top: 15px;
+    position:absolute;
+    font-weight: 500;
+  }
+    .faqaccordion:focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
+  .active1, .faqaccordion:hover{
+      border-bottom-color: #F6C510 !important;
+      font-weight: bold;
+      border-bottom-width: 5px !important;
+  }
+  .faqaccordion:after{
+      font-size: 40px;
+      border-bottom-color: #F6C510;
+      content: '\002B'; /* expand */
+      color: #F6C510;
+      border-radius: 5px;
+      font-weight: bold;
+  }
+
+  
+  .active1:after{
+      content: '\1F5D5'; /* minimize */
+      font-size: 30px;
+      border-bottom-color: #F6C510 !important;
+  }
+  
+  .faqpanel {
+    padding: 0 18px;
+    background-color: white;
+    max-height:0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+  }
+
+  .faqpanel p{
+      text-indent: 50px;
+      text-align: justify;
+  }
+
+  /* Media Query for Accordion */
+
+    /* 576px and below */
+    @media (max-width: 576px) {
+        .faqtitle .faqsub .content{
+            font-size: 18px;
+        }
+
+        .faq{
+            margin-top: 15%;
+            margin-left: 50%;
+        }
+
+        .faqaccordion {
+            font-size: 18px;
+            font-weight: 600;
+            height: 70px !important;          
+        }
+
+        .faqaccordion a{
+            font-size: 12px;
+            margin-left: 30px;
+            margin-top: 7px;
+            position:absolute;
+        }
+
+        .faqaccordion:after{
+            font-size: 22px;
+        }
+        .active1:after{
+            content: '\1F5D5'; /* minimize */
+            font-size: 14px;
+            border-bottom-color: #F6C510 !important;
+        }
+
+        .faqpanel p{
+            text-indent: 35px;
+            text-align: justify;
+            font-size: 10px;
+        }
+    }
+
+    /* 576px and up */
+    @media (min-width: 576px) {
+        .faqtitle .faqsub .content{
+            font-size: 25px;
+      }
+
+        .faq{
+            margin-top: 15%;
+            margin-left: 50%;
+        }
+
+        .faqaccordion {
+            font-size: 18px;
+            font-weight: 600;
+            height: 75px !important;          
+        }
+
+        .faqaccordion a{
+            font-size: 15px;
+            margin-left: 30px;
+            margin-top: 7px;
+            position:absolute;
+        }
+
+        .faqaccordion:after{
+            font-size: 25px;
+        }
+        .active1:after{
+            content: '\1F5D5'; /* minimize */
+            font-size: 17px;
+            border-bottom-color: #F6C510 !important;
+        }
+
+        .faqpanel p{
+            text-indent: 40px;
+            text-align: justify;
+            font-size: 10px;
+        }
+    }
+
+    /* 768px and up */
+    @media (min-width: 768px) {
+        .faqtitle .faqsub .content{
+            margin-top: 100px;
+            font-size: 30px;
+            margin-top: 20px;        
+        }
+
+        .faq{
+            margin-top: 8%;
+            margin-left: 40%;
+        }
+
+        .faqaccordion {
+            font-size: 18px;
+            font-weight: 600;
+            height: 80px !important;       
+        }
+
+        .faqaccordion a{
+            font-size: 18px;
+            margin-left: 35px;
+            margin-top: 10px;
+            position:absolute;
+        }
+
+        .faqaccordion:after{
+            font-size: 30px;
+        }
+        .active1:after{
+            content: '\1F5D5'; /* minimize */
+            font-size: 20px;
+            border-bottom-color: #F6C510 !important;
+        }
+
+        .faqpanel p{
+            text-indent: 45px;
+            text-align: justify;
+            font-size: 13px;
+        }
+    }
+
+    /* 992px and up */
+    @media (min-width: 992px) { 
+        .faqtitle .faqsub .content{
+            font-size: 34px;
+        }
+
+        .faq{
+            margin-top: 10%;
+            margin-left: 40%;
+        }
+
+        .faqaccordion {
+            font-size: 20px;
+            font-weight: 600;
+            height: 85px !important;          
+        }
+
+        .faqaccordion a{
+            font-size: 20px;
+            margin-left: 50px;
+            margin-top: 15px;
+            position:absolute;
+        }
+
+          .faqaccordion:after{
+            font-size: 40px;
+        }
+        .active1:after{
+            content: '\1F5D5'; /* minimize */
+            font-size: 30px;
+            border-bottom-color: #F6C510 !important;
+        }
+
+        .faqpanel p{
+            text-indent: 50px;
+            text-align: justify;
+        }
+        
+    }
+
+
+
+  .details{
+      position:absolute;
+      margin-top: 19%;
+      margin-left: 10%;
+  }
+
+  .details h4{
+      font-size: 24px;
+      margin-bottom: 40px;
+      font-weight: 600;
+  }
+
+  .details h3{
+    font-size: 20px;
+    letter-spacing: 5px;
+    font-weight: 500;
+}
+
+.details h3:hover{
+    color: #F6C510;
+    cursor: pointer;
+}
+
+.text{
+    transition: all 0.1s ease 0s;
+}
+
+.active2, .text:hover {
+    color: #F6C510;
+    transform: scale(1.1);
+}
+
+/* Media Query for FAQ Subtitles */
+
+    /* 576px and below */
+    @media (max-width: 576px) {
+        .details{
+            margin-top: 35%;
+            margin-left:2%;
+        }
+      
+        .details h4{
+            font-size: 14px;
+            margin-bottom: 35px;
+            font-weight: 600;
+        }
+      
+        .details h3{
+          font-size: 9px;
+          font-weight: 500;
+      }
+    }
+
+    /* 576px and up */
+    @media (min-width: 576px) {
+        .details{
+            margin-top: 34%;
+            margin-left: 5%;
+        }
+      
+        .details h4{
+            font-size: 16px;
+            margin-bottom: 35px;
+            font-weight: 600;
+        }
+      
+        .details h3{
+          font-size: 11px;
+          font-weight: 500;
+      }
+    }
+
+    /* 768px and up */
+    @media (min-width: 768px) {
+        .details{
+            margin-top: 23%;
+            margin-left: 5%;
+        }
+      
+        .details h4{
+            font-size: 18px;
+            margin-bottom: 35px;
+            font-weight: 600;
+        }
+      
+        .details h3{
+          font-size: 13px;
+          font-weight: 500;
+      }
+    }
+
+    /* 992px and up */
+    @media (min-width: 992px) { 
+        .details{
+            margin-top: 20% !important;
+            margin-left: 4%;
+        }
+      
+        .details h4{
+            font-size: 20px;
+            margin-bottom: 40px;
+            font-weight: 600;
+        }
+      
+        .details h3{
+          font-size: 18px;
+          font-weight: 500;
+        }
+    }
+
+.picture{
+      height: 750px;
+      width: 100%;
+      padding:0;
+      margin-top: 10%;
+}
+
+.card .overlay{
+    height: 750px;
+    width: 100%;
+    background: #F6C510;
+    position: absolute;
+    margin-top: 10%;
+    opacity: 70%;
+}
+
+  .textform{
+      position: absolute;
+      font-size: 60px;
+      margin-top: 28%;
+      margin-left: 10%;
+      color: white;
+      font-weight: 600;
+      text-shadow: black;
+      text-align: center;
+  }
+
+  /* Media Query for Picture/Overlay/Text */
+
+    /* 576px and below */
+    @media (max-width: 576px) {
+        .picture{
+            height: 300px;
+            width: 100%;
+            margin-top: 10%;
+      }
+      
+      .card .overlay{
+          height: 300px;
+          width: 100%;
+          margin-top: 10%;
+          opacity: 70%;
+      }
+      
+        .textform{
+            font-size: 30px !important;
+            margin-top: 30%;
+            margin-left: 5%;
+        }
+    }
+
+    /* 576px and up */
+    @media (min-width: 576px) {
+        .picture{
+            height: 400px;
+            width: 100%;
+            margin-top: 10%;
+      }
+      
+      .card .overlay{
+          height: 400px;
+          width: 100%;
+          margin-top: 10%;
+          opacity: 70%;
+      }
+      
+        .textform{
+            font-size: 35px !important;
+            margin-top: 28%;
+            margin-left: 7%;
+        }
+    }
+
+    /* 768px and up */
+    @media (min-width: 768px) {
+        .picture{
+            height: 500px;
+            width: 100%;
+            margin-top: 10%;
+      }
+      
+      .card .overlay{
+          height: 500px;
+          width: 100%;
+          margin-top: 10%;
+          opacity: 70%;
+      }
+      
+        .textform{
+            font-size: 45px !important;
+            margin-top: 28%;
+            margin-left: 10%;
+        }
+    }
+
+    /* 992px and up */
+    @media (min-width: 992px) {
+        .picture{
+            height: 600px;
+            width: 100%;
+            margin-top: 10%;
+      }
+      
+      .card .overlay{
+          height: 600px;
+          width: 100%;
+          margin-top: 10%;
+          opacity: 70%;
+      }
+      
+        .textform{
+            font-size: 55px !important;
+            margin-top: 28%;
+            margin-left: 10%;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .picture{
+            height: 700px;
+            width: 100%;
+            margin-top: 10%;
+      }
+      
+      .card .overlay{
+          height: 700px;
+          width: 100%;
+          margin-top: 10%;
+          opacity: 70%;
+      }
+      
+        .textform{
+            font-size: 60px !important;
+            margin-top: 28%;
+            margin-left: 10%;
+        }
+    }
+
+    @media (min-width: 1400px) {
+        .picture{
+            height: 800px;
+            width: 100%;
+            margin-top: 10%;
+      }
+      
+      .card .overlay{
+          height: 800px;
+          width: 100%;
+          margin-top: 10%;
+          opacity: 70%;
+      }
+      
+        .textform{
+            font-size: 65px !important;
+            margin-top: 28%;
+            margin-left: 10%;
+        }
+    }
+
+
+ .faqform{
+      position: absolute !important;
+      width: 500px;
+      margin-top: 18%;
+      margin-left: 60%;
+}
+
+.faqform .faqlabel{
+    font-size: 15px !important;
+}
+
+.faqform .faqfname{
+    margin-bottom: 3%;
+    font-weight: 600;
+    font-size: 20px;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.faqform .faqlname{
+    margin-bottom: 3%;
+    font-weight: 600;
+    font-size: 20px;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.faqform .faqemail{
+    margin-bottom: 3%;
+    font-weight: 600;
+    font-size: 20px;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.faqform .faqqst{
+    margin-bottom: 5%;
+    font-weight: 500;
+    font-size: 15px;
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.faqbtn{
+    position: absolute !important;
+    margin-left: 60%;
+    margin-top: 43%;
+    background-color: #F6C510;
+    box-shadow: 5px 5px 5px rgba(0,0,0,.8);
+    transition: all 0.1s ease 0s;
+    border-radius: 5px;
+    outline: none !important;
+}
+
+.faqbtn .faqbtn2{
+    width: 500px;
+    box-shadow: 5px 5px 5px rgba(0,0,0,.8);
+    outline: none !important;
+    box-shadow: none !important;
+    font-size: 10px;
+}
+
+.faqbtn:hover{
+    transform: translateY(-7px);
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.faqbtn2:hover{
+    color: white !important;
+    font-weight: 500;
+}
+
+/* Media Query for FAQ Forms */
+
+    /* 576px and below */
+    @media (max-width: 576px) {
+        .faqform{
+            width: 230px;
+            margin-top: 13%;
+            margin-left: 50%;
+            height: 20px !important;
+      }
+
+      .faqform .faqlabel{
+          font-size: 11px !important;
+      }
+      
+      .faqform .faqfname{
+          margin-bottom: 3%;
+          font-weight: 600;
+          font-size: 13px;
+          height: 37px !important;
+      }
+      
+      .faqform .faqlname{
+          margin-bottom: 3%;
+          font-weight: 600;
+          font-size: 13px;
+          height: 37px !important;      
+        }
+      
+      .faqform .faqemail{
+          margin-bottom: 3%;
+          font-weight: 600;
+          font-size: 13px;
+          height: 37px !important;
+      }
+      
+      .faqform .faqqst{
+          margin-bottom: 5%;
+          font-weight: 500;
+          font-size: 13px;
+          height: 55px !important;
+      }
+      
+      .faqbtn{
+          margin-left: 50%;
+          margin-top: 55%;
+      }
+      
+      .faqbtn .faqbtn2{
+        width: 230px;
+        height: 30px;
+      }
+
+      .faqbtn2{
+        font-size: 12px !important;
+    }
+    }
+
+    /* 576px and up */
+    @media (min-width: 576px) {
+        .faqform{
+            width: 280px;
+            margin-top: 13%;
+            margin-left: 50%;
+            height: 20px !important;
+      }
+
+      .faqform .faqlabel{
+          font-size: 12px !important;
+      }
+      
+      .faqform .faqfname{
+          margin-bottom: 3%;
+          font-weight: 600;
+          font-size: 14px;
+          height: 40px !important;
+      }
+      
+      .faqform .faqlname{
+          margin-bottom: 3%;
+          font-weight: 600;
+          font-size: 14px;
+          height: 45px !important;
+      }
+      
+      .faqform .faqemail{
+          margin-bottom: 3%;
+          font-weight: 600;
+          font-size: 14px;
+          height: 50px !important;
+      }
+      
+      .faqform .faqqst{
+          margin-bottom: 5%;
+          font-weight: 500;
+          font-size: 14px;
+          height: 70px !important;
+      }
+      
+      .faqbtn{
+          margin-left: 50%;
+          margin-top: 55%;
+      }
+      
+      .faqbtn .faqbtn2{
+        width: 280px;
+      }
+
+      .faqbtn2{
+        font-size: 14px !important;
+    }
+    }
+
+    /* 768px and up */
+    @media (min-width: 768px) {
+        .faqform{
+            width: 300px;
+            margin-top: 18%;
+            margin-left: 55%;
+      }
+      .faqform .faqlabel{
+        font-size: 14px !important;
+    }
+      
+      .faqform .faqfname{
+          margin-bottom: 3%;
+          font-weight: 600;
+          font-size: 14px;
+          height: 45px !important;
+      }
+      
+      .faqform .faqlname{
+          margin-bottom: 3%;
+          font-weight: 600;
+          font-size: 14px;
+          height: 45px !important;
+      }
+      
+      .faqform .faqemail{
+          margin-bottom: 3%;
+          font-weight: 600;
+          font-size: 14px;
+          height: 45px !important;
+      }
+      
+      .faqform .faqqst{
+          margin-bottom: 5%;
+          font-weight: 500;
+          font-size: 14px;
+          height: 80px !important;
+      }
+      
+      .faqbtn{
+          margin-left: 55%;
+          margin-top: 51%;
+      }
+      
+      .faqbtn .faqbtn2{
+          width: 300px;
+      }
+
+      .faqbtn2{
+        font-size: 14px !important;
+    }
+    }
+
+    /* 992px and up */
+    @media (min-width: 992px) {
+        .faqform{
+            width: 350px;
+            margin-top: 18%;
+            margin-left: 60%;
+            height: 20px !important;
+      }
+
+      .faqform .faqlabel{
+        font-size: 17px !important;
+    }
+      
+      .faqform .faqfname{
+          margin-bottom: 3%;
+          font-weight: 600;
+          font-size: 16px;
+          height: 50px !important;
+      }
+      
+      .faqform .faqlname{
+          margin-bottom: 3%;
+          font-weight: 600;
+          font-size: 16px;
+          height: 50px !important;
+      }
+      
+      .faqform .faqemail{
+          margin-bottom: 3%;
+          font-weight: 600;
+          font-size: 16px;
+          height: 50px !important;
+      }
+      
+      .faqform .faqqst{
+          margin-bottom: 5%;
+          font-weight: 500;
+          font-size: 16px;
+          height: 90px !important;
+      }
+      
+      .faqbtn{
+          margin-left: 60%;
+          margin-top: 50%;
+      }
+      
+      .faqbtn .faqbtn2{
+          width: 350px;
+      }
+
+      .faqbtn2{
+        font-size: 16px !important;
+    }
+    }
+
+    @media (min-width: 1200px) {
+    .faqform{
+            width: 450px;
+            margin-top: 18%;
+            margin-left: 60%;
+      }
+      .faqform .faqlabel{
+        font-size: 17px !important;
+    }
+      
+      .faqform .faqfname{
+          margin-bottom: 3%;
+          font-weight: 600;
+          font-size: 17px;
+          height: 50px !important;
+      }
+      
+      .faqform .faqlname{
+          margin-bottom: 3%;
+          font-weight: 600;
+          font-size: 20px;
+          font-size: 17px;
+          height: 50px !important;
+      }
+      
+      .faqform .faqemail{
+          margin-bottom: 3%;
+          font-weight: 600;
+          font-size: 20px;
+          font-size: 17px;
+          height: 50px !important;
+      }
+      
+      .faqform .faqqst{
+          margin-bottom: 5%;
+          font-weight: 500;
+          font-size: 15px;
+          font-size: 17px;
+          height: 100px !important;
+      }
+      
+      .faqbtn{
+          margin-left: 60%;
+          margin-top: 46%;
+          height: 45px !important;
+          font-size: 5px !important;
+      }
+      
+      .faqbtn .faqbtn2{
+          width: 450px;
+      }
+
+      .faqbtn2{
+        font-size: 17px !important;
+    }
+    }
+
+    @media (min-width: 1400px) {
+        .faqform{
+            width: 500px;
+            margin-top: 18%;
+            margin-left: 60%;
+      }
+      .faqform .faqlabel{
+        font-size: 17px !important;
+    }
+      .faqform .faqfname{
+          margin-bottom: 3%;
+          font-weight: 600;
+          font-size: 16px;
+      }
+      
+      .faqform .faqlname{
+          margin-bottom: 3%;
+          font-weight: 600;
+          font-size: 16px;
+      }
+      
+      .faqform .faqemail{
+          margin-bottom: 3%;
+          font-weight: 600;
+          font-size: 16px;
+      }
+      
+      .faqform .faqqst{
+          margin-bottom: 5%;
+          font-weight: 500;
+          font-size: 18px;
+      }
+      
+      .faqbtn{
+          margin-left: 60%;
+          margin-top: 43%;
+      }
+      
+      .faqbtn .faqbtn2{
+          width: 500px;
+      }
+
+      .faqbtn2{
+          font-size: 20px !important;
+      }
+
+    }
+
+
+
