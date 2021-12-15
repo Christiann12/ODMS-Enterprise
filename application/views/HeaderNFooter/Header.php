@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/footer.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/Homepage.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/support.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/ClientPagesCss/FA.css">
 	</head>
 <body style="font-family: Montserrat;" >
 <!-- oncontextmenu="return false;" -->

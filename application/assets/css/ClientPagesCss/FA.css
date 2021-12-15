@@ -1,0 +1,142 @@
+html,body {
+    margin:0;
+    padding:0;
+    overflow-x:hidden;
+}
+
+/* fa banner design */
+.bannerFa{
+    position: relative; margin: 0; height: 750px; color: white; width:100%;
+}
+
+.bannerimageFa{
+    position: absolute; top: 0; left: 0;width:100%; height:100%; background-size: cover; background-position: center top;
+}
+
+.bannerBackgroundOverlayFa{
+    position: absolute; top: 0; left: 0;width:100%; height:100%; background-color: black; opacity: 0.5;
+}
+
+.aboutDesignFa{
+    
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 10px; line-height: 12px; display: flex; align-items: center; letter-spacing: 1.5em;
+}
+
+.bannerMainTextFa{
+    font-family: Montserrat; font-style: normal; font-weight: 600; font-size: 34px; line-height: 41px; display: flex; align-items: center; letter-spacing: 0.25em;
+}
+
+.bannerDescFa{
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 16px; line-height: 118.9%; display: flex; align-items: center; letter-spacing: 0.05em; text-align: justify;
+
+}
+
+.faBannerLeftPanel{
+    padding-top: 300px; padding-left: 50px; padding-right: 50px; padding-bottom: 50px;
+}
+
+
+/* fa banner end */
+
+/* getStartedSection */
+.getStartedSection{
+    margin-top: 200px;
+    
+}
+
+.getStartedSection .heading1{
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 10px; line-height: 12px; letter-spacing: 1.5em;
+}
+
+.getStartedSection .heading2{
+    font-family: Montserrat; font-style: normal; font-weight: 600; font-size: 34px; line-height: 41px; letter-spacing: 0.25em;
+}
+.getStartedSection .workImageFa{
+    height:500px; background-position: center top; background-repeat: no-repeat;
+}
+
+.getStartedSection .bullet{
+    height: 100px; width: 100px; background-color: #F6C510; border-radius: 50%; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
+
+.getStartedSection .bullet p{
+    line-height: 100px; text-align: center; font-size: 60px; color: white;
+}
+
+.getStartedSection .desc{
+    font-weight: 500; padding-top: 10px;
+}
+
+/* businessPartnerSection */
+
+.businessPartnerSection{
+    margin-top: 150px;
+    
+    /* background-color: red; */
+}
+
+.businessPartnerSection .heading1{
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 10px; line-height: 12px; letter-spacing: 1.5em;
+}
+.businessPartnerSection .heading2{
+    font-family: Montserrat; font-style: normal; font-weight: 600; font-size: 34px; line-height: 41px; letter-spacing: 0.25em; margin-bottom: 100px;
+}
+
+.businessPartnerSection .card{
+    height: 30rem; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; position: relative; transition: transform 0.2s ease; overflow: hidden;
+}
+
+.businessPartnerSection .card-img{
+    object-fit: cover; height: 100%; opacity: 0.4; transition: transform 0.2s ease; 
+}
+
+.businessPartnerSection .buttonContainer{
+    position:absolute; top: 0; left: 0; height: 100%; width: 100%;  visibility:hidden; opacity:0; transition:visibility 0.3s linear,opacity 0.3s linear;
+}
+
+.businessPartnerSection .buttonContainer .btn{
+    width: 157px; background-color: #F6C510; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);border-radius: 4px;  font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 14px; line-height: 24px; align-items: center; text-align: center; letter-spacing: 1.25px; color: black;
+}
+
+.businessPartnerSection .card:hover{
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+
+.businessPartnerSection .card:hover .card-img{
+    transform: scale(1.3);
+    transition: transform 0.2s ease;
+}
+
+
+.businessPartnerSection .card:hover .buttonContainer{
+    visibility: visible;
+    opacity:1;
+}
+
+/* getstartedButtonSection */
+
+.getStartedButtonSection{
+    position: relative; margin-top: 150px; height: 330px;
+}
+
+.getStartedButtonSection .img{
+    position: absolute; top:0; left: 0; width: 100%; height: 100%; background-position: center; background-size: cover; 
+
+}
+
+.getStartedButtonSection .overlay{
+    position: absolute; top: 0; left: 0;width:100%; height:100%; background-color: #F6C510; opacity: 0.7;  
+}
+
+.getStartedButtonSection .content{
+    position: absolute; top: 0; left: 0;width:100%; height:100%; padding-top: 80px;
+}
+
+.getStartedButtonSection .content p{
+    font-family: Montserrat; font-style: normal; font-weight: 600; font-size: 60px; letter-spacing: -5px; color: #FFFFFF; text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.getStartedButtonSection .content .btn{
+    width: 157px; height: 47px;background-color: #F6C510; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 4px;
+}

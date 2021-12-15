@@ -4,6 +4,7 @@
 }
 .top-bar .top-bar-title{
     font-weight: bold;
+    font-family: Montserrat;
 }
 .top-bar .text-container{
     display: inline-block; color: black !important;
@@ -13,9 +14,11 @@
 }
 .top-bar .text-title{
     padding:0; margin:0; line-height: 13px; font-size:10px; font-weight: bold;
+    font-family: Montserrat;
 }
 .top-bar .text-desc{
-    padding:0; margin:0; line-height: 13px; font-size:15px;
+    padding:0; margin:0; line-height: 13px; font-size:13px;
+    font-family: Montserrat;
 }
 /* Default Nav Bar Design */
 
