@@ -128,7 +128,7 @@
     </div>
 </div>
 <div class="card border-0">
-    <img src="<?php echo base_url(); ?>application/assets/images/services.jpg" alt="contactus" class="picture">
+    <img src="<?php echo base_url(); ?>application/assets/images/ClientPagesImages/services.jpg" alt="contactus" class="picture">
     <div class="overlay"></div>
     <form class="faqform">
 

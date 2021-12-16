@@ -1,0 +1,421 @@
+html,body {
+    margin:0; padding:0; overflow-x:hidden;
+}
+
+/* Banner Css */
+.homepageBanner {
+    position: relative; width: 100%; height: 750px; 
+}
+
+.homepageBanner .img {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center top; background-repeat: no-repeat;
+}
+
+.homepageBanner .overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: black; opacity: 0.5; 
+}
+
+.homepageBanner .content {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+}
+
+.homepageBanner .content .bannerTexts {
+    padding-top: 300px; padding-left: 50px; padding-right: 50px; padding-bottom: 50px; 
+    
+}
+
+.bannerH1 {
+    color: #FFFFFF; font-family: Montserrat; font-style: normal; font-weight: bold; font-size: 48px; line-height: 59px; align-items: center; filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); 
+}
+
+.bannerH2 {
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 24px; line-height: 29px; color: #FFFFFF; filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25)); 
+}
+
+.aboutUsSection {
+    position: relative; width: 100%; height: auto; margin-top: 200px; margin-bottom: auto; 
+}
+
+.aboutUsSection .row {
+    width: 100%; margin-left: auto; margin-right: auto;
+}
+
+.aboutUsSection .row .aboutUsContent {
+    margin-top: auto; margin-bottom: auto; padding-top: 50px; padding-bottom: 50px; padding-left: 120px; padding-right: 120px; 
+}
+
+.aboutUsSection .row .aboutUsImgDiv {
+    width: 100%; height: auto; padding: 0px; 
+}
+
+.aboutUsH1 {
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 10px; line-height: 12px; align-items: center; letter-spacing: 1.5em; color: #000000; 
+}
+
+.aboutUsH2 {
+    font-family: Montserrat; font-style: normal; font-weight: 600; font-size: 34px; line-height: 41px; align-items: center; letter-spacing: 0.25em; color: #000000; 
+}
+
+.aboutUsH3 {
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 16px; line-height: 118.9%; align-items: center; letter-spacing: 0.05em; color: #000000; 
+
+}
+
+.aboutUsSection .row .learnMoreBtn {
+    flex-direction: column; align-items: center; padding: 10px 20px; width: 157px; height: 47px; background-color: #F6C510; border: none; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 4px; 
+
+    /* Button text */
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 14px; line-height: 24px; align-items: center; text-align: center; letter-spacing: 1.25px; 
+}
+
+.aboutUsSection .row .aboutUsImgDiv .aboutUsImg {
+    width: 100%; height: 100%; object-fit: cover; 
+}
+
+.shopSection {
+    width: 100%; height: auto; padding-top: 50px; padding-bottom: 50px; margin-top: 200px; margin-bottom: 100px; background-color: #F8F8F8; 
+}
+
+.shopSection .container {
+    margin-top: 55px;
+}
+
+.shopSection .container .row .card {
+    background: #FFFFFF; box-shadow: 4px 4px 70px 5px rgba(0, 0, 0, 0.1); border-radius: 8px; 
+}
+
+.shopSection .container .row .shopCard {
+    width: 100%; height: auto; padding: 50px; 
+}
+
+.shopSection .container .row .shopCard .serviceImg {
+    width: 100%; height: auto; object-fit: cover; align-self: center; 
+}
+
+.shopTextH1 {
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 10px; line-height: 12px; letter-spacing: 1.5em; color: #000000; 
+}
+
+.shopTextH2 {
+    font-family: Montserrat; font-style: normal; font-weight: 600; font-size: 34px; line-height: 41px; letter-spacing: 0.25em; color: #000000; 
+}
+
+.shopCardH1 {
+    font-family: Montserrat; font-style: normal; font-weight: 600; font-size: 24px; line-height: 29px; align-items: center; color: #000000; margin-top:20px; 
+}
+
+.shopCardDesc {
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 16px; line-height: 118.9%; align-items: center; letter-spacing: 0.05em; color: #000000; 
+}
+
+.shopSection .container .row .shopCard .browseServiceBtn {
+    flex-direction: column; padding: 10px 20px; align-self: center; width: 220px; height: 47px; margin-top: 25px; background-color: #F6C510; border: none; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 4px; 
+
+    /* Button text */
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 14px; line-height: 24px; align-items: center; text-align: center; letter-spacing: 1.25px; 
+
+}
+
+.shopSection .container .row .shopCard .browseProdBtn {
+    flex-direction: column; padding: 10px 20px; align-self: center; width: 220px; height: 47px; margin-top: 25px; background-color: #F6C510; border: none; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 4px; 
+
+    /* Button text */
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 14px; line-height: 24px; align-items: center; text-align: center; letter-spacing: 1.25px; 
+
+}
+
+.teamSection {
+    width: 100%; height: auto; margin-top: 200px; margin-bottom: 100px; 
+}
+
+.teamSection .teamHeadingTexts {
+    width: 100%; height: auto; margin-right: auto; margin-left: auto; 
+}
+
+.teamSection .teamHeadingTexts .teamHeading {
+    margin-top: auto; margin-bottom: auto; padding-left: 120px; 
+}
+
+.teamSection .teamHeadingTexts .teamDescContent {
+    margin: auto; padding-left: 120px; padding-right: 120px; 
+}
+
+.teamH1 {
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 10px; line-height: 12px; letter-spacing: 1.5em; color: #000000; 
+}
+
+.teamH2 {
+    font-family: Montserrat; font-style: normal; font-weight: 600; font-size: 34px; line-height: 41px; letter-spacing: 0.25em; color: #000000; 
+}
+
+.teamDesc {
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 16px; line-height: 118.9%; letter-spacing: 0.05em; color: #000000; 
+}
+
+.teamSection .teamCards {
+    width: 100%; height: auto; margin-top:55px; padding-left: 120px; padding-right: 120px; 
+}
+
+.teamSection .teamCards .teamMemberCard {
+    margin-top: 20px; margin-bottom: 20px;
+}
+
+.teamSection .teamCards .teamMemberCard .cardDetails {
+    width: 100%; height: 100%; padding: 0; border: 0; 
+}
+
+.teamSection .teamCards .teamMemberCard .card-img-top {
+    width: 100%; object-fit: cover;
+}
+
+.memberName {
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 14px; line-height: 118.9%; text-align: center; letter-spacing: 0.25em; color: #000000; 
+}
+
+.memberJobTitle {
+    font-family: Montserrat; font-style: normal; font-weight: 600; font-size: 14px; line-height: 118.9%; text-align: center; letter-spacing: 0.1em; color: #000000; 
+}
+
+.memberEmail {
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 14px; line-height: 118.9%; text-align: center; letter-spacing: 0.25em; color: #000000; 
+}
+
+.financialAssistance {
+    position: relative; width: 100%; height: 720px; margin-top: 200px; margin-bottom: auto; 
+}
+
+.financialAssistance .fAImg {
+    width: 100%; height: 720px; object-fit: cover; filter: brightness(50%); 
+}
+
+.financialAssistance .fAContent {
+    position: absolute; width: 100%; top: 50%; left: 50%; transform: translate(-50%, -50%); padding-left: 120px; padding-right: 120px; 
+}
+
+.financialAssistance .fAContent .browseListBtn {
+    flex-direction: column; align-items: center; padding: 10px 20px; width: 157px; height: 47px; background-color: #F6C510; border: none; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 4px; margin-top: 20px; 
+
+    /* Button text */
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 14px; line-height: 24px; align-items: center; text-align: center; letter-spacing: 1.25px; 
+}
+
+.fAText1 {
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 10px; line-height: 12px; text-align: center; letter-spacing: 1.5em; color: #FFFFFF; 
+}
+
+.fAText2 {
+    font-family: Montserrat; font-style: normal; font-weight: 600; font-size: 34px; line-height: 41px; text-align: center; letter-spacing: 0.25em; color: #FFFFFF; 
+}
+
+.fAText3 {
+    font-family: Montserrat; font-style: normal; font-weight: normal; font-size: 16px; line-height: 118.9%; text-align: center; letter-spacing: 0.05em; color: #FFFFFF; 
+}
+ 
+/* MEDIA QUERIES */
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 100px) { 
+    .bannerH1 {
+        font-size: 24px;
+    }
+
+    .bannerH2 {
+        font-size: 16px;
+    }
+
+    .aboutUsH2, .shopTextH2, .shopCardH1, .teamH2, .fAText2 {
+        font-size: 20px; line-height: 30px; letter-spacing: 0.15em;
+    }
+    
+    .aboutUsH3 {
+        font-size: 12px;
+    
+    }
+    
+    .shopCardDesc {
+        font-size: 12px;
+    
+    }
+    
+    .teamDesc {
+        font-size: 12px;
+
+    }
+
+    .memberName {
+        font-size: 10px;
+        
+    }
+    
+    .memberJobTitle {
+        font-size: 10px;
+    }
+    
+    .memberEmail {
+        font-size: 10px;
+    
+    }
+    
+    .fAText3 {
+        font-size: 12px;
+
+    }
+
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .bannerH1 {
+        font-size: 34px;
+    }
+
+    .bannerH2 {
+        font-size: 20px;
+    }
+
+    .aboutUsH2 {
+        font-size: 24px;
+    }
+    
+    .aboutUsH3 {
+        font-size: 14px;
+    
+    }
+
+    .shopTextH2 {
+        font-size: 24px;
+    
+    }
+
+    .shopCardH1 {
+        font-size: 20px;
+    
+    }
+    
+    .shopCardDesc {
+        font-size: 14px;
+    
+    }
+
+    .teamH2 {
+        font-size: 24px;
+        
+    }
+    
+    .teamDesc {
+        font-size: 14px;
+
+    }
+
+    .memberName {
+        font-size: 12px;
+        
+    }
+    
+    .memberJobTitle {
+        font-size: 12px;
+    }
+    
+    .memberEmail {
+        font-size: 12px;
+    
+    }
+
+    .fAText2 {
+        font-size: 24px;
+        
+    }
+    
+    .fAText3 {
+        font-size: 14px;
+
+    }
+
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+    .bannerH1 {
+        font-size: 48px;
+    }
+
+    .bannerH2 {
+        font-size: 24px;
+    }
+
+    .aboutUsH2, .shopTextH2, .teamH2, .fAText2 {
+        font-size: 34px; line-height: 41px; letter-spacing: 0.25em; 
+    }
+    
+    .aboutUsH3, .teamDesc, .fAText3 {
+        font-size: 16px; line-height: 118.9%; letter-spacing: 0.05em; 
+    }
+
+    .shopCardH1 {
+        font-size: 24px;
+    
+    }
+    
+    .shopCardDesc {
+        font-size: 16px;
+    
+    }
+
+    .memberName {
+        font-size: 12px;
+        
+    }
+    
+    .memberJobTitle {
+        font-size: 12px;
+    }
+    
+    .memberEmail {
+        font-size: 12px;
+    
+    }
+    
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    .bannerH1 {
+        font-size: 48px;
+    }
+
+    .bannerH2 {
+        font-size: 24px;
+    }
+
+    .aboutUsH2, .shopTextH2, .teamH2, .fAText2 {
+        font-size: 34px; line-height: 41px; letter-spacing: 0.25em; 
+    }
+    
+    .aboutUsH3, .teamDesc, .fAText3 {
+        font-size: 16px; line-height: 118.9%; letter-spacing: 0.05em; 
+    }
+
+    .shopCardH1 {
+        font-size: 24px;
+    
+    }
+    
+    .shopCardDesc {
+        font-size: 16px;
+    
+    }
+
+    .memberName {
+        font-size: 14px;
+
+    }
+    
+    .memberJobTitle {
+        font-size: 14px;
+    }
+    
+    .memberEmail {
+        font-size: 14px;
+    
+    }
+    
+}

@@ -1,5 +1,5 @@
 <div class="bannerFa row">
-    <div class="bannerimageFa" style="background-image: url('<?php echo base_url(); ?>application/assets/images/team 4.jpg'); "></div>
+    <div class="bannerimageFa" style="background-image: url('<?php echo base_url(); ?>application/assets/images/ClientPagesImages/team 4.jpg'); "></div>
     <div class="bannerBackgroundOverlayFa"></div>
     <div class="col-12 col-md-6 faBannerLeftPanel"> 
         <p class="aboutDesignFa" >
@@ -56,7 +56,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-12 col-md-6 workImageFa" style="background-image: url('<?php echo base_url(); ?>application/assets/images/financial assistance.gif'); ">
+        <div class="col-12 col-md-6 workImageFa" style="background-image: url('<?php echo base_url(); ?>application/assets/images/ClientPagesImages/financial assistance.gif'); ">
             
         </div>
     </div>
@@ -71,7 +71,7 @@
  
         <div class="col-12 col-md-4 mb-md-3 mb-5" >
             <div class="card bg-dark text-white">
-                <img class="card-img" src="<?php echo base_url(); ?>application/assets/images/team 4.jpg" alt="Card image">
+                <img class="card-img" src="<?php echo base_url(); ?>application/assets/images/ClientPagesImages/team 4.jpg" alt="Card image">
                 <div class="card-img-overlay">
                     <div style="margin-top: 20rem;">
 
@@ -92,7 +92,7 @@
 
         <div class="col-12 col-md-4 mb-md-3 mb-5" >
             <div class="card bg-dark text-white">
-                <img class="card-img" src="<?php echo base_url(); ?>application/assets/images/team 4.jpg" alt="Card image">
+                <img class="card-img" src="<?php echo base_url(); ?>application/assets/images/ClientPagesImages/team 4.jpg" alt="Card image">
                 <div class="card-img-overlay">
                     <div style="margin-top: 20rem;">
 
@@ -114,7 +114,7 @@
 
         <div class="col-12 col-md-4 mb-md-3 mb-5" >
             <div class="card bg-dark text-white">
-                <img class="card-img" src="<?php echo base_url(); ?>application/assets/images/team 4.jpg" alt="Card image">
+                <img class="card-img" src="<?php echo base_url(); ?>application/assets/images/ClientPagesImages/team 4.jpg" alt="Card image">
                 <div class="card-img-overlay">
                     <div style="margin-top: 20rem;">
 
@@ -141,7 +141,7 @@
 
 <div class="getStartedButtonSection">
     
-    <div class="img" style="background-image: url('<?php echo base_url(); ?>application/assets/images/team 2.jpg'); "></div>
+    <div class="img" style="background-image: url('<?php echo base_url(); ?>application/assets/images/ClientPagesImages/team 2.jpg'); "></div>
     <div class="overlay"></div>
     <div class="content">
         <center>
