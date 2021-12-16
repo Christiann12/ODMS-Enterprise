@@ -1,0 +1,146 @@
+/* pingBanner */
+
+.pingBanner{
+    margin: 0; height: 850px; width:100%;overflow: hidden;
+}
+.pingBanner .row{
+    height: 100%; padding-top: 150px; 
+}
+/* .pingBanner .content{
+    
+} */
+.pingBanner .content .heading1{
+    color: black; font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 10px; line-height: 12px; letter-spacing: 1.5em;
+}
+.pingBanner .content .heading2{
+    color: black; font-family: Montserrat; font-style: normal; font-weight: 600; font-size: 34px; line-height: 41px; letter-spacing: 0.25em;
+}
+.pingBanner .content .heading3{
+    color: black; font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 16px; line-height: 118.9%; letter-spacing: 0.05em;
+}
+.pingBanner .content .btn{
+    width: 157px; height: 47px;background-color: #F6C510; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 4px;
+}
+.pingBanner .img{
+    height:75%; background-position: center top; background-repeat: no-repeat; 
+}
+
+/* pingSteps */
+
+.pingSteps{
+    position: relative; width: 100%; margin-top: 150px; background-position: center top; background-size: cover; 
+}
+
+.pingSteps .content{
+   padding-top: 80px; padding-bottom: 100px;
+}
+
+.pingSteps .content .heading1{
+    color: white;font-family: Montserrat; font-style: normal; font-weight: 600; font-size: 60px; line-height: 118.9%; /* or 71px */text-align: center; letter-spacing: -5px; margin-bottom: 150px;
+}
+.pingSteps .content .text1{
+    margin: 10px; text-align: center; color: white;
+}
+.pingSteps .content .number{
+    height: 100px; width: 100px; background-color: #4B4E30; border-radius: 50%; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; position: relative; top: -80px;
+}
+.pingSteps .content .number p{
+    line-height: 100px; text-align: center; font-size: 60px; color: #F6C510;
+}
+.pingSteps .content .innerCol{
+    height: 350px; position: relative; border-radius: 8px; border-style: solid; border-color: #F6C510; border-width: thin; margin-top: 100px;
+}
+.pingSteps .container {
+    margin-bottom: 150px;
+}
+
+@media (min-width: 576px) {
+    
+}
+
+@media (min-width: 768px) {
+    .pingSteps{
+        margin-top: 00px;
+    }
+    
+}
+
+@media (min-width: 992px) { 
+    .pingSteps{
+        margin-top: 00px;
+    }
+    .pingSteps .content .innerCol{
+        margin-top: 0px;
+    }
+}
+
+@media (min-width: 1200px) { 
+    .pingSteps{
+        margin-top: 00px;
+    }
+}
+
+
+/* pingNow */
+
+/* .pingNow{
+    margin-top: 100px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    height: 750px;
+    overflow: hidden;
+}
+.pingNow .heading1{
+    font-family: Montserrat; font-style: normal; font-weight: 600; font-size: 34px; line-height: 41px; letter-spacing: 0.25em; color: #000000;
+}
+.pingNow .img{
+    background-position: center top; background-repeat: no-repeat; height: 40%; background-size: contain;
+}
+.pingNow .content{
+    padding-top: 40px;
+    padding-bottom: 40px;
+}
+.pingNow .content .btn{
+    width: 157px; height: 47px;background-color: #F6C510; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 4px; font-weight: 500;
+} */
+
+.pingNow{
+    margin: 0; height: 850px; width:100%;overflow: hidden;
+}
+.pingNow .row{
+    height: 100%; padding-top: 150px; 
+}
+.pingNow .content{
+    padding-top: 0px;
+    padding-bottom: 40px;
+    text-align: center;
+}
+.pingNow .content .heading1{
+    font-family: Montserrat; font-style: normal; font-weight: 600; font-size: 34px; line-height: 41px; letter-spacing: 0.25em; color: #000000;
+}
+.pingNow .content .btn{
+    width: 157px; height: 47px;background-color: #F6C510; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 4px; 
+}
+.pingNow .img{
+    height:75%; background-position: center top; background-repeat: no-repeat; 
+}
+
+@media (min-width: 576px) {
+    
+}
+
+@media (min-width: 768px) {
+    .pingNow .content{
+        padding-top: 200px;
+        padding-bottom: 200px;
+        text-align: left;
+    }
+}
+
+@media (min-width: 992px) { 
+   
+}
+
+@media (min-width: 1200px) { 
+    
+}
