@@ -1,3 +1,6 @@
+<?php
+defined('BASEPATH') OR exit('No direct script access allowed');
+?>
 <div class="bannerFa row">
     <div class="bannerimageFa" style="background-image: url('<?php echo base_url(); ?>application/assets/images/ClientPagesImages/team 4.jpg'); "></div>
     <div class="bannerBackgroundOverlayFa"></div>
