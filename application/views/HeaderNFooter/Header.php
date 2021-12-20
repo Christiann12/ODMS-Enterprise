@@ -16,7 +16,9 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/ClientPagesCss/support.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/ClientPagesCss/FA.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/ClientPagesCss/ping.css">
-    <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/ClientPagesCss/aboutus.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/ClientPagesCss/services.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/ClientPagesCss/servicesOrder.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/ClientPagesCss/serviceOrderSuccess.css">
 	</head>
 <body style="font-family: Montserrat;" >
 <!-- oncontextmenu="return false;" -->

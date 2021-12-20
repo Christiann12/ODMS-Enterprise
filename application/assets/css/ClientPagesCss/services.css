@@ -1,0 +1,164 @@
+html,body {
+    margin:0; padding:0; overflow-x:hidden;
+}
+
+.servicesBanner {
+    position: relative; width: 100%; height: 750px; 
+}
+
+.servicesBanner .img {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center top; background-repeat: no-repeat;
+}
+
+.servicesBanner .overlay {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: black; opacity: 0.5; 
+}
+
+.servicesBanner .content {
+    position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+}
+
+.servicesBanner .content .serviceBannerTexts {
+    padding-top: 300px; padding-left: 50px; padding-right: 50px; padding-bottom: 50px;
+    
+}
+
+.serviceBannerH1 {
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 10px; line-height: 12px; letter-spacing: 1.5em; color: #FFFFFF; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
+}
+
+.serviceBannerH2 {
+    font-family: Montserrat; font-style: normal; font-weight: 600; font-size: 34px; line-height: 41px; letter-spacing: 0.25em; color: #FFFFFF; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
+}
+
+.serviceBannerH3 {
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 16px; line-height: 118.9%; letter-spacing: 0.05em; color: #FFFFFF; text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); 
+}
+
+.serviceBannerBtn {
+    flex-direction: column; align-items: center; padding: 10px 20px; width: 157px; height: 47px; background-color: #F6C510; border: none; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 4px; 
+
+    /* Button text */
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 14px; line-height: 24px; align-items: center; text-align: center; letter-spacing: 1.25px; 
+}
+
+.services {
+    position: relative; width: 100%; height: auto; margin-top: 200px; margin-bottom: 200px; 
+}
+
+.services .serviceCards {
+    margin-top: 55px; 
+}
+
+.services .card{
+    height: 30rem; box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; position: relative; transition: transform 0.2s ease; overflow: hidden; border: 0;
+}
+
+.services .card-img{
+    object-fit: cover; height: 100%; opacity: 0.4; transition: transform 0.2s ease; 
+}
+
+.services .buttonContainer{
+    position:absolute; top: 0; left: 0; height: 100%; width: 100%;  visibility:hidden; opacity:0; transition:visibility 0.3s linear,opacity 0.3s linear;
+}
+
+.services .buttonContainer .btn{
+    width: 157px; background-color: #F6C510; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);border-radius: 4px;  font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 14px; line-height: 24px; align-items: center; text-align: center; letter-spacing: 1.25px; color: black;
+}
+
+.services .card:hover{
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+}
+
+.services .card:hover .card-img{
+    transform: scale(1.3);
+    transition: transform 0.2s ease;
+}
+
+.services .card:hover .buttonContainer{
+    visibility: visible;
+    opacity:1;
+}
+
+.servicesH1 {
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 10px; line-height: 12px; letter-spacing: 1.5em; color: #000000; 
+}
+
+.servicesH2 {
+    font-family: Montserrat; font-style: normal; font-weight: 600; font-size: 34px; line-height: 41px; letter-spacing: 0.25em; color: #000000; 
+}
+
+.serviceName {
+    font-family: Montserrat; font-style: normal; font-weight: 600; font-size: 34px; line-height: 24px; letter-spacing: 0.25px; color: #FFFFFF; 
+}
+
+.serviceDesc {
+    font-family: Montserrat; font-style: normal; font-weight: normal; font-size: 20px; line-height: 24px; letter-spacing: 0.15px; color: #FFFFFF; 
+}
+
+/* MEDIA QUERIES */
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 100px) {
+    .serviceBannerH2, .servicesH2, .serviceName {
+        font-size: 20px; 
+    }
+
+    .serviceBannerH3 {
+        font-size: 12px;
+    }
+
+    .serviceDesc {
+        font-size: 14px;
+    }
+    
+}
+  
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) {
+    .serviceBannerH2, .servicesH2, .serviceName {
+        font-size: 24px; 
+    }
+
+    .serviceBannerH3 {
+        font-size: 14px;
+    }
+
+    .serviceDesc {
+        font-size: 16px;
+    }
+  
+  
+  }
+  
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) {
+    .serviceBannerH2, .servicesH2, .serviceName {
+        font-size: 34px; 
+    }
+
+    .serviceBannerH3 {
+        font-size: 16px;
+    }
+
+    .serviceDesc {
+        font-size: 20px;
+    }
+    
+  }
+  
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) {
+    .serviceBannerH2, .servicesH2, .serviceName {
+        font-size: 34px; 
+    }
+
+    .serviceBannerH3 {
+        font-size: 16px;
+    }
+
+    .serviceDesc {
+        font-size: 20px;
+    }
+    
+  }
