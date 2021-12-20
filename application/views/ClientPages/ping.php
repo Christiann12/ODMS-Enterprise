@@ -64,15 +64,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 </div>
 
-<!-- <div class="pingNow container mx-auto" style="">
-    <div class="row" style="height: 100%;">
-        
-        <div class="col-12 col-md-6 content">
-            <p class="heading1">Have An Emergency?</p>
-            <button type="button" class="btn btn-warning mt-md-4 mt-0" style="">PING ODMS</button>
-        </div>
-    </div>
-</div> -->
 <div class="pingNow container mx-auto">
     <div class="row">
         <div class="col-12 col-md-6 img" style="background-image: url('<?php echo base_url(); ?>application/assets/images/ClientPagesImages/ping 2.gif'); "></div>

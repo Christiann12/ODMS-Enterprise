@@ -79,31 +79,7 @@
         margin-top: 00px;
     }
 }
-
-
-/* pingNow */
-
-/* .pingNow{
-    margin-top: 100px;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    height: 750px;
-    overflow: hidden;
-}
-.pingNow .heading1{
-    font-family: Montserrat; font-style: normal; font-weight: 600; font-size: 34px; line-height: 41px; letter-spacing: 0.25em; color: #000000;
-}
-.pingNow .img{
-    background-position: center top; background-repeat: no-repeat; height: 40%; background-size: contain;
-}
-.pingNow .content{
-    padding-top: 40px;
-    padding-bottom: 40px;
-}
-.pingNow .content .btn{
-    width: 157px; height: 47px;background-color: #F6C510; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 4px; font-weight: 500;
-} */
-
+/* .pingNow */
 .pingNow{
     margin: 0; height: 850px; width:100%;overflow: hidden;
 }

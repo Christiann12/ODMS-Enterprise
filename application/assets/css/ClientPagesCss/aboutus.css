@@ -1,0 +1,131 @@
+.aboutBanner{
+    margin: 0; width:100%;overflow: hidden; background-color: #F8F8F8;
+}
+.aboutBanner .row{
+    height: 100%; 
+}
+.aboutBanner .content{
+    padding: 30px;
+}
+.aboutBanner .content .heading1{
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 10px; line-height: 12px; letter-spacing: 1.5em; color: #000000;
+}
+.aboutBanner .content .heading2{
+    font-family: Montserrat; font-style: normal; font-weight: 600; font-size: 34px; line-height: 41px; text-align: left; letter-spacing: 0.25em; color: #000000;
+}
+.aboutBanner .content .desc{
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 16px; line-height: 118.9%; text-align: justify; letter-spacing: 0.05em; color: #000000;
+}
+.aboutBanner .content .btn{
+    width: 157px; height: 47px;background-color: #F6C510; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 4px;
+}
+.aboutBanner .carousel img{
+    height: 500px;
+}
+
+
+@media (min-width: 576px) {
+    
+}
+
+@media (min-width: 768px) {
+    .aboutBanner .content{
+        padding: 30px;
+    }
+}
+
+@media (min-width: 992px) { 
+    .aboutBanner .carousel img{
+        height: 600px;
+    }
+}
+
+@media (min-width: 1200px) { 
+    .aboutBanner .content{
+        padding: 100px;
+    }
+    .aboutBanner .carousel img{
+        height: 700px;
+    }
+}
+
+/* visionMission */
+
+.visionMission{
+    margin-top: 150px;
+}
+
+.visionMission{
+    position: relative; width: 100%; margin-top: 150px; background-position: center top; background-size: cover; 
+}
+
+.visionMission .content{
+   padding-top: 80px; padding-bottom: 100px;
+}
+
+.visionMission .content .heading1{
+    font-family: Montserrat; font-style: normal; font-weight: 600; font-size: 34px; line-height: 41px; text-align: center; letter-spacing: 0.25em; color: #000000;
+}
+.visionMission .content .subHeading{
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 10px; line-height: 12px; text-align: center; letter-spacing: 1.5em; color: #000000;
+}
+.visionMission .content .text1{
+    margin: 10px; text-align: center; color: black;
+}
+.visionMission .content .centerText{
+    margin-top: 100px; margin-bottom: 100px; text-align: center; color: black; font-family: Montserrat; font-style: normal; font-weight: 600; font-size: 24px; line-height: 29px; 
+}
+.visionMission .content .number{
+    height: 100px; width: 100px;border-radius: 50%; position: relative; top: -60px;
+}
+.visionMission .content .number i{
+    line-height: 100px; font-size: 100px; color: #F6C510;
+}
+.visionMission .content .innerCol{
+    height: 600px; position: relative; border-radius: 8px; border-style: solid; border-color: #F6C510; border-width: thin; margin-top: 100px;
+}
+.visionMission .container {
+    margin-bottom: 150px;
+}
+
+/* aboutLastSection */
+
+.aboutLastSection{
+    width: 100%; height: 500px; background-position: center; background-size: cover; position: relative;
+}
+
+.aboutLastSection .container .heading1{
+    font-family: Montserrat; font-style: normal; font-weight: 600; font-size: 96px; line-height: 118.9%; text-align: center; letter-spacing: -0.05em; color: #F6C510;
+}
+.aboutLastSection .container .desc{
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 20px; line-height: 118.9%; text-align: center; letter-spacing: 0.15em; color: #000000;
+}
+
+.aboutLastSection .container .column1 {
+    background-color: white; box-shadow: 4px 4px 70px 5px rgba(0, 0, 0, 0.1); border-radius: 8px;  padding: 10px; top: -80px;
+}
+
+.aboutLastSection .container .column2 {
+    background-color: white; box-shadow: 4px 4px 70px 5px rgba(0, 0, 0, 0.1); border-radius: 8px;  padding: 10px; top: -30px;
+}
+
+@media (min-width: 576px) {
+    
+}
+
+@media (min-width: 768px) {
+    .aboutLastSection{
+        height: 330px;
+     }
+     .aboutLastSection .container .column2 {
+        top: -80px;
+    }
+}
+
+@media (min-width: 992px) { 
+    
+}
+
+@media (min-width: 1200px) { 
+   
+}
