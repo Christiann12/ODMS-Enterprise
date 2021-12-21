@@ -1,0 +1,1105 @@
+.prodpicture{
+    height: 600px;
+    width: 100%;
+    padding:0;
+}
+
+.about{
+    font-size: 15px;
+    position: absolute;
+    margin-left: 120px;
+    margin-top: 180px;
+    letter-spacing: 10px;
+    font-weight: 300;
+    color: white;
+    width: 40% !important;
+}
+
+.welight{
+    font-size: 25px;
+    position: absolute;
+    margin-left: 120px;
+    margin-top: 220px;
+    letter-spacing: 10px;
+    font-weight: 500;
+    color: white;
+    text-shadow: 1px 2px 3px black;
+    width: 40% !important;
+}
+
+.descwelight{
+    font-size: 15px;
+    position: absolute;
+    margin-left: 120px;
+    margin-top: 280px;
+    font-weight: 400;
+    color: white;
+    text-shadow: 1px 2px 3px black;
+    width: 40% !important;
+    text-align: justify;
+}
+
+.descwelight2{
+    font-size: 15px;
+    position: absolute;
+    margin-left: 120px;
+    margin-top: 330px;
+    font-weight: 400;
+    color: white;
+    text-shadow: 1px 2px 3px black;
+    width: 40% !important;
+    text-align: justify;
+}
+
+.welightbtn{
+    width: 170px;
+    background-color: #F6C510;
+    position: absolute;
+    margin-top: 400px;
+    margin-left: 120px;
+    font-weight: 700;
+}
+
+.welightbtn:hover{
+    transform: translateY(-5px);
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.card .overlayprod{
+    height: 600px;
+    width: 100%;
+    background: black;
+    position: absolute;
+    opacity: 40%;
+}
+
+.reaaf{
+    margin-top: 300px;
+    letter-spacing: 10px;
+    font-size: 12px;
+}
+
+.ourprod{
+    margin-top: 5px;
+    letter-spacing: 10px;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.prod-group{
+    margin-top: 100px;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-bottom-color: #F6C510 !important;
+}
+
+.btnprod{
+    background-color: white;
+    color: black;
+    margin-top: 150px;
+    margin-left: 30px;
+    margin-bottom: 100px;
+    border: none;
+    border-bottom-color: #F6C510 !important;
+}
+
+.btnprod:focus{
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.btnprod:hover{
+    background-color: none !important;
+    color: #F6C510;
+    border-bottom: red;
+}
+
+.prodSection{
+    margin-top: 150px;
+}
+
+.prodSection .prodItems{
+    height: 30rem; 
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; 
+    position: relative; 
+    transition: transform 0.4s ease; 
+    overflow: hidden;
+}
+
+.prodSection .sample{
+    object-fit: cover; 
+    height: 100%; 
+    opacity: 0.4; 
+    transition: transform 0.5s ease; 
+}
+
+.prodSection .prodButtonContainer{
+    position:absolute; 
+    top: 0; 
+    left: 0; 
+    height: 100%; 
+    width: 100%;  
+    visibility:hidden; 
+    opacity:0; 
+    transition:visibility 0.3s linear,opacity 0.3s linear;
+}
+
+.prodSection .prodButtonContainer .btn{
+    width: 50px; 
+    background-color: #F6C510; 
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 4px;  
+    font-family: Montserrat; 
+    font-style: normal;     
+    color: black;
+}
+
+.prodSection .prodButtonContainer .btn i{
+    font-size: 25px;
+    font-weight: 100;
+}
+
+.prodSection .prodItems:hover{
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.prodSection .prodItems:hover h5{
+    font-size:17px;
+    font-weight: 700;
+}
+
+.prodSection .prodItems:hover .sample{
+    transform: scale(1.3);
+    transition: transform 0.2s ease;
+}
+
+
+.prodSection .prodItems:hover .prodButtonContainer{
+    visibility: visible;
+    opacity:1;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .about{
+        font-size: 13px;
+        position: absolute;
+        margin-left: 50px;
+        margin-top: 50px;
+        text-align: center;
+        width: 80% !important;
+    }
+
+    .prodpicture{
+        height: 300px;
+        width: 100%;
+        padding:0;  
+    }
+
+    .welight{
+        font-size: 12px !important;
+        position: absolute;
+        margin-left: 50px;
+        margin-top: 80px;
+        font-weight: 500;
+        letter-spacing: 6px;
+        color: white;
+        text-align: center;
+        width: 80% !important;
+    }
+    
+    .descwelight{
+        font-size: 9px !important;
+        position: absolute;
+        margin-left: 50px;
+        margin-top: 120px;
+        font-weight: 400;
+        color: white;   
+        text-shadow: 1px 2px 3px black;
+        text-align: center;
+        width: 80% !important;
+    }
+    
+    .descwelight2{
+        font-size: 9.5px !important;
+        position: absolute;
+        margin-left: 50px;
+        margin-top: 180px;
+        width: 40% !important;
+        text-align: center;
+        width: 80% !important;
+    }
+
+    .welightbtn{
+        width: 150px;
+        height: 30px;
+        background-color: #F6C510;
+        position: absolute;
+        margin-top: 220px;
+        margin-left: 60px;
+        font-weight: 700;
+        font-size: 15px;
+        width: 80% !important;
+    }
+
+    .reaaf{
+        margin-top: 140px;
+        letter-spacing: 10px;
+        font-size: 8px;
+    }
+
+    .ourprod{
+        margin-top: 5px;
+        letter-spacing: 10px;
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    .btnprod{
+        background-color: white;
+        color: black;
+        margin-top: 150px;
+        margin-left: 10px;
+        margin-bottom: 100px;
+        border: none;
+        border-bottom-color: #F6C510 !important;
+        font-size: 14px !important;
+    }
+
+    .prodSection{
+        margin-top: 5px !important
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .about{
+        font-size: 13px;
+        position: absolute;
+        margin-left: 70px;
+        margin-top: 70px;
+    }
+
+    .prodpicture{
+        height: 350px;
+        width: 100%;
+        padding:0;  
+    }
+
+    .welight{
+        font-size: 9.5px !important;
+        position: absolute;
+        margin-left: 70px;
+        margin-top: 100px;
+        font-weight: 500;
+        letter-spacing: 6px;
+        color: white;
+    }
+    
+    .descwelight{
+        font-size: 11px !important;
+        position: absolute;
+        margin-left: 70px;
+        margin-top: 120px;
+        font-weight: 400;
+        color: white;   
+        text-shadow: 1px 2px 3px black;
+        text-align: justify;
+    }
+    
+    .descwelight2{
+        font-size: 9.5px !important;
+        position: absolute;
+        margin-left: 70px;
+        margin-top: 180px;
+        width: 40% !important;
+        text-align: justify;
+    }
+
+    .welightbtn{
+        width: 150px;
+        height: 35px;
+        background-color: #F6C510;
+        position: absolute;
+        margin-top: 250px;
+        margin-left: 70px;
+        font-weight: 700;
+    }
+
+    .reaaf{
+        margin-top: 160px;
+        letter-spacing: 10px;
+        font-size: 9px;
+    }
+
+    .ourprod{
+        margin-top: 5px;
+        letter-spacing: 10px;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .ourprod{
+        margin-top: 5px;
+        letter-spacing: 10px;
+        font-size: 20px;
+        font-weight: 600;
+    }
+
+    .btnprod{
+        background-color: white;
+        color: black;
+        margin-top: 150px;
+        margin-left: 30px;
+        margin-bottom: 100px;
+        border: none;
+        border-bottom-color: #F6C510 !important;
+        font-size: 14px !important;
+    }
+
+    .prodSection{
+        margin-top: 5px !important
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+    .about{
+        font-size: 13px;
+        position: absolute;
+        margin-left: 90px;
+        margin-top: 100px;
+    }
+
+    .prodpicture{
+        height: 400px;
+        width: 100%;
+        padding:0;  
+    }
+
+    .welight{
+        font-size: 15px !important;
+        position: absolute;
+        margin-left: 90px;
+        margin-top: 140px;
+        font-weight: 500;
+        letter-spacing: 6px;
+        color: white;
+    }
+    
+    .descwelight{
+        font-size: 11px !important;
+        position: absolute;
+        margin-left: 90px;
+        margin-top: 180px;
+        font-weight: 400;
+        color: white;   
+        text-shadow: 1px 2px 3px black;
+        text-align: justify;
+    }
+    
+    .descwelight2{
+        font-size: 13px !important;
+        position: absolute;
+        margin-left: 90px;
+        margin-top: 240px;
+        width: 40% !important;
+        text-align: justify;
+    }
+
+    .welightbtn{
+        width: 170px;
+        background-color: #F6C510;
+        position: absolute;
+        margin-top: 300px;
+        margin-left: 90px;
+        font-weight: 700;
+    }
+
+    .reaaf{
+        margin-top: 180px;
+        letter-spacing: 10px;
+        font-size: 10px;
+    }
+
+    .ourprod{
+        margin-top: 5px;
+        letter-spacing: 10px;
+        font-size: 22px;
+        font-weight: 600;
+    }
+
+    .btnprod{
+        background-color: white;
+        color: black;
+        margin-top: 150px;
+        margin-left: 30px;
+        margin-bottom: 100px;
+        border: none;
+        border-bottom-color: #F6C510 !important;
+        font-size: 16px !important;
+    }
+
+    .prodSection{
+        margin-top: 10px !important
+    }
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+    .about{
+        font-size: 13px;
+        position: absolute;
+        margin-left: 120px;
+        margin-top: 120px;
+    }
+
+    .prodpicture{
+        height: 500px;
+        width: 100%;
+        padding:0;  
+    }
+
+    .welight{
+        font-size: 20px !important;
+        position: absolute;
+        margin-left: 120px;
+        margin-top: 160px;
+        font-weight: 500;
+        color: white;
+    }
+    
+    .descwelight{
+        font-size: 13px !important;
+        position: absolute;
+        margin-left: 120px;
+        margin-top: 200px;
+        font-weight: 400;
+        color: white;
+        text-shadow: 1px 2px 3px black;
+        text-align: justify;
+    }
+    
+    .descwelight2{
+        font-size: 13px !important;
+        position: absolute;
+        margin-left: 120px;
+        margin-top: 280px;
+        width: 40% !important;
+        text-align: justify;
+    }
+
+    .welightbtn{
+        width: 170px;
+        background-color: #F6C510;
+        position: absolute;
+        margin-top: 350px;
+        margin-left: 120px;
+        font-weight: 700;
+    }
+
+    .reaaf{
+        margin-top: 200px;
+        letter-spacing: 10px;
+        font-size: 11px;
+    }
+
+    .ourprod{
+        margin-top: 5px;
+        letter-spacing: 10px;
+        font-size: 25px;
+        font-weight: 600;
+    }
+
+    .btnprod{
+        background-color: white;
+        color: black;
+        margin-top: 150px;
+        margin-left: 30px;
+        margin-bottom: 100px;
+        border: none;
+        border-bottom-color: #F6C510 !important;
+        font-size: 18px !important;
+    }
+
+    .prodSection{
+        margin-top: 12px !important
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+    .prodpicture{
+        height: 600px;
+        width: 100%;
+        padding:0;
+    }
+    
+    .about{
+        font-size: 20px;
+        position: absolute;
+        margin-left: 120px;
+        margin-top: 180px;
+        letter-spacing: 10px;
+        font-weight: 300;
+        color: white;
+        width: 40% !important;
+    }
+    
+    .welight{
+        font-size: 25px;
+        position: absolute;
+        margin-left: 120px;
+        margin-top: 220px;
+        letter-spacing: 10px;
+        font-weight: 500;
+        color: white;
+        text-shadow: 1px 2px 3px black;
+        width: 40% !important;
+    }
+    
+    .descwelight{
+        font-size: 25px;
+        position: absolute;
+        margin-left: 120px;
+        margin-top: 280px;
+        font-weight: 400;
+        color: white;
+        text-shadow: 1px 2px 3px black;
+        width: 40% !important;
+        text-align: justify;
+    }
+    
+    .descwelight2{
+        font-size: 15px;
+        position: absolute;
+        margin-left: 120px;
+        margin-top: 330px;
+        font-weight: 400;
+        color: rgb(253, 235, 235);
+        text-shadow: 1px 2px 3px black;
+        width: 40% !important;
+        text-align: justify;
+    }
+
+    .welightbtn{
+        width: 170px;
+        background-color: #F6C510;
+        position: absolute;
+        margin-top: 400px;
+        margin-left: 120px;
+        font-weight: 700;
+    }
+
+    .reaaf{
+        margin-top: 250px;
+        letter-spacing: 10px;
+        font-size: 12px;
+    }
+
+    .ourprod{
+        margin-top: 5px;
+        letter-spacing: 10px;
+        font-size: 25px;
+        font-weight: 600;
+    }
+
+    .btnprod{
+        background-color: white;
+        color: black;
+        margin-top: 150px;
+        margin-left: 30px;
+        margin-bottom: 100px;
+        border: none;
+        border-bottom-color: #F6C510 !important;
+        font-size: 20px !important;
+    }
+
+    .prodSection{
+        margin-top: 15px !important
+    }
+    
+}
+
+
+.yourOrder{
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 41px;
+    letter-spacing: 0.25em;
+    margin-top: 100px;
+}
+
+.prodOrdRow{
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+.prodPicOrd{
+    height: 80px;
+    width: 80px;
+    border-radius: 5px;
+    transition: transform .2s;
+}
+
+.prodPicOrd:hover{
+    cursor: pointer;
+    transform: scale(1.2);
+    overflow: hidden;
+}
+
+.ordProdDet{
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+}
+
+.ordProdDetNum{
+    text-align: center;
+}
+
+.ordProdDetPri{
+    text-align: center;
+}
+
+.ordProdDelt{
+    color: #F6C510;
+    font-size: 30px;
+    transition: transform .2s;
+}
+
+.ordProdDelt:hover{
+    cursor: pointer !important;
+    transform: scale(1.5);
+}
+
+.prodTotPri{
+    font-size: 20px;
+    font-weight: 600;
+}
+
+.prodTotPriLbl{
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.orderProdCol{
+    margin-top: 100px !important;
+    margin-bottom: 30px;
+    background-size: 1500px;
+    width: 557px;
+    height: 800px;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .yourOrder{
+        font-weight: 600;
+        font-size: 25px;
+        line-height: 41px;
+        letter-spacing: 0.25em;
+        margin-top: 100px;
+    }
+    .ordProdLabel{
+        font-size: 14px !important;
+    } 
+
+    .prodPicOrd{
+        height: 70px;
+        width: 70px;
+        border-radius: 5px;
+        transition: transform .2s;
+    }
+    
+    .ordProdDet{
+        font-size: 12px;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+    }
+    
+    .ordProdDetNum{
+        font-size: 14px;
+    }
+    
+    .ordProdDetPri{
+        font-size: 14px;
+    }
+    
+    .ordProdDelt{
+        color: #F6C510;
+        font-size: 20px;
+    }
+    
+    .ordProdDelt:hover{
+        cursor: pointer !important;
+        transform: scale(1.5);
+    }
+    
+    .prodTotPri{
+        font-size: 18px;
+        font-weight: 600;
+    }
+    
+    .prodTotPriLbl{
+        font-size: 14px;
+        font-weight: 500;
+    }
+    .prodBtn{
+        margin-top: 25rem !important;
+        margin-left: 20rem !important;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+    .yourOrder{
+        font-weight: 600;
+        font-size: 25px;
+        line-height: 41px;
+        letter-spacing: 0.25em;
+        margin-top: 100px;
+    }
+    .ordProdLabel{
+        font-size: 16px !important;
+    } 
+
+    .prodPicOrd{
+        height: 55px;
+        width: 55px;
+        border-radius: 5px;
+        transition: transform .2s;
+    }
+    
+    .ordProdDet{
+        font-size: 14px;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+    }
+    
+    .ordProdDetNum{
+        font-size: 18px;
+    }
+    
+    .ordProdDetPri{
+        font-size: 18px;
+    }
+    
+    .ordProdDelt{
+        color: #F6C510;
+        font-size: 25px;
+    }
+    
+    .ordProdDelt:hover{
+        cursor: pointer !important;
+        transform: scale(1.5);
+    }
+    
+    .prodTotPri{
+        font-size: 18px;
+        font-weight: 600;
+    }
+    
+    .prodTotPriLbl{
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .prodBtn{
+        margin-top: 25rem !important;
+        margin-left: 25rem !important;
+    }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+    .orderProdCol{
+        margin-top: auto;
+    }
+
+    .yourOrder{
+        font-weight: 600;
+        font-size: 25px;
+        line-height: 41px;
+        letter-spacing: 0.25em;
+        margin-top: 100px;
+    }
+    .ordProdLabel{
+        font-size: 20px !important;
+    }  
+
+    .prodPicOrd{
+        height: 60px;
+        width: 60px;
+        border-radius: 5px;
+        transition: transform .2s;
+    }
+
+    .prodBtn{
+        margin-top: 25rem !important;
+        margin-left: 9rem !important;
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .yourOrder{
+        font-weight: 600;
+        font-size: 30px;
+        line-height: 41px;
+        letter-spacing: 0.25em;
+        margin-top: 100px;
+    }
+    .ordProdLabel{
+        font-size: 20px !important;
+    }   
+
+    .prodPicOrd{
+        height: 70px;
+        width: 70px;
+        border-radius: 5px;
+        transition: transform .2s;
+    }
+    
+    .ordProdDet{
+        font-size: 16px;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+    }
+    
+    .ordProdDetNum{
+        font-size: 18px;
+    }
+    
+    .ordProdDetPri{
+        font-size: 18px;
+    }
+    
+    .ordProdDelt{
+        color: #F6C510;
+        font-size: 25px;
+    }
+    
+    .ordProdDelt:hover{
+        cursor: pointer !important;
+        transform: scale(1.5);
+    }
+    
+    .prodTotPri{
+        font-size: 18px;
+        font-weight: 600;
+    }
+    
+    .prodTotPriLbl{
+        font-size: 14px;
+        font-weight: 500;
+    }
+
+    .prodBtn{
+        margin-top: 25rem !important;
+        margin-left: 13rem !important;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+
+    .yourOrder{
+        font-weight: 600;
+        font-size: 34px;
+        line-height: 41px;
+        letter-spacing: 0.25em;
+        margin-top: 100px;
+    }
+    .ordProdLabel{
+        font-size: 20px !important;
+    }
+
+    .prodPicOrd{
+        height: 80px;
+        width: 80px;
+        border-radius: 5px;
+        transition: transform .2s;
+    }
+    
+    .ordProdDet{
+        font-size: 16px;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+    }
+    
+    .ordProdDetNum{
+        font-size: 20px;
+    }
+    
+    .ordProdDetPri{
+        font-size: 20px;
+    }
+    
+    .ordProdDelt{
+        color: #F6C510;
+        font-size: 30px;
+    }
+    
+    .ordProdDelt:hover{
+        cursor: pointer !important;
+        transform: scale(1.5);
+    }
+    
+    .prodTotPri{
+        font-size: 20px;
+        font-weight: 600;
+    }
+    
+    .prodTotPriLbl{
+        font-size: 16px;
+        font-weight: 500;
+    }
+
+    .prodBtn{
+        margin-top: 25rem !important;
+        margin-left: 15rem !important;
+    }
+}
+
+.orderProdCol .orderProdFormTitle{
+    margin-top: 50px;
+    color: #fff;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 41px;
+    letter-spacing: 0.25em;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.orderProdCol .ordCheckOutBtn{
+    width: 100% !important;
+    border-radius: 5px;
+    height: 50px;
+    display: block;
+    background-color: #F6C510;
+    outline: none;
+    box-shadow: none;
+}
+.orderProdCol .additionalInfo{
+    color: #ffff;
+    font-size: 15px;
+}
+
+.orderProdCol .additionalInfo .clH{
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.orderProdCol .form-label-group {
+    position: relative;
+    margin-bottom: 1rem;
+}
+  
+  .orderProdCol .form-label-group input,
+  .orderProdCol .form-label-group label {
+    height: 3.125rem;
+    padding: .75rem;
+  }
+  
+  .orderProdCol .form-label-group label {
+    position: absolute;
+    top: 0;
+    left: 2;
+    width: 100%;
+    margin-bottom: 0; /* Override default `<label>` margin */
+    line-height: 1.5;
+    color: black;
+    pointer-events: none;
+    cursor: text; /* Match the input under the label */
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    transition: all .1s ease-in-out;
+  }
+  
+  .orderProdCol .form-label-group input::-webkit-input-placeholder {
+    color: transparent;
+  }
+  
+  .orderProdCol .form-label-group input::-moz-placeholder {
+    color: transparent;
+  }
+  
+  .orderProdCol .form-label-group input:-ms-input-placeholder {
+    color: transparent;
+  }
+  
+  .orderProdCol .form-label-group input::-ms-input-placeholder {
+    color: transparent;
+  }
+  
+  .orderProdCol .form-label-group input::placeholder {
+    color: transparent;
+  }
+  
+  .orderProdCol .form-label-group input:not(:-moz-placeholder-shown) {
+    padding-top: 1.25rem;
+    padding-bottom: .25rem;
+  }
+  
+  .orderProdCol .form-label-group input:not(:-ms-input-placeholder) {
+    padding-top: 1.25rem;
+    padding-bottom: .25rem;
+  }
+  
+  .orderProdCol .form-label-group input:not(:placeholder-shown) {
+    padding-top: 1.25rem;
+    padding-bottom: .25rem;
+  }
+  
+  .orderProdCol .form-label-group input:not(:-moz-placeholder-shown) ~ label {
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    font-size: 12px;
+    color: black;
+  }
+  
+  .orderProdCol .form-label-group input:not(:-ms-input-placeholder) ~ label {
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    font-size: 12px;
+    color: black;
+  }
+  
+  .orderProdCol .form-label-group input:not(:placeholder-shown) ~ label {
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    font-size: 12px;
+    color: black;
+  }
+  
+  .orderProdCol .form-label-group input:-webkit-autofill ~ label {
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    font-size: 12px;
+    color: black;
+  }
+
+  .active5, .btnprod:hover {
+    color: #F6C510;
+    transform: scale(1.1);
+}
+
+
+.modal-dialog{
+    background-color: yellow;
+}
