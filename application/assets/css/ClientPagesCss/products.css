@@ -58,10 +58,11 @@
     margin-top: 400px;
     margin-left: 120px;
     font-weight: 700;
+    transition: transform .2s;
 }
 
 .welightbtn:hover{
-    transform: translateY(-5px);
+    transform: scale(1.1);
     outline: none !important;
     box-shadow: none !important;
 }
@@ -126,7 +127,7 @@
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; 
     position: relative; 
     transition: transform 0.4s ease; 
-    overflow: hidden;
+    overflow: hidden !important;
 }
 
 .prodSection .sample{
@@ -994,6 +995,11 @@
     background-color: #F6C510;
     outline: none;
     box-shadow: none;
+    transition: transform .2s;
+}
+
+.orderProdCol .ordCheckOutBtn:hover{
+    transform: scale(0.9);
 }
 .orderProdCol .additionalInfo{
     color: #ffff;
@@ -1094,12 +1100,798 @@
     color: black;
   }
 
-  .active5, .btnprod:hover {
+.modProdHead{
+    border-bottom: none !important;
+    height: 5px !important;
+}
+
+.prodMod{
+    border-radius: 8px;
+}
+
+.modProdView{
+    width: 514px;
+    height: 520px;
+    left: 45px;
+    top: 45px;
+    box-shadow: 4px 4px 70px 5px rgba(0, 0, 0, 0.05);
+    border-radius: 8px !important;
+    display: flex;
+}
+
+.modCat{
+    left: 45px !important;
+    top: 45px;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 1.5em;
+}
+
+.modProdName{
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 41px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.25em;
+}
+
+.modProdPri{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.15em;
     color: #F6C510;
+
+}
+
+.modProdDesc{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 118.9%;
+    /* or 19px */
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.05em;
+    color: #000000;
+}
+
+.modProdDiv{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.quanProdView{
+    margin-top: 200px;
+    background-color: white;
+    border-color: rgb(226, 226, 226);
+    width: 115px;
+    height: 47px;
+    text-align: center;
+    border-radius: 8px;
+    border-color: #e0ddd3 !important;
+}
+
+.quanProdViewSub{
+    width: 157px;
+    height: 47px;
+    margin-left: 20px;
+    background-color: #F6C510;
+    border-radius: 8px;
+    transition: transform .2s;
+}
+
+.quanProdViewSub:hover{
     transform: scale(1.1);
 }
 
+.close{
+    transition: transform .2s;
+}
 
-.modal-dialog{
-    background-color: yellow;
+.close:hover{
+    color: #F6C510;
+    transform: scale(2);
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .modProdView{
+        width: 400px;
+        height: 370px;
+        margin: auto !important;
+    }
+
+    .modCat{
+        font-weight: 500;
+        font-size: 9px;
+        letter-spacing: 1.5em;
+        padding-top: 50px;
+        margin: auto;
+    }
+    
+    .modProdName{
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 41px;
+        letter-spacing: 0.25em;
+        margin: auto;
+
+
+    }
+    
+    .modProdPri{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 24px;
+        letter-spacing: 0.15em;
+        color: #F6C510;
+        margin: auto;
+    }
+    
+    .modProdDesc{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 118.9%;
+        /* or 19px */
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.05em;
+        color: #000000;
+        margin: auto;
+
+    }
+    
+    .modProdDiv{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 15px;
+        width: 450px;
+
+    }
+    
+    .quanProdView{
+        background-color: white;
+        border-color: rgb(226, 226, 226);
+        width: 90px;
+        height: 40px;
+        text-align: center;
+        border-radius: 8px;
+        border-color: #e0ddd3 !important;
+        margin-top: 50px;
+        margin-left: 150px;
+    }
+    
+    .quanProdViewSub{
+        width: 90px;
+        height: 40px;
+        margin-left: 15px;
+        background-color: #F6C510;
+        border-radius: 8px;
+        transition: transform .2s;
+        font-weight: 500;
+        font-size: 14px;
+    }
+    
+    .quanProdViewSub:hover{
+        transform: scale(1.1);
+    }
+    
+    .close{
+        transition: transform .2s;
+    }
+    
+    .close:hover{
+        color: #F6C510;
+        transform: scale(2);
+    }
+
+    .sModCol{
+        margin: auto !important;
+        text-align: center !important;
+    }
+    
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+
+    .modProdView{
+        width: 470px;
+        height: 370px;
+    }
+
+    .modCat{
+        left: 45px !important;
+        top: 45px;
+        font-weight: 500;
+        font-size: 9px;
+        line-height: 12px;
+        display: flex;
+        align-items: center;
+        letter-spacing: 1.5em;
+        padding-top: 50px;
+        padding-left: 20px;
+    }
+    
+    .modProdName{
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 41px;
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.25em;
+        padding-left: 20px;
+
+    }
+    
+    .modProdPri{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 15px;
+        line-height: 24px;
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.15em;
+        color: #F6C510;
+        padding-left: 20px;
+
+    
+    }
+    
+    .modProdDesc{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 118.9%;
+        /* or 19px */
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.05em;
+        color: #000000;
+        padding-left: 20px;
+
+    }
+    
+    .modProdDiv{
+        margin-top: 20px;
+        margin-bottom: 20px;
+        margin-left: 15px;
+
+    }
+    
+    .quanProdView{
+        margin-left: 15px;
+        margin-top: 50px;
+        background-color: white;
+        border-color: rgb(226, 226, 226);
+        width: 50px;
+        height: 40px;
+        text-align: center;
+        border-radius: 8px;
+        border-color: #e0ddd3 !important;
+    }
+    
+    .quanProdViewSub{
+        width: 90px;
+        height: 40px;
+        margin-left: 15px;
+        background-color: #F6C510;
+        border-radius: 8px;
+        transition: transform .2s;
+        font-weight: 500;
+        font-size: 14px;
+    }
+    
+    .quanProdViewSub:hover{
+        transform: scale(1.1);
+    }
+    
+    .close{
+        transition: transform .2s;
+    }
+    
+    .close:hover{
+        color: #F6C510;
+        transform: scale(2);
+    }
+    
+    .sModCol{
+        padding-right: 100px;
+    }
+
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+    .modProdView{
+        width: 220px;
+        height: 450px;
+    }
+
+    .modCat{
+        left: 45px !important;
+        top: 45px;
+        font-weight: 500;
+        font-size: 9px;
+        line-height: 12px;
+        display: flex;
+        align-items: center;
+        letter-spacing: 1.5em;
+    }
+    
+    .modProdName{
+        font-weight: 600;
+        font-size: 25px;
+        line-height: 41px;
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.25em;
+    }
+    
+    .modProdPri{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 17px;
+        line-height: 24px;
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.15em;
+        color: #F6C510;
+    
+    }
+    
+    .modProdDesc{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 118.9%;
+        /* or 19px */
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.05em;
+        color: #000000;
+    }
+    
+    .modProdDiv{
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    
+    .quanProdView{
+        margin-top: 50px;
+        background-color: white;
+        border-color: rgb(226, 226, 226);
+        width: 50px;
+        height: 40px;
+        text-align: center;
+        border-radius: 8px;
+        border-color: #e0ddd3 !important;
+    }
+    
+    .quanProdViewSub{
+        width: 70px;
+        height: 40px;
+        margin-left: 15px;
+        background-color: #F6C510;
+        border-radius: 8px;
+        transition: transform .2s;
+        font-weight: 500;
+        font-size: 14px;
+    }
+    
+    .quanProdViewSub:hover{
+        transform: scale(1.1);
+    }
+    
+    .close{
+        transition: transform .2s;
+    }
+    
+    .close:hover{
+        color: #F6C510;
+        transform: scale(2);
+    }
+    
+    .sModCol{
+        padding-right: 100px;
+    }
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+
+    .modProdView{
+        width: 350px;
+        height: 600px;
+    }
+
+    .modCat{
+        left: 45px !important;
+        top: 45px;
+        font-weight: 500;
+        font-size: 10px;
+        line-height: 12px;
+        display: flex;
+        align-items: center;
+        letter-spacing: 1.5em;
+    }
+    
+    .modProdName{
+        font-weight: 600;
+        font-size: 30px;
+        line-height: 41px;
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.25em;
+    }
+    
+    .modProdPri{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 24px;
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.15em;
+        color: #F6C510;
+    
+    }
+    
+    .modProdDesc{
+        font-style: normal;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 118.9%;
+        /* or 19px */
+        display: flex;
+        align-items: center;
+        letter-spacing: 0.05em;
+        color: #000000;
+    }
+    
+    .modProdDiv{
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+    
+    .quanProdView{
+        margin-top: 200px;
+        background-color: white;
+        border-color: rgb(226, 226, 226);
+        width: 100px;
+        height: 45px;
+        text-align: center;
+        border-radius: 8px;
+        border-color: #e0ddd3 !important;
+    }
+    
+    .quanProdViewSub{
+        width: 140px;
+        height: 45px;
+        margin-left: 20px;
+        background-color: #F6C510;
+        border-radius: 8px;
+        transition: transform .2s;
+        font-weight: 500;
+        font-size: 14px;
+    }
+    
+    .quanProdViewSub:hover{
+        transform: scale(1.1);
+    }
+    
+    .close{
+        transition: transform .2s;
+    }
+    
+    .close:hover{
+        color: #F6C510;
+        transform: scale(2);
+    }
+    
+    .sModCol{
+        padding-right: 100px;
+    }
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    
+.modProdView{
+    width: 480px;
+    height: 580px;
+    left: 45px;
+    top: 45px;
+    box-shadow: 4px 4px 70px 5px rgba(0, 0, 0, 0.05);
+    border-radius: 8px !important;
+    display: flex;
+}
+
+.modCat{
+    left: 45px !important;
+    top: 45px;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 1.5em;
+}
+
+.modProdName{
+    font-weight: 600;
+    font-size: 34px;
+    line-height: 41px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.25em;
+}
+
+.modProdPri{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.15em;
+    color: #F6C510;
+
+}
+
+.modProdDesc{
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 118.9%;
+    /* or 19px */
+    display: flex;
+    align-items: center;
+    letter-spacing: 0.05em;
+    color: #000000;
+}
+
+.modProdDiv{
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.quanProdView{
+    margin-top: 200px;
+    background-color: white;
+    border-color: rgb(226, 226, 226);
+    width: 115px;
+    height: 47px;
+    text-align: center;
+    border-radius: 8px;
+    border-color: #e0ddd3 !important;
+}
+
+.quanProdViewSub{
+    width: 157px;
+    height: 47px;
+    margin-left: 20px;
+    background-color: #F6C510;
+    border-radius: 8px;
+    transition: transform .2s;
+    font-weight: 500;
+    font-size: 16px;
+}
+
+.quanProdViewSub:hover{
+    transform: scale(1.1);
+}
+
+.close{
+    transition: transform .2s;
+}
+
+.close:hover{
+    color: #F6C510;
+    transform: scale(2);
+}
+
+.sModCol{
+    padding-right: 100px;
+}
+
+.active6, .prodText:hover {
+    color: #F6C510;
+    transform: scale(1.1);
+}
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .card .overlayprod{
+        height: 300px;
+        width: 100%;
+        background: black;
+        position: absolute;
+        opacity: 40%;
+    }
+
+    .prodRowSetion{
+        margin-top: 150px;
+        margin-bottom: 150px;
+        text-align: center !important;
+    }
+
+    .navProd{
+        font-size: 10px;
+        font-weight: 500;
+        text-align: center !important;
+        transition: transform .2s;
+    }
+
+    .navProd:hover{
+        color: #F6C510;
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+
+    .active6, .prodText:hover {
+        color: #F6C510;
+        transform: scale(1.1);
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .card .overlayprod{
+        height: 350px;
+        width: 100%;
+        background: black;
+        position: absolute;
+        opacity: 40%;
+    }
+
+    .prodRowSetion{
+        margin-top: 150px;
+        margin-bottom: 150px;
+        text-align: center !important;
+    }
+
+    .navProd{
+        font-size: 12px;
+        font-weight: 500;
+        text-align: center !important;
+        transition: transform .2s;
+    }
+
+    .navProd:hover{
+        color: #F6C510;
+        cursor: pointer;
+        transform: scale(1.1);
+    }
+    .active6, .prodText:hover {
+        color: #F6C510;
+        transform: scale(1.1);
+    }
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    .card .overlayprod{
+        height: 400px;
+        width: 100%;
+        background: black;
+        position: absolute;
+        opacity: 40%;
+    }
+
+    .prodRowSetion{
+        margin-top: 150px;
+        margin-bottom: 150px;
+        text-align: center !important;
+    }
+
+    .navProd{
+        font-size: 16px;
+        font-weight: 500;
+        text-align: center !important;
+        transition: transform .2s;
+    }
+
+    .navProd:hover{
+        color: #F6C510;
+        cursor: pointer;
+        transform: scale(1.2);
+    }
+
+    .active6, .prodText:hover {
+        color: #F6C510;
+        transform: scale(1.1);
+    }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .card .overlayprod{
+        height: 500px;
+        width: 100%;
+        background: black;
+        position: absolute;
+        opacity: 40%;
+    }
+
+    .prodRowSetion{
+        margin-top: 150px;
+        margin-bottom: 150px;
+        text-align: center !important;
+    }
+
+    .navProd{
+        font-size: 18px;
+        font-weight: 500;
+        text-align: center !important;
+        transition: transform .2s;
+    }
+
+    .navProd:hover{
+        color: #F6C510;
+        cursor: pointer;
+        transform: scale(1.2);
+    }
+
+    .active6, .prodText:hover {
+        color: #F6C510;
+        transform: scale(1.1);
+    }
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .prodRowSetion{
+        margin-top: 150px;
+        margin-bottom: 150px;
+        text-align: center !important;
+    }
+    .navProd{
+        font-size: 20px;
+        font-weight: 500;
+        text-align: center !important;
+        transition: transform .2s;
+    }
+
+    .navProd:hover{
+        color: #F6C510;
+        cursor: pointer;
+        transform: scale(1.2);
+    }
+
+    .card .overlayprod{
+        height: 600px;
+        width: 100%;
+        background: black;
+        position: absolute;
+        opacity: 40%;
+    }
+
+    
+    .prodText{
+        transition: all 0.1s ease 0s;
+    }
+
+    .active6, .prodText:hover {
+        color: #F6C510;
+        transform: scale(1.1);
+    }
+
 }
