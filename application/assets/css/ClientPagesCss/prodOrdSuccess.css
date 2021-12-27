@@ -1,0 +1,88 @@
+html,body {
+    margin:0; 
+    padding:0; 
+    overflow-x:hidden;
+}
+
+.successPageOrd {
+    margin-top: 200px; 
+    margin-bottom: 200px; 
+    padding: 25px; 
+}
+
+.successPageOrd .successImgOrd {
+    width: 410px; 
+    height: 401px; 
+    margin-bottom: 20px; 
+}
+
+.sccssOrdHead {
+    font-family: Montserrat; 
+    font-style: normal; 
+    font-weight: 600; 
+    font-size: 34px; 
+    line-height: 41px; 
+    text-align: center; 
+    letter-spacing: 0.25em; 
+    color: #000000; 
+
+}
+
+.sccssOrdMsg {
+    font-family: Montserrat; 
+    font-style: normal; 
+    font-weight: 600; 
+    font-size: 16px; 
+    line-height: 118.9%; 
+    text-align: center; 
+    letter-spacing: 0.05em; 
+    color: #000000; 
+}
+
+/* MEDIA QUERIES */
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 100px) { 
+    .sccssOrdHead {
+        font-size: 20px;
+    }
+
+    .sccssOrdMsg {
+        font-size: 12px;
+    }
+
+}
+
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .sccssOrdHead {
+        font-size: 24px;
+    }
+
+    .sccssOrdMsg {
+        font-size: 14px;
+    }
+
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) { 
+    .sccssOrdHead {
+        font-size: 34px;
+    }
+
+    .sccssOrdMsg {
+        font-size: 16px;
+    }
+    
+}
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) { 
+    .sccssOrdHead {
+        font-size: 34px;
+    }
+
+    .sccssOrdMsg {
+        font-size: 16px;
+    }
+    
+}
