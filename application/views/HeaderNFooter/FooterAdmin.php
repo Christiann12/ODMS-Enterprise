@@ -10,6 +10,7 @@
 		<script src="https://cdn.datatables.net/responsive/1.0.7/js/dataTables.responsive.min.js"></script>
 		<!-- <script src="<?php echo base_url(); ?>application/assets/js/responsive.dataTables.min.js"></script> -->
 		<script src="<?php echo base_url(); ?>application/assets/js/AdminPagesJs/Ping.js"></script>
+		<script src="<?php echo base_url(); ?>application/assets/js/AdminPagesJs/Inventory.js"></script>
 		
 
 		<script>
