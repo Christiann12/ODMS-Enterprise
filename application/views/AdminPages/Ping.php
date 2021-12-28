@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div> <!-- pingHeadingDiv -->
 
     <div>
-        <table id="pingTable" class="display responsive cell-border hover" width="100%">
+        <table id="pingTable" class="display responsive nowrap cell-border hover" width="100%">
             <thead class="pingTableHeader">
                 <tr>
                     <th>Ping ID</th>
