@@ -1,0 +1,51 @@
+.pingSection {
+    width: auto; height: auto; margin: 50px; padding: 20px; background: #FFFFFF; box-shadow: 5px 4px 70px 5px rgba(0, 0, 0, 0.1); border-radius: 20px; 
+}
+
+.pingSection .pingHeadingDiv {
+    padding: 20px; margin-bottom: 10px; 
+}
+
+.pingSection .pingTableHeader {
+    background-color: #BEBEBE; 
+}
+
+
+.pingSection .pingHeadingDiv .row .pingTextDiv {
+    width: fit-content; padding: 10px; 
+}
+
+.pingSection .pingHeadingDiv .row .pingIcon {
+    width: fit-content; color: rgba(75, 78, 48, 0.34); padding: 10px; 
+}
+
+.pingText {
+font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 34px; line-height: 41px; display: flex; align-items: center; letter-spacing: 0.25em; color: #000000; 
+
+}
+
+/* MEDIA QUERIES */
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 100px) {
+    
+    
+}
+  
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) {
+    
+  
+  
+  }
+  
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) {
+    
+    
+  }
+  
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) {
+    
+    
+  }
