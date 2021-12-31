@@ -55,7 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </nav>
         <!-- Page content -->
         <?php //include $page."Wrapper.php";?> 
-        <?php include "Ping.php";?> 
+        <?php include "Inventory.php";?> 
         <!-- end of page content -->
     </div>
     <!-- /#page-content-wrapper -->
