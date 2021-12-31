@@ -1,0 +1,474 @@
+.dashboardSection .monthlyReportSection {
+    width: auto; height: auto; margin: 50px; padding: 20px; background: #FFFFFF; box-shadow: 5px 4px 70px 5px rgba(0, 0, 0, 0.1); border-radius: 20px; 
+}
+
+.dashboardSection .monthlyReportSection .reportTexts {
+    padding: 20px;
+    /* background-color: blueviolet; */
+}
+
+.dashboardSection .monthlyReportSection .row .monthlyReportTextDiv {
+    width: fit-content; padding: 10px; 
+    /* background-color: red; */
+}
+
+.dashboardSection .monthlyReportSection .row .monthlyReportDateDiv {
+    width: fit-content; padding: 20px; margin-left: auto; margin-right: 0;
+    /* background-color: green; */
+}
+
+.monthlyReportText {
+    font-family: Montserrat; font-style: normal; font-weight: 600; font-size: 34px; line-height: 41px; letter-spacing: 0.15em; color: #000000; 
+}
+
+.monthlyReportDateText {
+    font-family: Montserrat; font-style: italic; font-weight: 600; font-size: 20px; line-height: 24px; text-align: right; color: #828282; 
+}
+
+.dashboardSection .monthlyReportSection .monthlyReportCharts .reportCharts {
+    width: 100%; height: auto; padding:20px;
+    margin: auto;
+    /* background-color: red; */
+}
+
+.dashboardSection .monthlyReportSection .monthlyReportCharts .reportCharts .activeUsersDiv, .transactionCountDiv, .transactionSalesDiv, .pingCountDiv {
+    /* background-color: blue; */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    
+}
+
+.dashboardSection .monthlyReportSection .monthlyReportCharts .reportCharts .activeUsersCard {
+    width: 100%;
+    height: 100%;
+    background: rgba(246, 197, 16, 0.8);
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.dashboardSection .monthlyReportSection .monthlyReportCharts .reportCharts .transactionCountCard {
+    width: 100%;
+    height: 100%;
+    background: #d1c418;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.dashboardSection .monthlyReportSection .monthlyReportCharts .reportCharts .transactionSalesCard {
+    width: 100%;
+    height: 100%;
+    background: #adc029;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+.dashboardSection .monthlyReportSection .monthlyReportCharts .reportCharts .pingCountCard {
+    width: 100%;
+    height: 100%;
+    background: #8cbb3a;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+
+.dashboardSection .monthlyReportSection .monthlyReportCharts .reportCharts .activeUsersDiv .activeUsersCard .activeUsersDetails {
+    width: auto;
+    height: 100%;
+    padding: 20px;
+    /* background-color: white; */
+}
+
+.dashboardSection .monthlyReportSection .monthlyReportCharts .reportCharts .transactionCountDiv .transactionCountCard .transactionCountDetails {
+    width: auto;
+    height: 100%;
+    padding: 20px;
+    /* background-color: white; */
+}
+
+.dashboardSection .monthlyReportSection .monthlyReportCharts .reportCharts .transactionSalesDiv .transactionSalesCard .transactionSalesDetails {
+    width: auto;
+    height: 100%;
+    padding: 20px;
+    /* background-color: white; */
+}
+
+.dashboardSection .monthlyReportSection .monthlyReportCharts .reportCharts .pingCountDiv .pingCountCard .pingCountDetails {
+    width: auto;
+    height: 100%;
+    padding: 20px;
+    /* background-color: white; */
+}
+
+.dashboardSection .monthlyReportSection .monthlyReportCharts .reportCharts .transactionSalesDiv .transactionSalesCard .transactionSalesDetails .tranTexts {
+    width: auto;
+    height: auto;
+    /* background-color: blue; */
+    margin-bottom: 0;
+    margin-top: auto;
+}
+
+.activeUsersNum {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 64px;
+    line-height: 78px;
+    text-align: center;
+    color: #000000;
+    margin-top:20px;
+    /* background-color: green; */
+}
+
+.activeUsersText {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+    color: #000000;
+    /* background-color: pink; */
+}
+
+.reportIcons {
+    color: rgba(75, 78, 48, 0.6);
+}
+
+.servicesText {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #000000;
+    margin-top: 30px;
+
+}
+
+.productsText {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    color: #000000;
+}
+
+.servicesNum, .productsNum {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 36px;
+    line-height: 44px;
+    color: #000000;
+
+}
+
+.tranServiceText, .tranProdText {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+
+    color: #000000;
+}
+
+.tranServiceNum, .tranProdNum {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 17px;
+    line-height: 21px;
+    text-align: center;
+    color: #000000;
+
+}
+
+.pingCountNum {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 64px;
+    line-height: 78px;
+    text-align: center;
+    color: #000000;
+}
+
+.pingCountText {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    text-align: center;
+    color: #000000;
+}
+
+.dashboardSection .chartsSection {
+    width: auto; height: auto; margin: 50px; padding: 10px;
+    /* background: #FFFFFF; 
+    box-shadow: 5px 4px 70px 5px rgba(0, 0, 0, 0.1);  */
+    
+    /* background-color: red; */
+}
+
+.dashboardSection .chartsSection .chartsDiv .chartRow1 {
+    width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    /* background-color: purple; */
+}
+
+.dashboardSection .chartsSection .chartsDiv .chartRow2 {
+    width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    /* background-color: green; */
+}
+
+.dashboardSection .chartsSection .chartsDiv .chartRow1 .charts1 .activeUsersChart {
+    width: auto; height: auto; padding: 20px; background: #FFFFFF; box-shadow: 5px 4px 70px 5px rgba(0, 0, 0, 0.1); border-radius: 20px; 
+}
+
+.dashboardSection .chartsSection .chartsDiv .chartRow1 .charts1 .activeUsersChart .activeUsersChartDetails {
+    padding: 20px;
+    /* background-color: red; */
+}
+
+/* .dashboardSection .chartsSection .chartsDiv .chartRow1 .charts1 .activeUsersChart .activeUsersChartDetails .activeUsersTextDiv {
+    background-color: pink;
+} */
+
+.dashboardSection .chartsSection .chartsDiv .chartRow1 .charts1 .activeUsersChart .activeUsersChartDetails .activeUsersIconDiv {
+    margin-left: auto;
+    margin-right: 0;
+    /* background-color: orange; */
+}
+
+.dashboardSection .chartsSection .chartsDiv .chartRow1 .charts2 .serviceProdCount {
+    width: auto; height: auto; padding: 20px; background: #FFFFFF; box-shadow: 5px 4px 70px 5px rgba(0, 0, 0, 0.1); border-radius: 20px; 
+}
+
+.dashboardSection .chartsSection .chartsDiv .chartRow1 .charts2 .serviceProdCount .serviceProdCountDetails {
+    padding: 20px;
+    /* background-color: red; */
+}
+
+/* .dashboardSection .chartsSection .chartsDiv .chartRow1 .charts2 .serviceProdCount .serviceProdCountDetails .serviceProdTextDiv {
+    background-color: pink;
+} */
+
+.dashboardSection .chartsSection .chartsDiv .chartRow1 .charts2 .serviceProdCount .serviceProdCountDetails .serviceProdIconDiv {
+    margin-left: auto;
+    margin-right: 0;
+    /* background-color: orange; */
+}
+
+.dashboardSection .chartsSection .chartsDiv .chartRow2 {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.dashboardSection .chartsSection .chartsDiv .chartRow2 .charts3 .transactionCount {
+    width: auto; height: auto; padding: 20px; background: #FFFFFF; box-shadow: 5px 4px 70px 5px rgba(0, 0, 0, 0.1); border-radius: 20px; 
+}
+
+.dashboardSection .chartsSection .chartsDiv .chartRow2 .charts3 .transactionCount .transactionCountDetails {
+    padding: 20px;
+    /* background-color: red; */
+}
+
+/* .dashboardSection .chartsSection .chartsDiv .chartRow2 .charts3 .transactionCount .transactionCountDetails .transactionCountTextDiv {
+    background-color: pink;
+} */
+
+.dashboardSection .chartsSection .chartsDiv .chartRow2 .charts3 .transactionCount .transactionCountDetails .transactionCountIconDiv {
+    margin-left: auto;
+    margin-right: 0;
+    /* background-color: orange; */
+}
+
+.dashboardSection .chartsSection .chartsDiv .chartRow2 .charts4 .pingCount {
+    width: auto; height: auto; padding: 20px; background: #FFFFFF; box-shadow: 5px 4px 70px 5px rgba(0, 0, 0, 0.1); border-radius: 20px; 
+}
+
+.dashboardSection .chartsSection .chartsDiv .chartRow2 .charts4 .pingCount .pingCountDetails {
+    padding: 20px;
+    /* background-color: red; */
+}
+
+/* .dashboardSection .chartsSection .chartsDiv .chartRow2 .charts4 .pingCount .pingCountDetails .pingCountTextDiv {
+    background-color: pink;
+} */
+
+.dashboardSection .chartsSection .chartsDiv .chartRow2 .charts4 .pingCount .pingCountDetails .pingCountIconDiv {
+    margin-left: auto;
+    margin-right: 0;
+    /* background-color: orange; */
+}
+
+.chartText {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    
+    color: #000000;
+}
+
+.chartIcons {
+    color: rgba(75, 78, 48, 0.06);
+}
+
+/* CHARTS */
+#activeUserLineChart, #serviceProdCountPie, #transactionCountLine, #pingCountBar {
+    width: 100%;
+    height: auto;
+    /* background-color: pink; */
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+/* MEDIA QUERIES */
+/* MEDIA QUERIES */
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 100px) {
+    .monthlyReportText {
+        font-size: 20px;
+
+    }
+    .monthlyReportDateText, .activeUsersText, .servicesText, .productsText {
+        font-size: 14px;
+    }
+    .activeUsersNum, .pingCountNum {
+        font-size: 34px;
+        
+    }
+
+    .servicesNum, .productsNum {
+        font-size: 24px;
+        
+    }
+    .tranServiceText, .tranProdText, .pingCountText, .chartText {
+        font-size: 16px;
+        
+    }
+    .tranServiceNum, .tranProdNum {
+        font-size: 17px;
+        
+    }
+
+    .monthlyReportDateDiv {
+        margin-left: 0;
+        margin-right: auto;
+    }
+
+    
+}
+  
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .monthlyReportText {
+        font-size: 24px;
+
+    }
+    .monthlyReportDateText, .activeUsersText, .servicesText, .productsText {
+        font-size: 16px;
+    }
+    .activeUsersNum, .pingCountNum {
+        font-size: 48px;
+        
+    }
+
+    .servicesNum, .productsNum {
+        font-size: 34px;
+        
+    }
+    .tranServiceText, .tranProdText, .pingCountText, .chartText {
+        font-size: 20px;
+        
+    }
+    .tranServiceNum, .tranProdNum {
+        font-size: 17px;
+        
+    }
+
+    .monthlyReportDateDiv {
+        margin-left: 0;
+        margin-right: auto;
+    }
+
+
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .monthlyReportText {
+        font-size: 34px;
+
+    }
+    .monthlyReportDateText, .activeUsersText, .servicesText, .productsText {
+        font-size: 20px;
+    }
+    .activeUsersNum, .pingCountNum {
+        font-size: 64px;
+        
+    }
+
+    .servicesNum, .productsNum {
+        font-size: 36px;
+        
+    }
+    .tranServiceText, .tranProdText, .pingCountText, .chartText {
+        font-size: 24px;
+        
+    }
+    .tranServiceNum, .tranProdNum {
+        font-size: 17px;
+        
+    }
+
+    .monthlyReportDateDiv {
+        margin-left: auto;
+        margin-right: 0;
+    }
+
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .monthlyReportText {
+        font-size: 34px;
+
+    }
+    .monthlyReportDateText, .activeUsersText, .servicesText, .productsText {
+        font-size: 20px;
+    }
+    .activeUsersNum, .pingCountNum {
+        font-size: 64px;
+        
+    }
+
+    .servicesNum, .productsNum {
+        font-size: 36px;
+        
+    }
+    .tranServiceText, .tranProdText, .pingCountText, .chartText {
+        font-size: 24px;
+        
+    }
+    .tranServiceNum, .tranProdNum {
+        font-size: 17px;
+        
+    }
+
+    .monthlyReportDateDiv {
+        margin-left: auto;
+        margin-right: 0;
+    }
+}
