@@ -14,6 +14,7 @@
 		<script src="<?php echo base_url(); ?>application/assets/js/AdminPagesJs/Ping.js"></script>
 		<script src="<?php echo base_url(); ?>application/assets/js/AdminPagesJs/Inventory.js"></script>
 		<script src="<?php echo base_url(); ?>application/assets/js/AdminPagesJs/DashboardCharts.js"></script>
+		<script src="<?php echo base_url(); ?>application/assets/js/AdminPagesJs/transaction.js"></script>
 
 		<!-- HighChart.js -->
 		<script src="https://code.highcharts.com/highcharts.src.js"></script>

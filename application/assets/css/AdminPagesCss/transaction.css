@@ -1,0 +1,183 @@
+/* START OF CSS FOR SERVICES */
+
+.transsrvSection {
+    width: auto; height: auto; margin: 50px; padding: 20px; background: #FFFFFF; box-shadow: 5px 4px 70px 5px rgba(0, 0, 0, 0.1); border-radius: 20px; 
+}
+
+.transsrvSection .transsrvHeadingDiv {
+    padding: 20px; margin-bottom: 10px; 
+    
+}
+
+.transsrvSection .transsrvTableHeader {
+    background-color: #BEBEBE; 
+}
+
+
+.transsrvSection .transsrvHeadingDiv .row .transsrvTextDiv {
+    width: fit-content; padding: 20px; 
+    
+}
+
+.transsrvSection .transsrvHeadingDiv .row .transsrvIcon {
+    width: fit-content; color: rgba(75, 78, 48, 0.34); padding: 20px; 
+    
+}
+
+.transsrvText {
+font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 34px; line-height: 41px; display: flex; align-items: center; letter-spacing: 0.25em; color: #000000; 
+}
+
+.transsrvSection .transsrvHeadingDiv .row .transsrvButtonDiv {
+    padding-top: 20px; padding-bottom: 20px; padding-left: 20px; padding-right: 0; margin-left: auto; margin-right: 0; 
+}
+
+.transsrvSection .transsrvHeadingDiv .row .transsrvButtonDiv .transsrvaddItemBtn {
+    flex-direction: column; align-items: center; padding: 10px 20px; width: 157px; height: 47px; background-color: #F6C510; border: none; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 4px; 
+
+    /* Button text */
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 14px; line-height: 24px; align-items: center; text-align: center; letter-spacing: 1.25px;
+}
+
+/* MEDIA QUERIES */
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 100px) {
+    .transsrvSection .transsrvHeadingDiv .row .transsrvButtonDiv {
+        margin-left:0; margin-right: 0;
+    }
+
+    .transsrvText {
+        font-size: 20px; 
+    }
+    
+}
+  
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) {
+    .transsrvSection .transsrvHeadingDiv .row .transsrvButtonDiv {
+        margin-left:auto; margin-right: 0;
+    }
+
+    .transsrvText {
+        font-size: 24px; 
+    }
+  
+  
+  }
+  
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) {
+    .transsrvSection .transsrvHeadingDiv .row .transsrvButtonDiv {
+        margin-left:auto; margin-right: 0;
+    }
+
+    .transsrvText {
+        font-size: 34px; 
+    }
+    
+  }
+  
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) {
+    .transsrvSection .transsrvHeadingDiv .row .transsrvButtonDiv {
+        margin-left:auto; margin-right: 0;
+    }
+
+    .transsrvText {
+        font-size: 34px; 
+    }
+    
+  }
+  /* END OF CSS FOR SERVICES */
+
+  /* START OF CSS FOR PRODUCTS */
+  .transprodSection {
+    width: auto; height: auto; margin: 50px; padding: 20px; background: #FFFFFF; box-shadow: 5px 4px 70px 5px rgba(0, 0, 0, 0.1); border-radius: 20px; 
+}
+
+.transprodSection .transprodHeadingDiv {
+    padding: 20px; margin-bottom: 10px; 
+    
+}
+
+.transprodSection .transprodTableHeader {
+    background-color: #BEBEBE; 
+}
+
+
+.transprodSection .transprodHeadingDiv .row .transprodTextDiv {
+    width: fit-content; padding: 20px; 
+    
+}
+
+.transprodSection .transprodHeadingDiv .row .transprodIcon {
+    width: fit-content; color: rgba(75, 78, 48, 0.34); padding: 20px; 
+    
+}
+
+.transprodText {
+font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 34px; line-height: 41px; display: flex; align-items: center; letter-spacing: 0.25em; color: #000000; 
+}
+
+.transprodSection .transprodHeadingDiv .row .transprodButtonDiv {
+    padding-top: 20px; padding-bottom: 20px; padding-left: 20px; padding-right: 0; margin-left: auto; margin-right: 0; 
+}
+
+.transprodSection .transprodHeadingDiv .row .transprodButtonDiv .transprodaddItemBtn {
+    flex-direction: column; align-items: center; padding: 10px 20px; width: 157px; height: 47px; background-color: #F6C510; border: none; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 4px; 
+
+    /* Button text */
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 14px; line-height: 24px; align-items: center; text-align: center; letter-spacing: 1.25px;
+}
+
+/* MEDIA QUERIES */
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 100px) {
+    .transprodSection .transprodHeadingDiv .row .transprodButtonDiv {
+        margin-left:0; margin-right: 0;
+    }
+
+    .transprodText {
+        font-size: 20px; 
+    }
+    
+}
+  
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) {
+    .transprodSection .transprodHeadingDiv .row .transprodButtonDiv {
+        margin-left:auto; margin-right: 0;
+    }
+
+    .transprodText {
+        font-size: 24px; 
+    }
+  
+  
+  }
+  
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) {
+    .transprodSection .transprodHeadingDiv .row .transprodButtonDiv {
+        margin-left:auto; margin-right: 0;
+    }
+
+    .transprodText {
+        font-size: 34px; 
+    }
+    
+  }
+  
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) {
+    .transprodSection .transprodHeadingDiv .row .transprodButtonDiv {
+        margin-left:auto; margin-right: 0;
+    }
+
+    .transprodText {
+        font-size: 34px; 
+    }
+    
+  }
+
+  /* END OF CSS FOR PRODUCTS */
