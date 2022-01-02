@@ -1,0 +1,492 @@
+*{
+    margin:0;
+    padding:0;
+}
+
+.loginbg{
+height: 100vh !important;
+width: 100%;
+position: relative;
+background-position: center;
+background-repeat: no-repeat;
+background-size: cover;
+margin-top: none !important;
+}
+
+.loginbg .form-label-group {
+    position: relative;
+    margin-bottom: 1rem;
+}
+  
+  .loginbg .form-label-group input,
+  .loginbg .form-label-group label {
+    height: 3.125rem;
+    padding: .75rem;
+    border-radius: 5px;
+    border: none; 
+    -webkit-box-shadow: 3px 9px 11px 0px rgba(227,218,227,1);
+    -moz-box-shadow: 3px 9px 11px 0px rgba(227,218,227,1);
+    box-shadow: 3px 9px 11px 0px rgba(227,218,227,1);
+  }
+  
+  .loginbg .form-label-group label {
+    position: absolute;
+    top: 0;
+    left: 2;
+    width: 100%;
+    margin-bottom: 0; /* Override default `<label>` margin */
+    line-height: 1.5;
+    color: black;
+    pointer-events: none;
+    cursor: text; /* Match the input under the label */
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    transition: all .1s ease-in-out;
+  }
+  
+  .loginbg .form-label-group input::-webkit-input-placeholder {
+    color: transparent;
+  }
+  
+  .loginbg .form-label-group input::-moz-placeholder {
+    color: transparent;
+  }
+  
+  .loginbg .form-label-group input:-ms-input-placeholder {
+    color: transparent;
+  }
+  
+  .loginbg .form-label-group input::-ms-input-placeholder {
+    color: transparent;
+  }
+  
+  .loginbg .form-label-group input::placeholder {
+    color: transparent;
+  }
+  
+  .loginbg .form-label-group input:not(:-moz-placeholder-shown) {
+    padding-top: 1.25rem;
+    padding-bottom: .25rem;
+  }
+  
+  .loginbg .form-label-group input:not(:-ms-input-placeholder) {
+    padding-top: 1.25rem;
+    padding-bottom: .25rem;
+  }
+  
+  .loginbg .form-label-group input:not(:placeholder-shown) {
+    padding-top: 1.25rem;
+    padding-bottom: .25rem;
+    font-weight: 700;
+  }
+  
+  .loginbg .form-label-group input:not(:-moz-placeholder-shown) ~ label {
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    font-size: 12px;
+    color: black;
+  }
+  
+  .loginbg .form-label-group input:not(:-ms-input-placeholder) ~ label {
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    font-size: 12px;
+    color: black;
+  }
+  
+  .loginbg .form-label-group input:not(:placeholder-shown) ~ label {
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    font-size: 12px;
+    color: black;
+  }
+  
+  .loginbg .form-label-group input:-webkit-autofill ~ label {
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    font-size: 12px;
+    color: black;
+  }
+
+  .loginAdmin{
+      margin-top: 90px;
+      display: flex;
+      justify-content: center;
+  }
+
+  .loginAdmin .form-containerAd{
+      width: 550px;
+      padding: 30px;
+      border-radius: 20px;
+      backdrop-filter: blur(20px);
+      -webkit-box-shadow: 0px -1px 73px 2px rgba(64,64,64,0.4);
+      -moz-box-shadow: 0px -1px 73px 2px rgba(64,64,64,0.4);
+      box-shadow: 0px -1px 73px 2px rgba(64,64,64,0.4);
+  }
+
+
+  .loginAdmin .form-containerAd .lgAd{
+      text-align: center;
+      font-weight: 600;
+      font-size: 48px;
+      margin-bottom: 100px;
+  }
+
+  .loginAdmin .form-containerAd .fgt{
+      font-size: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      padding-left: 360px;
+  }
+
+  .logBtn{
+      background-color: #F6C510 !important;
+      color: black;
+      width: 157px;
+      height: 47px;
+      margin-top: 20px;
+      font-weight: 600;
+      outline: none;
+      box-shadow: none !important;
+      transition: transform .2s; 
+  }
+
+  .logBtn:hover{
+    transform: scale(1.1);   
+  }
+
+  .secAdm{
+      margin-top: 50px;
+  }
+
+  .termsAdmin{
+      font-size: 14px;
+      font-weight: 600;
+      padding-left: 350px;
+  }
+
+  .ppAdmin{
+    font-size: 14px;
+    font-weight: 600;
+    padding-left: 100px;
+  }
+
+  /* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+    .loginAdmin{
+        margin-top: 80px;
+        display: flex;
+        justify-content: center;
+    }
+  
+    .loginAdmin .form-containerAd{
+        width: 400px;
+        padding: 30px;
+        border-radius: 20px;
+        backdrop-filter: blur(20px);
+        -webkit-box-shadow: 0px -1px 73px 2px rgba(64,64,64,0.4);
+        -moz-box-shadow: 0px -1px 73px 2px rgba(64,64,64,0.4);
+        box-shadow: 0px -1px 73px 2px rgba(64,64,64,0.4);
+    }
+  
+  
+    .loginAdmin .form-containerAd .lgAd{
+        text-align: center;
+        font-weight: 600;
+        font-size: 30px;
+        margin-bottom: 50px;
+    }
+  
+    .loginAdmin .form-containerAd .fgt{
+        font-size: 12px;
+        cursor: pointer;
+        font-weight: 600;
+        padding-left: 210px;
+    }
+  
+    .logBtn{
+        background-color: #F6C510 !important;
+        color: black;
+        width: 157px;
+        height: 47px;
+        margin-top: 20px;
+        font-weight: 600;
+        outline: none;
+        box-shadow: none !important;
+    }
+  
+    .secAdm{
+        margin-top: 50px;
+    }
+  
+    .termsAdmin{
+        font-size: 14px;
+        font-weight: 600;
+        padding-left: 55px;
+        cursor: pointer;
+    }
+  
+    .ppAdmin{
+      font-size: 14px;
+      font-weight: 600;
+      padding-left: 50px;
+      cursor: pointer;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+    .loginAdmin{
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+    }
+  
+    .loginAdmin .form-containerAd{
+        width: 500px;
+        padding: 30px;
+        border-radius: 20px;
+        backdrop-filter: blur(20px);
+        -webkit-box-shadow: 0px -1px 73px 2px rgba(64,64,64,0.4);
+        -moz-box-shadow: 0px -1px 73px 2px rgba(64,64,64,0.4);
+        box-shadow: 0px -1px 73px 2px rgba(64,64,64,0.4);
+    }
+  
+  
+    .loginAdmin .form-containerAd .lgAd{
+        text-align: center;
+        font-weight: 600;
+        font-size: 40px;
+        margin-bottom: 80px;
+    }
+  
+    .loginAdmin .form-containerAd .fgt{
+        font-size: 12px;
+        cursor: pointer;
+        font-weight: 600;
+        padding-left: 310px;
+    }
+  
+    .logBtn{
+        background-color: #F6C510 !important;
+        color: black;
+        width: 157px;
+        height: 47px;
+        margin-top: 20px;
+        font-weight: 600;
+        outline: none;
+        box-shadow: none !important;
+    }
+  
+    .secAdm{
+        margin-top: 50px;
+    }
+  
+    .termsAdmin{
+        font-size: 14px;
+        font-weight: 600;
+        padding-left: 50px;
+        cursor: pointer;
+    }
+  
+    .ppAdmin{
+      font-size: 14px;
+      font-weight: 600;
+      padding-left: 70px;
+      cursor: pointer;
+    }
+
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+
+    .loginAdmin{
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+    }
+  
+    .loginAdmin .form-containerAd{
+        width: 500px;
+        padding: 30px;
+        border-radius: 20px;
+        backdrop-filter: blur(20px);
+        -webkit-box-shadow: 0px -1px 73px 2px rgba(64,64,64,0.4);
+        -moz-box-shadow: 0px -1px 73px 2px rgba(64,64,64,0.4);
+        box-shadow: 0px -1px 73px 2px rgba(64,64,64,0.4);
+    }
+  
+  
+    .loginAdmin .form-containerAd .lgAd{
+        text-align: center;
+        font-weight: 600;
+        font-size: 40px;
+        margin-bottom: 100px;
+    }
+  
+    .loginAdmin .form-containerAd .fgt{
+        font-size: 12px;
+        cursor: pointer;
+        font-weight: 600;
+        padding-left: 310px;
+    }
+  
+    .logBtn{
+        background-color: #F6C510 !important;
+        color: black;
+        width: 157px;
+        height: 47px;
+        margin-top: 20px;
+        font-weight: 600;
+        outline: none;
+        box-shadow: none !important;
+    }
+  
+    .secAdm{
+        margin-top: 50px;
+    }
+  
+    .termsAdmin{
+        font-size: 14px;
+        font-weight: 600;
+        padding-left: 150px;
+        cursor: pointer;
+    }
+  
+    .ppAdmin{
+      font-size: 14px;
+      font-weight: 600;
+      padding-left: 70px;
+      cursor: pointer;
+    }
+
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .loginAdmin{
+        margin-top: 50px;
+        display: flex;
+        justify-content: center;
+    }
+  
+    .loginAdmin .form-containerAd{
+        width: 550px;
+        padding: 30px;
+        border-radius: 20px;
+        backdrop-filter: blur(20px);
+        -webkit-box-shadow: 0px -1px 73px 2px rgba(64,64,64,0.4);
+        -moz-box-shadow: 0px -1px 73px 2px rgba(64,64,64,0.4);
+        box-shadow: 0px -1px 73px 2px rgba(64,64,64,0.4);
+    }
+  
+  
+    .loginAdmin .form-containerAd .lgAd{
+        text-align: center;
+        font-weight: 600;
+        font-size: 40px;
+        margin-bottom: 100px;
+    }
+  
+    .loginAdmin .form-containerAd .fgt{
+        font-size: 12px;
+        cursor: pointer;
+        font-weight: 600;
+        padding-left: 360px;
+    }
+  
+    .logBtn{
+        background-color: #F6C510 !important;
+        color: black;
+        width: 157px;
+        height: 47px;
+        margin-top: 20px;
+        font-weight: 600;
+        outline: none;
+        box-shadow: none !important;
+    }
+  
+    .secAdm{
+        margin-top: 50px;
+    }
+  
+    .termsAdmin{
+        font-size: 14px;
+        font-weight: 600;
+        padding-left: 250px;
+        cursor: pointer;
+    }
+  
+    .ppAdmin{
+      font-size: 14px;
+      font-weight: 600;
+      padding-left: 70px;
+      cursor: pointer;
+    }
+
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .loginAdmin{
+        margin-top: 45px;
+        display: flex;
+        justify-content: center;
+    }
+  
+    .loginAdmin .form-containerAd{
+        width: 550px;
+        padding: 30px;
+        border-radius: 20px;
+        backdrop-filter: blur(20px);
+        -webkit-box-shadow: 0px -1px 73px 2px rgba(64,64,64,0.4);
+        -moz-box-shadow: 0px -1px 73px 2px rgba(64,64,64,0.4);
+        box-shadow: 0px -1px 73px 2px rgba(64,64,64,0.4);
+    }
+  
+  
+    .loginAdmin .form-containerAd .lgAd{
+        text-align: center;
+        font-weight: 600;
+        font-size: 48px;
+        margin-bottom: 100px;
+    }
+  
+    .loginAdmin .form-containerAd .fgt{
+        font-size: 12px;
+        cursor: pointer;
+        font-weight: 600;
+        padding-left: 360px;
+    }
+  
+    .logBtn{
+        background-color: #F6C510 !important;
+        color: black;
+        width: 157px;
+        height: 47px;
+        margin-top: 20px;
+        font-weight: 600;
+        outline: none;
+        box-shadow: none !important;
+    }
+  
+    .secAdm{
+        margin-top: 50px;
+    }
+  
+    .termsAdmin{
+        font-size: 14px;
+        font-weight: 600;
+        padding-left: 350px;
+        cursor: pointer;
+    }
+  
+    .ppAdmin{
+      font-size: 14px;
+      font-weight: 600;
+      padding-left: 100px;
+      cursor: pointer;
+    }
+
+}
