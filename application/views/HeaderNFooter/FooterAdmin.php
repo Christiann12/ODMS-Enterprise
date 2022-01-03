@@ -9,12 +9,18 @@
 		<script src="https://cdn.datatables.net/1.11.3/js/jquery.dataTables.min.js"></script>
 		<script src="https://cdn.datatables.net/responsive/1.0.7/js/dataTables.responsive.min.js"></script>
 		<!-- <script src="<?php echo base_url(); ?>application/assets/js/responsive.dataTables.min.js"></script> -->
+
+		<script src="https://code.highcharts.com/highcharts.js"></script>
 		
 		<!-- AdminPagesJs -->
 		<script src="<?php echo base_url(); ?>application/assets/js/AdminPagesJs/Ping.js"></script>
 		<script src="<?php echo base_url(); ?>application/assets/js/AdminPagesJs/Inventory.js"></script>
 		<script src="<?php echo base_url(); ?>application/assets/js/AdminPagesJs/DashboardCharts.js"></script>
+
+		<script src="<?php echo base_url(); ?>application/assets/js/AdminPagesJs/support.js"></script>
+
 		<script src="<?php echo base_url(); ?>application/assets/js/AdminPagesJs/transaction.js"></script>
+
 
 		<!-- HighChart.js -->
 		<script src="https://code.highcharts.com/highcharts.src.js"></script>

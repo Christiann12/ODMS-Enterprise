@@ -19,7 +19,11 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/AdminPagesCss/Ping.css"/>
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/AdminPagesCss/Inventory.css"/>
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/AdminPagesCss/Dashboard.css"/>
+
+    <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/AdminPagesCss/support.css"/>
+
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/AdminPagesCss/transaction.css"/>
+
 	</head>
 <body style="font-family: Montserrat; background-color: #E5E5E5;" >
 
