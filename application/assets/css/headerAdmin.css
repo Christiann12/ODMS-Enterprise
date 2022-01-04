@@ -50,12 +50,11 @@
   box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25);
   color: white;
 }
-
-#sidebar-wrapper .list-group .active{
-  background-color: #FFEA00 !important;
-  color: black !important;
+#sidebar-wrapper .list-group .active {
+  background-color: #F6C510;
+  box-shadow: 5px 4px 4px rgba(0, 0, 0, 0.25);
+  color: white;
 }
-
 
 #sidebar-wrapper .list-group .list-group-item{
   font-family: 'Inter';

@@ -15,27 +15,22 @@
     height: 150px; 
     margin-top: 20px;
     margin-left: 50px;
-    padding: 20px; 
     border-radius: 5px;
     border: solid 1px black;
 }
 
 .icon1{
-    font-size: 120px;
-    background-color: #98EFBB;
-    font-size: 120px;
-    position: absolute;
-    margin: 0 !important;
-    top: 0; 
-    left: 0; 
-    right: 0;
-    height: 100%; 
-    width: 50%;
+    font-size: 90px;
+    
+    color: white;
+    
 }
 
 .icon2{
   font-size: 120px;
   background-color: #FFB36C;
+  color: white;
+  align-items: center;
   font-size: 120px;
   position: absolute;
   margin: 0 !important;
@@ -49,6 +44,8 @@
 .icon3{
   font-size: 120px;
   background-color: #FF6C87;
+  color: white;
+  align-items: center;
   font-size: 120px;
   position: absolute;
   margin: 0 !important;

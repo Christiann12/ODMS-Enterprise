@@ -23,13 +23,23 @@
 /* Default Nav Bar Design */
 
 .navcolor {
-    background-color: #4b4e30; padding: 25px; margin-top:-16px;
+    background-color: #4b4e30;margin-top:-16px; padding-top: 3px; padding-bottom: 3px;
 }
-.navbar-brand {
-    color: white !important;
-}
+
 .nav-link {
-    color:#ccac46 !important;
+    color:#ccac46;
+}
+.nav-item{
+   padding: 25px;
+}
+.active{
+    border-bottom: solid #ccac46 0.5px;
+ }
+.nav-item:hover{
+    border-bottom: solid #ccac46 0.5px;
+}
+.nav-link:hover{
+    color: #ccac46;
 }
 .divicon{
     margin-right: 10px;

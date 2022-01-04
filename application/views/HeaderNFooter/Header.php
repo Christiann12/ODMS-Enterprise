@@ -18,6 +18,10 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/ClientPagesCss/ping.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/ClientPagesCss/products.css">
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/ClientPagesCss/prodOrdSuccess.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/ClientPagesCss/aboutus.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/ClientPagesCss/services.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/ClientPagesCss/servicesOrder.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/ClientPagesCss/servicesOrderSuccess.css">
 	</head>
 <body style="font-family: Montserrat;" >
 <!-- oncontextmenu="return false;" -->
@@ -59,15 +63,15 @@
 	<!-- Navigation -->
 
 
-  <nav class="navbar navbar-expand-lg navbar-dark navcolor">
+  <nav class="navbar navbar-expand-lg navcolor" style="">
         <div class="container">
-            <button class="navbar-toggler ml-auto" type="button"
+            <button class="navbar-toggler ml-auto" type="button" 
                     data-toggle="collapse"
                     data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent"
                     aria-expanded="false" 
                     aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
+                <span class="fa fa-bars " style="color: #ccac46; padding-top: 25px; padding-bottom: 25px; padding-right: 10px;"></span>
             </button>
   
             <div class="collapse navbar-collapse"></div>
@@ -75,13 +79,14 @@
             <div class="collapse navbar-collapse" 
                  id="navbarSupportedContent">
                 <ul class="navbar-nav">
-                    <li class="nav-item active"><a class="nav-link" href="#">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Shop</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Ping</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Financial Assistance</a></li>
+                    <li class="nav-item <?php echo (($this->uri->segment(1) == '') ? "active" : null) ?>" ><a class="nav-link" href="<?php echo base_url() ?>">Home</a></li>
+                    <li class="nav-item <?php echo (($this->uri->segment(1) == 'contactus') ? "active" : null) ?>"><a class="nav-link" href="<?php echo base_url('contactus') ?>">Contact Us</a></li>
+                    <li class="nav-item <?php echo (($this->uri->segment(1) == 'aboutus') ? "active" : null) ?>"><a class="nav-link" href="<?php echo base_url('aboutus') ?>">About Us</a></li>
+                    <li class="nav-item <?php echo (($this->uri->segment(1) == 'shop') ? "active" : null) ?>"><a class="nav-link" href="<?php echo base_url('shop') ?>">Shop</a></li>
+                    <li class="nav-item <?php echo (($this->uri->segment(1) == 'ping') ? "active" : null) ?>"><a class="nav-link" href="<?php echo base_url('ping') ?>">Ping</a></li>
+                    <li class="nav-item <?php echo (($this->uri->segment(1) == 'fa') ? "active" : null) ?>"><a class="nav-link" href="<?php echo base_url('fa') ?>">Financial Assistance</a></li>
                 </ul>
+                <!-- <?php echo $this->uri->segment(1)?> -->
             </div>
         </div>
     </nav>

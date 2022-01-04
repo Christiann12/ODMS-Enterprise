@@ -1,32 +1,44 @@
-<div class="supportContainer">
-    <div class="row">
-            <div class="col-xl-4 col-lg-8 col-md-8 col-sm-12 col-xs-3">
+<div class="supportContainer" >
+    
+    <div class="row" >
+            <div class="col-xl-4 col-lg-8 col-md-8 col-sm-12 col-xs-3" >
+                
                 <div class="row">
                     <div class="col-0 supIcon"><i class="fa fa-user-o fa-3x" aria-hidden="true"></i></div>
                     <div class="col p-2 mx-3 supText"><h4>Support</h4></div>
                 </div>
 
-                <div class="row">
+                <div class="row" >
+
+                    <div class="col-8 subHeadSup" >
+                        <div class="row" style="height: 100%;">
+                            <div class="col-5" style=" background-color: #98EFBB; padding-top: 30px;">
+                                <center>
+                                    <div class="colIcon1"><i class="fa fa-ticket icon1" aria-hidden="true"></i></div>
+                                </center>
+                            </div>
+                            <div class="col-7" >
+                                <p>asdasdasd</p>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="col-8 subHeadSup">
                         <div class="row">
-                            <div class="bg1"><div class="colIcon1"><i class="fa fa-ticket icon1" aria-hidden="true" style="height:100%;"></i></div></div>
-                            
+                            <div class="bg2">
+                                <div class="colIcon2"><i class="fa fa-thumb-tack icon2" aria-hidden="true"></i></div>
+                            </div>
                         </div>
                     </div>
                     <div class="col-8 subHeadSup">
                         <div class="row">
-                            <div class="bg2"><div class="colIcon2"><i class="fa fa-thumb-tack icon2" aria-hidden="true"></i></div></div>
-                            
-                        </div>
-                    </div>
-                    <div class="col-8 subHeadSup">
-                    <div class="row">
-                            <div class="bg3"><div class="colIcon3"><i class="fa fa-tags icon3" aria-hidden="true"></i></div></div>
-                        
+                            <div class="bg3">
+                                <div class="colIcon3"><i class="fa fa-tags icon3" aria-hidden="true"></i></div>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="row"></div>
+                <!-- <div class="row"><p>asdasdasd</p></div> -->
             </div>
 
         <div class="col-lg-8 col-md-12 col-sm-12">

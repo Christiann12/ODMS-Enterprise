@@ -13,13 +13,15 @@ for (i = 0; i < acc.length; i++) {
   });
 }
 
-function displayPages(contactus) {
+function display(contactus) {
+  
   var a = document.getElementById("gen-page");
   var b = document.getElementById("ping-page");
   var c = document.getElementById("servprod-page");
   var d = document.getElementById("fa-page");
 
   if (contactus == "gen-page") {
+    
       a.style.display = "block";
       b.style.display = "none";
       c.style.display = "none";
@@ -43,7 +45,8 @@ function displayPages(contactus) {
     d.style.display = "block";
   } 
 }
-displayPages('gen-page');
+display('gen-page');
+
 
 var header = document.getElementById("sublink");
 var btns = header.getElementsByClassName("text");
