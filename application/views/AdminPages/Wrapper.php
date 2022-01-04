@@ -16,11 +16,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="list-group list-group-flush">
     
-            <a href="#" class="list-group-item list-group-item-action mx-auto mt-3" id="elementadmin1"><i class="fa fa-home "></i></a>
-            <a href="#" class="list-group-item list-group-item-action mx-auto mt-3" id="elementadmin2"><i class="fa fa-book"></i></a>
-            <a href="#" class="list-group-item list-group-item-action mx-auto mt-3" id="elementadmin3"><i class="fa fa-bell"></i></a>
-            <a href="#" class="list-group-item list-group-item-action mx-auto mt-3" id="elementadmin4"><i class="fa fa-user "></i></a>
-            <a href="#" class="list-group-item list-group-item-action mx-auto mt-3" id="elementadmin4"><i class="fa fa-pencil-square"></i></a>
+            <a href="<?php echo base_url('admin/dashboard')?>" class=" <?php echo (($this->uri->segment(2) == 'dashboard') ? "active" : null) ?> list-group-item list-group-item-action mx-auto mt-3" id="elementadmin1"><i class="fa fa-home "></i></a>
+            <a href="<?php echo base_url('admin/transaction')?>" class=" <?php echo (($this->uri->segment(2) == 'transaction') ? "active" : null) ?> list-group-item list-group-item-action mx-auto mt-3" id="elementadmin2"><i class="fa fa-book"></i></a>
+            <a href="<?php echo base_url('admin/ping')?>" class=" <?php echo (($this->uri->segment(2) == 'ping') ? "active" : null) ?> list-group-item list-group-item-action mx-auto mt-3" id="elementadmin3"><i class="fa fa-bell"></i></a>
+            <a href="<?php echo base_url('admin/support')?>" class=" <?php echo (($this->uri->segment(2) == 'support') ? "active" : null) ?> list-group-item list-group-item-action mx-auto mt-3" id="elementadmin4"><i class="fa fa-user "></i></a>
+            <a href="<?php echo base_url('admin/inventory')?>" class=" <?php echo (($this->uri->segment(2) == 'inventory') ? "active" : null) ?> list-group-item list-group-item-action mx-auto mt-3" id="elementadmin4"><i class="fa fa-pencil-square"></i></a>
         </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -46,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
 
                 <li class="nav-item active">
-                    <a class="nav-link sign-out" href="<?php echo base_url(); ?>admin/index/loginpage"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+                    <a class="nav-link sign-out" href="<?php echo base_url('login'); ?>"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
                 </li>
                 
             </ul>
@@ -55,7 +55,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </nav>
         <!-- Page content -->
         <?php //include $page."Wrapper.php";?> 
-        <?php include "Dashboard.php";?> 
+        <?php include $param.".php";?> 
         <!-- end of page content -->
     </div>
     <!-- /#page-content-wrapper -->

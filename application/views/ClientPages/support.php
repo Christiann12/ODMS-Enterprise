@@ -3,10 +3,10 @@
         <div class="details">
             <h4>Table of Contents<br></h4>
             <div class="textlink" id="sublink">
-                <h3 class="text" id="faqgen" onclick="displayPages('gen-page')">GENERAL<br></h3>
-                <h3 class="text" id="faqping" onclick="displayPages('ping-page')">PING<br></h3>
-                <h3 class="text" id="faqservprod" onclick="displayPages('servprod-page')">SERVICES & PRODUCTS<br></h3>
-                <h3 class="text" id="faqfa" onclick="displayPages('fa-page')">FINANCIAL ASSISTANCE<br></h3>
+                <h3 class="text" id="faqgen" onclick="display('gen-page')">GENERAL<br></h3>
+                <h3 class="text" id="faqping" onclick="display('ping-page')">PING<br></h3>
+                <h3 class="text" id="faqservprod" onclick="display('servprod-page')">SERVICES & PRODUCTS<br></h3>
+                <h3 class="text" id="faqfa" onclick="display('fa-page')">FINANCIAL ASSISTANCE<br></h3>
             </div>
         </div>
         <!-- faq accordions -->
