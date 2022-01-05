@@ -372,16 +372,118 @@
     opacity: 70%;
 }
 
-  .textform{
-      position: absolute;
-      font-size: 60px;
-      margin-top: 28%;
-      margin-left: 10%;
-      color: white;
-      font-weight: 600;
-      text-shadow: black;
-      text-align: center;
+.textform {
+    position: absolute;
+    margin-top: 28%;
+    margin-left: 10%;
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 60px;
+    line-height: 118.9%;
+    text-align: center;
+    letter-spacing: -5px;
+    color: #FFFFFF;
+    text-shadow: 4px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+  .form-label-group {
+    position: relative;
+    margin-bottom: 1rem;
+}
+  
+  .form-label-group input,
+  .form-label-group label {
+    height: 3.125rem;
+    padding: .75rem;
   }
+  
+  .form-label-group label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    margin-bottom: 0; /* Override default `<label>` margin */
+    line-height: 1.5;
+    color: #495057;
+    pointer-events: none;
+    cursor: text; /* Match the input under the label */
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    transition: all .1s ease-in-out;
+  }
+  
+  .form-label-group input::-webkit-input-placeholder {
+    color: transparent;
+  }
+  
+  .form-label-group input::-moz-placeholder {
+    color: transparent;
+  }
+  
+  .form-label-group input:-ms-input-placeholder {
+    color: transparent;
+  }
+  
+  .form-label-group input::-ms-input-placeholder {
+    color: transparent;
+  }
+  
+  .form-label-group input::placeholder {
+    color: transparent;
+  }
+  
+  .form-label-group input:not(:-moz-placeholder-shown) {
+    padding-top: 1.25rem;
+    padding-bottom: .25rem;
+  }
+  
+  .form-label-group input:not(:-ms-input-placeholder) {
+    padding-top: 1.25rem;
+    padding-bottom: .25rem;
+  }
+  
+  .form-label-group input:not(:placeholder-shown) {
+    padding-top: 1.25rem;
+    padding-bottom: .25rem;
+  }
+  
+  .form-label-group input:not(:-moz-placeholder-shown) ~ label {
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    font-size: 12px;
+    color: #777;
+  }
+  
+  .form-label-group input:not(:-ms-input-placeholder) ~ label {
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    font-size: 12px;
+    color: #777;
+  }
+  
+  .form-label-group input:not(:placeholder-shown) ~ label {
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    font-size: 12px;
+    color: #777;
+  }
+  
+  .form-label-group input:-webkit-autofill ~ label {
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    font-size: 12px;
+    color: #777;
+  }
+
+  .faqlabel {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+}
+
 
   /* Media Query for Picture/Overlay/Text */
 
@@ -523,10 +625,6 @@
       margin-left: 60%;
 }
 
-.faqform .faqlabel{
-    font-size: 15px !important;
-}
-
 .faqform .faqfname{
     margin-bottom: 3%;
     font-weight: 600;
@@ -559,32 +657,15 @@
     box-shadow: none !important;
 }
 
-.faqbtn{
-    position: absolute !important;
-    margin-left: 60%;
-    margin-top: 43%;
-    background-color: #F6C510;
-    box-shadow: 5px 5px 5px rgba(0,0,0,.8);
-    transition: all 0.1s ease 0s;
-    border-radius: 5px;
-    outline: none !important;
+.faqBtn{
+    /* position: absolute !important; */
+    flex-direction: column; align-items: center; padding: 10px 20px; width: 100%; height: 47px; background-color: #F6C510; border: none; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 4px; 
+
+    /* Button text */
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 14px; line-height: 24px; align-items: center; text-align: center; letter-spacing: 1.25px; 
 }
 
-.faqbtn .faqbtn2{
-    width: 500px;
-    box-shadow: 5px 5px 5px rgba(0,0,0,.8);
-    outline: none !important;
-    box-shadow: none !important;
-    font-size: 10px;
-}
-
-.faqbtn:hover{
-    transform: translateY(-7px);
-    outline: none !important;
-    box-shadow: none !important;
-}
-
-.faqbtn2:hover{
+.faqBtn:hover{
     color: white !important;
     font-weight: 500;
 }

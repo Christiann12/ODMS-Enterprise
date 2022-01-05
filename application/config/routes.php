@@ -58,7 +58,8 @@ $route['contactus'] = 'main/contactus';
 $route['aboutus'] = 'main/aboutus';
 $route['fa'] = 'main/fa';
 $route['ping'] = 'main/ping';
-$route['shop'] = 'main/shop';
+$route['products'] = 'main/products';
+$route['services'] = 'main/services';
 
 // end client routes
 
