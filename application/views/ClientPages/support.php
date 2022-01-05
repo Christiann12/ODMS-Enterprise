@@ -130,34 +130,34 @@
 <div class="card border-0">
     <img src="<?php echo base_url(); ?>application/assets/images/ClientPagesImages/services.jpg" alt="contactus" class="picture">
     <div class="overlay"></div>
+    <div class="textform">
+        <p>HAVE SOME <br>QUESTIONS?</p>
+    </div>
     <form class="faqform">
 
-        <div class="faqfnamefloat form-floating">
-            <input type="text" class="faqfname form-control" id="faqfname" placeholder="Enter fname" name="fname">
+        <div class="form-label-group">
+            <input type="text" class="faqfname form-control" id="faqfname" placeholder="First Name" name="fname" required autofocus>
             <label for="faqfname" class="faqlabel">First Name</label>
-        </div>  
+        </div>
 
-        <div class="faqlnamefloat form-floating">
-            <input type="text" class="faqlname form-control" id="faqfname" placeholder="Enter lname" name="lname">
+        <div class="form-label-group">
+            <input type="text" class="faqlname form-control" id="faqfname" placeholder="Last Name" name="lname" required autofocus>
             <label for="faqlname" class="faqlabel">Last Name</label>
         </div>
 
-        <div class="faqemailfloat form-floating">
-            <input type="email" class="faqemail form-control" id="faqemail" placeholder="Enter email" name="email">
+        <div class="form-label-group">
+            <input type="email" class="faqemail form-control" id="faqemail" placeholder="Email Address" name="email" required autofocus>
             <label for="faqemail" class="faqlabel">Email Address</label>
         </div>    
 
-        <div class="faqqstfloat form-floating">
-            <input type="text" class="faqqst form-control" id="faqqst" style="height: 100px" placeholder="Enter questions" name="questions">
-            <label for="faqqst" class="faqlabel">Your questions...</label>
+        <div class="form-label-group">
+            <textarea class="faqqst form-control" id="faqqst" rows="3" placeholder="Concern" required autofocus></textarea>
         </div>
+
+        <button type="button" class="faqBtn btn btn-lg">SEND MESSAGE</button>
+
     </form>
-    <div class="faqbtn">
-        <button type="button" class=" faqbtn2 btn btn-lg">SEND MESSAGE</button>
-    </div>
-    <div class="textform">
-        HAVE SOME <br>QUESTIONS?
-    </div>
+    
 </div>
 
 

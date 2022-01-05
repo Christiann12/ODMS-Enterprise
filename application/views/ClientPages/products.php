@@ -2,14 +2,19 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
-<div class="card border-0">
+<div class="productBanner">
     <img src="<?php echo base_url(); ?>application/assets/images/ClientPagesImages/poles_edited.jpg" alt="contactus" class="prodpicture">
     <div class="overlayprod"></div>
-    <h4 class="about">ABOUT</h4>
-    <h2 class="welight">We Light Up Your Life</h2>
-    <h3 class="descwelight">This section is an overview of what the Products function is. It specifies what kind of products the sub-contractors can avail for their projects.</h3>
-    <h3 class="descwelight2">Can be summarized in one or two paragraphs</h3>
-    <button type="button" class=" welightbtn btn btn-md">LEARN MORE</button>
+    <div class="productDivContent row" >
+      <div class="productsBannerDiv col-12 col-md-6">
+        <p class="aboutText">ABOUT</p>
+        <p class="welightText">We Light Up Your Life</p>
+        <p class="descwelightText">This section is an overview of what the Products function is. It specifies what kind of products the sub-contractors can avail for their projects. <br> Can be summarized in one or two paragraphs.</p>
+        <button type="button" class="serviceBannerBtn">LEARN MORE</button>
+      </div>
+    </div>
+    
+    
 </div>
 
 <div class="container border-0">
@@ -803,12 +808,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- End of Product Modal Section -->
 
 <!-- Product Order Section -->
-<div>
-<div class="container orderSection">
-  <div class="row">
-    <div class="orderProdCol col-xl-6 col-l-6 col-md-12 col-sm-12 border-0" style="overflow:auto;">
-
-      <div class="fprow">
+<div class="orderSection">
+  <div class="row" >
+    <div class="orderProdCol col-xl-6 col-l-6 col-md-12 col-sm-12 border-0" >
+      <div class="fprow" >
         <h3 class="yourOrder">Your Order</h3>
       </div>
 
@@ -920,79 +923,76 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="orderProdForm">
         <p class="orderProdFormTitle col-12">Order Form</p>
         <form>
-          
-            <div class="col-12">
-              <div class="form-label-group">
-                <input type="text" id="firstName" class="inputDesign form-control" placeholder="Last Name" required autofocus>
-                <label for="inputEmail" class="labelDesign">First Name</label>
+          <div class="form-row">
+              <div class="col-6">
+                  <div class="form-label-group">
+                      <input type="text" id="firstName" class="inputDesign form-control" placeholder="Last Name" required autofocus>
+                      <label for="inputEmail" class="labelDesign">First Name</label>
+                  </div>
               </div>
-            </div>
-
-            <div class="col-12">
-              <div class="form-label-group">
-                <input type="text" id="lastName" class="inputDesign form-control" placeholder="First Name" required autofocus>
-                <label for="inputEmail" class="labelDesign">Last Name</label>
+              <div class="col-6">
+                  <div class="form-label-group">
+                      <input type="text" id="lastName" class="inputDesign form-control" placeholder="First Name" required autofocus>
+                      <label for="inputEmail" class="labelDesign">Last Name</label>
+                  </div>
               </div>
-            </div>
-          
-
-          <div class="form-label-group col-12">
-            <input type="email" id="emailAddress" class="inputDesign form-control" placeholder="Email Address" required autofocus>
-            <label for="emailAddress" class="labelDesign">Email Address</label>
           </div>
 
-          <div class="form-label-group col-12 ">
-            <input type="text" id="phoneNumber" class="inputDesign form-control" placeholder="Phone Number" required autofocus>
-            <label for="phoneNumber" class="labelDesign">Phone Number</label>
+          <div class="form-label-group">
+              <input type="email" id="emailAddress" class="inputDesign form-control" placeholder="Email Address" required autofocus>
+              <label for="emailAddress" class="labelDesign">Email Address</label>
           </div>
 
-          <div class="form-label-group col-12">
-            <input type="text" id="companyName" class="inputDesign form-control" placeholder="Company Name" required autofocus>
-            <label for="companyName" class="labelDesign">Company Name</label>
+          <div class="form-label-group">
+              <input type="text" id="phoneNumber" class="inputDesign form-control" placeholder="Phone Number" required autofocus>
+              <label for="phoneNumber" class="labelDesign">Phone Number</label>
           </div>
 
-          <div class="form-label-group col-12">
-            <input type="text" id="companyAddress" class="inputDesign form-control" placeholder="Company Address" required autofocus>
-            <label for="companyAddress" class="labelDesign">Company Address</label>
+          <div class="form-label-group">
+              <input type="text" id="companyName" class="inputDesign form-control" placeholder="Company Name" required autofocus>
+              <label for="companyName" class="labelDesign">Company Name</label>
           </div>
 
-          <div class="form-row col-12">
-            <div class="col-6">
-              <div class="form-label-group">
-                <input type="text" id="cityName" class="inputDesign form-control" placeholder="City" required autofocus>
-                <label for="cityName" class="labelDesign">City</label>
+          <div class="form-label-group">
+              <input type="text" id="companyAddress" class="inputDesign form-control" placeholder="Company Address" required autofocus>
+              <label for="companyAddress" class="labelDesign">Company Address</label>
+          </div>
+
+          <div class="form-row">
+              <div class="col-6">
+                  <div class="form-label-group">
+                      <input type="text" id="cityName" class="inputDesign form-control" placeholder="City" required autofocus>
+                      <label for="cityName" class="labelDesign">City</label>
+                  </div>
               </div>
-            </div>
-                            
-            <div class="col-6">
-              <div class="form-label-group">
-                <select class="form-control" name="stateProvince" id="stateProvince" style="width: 100%; height: 100%;">
-                  <option>State/Province</option>
-                  <option>Laguna</option>
-                  <option>Cavite</option>
-                  <option>Batangas</option>
-                  <option>Metro Manila</option>
-                </select>
+              <div class="col-6">
+                  <div class="form-label-group">
+                      <select class="form-control" name="stateProvince" id="stateProvince" style="width: 100%; height: 100%;">
+                          <option>State/Province</option>
+                          <option>Laguna</option>
+                          <option>Metro Manila</option>
+                      </select>
+                  </div>
               </div>
-            </div>
           </div>
 
-          <div class="form-row col-12">
-            <div class="col-12">
-              <div class="form-label-group">
-                <input type="text" id="postalCode" class="inputDesign form-control" placeholder="Postal Code" required autofocus>
-                <label for="postalCode" class="labelDesign">Postal Code</label>
+          <div class="form-row">
+              <div class="col-6">
+                  <div class="form-label-group">
+                      <input type="text" id="postalCode" class="inputDesign form-control" placeholder="Postal Code" required autofocus>
+                      <label for="postalCode" class="labelDesign">Postal Code</label>
+                  </div>
               </div>
-            </div>
           </div>
 
-          <div class="form-label-group col-12">
-            <input type="text" id="faCode" class="inputDesign form-control" placeholder="Financial Assistance Code" required autofocus>
-            <label for="faCode" class="labelDesign">Financial Assistance Code</label>
-            <small id="faCode" class="additionalInfo form-text">Interested to avail? <strong class="clH">Click here</strong></small>
+          <div class="form-label-group">
+              <input type="text" id="faCode" class="inputDesign form-control" placeholder="Financial Assistance Code" required autofocus>
+              <label for="faCode" class="labelDesign">Financial Assistance Code</label>
+              <small id="faCode" class="additionalInfo form-text">Interested to avail? <strong>Click here</strong></small>
           </div>
 
           <button type="submit" class="ordCheckOutBtn">CHECK-OUT</button>
+          
         </form>
       </div> <!-- orderForm -->
     </div>

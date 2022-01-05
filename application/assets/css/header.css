@@ -38,7 +38,7 @@
 .nav-item:hover{
     border-bottom: solid #ccac46 0.5px;
 }
-.nav-link:hover{
+.nav-link:hover {
     color: #ccac46;
 }
 .divicon{
@@ -48,6 +48,27 @@
     padding-left:40px;
     padding-right:40px;
   }
+.dropdown-menu {
+    background-color: #4b4e30;
+}
+.dropdown-menu .dropdown-item {
+    color: #ccac46;
+    
+}
+
+.dropdown-menu .dropdown-item:hover {
+    background-color: #ccac46;
+    color: black;
+    
+}
+.shopDropdownActive {
+    background-color: rgba(204, 173, 70, 0.5);
+    
+}
+
+.dropdown-menu .dropdown-divider {
+    border-color: #ccac46;
+}
 @media (min-width: 576px) {
     
 }

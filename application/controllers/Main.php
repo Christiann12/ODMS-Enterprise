@@ -34,7 +34,13 @@ class Main extends CI_Controller {
 		$this->load->view('ClientPages/aboutus.php');
 		$this->load->view('HeaderNFooter/Footer.php');
 	}
-	public function shop(){
+	public function products(){
+		$this->load->helper('url');
+		$this->load->view('HeaderNFooter/Header.php');
+		$this->load->view('ClientPages/products.php');
+		$this->load->view('HeaderNFooter/Footer.php');
+	}
+	public function services(){
 		$this->load->helper('url');
 		$this->load->view('HeaderNFooter/Header.php');
 		$this->load->view('ClientPages/Services.php');
