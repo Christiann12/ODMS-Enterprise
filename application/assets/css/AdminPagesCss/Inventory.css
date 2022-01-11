@@ -27,7 +27,7 @@ font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 34px; 
 }
 
 .inventorySection .inventoryHeadingDiv .row .inventoryButtonDiv {
-    padding-top: 20px; padding-bottom: 20px; padding-left: 20px; padding-right: 0; margin-left: auto; margin-right: 0; 
+    padding-top: 20px; padding-bottom: 20px; padding-left: 20px; padding-right: 0px; margin-left: auto; margin-right: 0; 
 }
 
 .inventorySection .inventoryHeadingDiv .row .inventoryButtonDiv .addItemBtn {
