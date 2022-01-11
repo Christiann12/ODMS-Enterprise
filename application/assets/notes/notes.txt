@@ -1,0 +1,42 @@
+<?php echo form_close() ?>
+<?php echo form_open_multipart('admin/inventory') ?>
+<?php echo (($this->uri->segment(3)!=null)?$this->uri->segment(3):$document->patient_id) ?>
+
+
+
+
+function loadTable(){
+    $(\'#inventoryTable\').DataTable().destroy();
+    $(\'#inventoryTable\').DataTable({
+        "lengthMenu": [[10, 25, 100, 1000, 3000, -1], [10, 25, 100, 1000, 3000]],
+        "processing":true,
+        "language": {
+            processing: \'<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span> \'
+        },
+        "serverSide":true,
+        "responsive": true,
+        "bPaginate": true,
+        "sPaginationType": "full_numbers",
+        "ajax": {
+            "url": "'.base_url('admin/inventoryAjax/').'",
+            "type": "POST",
+        },
+        "columnDefs":[{
+            "targets":[0],
+            "orderable":false,
+        },],
+        "order":[],
+        "searching": true,
+        initComplete : function() {
+            var input = $(\'.dataTables_filter input\').unbind(),
+                self = this.api(),
+                $searchButton = $(\'<button class="btn btn-primary ml-md-3" style="height: 30px, text-align: center;">\')
+                            .text(\'search\')
+                            .click(function() {
+                                test();
+                            })
+                
+            $(\'.dataTables_filter\').append($searchButton);
+        }      
+    });
+}

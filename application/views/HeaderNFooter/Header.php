@@ -82,8 +82,8 @@
                     <li class="nav-item <?php echo (($this->uri->segment(1) == '') ? "active" : null) ?>" ><a class="nav-link" href="<?php echo base_url() ?>">Home</a></li>
                     <li class="nav-item <?php echo (($this->uri->segment(1) == 'contactus') ? "active" : null) ?>"><a class="nav-link" href="<?php echo base_url('contactus') ?>">Contact Us</a></li>
                     <li class="nav-item <?php echo (($this->uri->segment(1) == 'aboutus') ? "active" : null) ?>"><a class="nav-link" href="<?php echo base_url('aboutus') ?>">About Us</a></li>
-                    <li class="nav-item dropdown">
-                      <a class="nav-link dropdown-toggle" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
+                    <li class="nav-item dropdown <?php echo (($this->uri->segment(1) == 'products'||$this->uri->segment(1) == 'services') ? "active" : null) ?>">
+                      <a class="nav-link dropdown-toggle " href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Shop</a>
                       <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item <?php echo (($this->uri->segment(1) == 'products') ? "shopDropdownActive" : null) ?>" href="<?php echo base_url('products') ?>">Products</a>
                         <div class="dropdown-divider"></div>

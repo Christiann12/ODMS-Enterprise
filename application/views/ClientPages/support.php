@@ -136,22 +136,22 @@
     <form class="faqform">
 
         <div class="form-label-group">
-            <input type="text" class="faqfname form-control" id="faqfname" placeholder="First Name" name="fname" required autofocus>
+            <input type="text" class="faqfname form-control" id="faqfname" placeholder="First Name" name="fname" >
             <label for="faqfname" class="faqlabel">First Name</label>
         </div>
 
         <div class="form-label-group">
-            <input type="text" class="faqlname form-control" id="faqfname" placeholder="Last Name" name="lname" required autofocus>
+            <input type="text" class="faqlname form-control" id="faqfname" placeholder="Last Name" name="lname" >
             <label for="faqlname" class="faqlabel">Last Name</label>
         </div>
 
         <div class="form-label-group">
-            <input type="email" class="faqemail form-control" id="faqemail" placeholder="Email Address" name="email" required autofocus>
+            <input type="email" class="faqemail form-control" id="faqemail" placeholder="Email Address" name="email" >
             <label for="faqemail" class="faqlabel">Email Address</label>
         </div>    
 
         <div class="form-label-group">
-            <textarea class="faqqst form-control" id="faqqst" rows="3" placeholder="Concern" required autofocus></textarea>
+            <textarea class="faqqst form-control" id="faqqst" rows="3" placeholder="Concern" ></textarea>
         </div>
 
         <button type="button" class="faqBtn btn btn-lg">SEND MESSAGE</button>
