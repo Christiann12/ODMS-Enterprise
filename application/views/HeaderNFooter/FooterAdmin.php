@@ -21,7 +21,9 @@
 
 		<script src="<?php echo base_url(); ?>application/assets/js/AdminPagesJs/support.js"></script>
 
-		<script src="<?php echo base_url(); ?>application/assets/js/AdminPagesJs/transaction.js"></script> 
+		<script src="<?php echo base_url(); ?>application/assets/js/AdminPagesJs/transaction.js"></script>
+		<script src="<?php echo base_url(); ?>application/assets/js/AdminPagesJs/UserManagement.js"></script>  
+		<script src="<?php echo base_url(); ?>application/assets/js/AdminPagesJs/ServicesInventory.js"></script>  
 
 
 		<!-- HighChart.js -->

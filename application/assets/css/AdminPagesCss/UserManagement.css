@@ -1,0 +1,151 @@
+.createUserSection {
+    width: auto; height: auto; margin: 50px; padding: 20px; background: #FFFFFF; box-shadow: 5px 4px 70px 5px rgba(0, 0, 0, 0.1); border-radius: 20px; 
+}
+
+.createUserSection .createUserDiv {
+    padding: 20px; margin-bottom: 10px; 
+}
+
+.createUserSection .createUserDiv .row .createUserTextDiv {
+    width: fit-content; padding: 10px; 
+}
+
+.createUserSection .createUserDiv .row .createUserIcon {
+    width: fit-content; color: rgba(75, 78, 48, 0.34); padding: 10px; 
+}
+
+.form-label-group {
+    position: relative;
+    margin-bottom: 1rem;
+}
+  
+  .form-label-group input,
+  .form-label-group label {
+    height: 3.125rem;
+    padding: .75rem;
+  }
+  
+  .form-label-group label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: block;
+    width: 100%;
+    margin-bottom: 0; /* Override default `<label>` margin */
+    line-height: 1.5;
+    color: #495057;
+    pointer-events: none;
+    cursor: text; /* Match the input under the label */
+    border: 1px solid transparent;
+    border-radius: .25rem;
+    transition: all .1s ease-in-out;
+  }
+  
+  .form-label-group input::-webkit-input-placeholder {
+    color: transparent;
+  }
+  
+  .form-label-group input::-moz-placeholder {
+    color: transparent;
+  }
+  
+  .form-label-group input:-ms-input-placeholder {
+    color: transparent;
+  }
+  
+  .form-label-group input::-ms-input-placeholder {
+    color: transparent;
+  }
+  
+  .form-label-group input::placeholder {
+    color: transparent;
+  }
+  
+  .form-label-group input:not(:-moz-placeholder-shown) {
+    padding-top: 1.25rem;
+    padding-bottom: .25rem;
+  }
+  
+  .form-label-group input:not(:-ms-input-placeholder) {
+    padding-top: 1.25rem;
+    padding-bottom: .25rem;
+  }
+  
+  .form-label-group input:not(:placeholder-shown) {
+    padding-top: 1.25rem;
+    padding-bottom: .25rem;
+  }
+  
+  .form-label-group input:not(:-moz-placeholder-shown) ~ label {
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    font-size: 12px;
+    color: #777;
+  }
+  
+  .form-label-group input:not(:-ms-input-placeholder) ~ label {
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    font-size: 12px;
+    color: #777;
+  }
+  
+  .form-label-group input:not(:placeholder-shown) ~ label {
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    font-size: 12px;
+    color: #777;
+  }
+  
+  .form-label-group input:-webkit-autofill ~ label {
+    padding-top: .25rem;
+    padding-bottom: .25rem;
+    font-size: 12px;
+    color: #777;
+  }
+
+.labelDesign {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 20px;
+}
+
+.inputDesign {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 24px;
+    color: #111111;
+}
+
+.createUserSection .userTableDiv .userTableTextDiv {
+    padding: 20px; 
+}
+
+.createUserSection .userTableDiv .userTableWrapper {
+    padding: 20px;
+}
+
+.createUserText {
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 34px; line-height: 41px; display: flex; align-items: center; letter-spacing: 0.25em; color: #000000; 
+
+}
+
+.userTableText {
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 24px; line-height: 41px; display: flex; align-items: center; letter-spacing: 0.25em; color: #000000; 
+
+}
+
+.createUserSection .createUserDiv .userFormDiv {
+    padding: 20px;
+}
+
+.userSubmitBtn {
+    flex-direction: column; padding: 10px 20px; align-self: center; width: 150px; height: 47px; background-color: #F6C510; border: none; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 4px; 
+
+    /* Button text */
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 14px; line-height: 24px; align-items: center; text-align: center; letter-spacing: 1.25px;
+}
+
