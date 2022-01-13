@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/AdminPagesCss/transaction.css"/>
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/AdminPagesCss/UserManagement.css"/>
     <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/AdminPagesCss/ServicesInventory.css"/>
+    <link rel="stylesheet" href="<?php echo base_url(); ?>application/assets/css/AdminPagesCss/FinancialAssistance.css"/>
 
 	</head>
 <body style="font-family: Montserrat; background-color: #E5E5E5;" >

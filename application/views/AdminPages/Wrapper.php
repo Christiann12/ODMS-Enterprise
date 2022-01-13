@@ -23,6 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <a href="<?php echo base_url('admin/inventory')?>" class=" <?php echo (($this->uri->segment(2) == 'inventory') ? "active" : null) ?> list-group-item list-group-item-action mx-auto mt-3" id="elementadmin4"><i class="fa fa-pencil-square"></i></a>
             <a href="<?php echo base_url('admin/userManagement')?>" class=" <?php echo (($this->uri->segment(2) == 'userManagement') ? "active" : null) ?> list-group-item list-group-item-action mx-auto mt-3" id="elementadmin4"><i class="fa fa-id-card"></i></a>
             <a href="<?php echo base_url('admin/servicesInventory')?>" class=" <?php echo (($this->uri->segment(2) == 'servicesInventory') ? "active" : null) ?> list-group-item list-group-item-action mx-auto mt-3" id="elementadmin4"><i class="fa fa-cogs"></i></a>
+            <a href="<?php echo base_url('admin/financialAssistance')?>" class=" <?php echo (($this->uri->segment(2) == 'financialAssistance') ? "active" : null) ?> list-group-item list-group-item-action mx-auto mt-3" id="elementadmin4"><i class="fa fa-handshake-o"></i></a>
         </div>
     </div>
     <!-- /#sidebar-wrapper -->

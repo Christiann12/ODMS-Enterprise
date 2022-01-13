@@ -1,0 +1,69 @@
+.fAssistanceAdminSection {
+    width: auto; height: auto; margin: 50px; padding: 20px; background: #FFFFFF; box-shadow: 5px 4px 70px 5px rgba(0, 0, 0, 0.1); border-radius: 20px; 
+}
+
+.fAssistanceAdminSection .fAssistanceAdminHeadingDiv {
+    padding: 20px; margin-bottom: 10px; 
+}
+
+.fAssistanceAdminSection .fAssistanceAdminHeadingDiv .row .fAssistanceAdminTextDiv {
+    width: fit-content; padding: 10px; 
+}
+
+.fAssistanceAdminSection .fAssistanceAdminHeadingDiv .row .fAssistanceAdminIcon {
+    width: fit-content; color: rgba(75, 78, 48, 0.34); padding: 10px; 
+}
+
+.fAssistanceAdminText {
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 34px; line-height: 41px; display: flex; align-items: center; letter-spacing: 0.25em; color: #000000; 
+
+}
+
+.fAssistanceAdminSection .fAssistanceAdminHeadingDiv .row .fAssistanceAdminBtnDiv {
+    padding-top: 10px; margin-left: auto; margin-right: 0;
+}
+
+.fAssistanceAdminBtn {
+    flex-direction: column; padding: 10px 20px; align-self: center; width: 200px; height: 47px; background-color: #F6C510; border: none; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 4px; 
+
+    /* Button text */
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 14px; line-height: 24px; align-items: center; text-align: center; letter-spacing: 1.25px;
+}
+
+.fAssistanceAdminSection .fAssistanceAdminTableWrapper {
+    padding: 20px;
+}
+
+.fAssistanceAdminSection .fAssistanceAdminTableWrapper .fAssistanceAdminTableHeader {
+    background-color: #BEBEBE; 
+}
+
+/* LOAN CSS */
+.loanAdminSection {
+    width: auto; height: auto; margin: 50px; padding: 20px; background: #FFFFFF; box-shadow: 5px 4px 70px 5px rgba(0, 0, 0, 0.1); border-radius: 20px; 
+}
+
+.loanAdminSection .loanAdminHeadingDiv {
+    padding: 20px; margin-bottom: 10px; 
+}
+
+.loanAdminSection .loanAdminHeadingDiv .row .loanAdminTextDiv {
+    width: fit-content; padding: 10px; 
+}
+
+.loanAdminSection .loanAdminHeadingDiv .row .loanAdminIcon {
+    width: fit-content; color: rgba(75, 78, 48, 0.34); padding: 10px; 
+}
+
+.loanAdminText {
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 34px; line-height: 41px; display: flex; align-items: center; letter-spacing: 0.25em; color: #000000; 
+
+}
+
+.loanAdminSection .loanAdminTableWrapper {
+    padding: 20px;
+}
+
+.loanAdminSection .loanAdminTableWrapper .loanAdminTableHeader {
+    background-color: #BEBEBE; 
+}
