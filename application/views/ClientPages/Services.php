@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
 
                     <div class="d-flex buttonContainer" style="">
-                        <button type="button" class="btn btn-warning m-auto" id="serviceViewBtn">View</button>
+                        <button type="button" class="btn btn-warning m-auto" id="serviceViewBtn" onclick="location.href = '<?php echo base_url('servicesOrder')?>';">View</button>
                     </div>
                 </div>
             </div>
@@ -56,7 +56,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
 
                     <div class="d-flex buttonContainer" style="">
-                        <button type="submit" class="btn btn-warning m-auto" id="serviceViewBtn">View</button>
+                        <button type="submit" class="btn btn-warning m-auto" id="serviceViewBtn" onclick="location.href = '<?php echo base_url('servicesOrder')?>';">View</button>
                     </div>
                 </div>
             </div>
@@ -72,7 +72,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
 
                     <div class="d-flex buttonContainer" style="">
-                        <button type="button" class="btn btn-warning m-auto" id="serviceViewBtn">View</button>
+                        <button type="button" class="btn btn-warning m-auto" id="serviceViewBtn" onclick="location.href = '<?php echo base_url('servicesOrder')?>';">View</button>
                     </div>
                 </div>
             </div>

@@ -60,7 +60,8 @@ $route['fa'] = 'main/fa';
 $route['ping'] = 'main/ping';
 $route['products'] = 'main/products';
 $route['services'] = 'main/services';
-
+$route['servicesOrder'] = 'main/servicesOrder';
+$route['servicesOrderSuccess'] = 'main/servicesOrderSuccess';
 
 // end client routes
 

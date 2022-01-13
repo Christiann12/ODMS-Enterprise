@@ -50,6 +50,18 @@ class Main extends CI_Controller {
 		$this->load->view('ClientPages/services.php');
 		$this->load->view('HeaderNFooter/Footer.php');
 	}
+	public function servicesOrder(){
+		$this->load->helper('url');
+		$this->load->view('HeaderNFooter/Header.php');
+		$this->load->view('ClientPages/ServicesOrder.php');
+		$this->load->view('HeaderNFooter/Footer.php');
+	}
+	public function servicesOrderSuccess(){
+		$this->load->helper('url');
+		$this->load->view('HeaderNFooter/Header.php');
+		$this->load->view('ClientPages/ServicesOrderSuccess.php');
+		$this->load->view('HeaderNFooter/Footer.php');
+	}
 	public function products(){
 		$this->load->helper('url');
 		
