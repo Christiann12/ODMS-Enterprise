@@ -37,49 +37,49 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <p class="orderFormTitle">Order form</p>
                     <form>
                         <div class="form-label-group">
-                            <input type="text" id="serviceText" class="inputDesign form-control" value="Power Lines Installation" required autofocus>
+                            <input type="text" id="serviceText" class="inputDesign form-control" value="Power Lines Installation" required>
                             <label for="serviceText" class="labelDesign">Service Availed</label>
                         </div>
 
                         <div class="form-row">
                             <div class="col-6">
                                 <div class="form-label-group">
-                                    <input type="text" id="firstName" class="inputDesign form-control" placeholder="Last Name" required autofocus>
+                                    <input type="text" id="firstName" class="inputDesign form-control" placeholder="Last Name" required>
                                     <label for="inputEmail" class="labelDesign">First Name</label>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="form-label-group">
-                                    <input type="text" id="lastName" class="inputDesign form-control" placeholder="First Name" required autofocus>
+                                    <input type="text" id="lastName" class="inputDesign form-control" placeholder="First Name" required>
                                     <label for="inputEmail" class="labelDesign">Last Name</label>
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-label-group">
-                            <input type="email" id="emailAddress" class="inputDesign form-control" placeholder="Email Address" required autofocus>
+                            <input type="email" id="emailAddress" class="inputDesign form-control" placeholder="Email Address" required >
                             <label for="emailAddress" class="labelDesign">Email Address</label>
                         </div>
 
                         <div class="form-label-group">
-                            <input type="text" id="phoneNumber" class="inputDesign form-control" placeholder="Phone Number" required autofocus>
+                            <input type="text" id="phoneNumber" class="inputDesign form-control" placeholder="Phone Number" required >
                             <label for="phoneNumber" class="labelDesign">Phone Number</label>
                         </div>
 
                         <div class="form-label-group">
-                            <input type="text" id="companyName" class="inputDesign form-control" placeholder="Company Name" required autofocus>
+                            <input type="text" id="companyName" class="inputDesign form-control" placeholder="Company Name" required >
                             <label for="companyName" class="labelDesign">Company Name</label>
                         </div>
 
                         <div class="form-label-group">
-                            <input type="text" id="companyAddress" class="inputDesign form-control" placeholder="Company Address" required autofocus>
+                            <input type="text" id="companyAddress" class="inputDesign form-control" placeholder="Company Address" required >
                             <label for="companyAddress" class="labelDesign">Company Address</label>
                         </div>
 
                         <div class="form-row">
                             <div class="col-6">
                                 <div class="form-label-group">
-                                    <input type="text" id="cityName" class="inputDesign form-control" placeholder="City" required autofocus>
+                                    <input type="text" id="cityName" class="inputDesign form-control" placeholder="City" required >
                                     <label for="cityName" class="labelDesign">City</label>
                                 </div>
                             </div>
@@ -87,8 +87,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 <div class="form-label-group">
                                     <select class="form-control" name="stateProvince" id="stateProvince" style="width: 100%; height: 100%;">
                                         <option>State/Province</option>
-                                        <option>Laguna</option>
-                                        <option>Metro Manila</option>
                                     </select>
                                 </div>
                             </div>
@@ -97,19 +95,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="form-row">
                             <div class="col-6">
                                 <div class="form-label-group">
-                                    <input type="text" id="postalCode" class="inputDesign form-control" placeholder="Postal Code" required autofocus>
+                                    <input type="text" id="postalCode" class="inputDesign form-control" placeholder="Postal Code" required>
                                     <label for="postalCode" class="labelDesign">Postal Code</label>
                                 </div>
                             </div>
                         </div>
 
                         <div class="form-label-group">
-                            <input type="text" id="faCode" class="inputDesign form-control" placeholder="Financial Assistance Code" required autofocus>
+                            <input type="text" id="faCode" class="inputDesign form-control" placeholder="Financial Assistance Code" required>
                             <label for="faCode" class="labelDesign">Financial Assistance Code</label>
                             <small id="faCode" class="additionalInfo form-text">Interested to avail? <strong>Click here</strong></small>
                         </div>
 
-                        <button type="submit" class="checkOutBtn">CHECK-OUT</button>
+                        <a href="<?php echo base_url('servicesOrderSuccess')?>">
+                            <button type="submit" class="checkOutBtn">CHECK-OUT</button>
+                        </a>
                         
                     </form>
                 </div> <!-- orderForm -->
