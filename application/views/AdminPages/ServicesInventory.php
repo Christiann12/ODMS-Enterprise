@@ -18,7 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
 
     <div class="serviceTableWrapper">
-            <table id="serviceInventoryTable" class="display responsive nowrap cell-border hover" width="100%">
+            <table id="serviceInventoryTable" class="display responsive cell-border hover" width="100%">
                 <thead class="serviceInventoryTableHeader">
                     <tr>
                         <th>Service ID</th>
@@ -26,6 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <th>Service Description</th>
                         <th>Service Price</th>
                         <th>Service Availability</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,6 +36,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <td>This service is...</td>
                         <td>PHP 2,000.00</td>
                         <td>Available</td>
+                        <td><center><i class="fa fa-pencil fa-1x" aria-hidden="true"></i></center></td>
                     </tr>
                     <tr>
                         <td>002</td>
@@ -42,6 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <td>This service is...</td>
                         <td>PHP 2,000.00</td>
                         <td>Available</td>
+                        <td><center><i class="fa fa-pencil fa-1x" aria-hidden="true"></i></center></td>
                     </tr>
 
                 </tbody>

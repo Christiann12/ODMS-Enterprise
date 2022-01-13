@@ -37,3 +37,7 @@
 .servicesInventoryDiv .serviceTableWrapper {
     padding: 20px;
 }
+
+.servicesInventoryDiv .serviceTableWrapper .serviceInventoryTableHeader {
+    background-color: #BEBEBE; 
+}

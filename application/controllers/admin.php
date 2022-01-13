@@ -84,6 +84,16 @@ class Admin extends CI_Controller {
 		$this->load->view('AdminPages/wrapper.php', $data);
 		$this->load->view('HeaderNFooter/FooterAdmin.php');
 	}
+
+	public function financialAssistance()
+	{
+		$data['param'] ='financialAssistance';
+		$this->load->helper('url');
+		
+		$this->load->view('HeaderNFooter/HeaderAdmin.php');
+		$this->load->view('AdminPages/wrapper.php', $data);
+		$this->load->view('HeaderNFooter/FooterAdmin.php');
+	}
 	
 	// show and save create data for inventory page
 	public function inventory()
