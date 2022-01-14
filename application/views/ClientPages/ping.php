@@ -1,7 +1,45 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
-
+<!-- create record modal -->
+<div class="modal hide fade" id="pingModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="updateModal">Ping Information</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body" style="word-wrap: break-word;">
+            <?php echo form_open_multipart('main/savePingInfo') ?>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="siteLocation" class="col-3 ">Site Location<i class="text-danger">*</i></label>
+                <div class="col-9">
+                    <input name="siteLocation"  type="text" class="form-control" id="siteLocation" placeholder="Input Site Location" value="">
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="emergencyNote" class="col-3 ">Emergency Note</label>
+                <div class="col-9">
+                    <textarea placeholder="Input Emergency Note I.e Send Ambulance" class="form-control" id="emergencyNote" name="emergencyNote"></textarea>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="lococationCode" class="col-3 ">Location Code<i class="text-danger">*</i></label>
+                <div class="col-9">
+                    <input name="lococationCode"  type="text" class="form-control" id="lococationCode" placeholder="Input Location Code" value="">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary">Send</button>
+        </div>
+        <?php echo form_close() ?>
+        </div>
+  </div>
+</div>
 <div class="pingBanner container mx-auto">
     <div class="row">
         <div class="col-12 col-md-6 content ">
@@ -69,7 +107,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="col-12 col-md-6 img" style="background-image: url('<?php echo base_url(); ?>application/assets/images/ClientPagesImages/ping 2.gif'); "></div>
         <div class="col-12 col-md-6 content ">
             <p class="heading1">Have An Emergency?</p>
-            <button type="button" class="btn btn-warning mt-md-4 mt-0" style="">LEARN MORE</button>
+            <button type="button" class="btn btn-warning mt-md-4 mt-0" style="" data-toggle="modal" data-target="#pingModal">PING US!</button>
         </div>        
     </div>
 </div>
