@@ -192,7 +192,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </button>
             </div>
             <div class="col-sm-12">
-                <form id="frmPatientSearch" style="width: 300px;margin: auto;">
+                <form id="inventorySearch" style="width: 300px;margin: auto;">
                     <div class="form-group">
                         <label for="txtSearch" style="text-transform: uppercase;width: 100%;text-align: center;">Search</label>
                         <input type="text" class="form-control" id="txtSearch" name="txtSearch" placeholder="Search here">

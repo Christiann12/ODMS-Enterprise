@@ -27,22 +27,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="col-md-4 col-xs-12">
                         <div class="col">
                             <!-- Form Start -->
-                            <form class="form-containerAd container-fluid">
+                            <div class="form-containerAd container-fluid">
+                                <?php echo form_open_multipart('admin/index') ?>
                                 <div class="col-12 lgAd">Login</div>
 
+                                <div class="alert alert-danger print-error-msg" style="display: <?php echo ((validation_errors() == '' || validation_errors() == null) ? "none;" : "block;")?>">
+                                <?php echo validation_errors(); ?>
+                                </div>
+                            
+                                <?php if($this->session->flashdata('successLogin')){ ?>
+                                    <div class="alert alert-success" > 
+                                        <?php  echo $this->session->flashdata('successLogin'); $this->session->unset_userdata ( 'successLogin' );?>
+                                    </div>
+                                <?php } ?>  
+                                <?php if ($this->session->flashdata('errorLogin')){ ?>
+                                    <div class="alert alert-danger" > 
+                                        <?php  echo $this->session->flashdata('errorLogin'); $this->session->unset_userdata ( 'errorLogin' );?>
+                                    </div>
+                                <?php } ?>
+
                                 <div class="form-label-group">
-                                    <input type="email" id="email" class="inputDesign form-control" placeholder="Email/Username" required autofocus>
-                                    <label for="inputEmail" class="labelDesign">Email/Username</label>
+                                    <input name="emailLogin" type="email" id="email" class="inputDesign form-control" placeholder="Email/Username">
+                                    <label for="emailLogin" class="labelDesign">Email/Username</label>
                                 </div>
 
                                 <div class="form-label-group">
-                                    <input type="password" id="passwordAdmin" class="inputDesign form-control" placeholder="Password" required autofocus>
-                                    <label for="inputPassword" class="labelDesign">Password</label>
+                                    <input name="passwordLogin" type="password" id="passwordLogin" class="inputDesign form-control" placeholder="Password">
+                                    <label for="passwordLogin" class="labelDesign">Password</label>
                                 </div>
 
                                 <div class="col-12 fgt">Forgot Password?</div>
-                                <div class="col" style="text-align:center"><button type="button" class="btn logBtn">LOGIN</button></div>
-                            </form>
+                                <div class="col" style="text-align:center"><button type="submit" class="btn logBtn">LOGIN</button></div>
+                                <?php echo form_close() ?>
+                            </div>
                             <!-- Form Ends -->
                         </div>
                     </div>
