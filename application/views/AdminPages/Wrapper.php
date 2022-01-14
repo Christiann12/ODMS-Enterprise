@@ -17,13 +17,42 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="list-group list-group-flush">
     
             <a href="<?php echo base_url('admin/dashboard')?>" class=" <?php echo (($this->uri->segment(2) == 'dashboard') ? "active" : null) ?> list-group-item list-group-item-action mx-auto mt-3" id="elementadmin1"><i class="fa fa-home "></i></a>
-            <a href="<?php echo base_url('admin/transaction')?>" class=" <?php echo (($this->uri->segment(2) == 'transaction') ? "active" : null) ?> list-group-item list-group-item-action mx-auto mt-3" id="elementadmin2"><i class="fa fa-book"></i></a>
-            <a href="<?php echo base_url('admin/ping')?>" class=" <?php echo (($this->uri->segment(2) == 'ping') ? "active" : null) ?> list-group-item list-group-item-action mx-auto mt-3" id="elementadmin3"><i class="fa fa-bell"></i></a>
-            <a href="<?php echo base_url('admin/support')?>" class=" <?php echo (($this->uri->segment(2) == 'support') ? "active" : null) ?> list-group-item list-group-item-action mx-auto mt-3" id="elementadmin4"><i class="fa fa-user "></i></a>
-            <a href="<?php echo base_url('admin/inventory')?>" class=" <?php echo (($this->uri->segment(2) == 'inventory') ? "active" : null) ?> list-group-item list-group-item-action mx-auto mt-3" id="elementadmin4"><i class="fa fa-pencil-square"></i></a>
-            <a href="<?php echo base_url('admin/userManagement')?>" class=" <?php echo (($this->uri->segment(2) == 'userManagement') ? "active" : null) ?> list-group-item list-group-item-action mx-auto mt-3" id="elementadmin4"><i class="fa fa-id-card"></i></a>
-            <a href="<?php echo base_url('admin/servicesInventory')?>" class=" <?php echo (($this->uri->segment(2) == 'servicesInventory') ? "active" : null) ?> list-group-item list-group-item-action mx-auto mt-3" id="elementadmin4"><i class="fa fa-cogs"></i></a>
-            <a href="<?php echo base_url('admin/financialAssistance')?>" class=" <?php echo (($this->uri->segment(2) == 'financialAssistance') ? "active" : null) ?> list-group-item list-group-item-action mx-auto mt-3" id="elementadmin4"><i class="fa fa-handshake-o"></i></a>
+
+            <?php if($this->session->userdata('userRole') == "admin" || $this->session->userdata('userRole') == "financial" )
+            {
+                echo '<a href="'.base_url('admin/transaction').'" class="'.(($this->uri->segment(2) == 'transaction') ?"active":"") .' list-group-item list-group-item-action mx-auto mt-3" id="elementadmin2"><i class="fa fa-book"></i></a>';
+            }
+            ?>
+            <?php if($this->session->userdata('userRole') == "admin" || $this->session->userdata('userRole') == "support" )
+            {
+                echo '<a href="'.base_url('admin/ping').'" class="'.(($this->uri->segment(2) == 'ping') ?"active":"") .' list-group-item list-group-item-action mx-auto mt-3" id="elementadmin2"><i class="fa fa-bell"></i></a>';
+            }
+            ?>
+            <?php if($this->session->userdata('userRole') == "admin" || $this->session->userdata('userRole') == "support" )
+            {
+                echo '<a href="'.base_url('admin/support').'" class="'.(($this->uri->segment(2) == 'support') ?"active":"") .' list-group-item list-group-item-action mx-auto mt-3" id="elementadmin2"><i class="fa fa-user "></i></a>';
+            }
+            ?>
+            <?php if($this->session->userdata('userRole') == "admin" || $this->session->userdata('userRole') == "inventory" )
+            {
+                echo '<a href="'.base_url('admin/inventory').'" class="'.(($this->uri->segment(2) == 'inventory') ?"active":"") .' list-group-item list-group-item-action mx-auto mt-3" id="elementadmin2"><i class="fa fa-pencil-square"></i></a>';
+            }
+            ?>
+            <?php if($this->session->userdata('userRole') == "admin")
+            {
+                echo '<a href="'.base_url('admin/userManagement').'" class="'.(($this->uri->segment(2) == 'userManagement') ?"active":"") .' list-group-item list-group-item-action mx-auto mt-3" id="elementadmin2"><i class="fa fa-id-card"></i></a>';
+            }
+            ?>
+            <?php if($this->session->userdata('userRole') == "admin" || $this->session->userdata('userRole') == "inventory")
+            {
+                echo '<a href="'.base_url('admin/servicesInventory').'" class="'.(($this->uri->segment(2) == 'servicesInventory') ?"active":"") .' list-group-item list-group-item-action mx-auto mt-3" id="elementadmin2"><i class="fa fa-cogs"></i></a>';
+            }
+            ?>
+            <?php if($this->session->userdata('userRole') == "admin")
+            {
+                echo '<a href="'.base_url('admin/financialAssistance').'" class="'.(($this->uri->segment(2) == 'financialAssistance') ?"active":"") .' list-group-item list-group-item-action mx-auto mt-3" id="elementadmin2"><i class="fa fa-handshake-o"></i></a>';
+            }
+            ?>
         </div>
     </div>
     <!-- /#sidebar-wrapper -->
@@ -44,12 +73,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
             
                 <div class="textContainer">
-                    <p class="text-title">Good Day, Taylor!</p>
-                    <p class="text-desc">Today, Nov 8,2021</p>
+                    <p class="text-title">Good Day, <?php echo $this->session->userdata('firstName'); ?></p>
+                    <p class="text-desc">Today, <?php echo date('F j, Y')?></p>
                 </div>
 
                 <li class="nav-item active">
-                    <a class="nav-link sign-out" href="<?php echo base_url('login'); ?>"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
+                    <a class="nav-link sign-out" href="<?php echo base_url('admin/logout'); ?>"><i class="fa fa-sign-out" aria-hidden="true"></i>Logout</a>
                 </li>
                 
             </ul>

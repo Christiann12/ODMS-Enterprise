@@ -63,11 +63,9 @@ class Inventory_model extends CI_Model {
 	}
     //load data for the table
     public function inventoryTable($searchKey=''){
+        
         $this->db->select('*');
         $this->db->from($this->table);
-        // $columnIndex = $_POST['order'][0]['column']; // Column index
-        // $columnName = $_POST['columns'][$columnIndex]['data']; // Column name
-        // $columnSortOrder = $_POST['order'][0]['dir']; // asc or desc
         if ($searchKey!=''){
 			$this->db->group_start();
 			$this->db->like("products.productId", $searchKey);
@@ -100,8 +98,8 @@ class Inventory_model extends CI_Model {
 		$this->inventoryTable($searchKey);
 		return $this->db->count_all_results();
 	}
-    //count filtered queries, for table record information
-    function count_filtered($searchKey=''){
+    //count filtered queries for table record information
+    public function count_filtered($searchKey=''){
 		$this->inventoryTable($searchKey);
 		$query = $this->db->get();
 		return $query->num_rows();

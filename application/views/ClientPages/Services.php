@@ -40,11 +40,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     </div>
 
                     <div class="d-flex buttonContainer" style="">
+<<<<<<< Updated upstream
                         <button type="button" class="btn btn-warning m-auto" id="serviceViewBtn" onclick="location.href = '<?php echo base_url('servicesOrder')?>';">View</button>
+=======
+                        <button type="button"   class="btn btn-warning m-auto" id="serviceViewBtn">View</button>
+>>>>>>> Stashed changes
                     </div>
                 </div>
             </div>
-
+            
             <div class="col-12 col-md-4 mb-md-3 mb-5">
                 <div class="card bg-dark text-white">
                     <img class="card-img" src="<?php echo base_url(); ?>application/assets/images/ClientPagesImages/services.jpg" alt="Card image">
