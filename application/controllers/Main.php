@@ -7,6 +7,7 @@ class Main extends CI_Controller {
 		
 		$this->load->model('inventory_model');
 		$this->load->model('cart_model');
+		$this->load->model('ping_model');
 		$this->load->helper('url');
 		$this->load->library('session'); 
 
@@ -31,6 +32,35 @@ class Main extends CI_Controller {
 		$this->load->view('HeaderNFooter/Header.php');
 		$this->load->view('ClientPages/ping.php');
 		$this->load->view('HeaderNFooter/Footer.php');
+	}
+	public function savePingInfo(){
+		// validations
+		$this->form_validation->set_rules('locationCode', 'Location Code' ,'required|max_length[30]');
+		$this->form_validation->set_rules('emergencyNote', 'Emergency Note' ,'max_length[255]');
+		// $this->form_validation->set_rules('siteLocation', 'Site Location' ,'required');
+		$this->load->helper('url');
+		// get data 
+		$data['document'] = (object)$postData = array( 
+			'pingId' => "PING-".$this->randStrGen(2,7),
+            'locationcode' => $this->input->post('locationCode'),
+			'note' => $this->input->post('emergencyNote'),
+			'status' => 'Active',
+        );
+		// store data 
+		if($this->form_validation->run() === true){
+			if($this->ping_model->create($postData)){
+				$this->session->set_flashdata('success','Add Successful');
+			}
+			else{
+				$this->session->set_flashdata('error','Add Failed');
+			}
+			redirect('ping');
+		}
+		else{
+			$this->load->view('HeaderNFooter/Header.php');
+			$this->load->view('ClientPages/ping.php');
+			$this->load->view('HeaderNFooter/Footer.php');
+		}
 	}
 	public function contactus(){
 		$this->load->helper('url');

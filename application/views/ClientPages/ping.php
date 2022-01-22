@@ -14,21 +14,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="modal-body" style="word-wrap: break-word;">
             <?php echo form_open_multipart('main/savePingInfo') ?>
             <div class="form-group row d-flex justify-content-around">
-                <label for="siteLocation" class="col-3 ">Site Location<i class="text-danger">*</i></label>
+                <label for="locationCode" class="col-3 ">Location Code<i class="text-danger">*</i></label>
                 <div class="col-9">
-                    <input name="siteLocation"  type="text" class="form-control" id="siteLocation" placeholder="Input Site Location" value="">
+                    <input name="locationCode"  type="text" class="form-control" id="locationCode" placeholder="Input Location Code" value="">
                 </div>
             </div>
             <div class="form-group row d-flex justify-content-around">
                 <label for="emergencyNote" class="col-3 ">Emergency Note</label>
                 <div class="col-9">
                     <textarea placeholder="Input Emergency Note I.e Send Ambulance" class="form-control" id="emergencyNote" name="emergencyNote"></textarea>
-                </div>
-            </div>
-            <div class="form-group row d-flex justify-content-around">
-                <label for="lococationCode" class="col-3 ">Location Code<i class="text-danger">*</i></label>
-                <div class="col-9">
-                    <input name="lococationCode"  type="text" class="form-control" id="lococationCode" placeholder="Input Location Code" value="">
                 </div>
             </div>
         </div>
@@ -41,7 +35,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
 </div>
 <div class="pingBanner container mx-auto">
+    <div class="alert alert-danger print-error-msg" style="display: <?php echo ((validation_errors() == '' || validation_errors() == null) ? "none;" : "block;")?>">
+        <?php echo validation_errors(); ?>
+    </div>
+   
+    <?php if($this->session->flashdata('success')){ ?>
+        <div class="alert alert-success" > 
+            <?php  echo $this->session->flashdata('success'); $this->session->unset_userdata ( 'success' );?>
+        </div>
+    <?php } ?>  
+    <?php if ($this->session->flashdata('error')){ ?>
+        <div class="alert alert-danger" > 
+            <?php  echo $this->session->flashdata('error'); $this->session->unset_userdata ( 'error' );?>
+        </div>
+    <?php } ?>
     <div class="row">
+        
         <div class="col-12 col-md-6 content ">
             <p class="heading1">WHAT IS PING?</p>
             <p class="heading2 pt-md-4 pt-0">We’ve Got Your Back!</p>

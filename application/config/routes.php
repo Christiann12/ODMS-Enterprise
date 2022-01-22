@@ -62,6 +62,8 @@ $route['products'] = 'main/products';
 $route['services'] = 'main/services';
 $route['servicesOrder'] = 'main/servicesOrder';
 $route['servicesOrderSuccess'] = 'main/servicesOrderSuccess';
+$route['admin/updateUser/(:any)'] = 'admin/userManagement/$1';
+$route['admin/updateUser'] = 'admin/userManagement';
 
 // end client routes
 

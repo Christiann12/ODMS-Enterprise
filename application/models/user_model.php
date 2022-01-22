@@ -105,4 +105,24 @@ class User_model extends CI_Model {
 			->get()
 			->row();
     }
+    // get user data by id 
+    public function readbyUserDataById($id = null){
+        return $this->db->select("*")
+			->from($this->table)
+			->where('userId',$id)
+			->get()
+			->row();
+    }
+    public function updateUser($data = []){
+        return $this->db->where('userId',$data['userId'])->update($this->table,$data); 
+    }
+    public function delUser($id = null){
+        $this->db->where('userId',$id)->delete($this->table);
+		if ($this->db->affected_rows()) {
+			return true;
+		} 
+        else {
+			return false;
+		}
+    }
 }

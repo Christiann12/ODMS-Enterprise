@@ -20,6 +20,7 @@ class Admin extends CI_Controller {
 		// }
 		$this->load->model('inventory_model');
 		$this->load->model('user_model');
+		$this->load->model('ping_model');
 		$this->load->helper('url');
 		$this->load->library('session'); 
 	}
@@ -56,7 +57,7 @@ class Admin extends CI_Controller {
 				// $client = new \Vonage\Client($basic);
 
 				// $response = $client->sms()->send(
-				// 	new \Vonage\SMS\Message\SMS("639154547628", 'asdasdasd', 'test ulit sry')
+				// 	new \Vonage\SMS\Message\SMS("639154547628", 'asdasdasd', 'test ulittestasdat')
 				// );
 				
 				// $message = $response->current();
@@ -114,7 +115,7 @@ class Admin extends CI_Controller {
 		else{
 			redirect('login');
 		}
-	}
+	} 
 	public function ping()
 	{
 		$data['param'] = 'ping';
@@ -128,6 +129,80 @@ class Admin extends CI_Controller {
 			redirect('login');
 		}
 		
+	}
+	// get ping records for ping table 
+	public function pingDetailAjax(){
+		//helpers
+		$this->load->helper('url');
+		//load query
+		$list = $this->ping_model->getPingTable($this->input->post('txtSearch'));
+		//variable initializations
+		$data = array();
+		$no = $_POST['start'];
+		//iterate per record and organize by row
+		foreach($list as $ping){
+			$no++;
+			$row = array();
+			$row[] = $no;
+			$row[] = $ping->pingId;
+			$row[] = $ping->locationcode;
+			$row[] = $ping->note;
+			$row[] = $ping->status;
+		
+			//responsible for the additions of action button in the last row
+			$row[] = '<a href="#" data-toggle="modal" data-target="#updatePingModal" data-pingid="'.$ping->pingId.'" data-status="'.$ping->status.'" class="btn btn-xs btn-success"><i class="fa fa-edit"  data-placement="top" title="View"></i></a>
+					 <a href="'.base_url('admin/deletePingRecord/'.$ping->pingId.'').'" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="View"></i></a>';
+			//carries the values to the view
+			$data[] = $row;
+		}
+		$output = array(
+			"draw" => $_POST['draw'],
+			"recordsTotal" => $this->ping_model->count($this->input->post('txtSearch')),
+			"recordsFiltered" => $this->ping_model->count_filtered($this->input->post('txtSearch')),
+			"data" => $data
+		);	
+		// $data[] = $row;
+		echo json_encode($output);
+	}
+	// delete ping record
+	public function deletePingRecord(){
+		if($this->ping_model->delPingItem($this->uri->segment(3))){
+			$this->session->set_flashdata('success','Delete Success');
+		}
+		else{
+			$this->session->set_flashdata('error','Delete Failed');
+		}
+		redirect('admin/ping');
+	}
+	// update ping record
+	public function updatePingRecord(){
+		// screen to open
+		$data['param'] ='ping';
+		$this->form_validation->set_rules('pingStatusField', 'Status' ,'required');
+		// Helpers
+		$this->load->helper('url');
+	
+		// StoreData
+		$data['document'] = (object)$postData = array( 
+			'status' => $this->input->post('pingStatusField'),
+			'pingId' => $this->input->post('pingIdField'),
+		); 
+		$name = 'attachment';
+		// SendToDatabase
+		if($this->form_validation->run() === true){
+			if($this->ping_model->updatePingItm($postData)){
+				$this->session->set_flashdata('success','Edit Successful');
+			}
+			else{
+				$this->session->set_flashdata('error','Edit Failed');
+			}
+			redirect('admin/ping');
+		}
+		else{
+			$this->load->view('HeaderNFooter/HeaderAdmin.php');
+			$this->load->view('AdminPages/wrapper.php', $data);
+			$this->load->view('HeaderNFooter/FooterAdmin.php');
+		}
 	}
 	public function support()
 	{
@@ -143,61 +218,128 @@ class Admin extends CI_Controller {
 			redirect('login');
 		}
 	}
-	//callback method for email validation rule, this check if the email used already exits
-	public function email_check($email){
-		$emailCount = $this->db->select('email')->where('email',$email)->get('users')->num_rows();
-		if ($emailCount > 0) {
-            $this->form_validation->set_message('email_check', 'The {field} field must contain a unique value.');
-            return false;
-        } else {
-            return true;
-        }
-	}
+	//create and update user
 	public function userManagement()
 	{
-		// validations
-		$this->form_validation->set_rules('userFirstName', 'First Name' ,'required');
-		$this->form_validation->set_rules('userLastName', 'Last Name' ,'required');
-		$this->form_validation->set_rules('userPassword', 'Password' ,'required');
-		$this->form_validation->set_rules('userRePassword', 'Confirm Password' ,'required|matches[userPassword]');
-		$this->form_validation->set_rules('userRole', 'User Role' ,'required');
-		$this->form_validation->set_rules('userEmail', 'Email' ,'required|callback_email_check');
+		// validations for create
+		if($this->uri->segment(2)=="userManagement"){
+			$this->form_validation->set_rules('userFirstName', 'First Name' ,'required');
+			$this->form_validation->set_rules('userLastName', 'Last Name' ,'required');
+			$this->form_validation->set_rules('userPassword', 'Password' ,'required');
+			$this->form_validation->set_rules('userRePassword', 'Confirm Password' ,'required|matches[userPassword]');
+			$this->form_validation->set_rules('userRole', 'User Role' ,'required');
+			$this->form_validation->set_rules('userEmail', 'Email' ,'required|callback_email_check');
+		}
+		// validation for update 
+		else{
+			$this->form_validation->set_rules('userFirstName', 'First Name' ,'required');
+			$this->form_validation->set_rules('userLastName', 'Last Name' ,'required');
+			if($this->input->post('userPassword')!=""){
+				$this->form_validation->set_rules('userPassword', 'Password' ,'required');
+				$this->form_validation->set_rules('userRePassword', 'Confirm Password' ,'required|matches[userPassword]');
+			}
+			$this->form_validation->set_rules('userRole', 'User Role' ,'required');
+			$this->form_validation->set_rules('userEmail', 'Email' ,'required');
+		}
 		// view to to open
 		$data['param'] ='userManagement';
 		// helper
 		$this->load->helper('url');
 		// store data
-		$data['document'] = (object)$postData = array( 
-			'userId' => "USER-".$this->randStrGen(2,7),
-            'password' => md5($this->input->post('userPassword')),
-            'firstName' => $this->input->post('userFirstName'),
-			'lastName' => $this->input->post('userLastName'),
-            'email' => $this->input->post('userEmail'),
-            'userRole' => $this->input->post('userRole')
-        ); 
-		// on submit
-		
-		if($this->form_validation->run() === true){
-			if($this->user_model->create($postData)){
-				$this->session->set_flashdata('success','Add Successful');
-			}
-			else{
-				$this->session->set_flashdata('error','Add Failed');
-			}
-			redirect('admin/userManagement');
+		if($this->uri->segment(2) == "userManagement"){
+			$data['document'] = (object)$postData = array( 
+				'userId' => "USER-".$this->randStrGen(2,7),
+				'password' => md5($this->input->post('userPassword')),
+				'firstName' => $this->input->post('userFirstName'),
+				'lastName' => $this->input->post('userLastName'),
+				'email' => $this->input->post('userEmail'),
+				'userRole' => $this->input->post('userRole')
+			); 
 		}
-		// OpenPage
-		else{
-			if($this->session->has_userdata('adminId')){
-				$this->load->view('HeaderNFooter/HeaderAdmin.php');
-				$this->load->view('AdminPages/wrapper.php', $data);
-				$this->load->view('HeaderNFooter/FooterAdmin.php');
+		else if($this->uri->segment(2) == "updateUser"){
+			if($this->input->post('userPassword')!=""){
+				$data['document'] = (object)$postData = array( 
+					'userId' => $this->input->post('userIdField'),
+					'password' => md5($this->input->post('userPassword')),
+					'firstName' => $this->input->post('userFirstName'),
+					'lastName' => $this->input->post('userLastName'),
+					'email' => $this->input->post('userEmail'),
+					'userRole' => $this->input->post('userRole')
+				); 
 			}
 			else{
-				redirect('login');
+				$data['document'] = (object)$postData = array( 
+					'userId' => $this->input->post('userIdField'),
+					'firstName' => $this->input->post('userFirstName'),
+					'lastName' => $this->input->post('userLastName'),
+					'email' => $this->input->post('userEmail'),
+					'userRole' => $this->input->post('userRole')
+				); 
+			}
+			
+		}
+		//create user
+		if($this->uri->segment(2)=="userManagement"){
+			// on submit
+			if($this->form_validation->run() === true){
+				if($this->user_model->create($postData)){
+					$this->session->set_flashdata('success','Add Successful');
+				}
+				else{
+					$this->session->set_flashdata('error','Add Failed');
+				}
+				redirect('admin/userManagement');
+			}
+			// OpenPage
+			else{
+				if($this->session->has_userdata('adminId')){
+					$this->load->view('HeaderNFooter/HeaderAdmin.php');
+					$this->load->view('AdminPages/wrapper.php', $data);
+					$this->load->view('HeaderNFooter/FooterAdmin.php');
+				}
+				else{
+					redirect('login');
+				}
+			}
+		}
+		// update user 
+		else{
+			// on submit
+			if($this->form_validation->run() === true){
+				
+				if($this->user_model->updateUser($postData)){
+					$this->session->set_flashdata('success','Update Successful');
+				}
+				else{
+					$this->session->set_flashdata('error','Update Failed');
+				}
+				redirect('admin/userManagement');
+			}
+			// OpenPage
+			else{
+				if($this->session->has_userdata('adminId')){
+					$data['userData'] = $this->user_model->readbyUserDataById($this->uri->segment(3));
+					$this->load->view('HeaderNFooter/HeaderAdmin.php');
+					$this->load->view('AdminPages/wrapper.php', $data);
+					$this->load->view('HeaderNFooter/FooterAdmin.php');
+				}
+				else{
+					redirect('login');
+				}
 			}
 		}
 	}
+	// delete user
+	public function deleteUser(){
+		if($this->user_model->delUser($this->uri->segment(3))){
+			$this->session->set_flashdata('success','Delete Success');
+		}
+		else{
+			$this->session->set_flashdata('error','Delete Failed');
+		}
+		redirect('admin/userManagement');
+	}
+	// fetch users for user table
 	public function userAjax(){
 		//helpers
 		$this->load->helper('url');
@@ -218,9 +360,10 @@ class Admin extends CI_Controller {
 			$row[] = $user->userRole;
 		
 			//responsible for the additions of action button in the last row
-			// $row[] = '<a href="#" data-toggle="modal" data-target="#modal2" data-file="'.$product->productPicture.'" data-cat="'.$product->productCategory.'" data-id="'.$product->productId.'" data-name="'.$product->productTitle.'" data-desc="'.$product->productDesc.'" data-price="'.$product->productPrice.'" data-stock="'.$product->productStock.'" class="btn btn-xs btn-success"><i class="fa fa-edit"  data-placement="top" title="View"></i></a>
-			// 		<a href="'.base_url('admin/deleteProdRecord/'.$product->productId.'').'" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="View"></i></a>';
+			$row[] = '<a href="'.base_url('admin/updateUser/'.$user->userId.'').'" class="btn btn-xs btn-success"><i class="fa fa-edit"  data-placement="top" title="View"></i></a>
+					<a href="'.base_url('admin/deleteUser/'.$user->userId.'').'" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="View"></i></a>';
 			//carries the values to the view
+			
 			$data[] = $row;
 		}
 		$output = array(
@@ -472,4 +615,15 @@ class Admin extends CI_Controller {
         }
         return $result;
     }
+	
+	//callback method for email validation rule, this check if the email used already exits
+	public function email_check($email){
+		$emailCount = $this->db->select('email')->where('email',$email)->get('users')->num_rows();
+		if ($emailCount > 0) {
+            $this->form_validation->set_message('email_check', 'The {field} field must contain a unique value.');
+            return false;
+        } else {
+            return true;
+        }
+	}
 }

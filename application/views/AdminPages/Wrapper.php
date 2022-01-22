@@ -40,7 +40,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             ?>
             <?php if($this->session->userdata('userRole') == "admin")
             {
-                echo '<a href="'.base_url('admin/userManagement').'" class="'.(($this->uri->segment(2) == 'userManagement') ?"active":"") .' list-group-item list-group-item-action mx-auto mt-3" id="elementadmin2"><i class="fa fa-id-card"></i></a>';
+                echo '<a href="'.base_url('admin/userManagement').'" class="'.(($this->uri->segment(2) == 'userManagement' || $this->uri->segment(2) == 'updateUser') ?"active":"") .' list-group-item list-group-item-action mx-auto mt-3" id="elementadmin2"><i class="fa fa-id-card"></i></a>';
             }
             ?>
             <?php if($this->session->userdata('userRole') == "admin" || $this->session->userdata('userRole') == "inventory")

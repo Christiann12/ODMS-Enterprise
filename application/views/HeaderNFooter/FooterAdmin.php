@@ -59,11 +59,20 @@
 		
 		<!-- Script for Inventory -->	
 		<script>
-			$(document).ready( function () {
-				$('#inventoryTable').DataTable().destroy();
-				var VtxtSearch=$("#txtSearch").val();
-				loadInventoryTable(VtxtSearch);
-			});
+			<?php
+				if($this->uri->segment(2)=="inventory" || $this->uri->segment(2)=="updateInventoryRecord"){
+					echo '
+					
+					$(document).ready( function () {
+						$(\'#inventoryTable\').DataTable().destroy();
+						var VtxtSearch=$("#txtSearch").val();
+						loadInventoryTable(VtxtSearch);
+					});
+					
+					';
+				}
+			?>
+			
 			$("#inventorySearch").submit(function(event){
 				event.preventDefault();
 				$('#inventoryTable').DataTable().destroy();
@@ -120,11 +129,20 @@
 
 		<!-- script for create user -->
 		<script>
-			$(document).ready( function () {
-				$('#userTable').DataTable().destroy();
-				var searchString=$("#txtSearch").val();
-				loadUserTable(searchString);
-			});
+			<?php
+				if($this->uri->segment(2)=="userManagement" || $this->uri->segment(2) == "updateUser"){
+					echo '
+					
+					$(document).ready( function () {
+						$(\'#userTable\').DataTable().destroy();
+						var searchString=$("#txtSearch").val();
+						loadUserTable(searchString);
+					});
+					
+					';
+				}
+			?>
+			
 			$("#userSearch").submit(function(event){
 				event.preventDefault();
 				$('#userTable').DataTable().destroy();
@@ -148,14 +166,72 @@
 						"type": "POST",
 						"data": {txtSearch:txtsearch}
 					},
-					// "columnDefs":[{
-					// 	"targets":[0],
-					// 	"orderable":false,
-					// },],
+					"columnDefs":[{
+						"targets":[0],
+						"orderable":false,
+					},],
 					"order":[],
 					"searching": false 
 				});
 			}
+		</script>
+
+		<!-- ping script  -->
+		<script>
+			<?php
+				if($this->uri->segment(2)=="ping" || $this->uri->segment(2)=="updatePingRecord"){
+					echo '
+					
+					$(document).ready( function () {
+						$(\'#pingTable\').DataTable().destroy();
+						var searchString=$("#pingTextSearch").val();
+						loadPingTable(searchString);
+					});
+					
+					';
+				}
+			?>
+			$("#pingSearch").submit(function(event){
+				event.preventDefault();
+				$('#pingTable').DataTable().destroy();
+				var searchString=$("#pingTextSearch").val();
+				loadPingTable(searchString);
+			});
+			function loadPingTable(txtsearch){
+				// alert('asd');
+				var dataTable = $('#pingTable').DataTable({
+					"lengthMenu": [[10, 25, 100, 1000, 3000, -1], [10, 25, 100, 1000, 3000]],
+					"processing":true,
+					"language": {
+						processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span> '
+					},
+					"serverSide":true,
+					"responsive": true,
+					"bPaginate": true,
+					"sPaginationType": "full_numbers",
+					"ajax": {
+						"url": "<?php echo base_url('admin/pingDetailAjax')?>",
+						"type": "POST",
+						"data": {txtSearch:txtsearch}
+					},
+					"columnDefs":[{
+						"targets":[0,5],
+						"orderable":false,
+					},],
+					"order":[],
+					"searching": false 
+				});
+			}
+			$('#updatePingModal').on('show.bs.modal', function (event) {
+				var button = $(event.relatedTarget);
+				var status = button.data('status') ;
+				var pingId = button.data('pingid') ; 
+				// alert(productId);
+				var modal = $(this)
+				
+				modal.find('.modal-body #pingStatusField').val(status);
+				modal.find('.modal-body #pingIdField').val(pingId);
+			})
 		</script>
 		
 	</body>

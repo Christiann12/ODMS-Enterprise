@@ -10,7 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <i class="fa fa-id-card fa-3x" aria-hidden="true"></i>
             </div>
             <div class="createUserTextDiv" >
-                <p class="createUserText">Create Users</p>
+                <p class="createUserText"> <?php echo (($this->uri->segment(2) == 'userManagement') ? "Create Users" : "Update User") ?></p>
             </div>
             <div class="col-4">
 
@@ -18,6 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="alert alert-danger print-error-msg" style="display: <?php echo ((validation_errors() == '' || validation_errors() == null) ? "none;" : "block;")?>">
             <?php echo validation_errors(); ?>
+            <?php echo (($this->uri->segment(2) == 'updateUser' && $this->uri->segment(3) == '' ) ? "Select a user again to update on the table below." : "")  ?>
         </div>
    
         <?php if($this->session->flashdata('success')){ ?>
@@ -32,23 +33,27 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php } ?>
         <!-- form --> 
         <div class="userFormDiv">
-            <?php echo form_open_multipart('admin/userManagement') ?>
+            <?php echo form_open_multipart((($this->uri->segment(2) == 'userManagement') ? "admin/userManagement" : "admin/updateUser")) ?>
+                <div class="form-label-group <?php echo (($this->uri->segment(2) == 'updateUser') ? "" : "d-none") ?> ">
+                    <input name="userIdField" type="text" id="userIdField" class="inputDesign form-control" readonly placeholder="User Id" value="<?php echo (($this->uri->segment(3) == '') ? "" : $userData->userId)?>">
+                    <label for="userIdField" class="labelDesign">User Id</label>
+                </div>
                 <div class="row">
                     <div class="col-6">
                         <div class="form-label-group">
-                            <input name="userFirstName" type="text" id="userFirstName" class="inputDesign form-control" placeholder="First Name">
+                            <input name="userFirstName" type="text" id="userFirstName" class="inputDesign form-control" placeholder="First Name" value="<?php echo (($this->uri->segment(3) == '') ? "" : $userData->firstName)?>">
                             <label for="userFirstName" class="labelDesign">First Name</label>
                         </div>
                     </div>
                     <div class="col-6">
                         <div class="form-label-group">
-                            <input name="userLastName" type="text" id="userLastName" class="inputDesign form-control" placeholder="Last Name">
+                            <input name="userLastName" type="text" id="userLastName" class="inputDesign form-control" placeholder="Last Name" value="<?php echo (($this->uri->segment(3) == '') ? "" : $userData->lastName)?>">
                             <label for="userLastName" class="labelDesign">Last Name</label>
                         </div>
                     </div>
                 </div>
                 <div class="form-label-group">
-                    <input name="userEmail" type="email" id="userEmail" class="inputDesign form-control" placeholder="Email Address" aria-describedby="emailHelp">
+                    <input name="userEmail" type="email" id="userEmail" class="inputDesign form-control" placeholder="Email Address" aria-describedby="emailHelp" value="<?php echo (($this->uri->segment(3) == '') ? "" : $userData->email)?>">
                     <label for="userEmail" class="labelDesign">Email Address</label>
                 </div>
                 <div class="form-label-group">
@@ -69,10 +74,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             "inventory" => "Inventory", //inventory product, iventory services
                             "financial" => "Financial", //transactions
                         ); 
-                        echo form_dropdown('userRole', $userRoles, "", 'class="form-control " id="userRole"');
+                        echo form_dropdown('userRole', $userRoles, (($this->uri->segment(3) == '') ? "" : $userData->userRole), 'class="form-control" id="userRole"');
                     ?>
                 </div>  
-                <button type="submit" class="userSubmitBtn ">Submit</button>
+                <button type="submit" class="userSubmitBtn "><?php echo (($this->uri->segment(2) == 'userManagement') ? "Submit" : "Update") ?></button>
             <?php echo form_close() ?>
         </div>
         
@@ -98,6 +103,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <th>Last Name</th>
                         <th>Email</th>
                         <th>User Role</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
