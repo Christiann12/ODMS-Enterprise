@@ -1,6 +1,94 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
+
+<!-- FA Company modal --> 
+<div class="modal hide fade" id="FACompanyModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Our Business Partners</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="margin-left: auto; margin-right: auto;">
+          <div class="row">
+            <div class="col-lg-6">
+                <img src="<?php echo base_url(); ?>application/assets/images/ClientPagesImages/company.jpg" style="width: 100%; height: 100%;" alt="">
+            </div>
+            <div class="col-lg-6" style="padding-top: 50px; padding-bottom: 50px;">
+                <p class="fACompanyName">Stark Industries</p>
+                <p class="fADescription">A short description of the company goes here.</p>
+                <p class="fAContact">Contact No.: 09xx-xxx-xxxx</p>
+                <p class="fAEmail">Email: companyname@domainname.com</p>
+                <p class="fARequirements">Requirements</p> <!-- should be in file format -->
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <!-- <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FA Avail Now modal --> 
+<div class="modal hide fade" id="FAAvailNowModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Availing Financial Assistance</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body" style="word-wrap: break-word;">
+        <div class="form-group row d-flex justify-content-around">
+            <label for="fAFName" class="col-3 ">First Name<i class="text-danger">*</i></label>
+            <div class="col-9">
+                <input name="fAFName"  type="text" class="form-control" id="fAFName" placeholder="First Name" value="">
+            </div>
+        </div>
+        <div class="form-group row d-flex justify-content-around">
+            <label for="fALName" class="col-3 ">Last Name<i class="text-danger">*</i></label>
+            <div class="col-9">
+                <input name="fALName"  type="text" class="form-control" id="fALName" placeholder="Last Name" value="">
+            </div>
+        </div>
+        <div class="form-group row d-flex justify-content-around">
+            <label for="fASelectCompany" class="col-3 ">Select Financial Company<i class="text-danger">*</i></label>
+            <div class="col-9">
+            <select class="form-control" id="fASelectCompany">
+                <option>Select Financial Company</option>
+                <option>Stark Industries</option>
+                <option>Wayne Enterprises, Inc.</option>
+                <option>Oscorp</option>
+            </select>
+            </div>
+        </div>
+        <div class="form-group row d-flex justify-content-around">
+            <label for="fAClientEmail" class="col-3 ">Email<i class="text-danger">*</i></label>
+            <div class="col-9">
+                <input name="fAClientEmail"  type="email" class="form-control" id="fAClientEmail" placeholder="Email" value="">
+            </div>
+        </div>
+        <div class="form-group row d-flex justify-content-around">
+            <label for="fAClientRequirement" class="col-3">Requirements<i class="text-danger">*</i></label>
+            <div class="col-9">
+                <input name="fAClientRequirement" type="file" class="form-control-file" id="fAClientRequirement" aria-describedby="reqHelp">
+                <small id="reqHelp" class="form-text text-muted">Requirements to be submitted to the company</small>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary">Confirm</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <div class="bannerFa row">
     <div class="bannerimageFa" style="background-image: url('<?php echo base_url(); ?>application/assets/images/ClientPagesImages/team 4.jpg'); "></div>
     <div class="bannerBackgroundOverlayFa"></div>
@@ -87,7 +175,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 <div class="d-flex buttonContainer" style="">
                   
-                    <button type="button" class="btn btn-warning m-auto" style="">View</button>
+                    <button type="button" class="btn btn-warning m-auto" style="" data-toggle="modal" data-target="#FACompanyModal">View</button>
    
                 </div>
             </div>
@@ -135,9 +223,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
         </div>
-        
-        
-        
 
     </div>
 </div>
@@ -149,7 +234,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <div class="content">
         <center>
             <p>INTERESTED?</p>
-            <button type="button" class="btn btn-warning m-auto" style="">AVAIL NOW</button>
+            <button type="button" class="btn btn-warning m-auto" data-toggle="modal" data-target="#FAAvailNowModal">AVAIL NOW</button>
         </center>
     </div>
 </div>
