@@ -35,7 +35,6 @@ html,body {
     padding-top: 300px; padding-left: 50px; padding-right: 50px; padding-bottom: 50px;
 }
 
-
 /* fa banner end */
 
 /* getStartedSection */
@@ -140,3 +139,36 @@ html,body {
 .getStartedButtonSection .content .btn{
     width: 157px; height: 47px;background-color: #F6C510; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 4px;
 }
+
+/* TEXTS IN MODAL CSS */
+.fACompanyName {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 29px;
+    letter-spacing: 0.25em;
+    color: #000000;
+}
+
+.fADescription {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 118.9%;
+    letter-spacing: 0.05em;
+    color: #000000;
+}
+
+.fAContact, .fAEmail {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 10px;
+    line-height: 12px;
+    display: flex;
+    align-items: center;
+    color: #000000;
+}
+

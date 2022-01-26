@@ -69,14 +69,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 <!-- End of Product Modal Section -->
 
-<div class="card border-0" >
-    <img src="<?php echo base_url(); ?>application/assets/images/ClientPagesImages/poles_edited.jpg" alt="contactus" class="prodpicture">
-    <div class="overlayprod"></div>
-    <h4 class="about">ABOUT</h4>
-    <h2 class="welight">We Light Up Your Life</h2>
-    <h3 class="descwelight">This section is an overview of what the Products function is. It specifies what kind of products the sub-contractors can avail for their projects.</h3>
-    <h3 class="descwelight2">Can be summarized in one or two paragraphs</h3>
-    <button type="button" class=" welightbtn btn btn-md">LEARN MORE</button>
+<div class="bannerProducts row">
+    <div class="bannerimageProducts" style="background-image: url('<?php echo base_url(); ?>application/assets/images/ClientPagesImages/poles_edited.jpg');"></div>
+    <div class="col-12 col-md-6 productsBannerLeftPanel"> 
+      <p class="aboutText">ABOUT</p>
+      <p class="welightText">We Light Up Your Life</p>
+      <p class="descwelightText">This section is an overview of what the Products function is. It specifies what kind of products the sub-contractors can avail for their projects.</p>
+      <p class="descwelightText">Can be summarized in one or two paragraphs</p>
+      <button type="button" class="welightbtn btn mt-md-4 mt-0 ml-0">LEARN MORE</button>
+    </div>
+    <div class="col-12 col-md-6">
+    </div>
 </div>
 
 <div class="container border-0">
