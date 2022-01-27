@@ -21,6 +21,7 @@ class Admin extends CI_Controller {
 		$this->load->model('inventory_model');
 		$this->load->model('user_model');
 		$this->load->model('ping_model');
+		$this->load->model('support_model');
 		$this->load->helper('url');
 		$this->load->library('session'); 
 	}
@@ -86,9 +87,6 @@ class Admin extends CI_Controller {
 		$array_items = array('isLogIn', 'userRole', 'adminId', 'firstName', 'lastName', 'email');
 			$this->session->unset_userdata('adminId');
 			redirect('login');
-		// $this->load->view('HeaderNFooter/HeaderAdmin.php');
-		// $this->load->view('AdminPages/loginAdmin.php');
-		// $this->load->view('HeaderNFooter/FooterAdmin.php');
 	}
 	public function dashboard()
 	{
@@ -207,15 +205,96 @@ class Admin extends CI_Controller {
 	public function support()
 	{
 		$data['param'] ='support';
+		$data['totalTicket'] = $this->support_model->countTotal();
+		$data['totalOpen'] = $this->support_model->countOpen();
+		$data['totalClose'] = $this->support_model->countClose();
+		$data['dateDetail'] = $this->getWeekDetail();
+		$data['info1'] = $this->support_model->getDateDetail($data['dateDetail']['monday']);
+		$data['info2'] = $this->support_model->getDateDetail($data['dateDetail']['tuesday']);
+		$data['info3'] = $this->support_model->getDateDetail($data['dateDetail']['wednesday']);
+		$data['info4'] = $this->support_model->getDateDetail($data['dateDetail']['thursday']);
+		$data['info5'] = $this->support_model->getDateDetail($data['dateDetail']['friday']);
+		$data['info6'] = $this->support_model->getDateDetail($data['dateDetail']['saturday']);
+		$data['info7'] = $this->support_model->getDateDetail($data['dateDetail']['sunday']);
+		
 		$this->load->helper('url');
 		
 		if($this->session->has_userdata('adminId')){
 			$this->load->view('HeaderNFooter/HeaderAdmin.php');
 			$this->load->view('AdminPages/wrapper.php', $data);
-			$this->load->view('HeaderNFooter/FooterAdmin.php');
+			$this->load->view('HeaderNFooter/FooterAdmin.php', $data);
 		}
 		else{
 			redirect('login');
+		}
+	}
+
+	public function supportDetailAjax(){
+		//helpers
+		$this->load->helper('url');
+		//load query
+		$list = $this->support_model->getSupportTable($this->input->post('txtSearch'));
+		//variable initializations
+		$data = array();
+		$no = $_POST['start'];
+		//iterate per record and organize by row
+		foreach($list as $support){
+		$no++;
+		$row = array();
+		$row[] = $no;
+		$row[] = $support->supportId;
+		$row[] = $support->supportMessage;
+		$row[] = $support->status;
+		$row[] = $support->email;
+		$row[] = $support->firstname;
+		$row[] = $support->lastname;
+		
+		//responsible for the additions of action button in the last row
+		$row[] = '<a href="#" data-toggle="modal" data-target="#updateSupportDetailModal" data-suppid="'.$support->supportId.'" data-status="'.$support->status.'" class="btn btn-xs btn-success"><i class="fa fa-edit"  data-placement="top" title="View"></i></a>';
+		// 		<a href="'.base_url('admin/deletePingRecord/'.$ping->pingId.'').'" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="View"></i></a>';
+		//carries the values to the view
+		$data[] = $row;
+		}
+		$output = array(
+			"draw" => $_POST['draw'],
+			"recordsTotal" => $this->support_model->count($this->input->post('txtSearch')),
+			"recordsFiltered" => $this->support_model->count_filtered($this->input->post('txtSearch')),
+			"data" => $data
+		);	
+		// $data[] = $row;
+		echo json_encode($output);
+	}
+	// update support record
+	public function updateSupportRecord(){
+		// screen to open
+		$data['param'] ='support';
+		$data['totalTicket'] = $this->support_model->countTotal();
+		$data['totalOpen'] = $this->support_model->countOpen();
+		$data['totalClose'] = $this->support_model->countClose();
+		$this->form_validation->set_rules('supportStatusField', 'Status' ,'required');
+		// Helpers
+		$this->load->helper('url');
+	
+		// StoreData
+		$data['document'] = (object)$postData = array( 
+			'status' => $this->input->post('supportStatusField'),
+			'supportId' => $this->input->post('supportIdField'),
+		); 
+		$name = 'attachment';
+		// SendToDatabase
+		if($this->form_validation->run() === true){
+			if($this->support_model->updateSupportItem($postData)){
+				$this->session->set_flashdata('success','Edit Successful');
+			}
+			else{
+				$this->session->set_flashdata('error','Edit Failed');
+			}
+			redirect('admin/support');
+		}
+		else{
+			$this->load->view('HeaderNFooter/HeaderAdmin.php');
+			$this->load->view('AdminPages/wrapper.php', $data);
+			$this->load->view('HeaderNFooter/FooterAdmin.php');
 		}
 	}
 	//create and update user
@@ -615,7 +694,16 @@ class Admin extends CI_Controller {
         }
         return $result;
     }
-	
+	public function getWeekDetail(){
+		$date['monday'] = date("Y-m-d", strtotime("monday this week"));
+		$date['tuesday'] = date("Y-m-d", strtotime("tuesday this week"));
+		$date['wednesday'] = date("Y-m-d", strtotime("wednesday this week"));
+		$date['thursday'] = date("Y-m-d", strtotime("thursday this week"));
+		$date['friday'] = date("Y-m-d", strtotime("friday this week"));
+		$date['saturday'] = date("Y-m-d", strtotime("saturday this week"));
+		$date['sunday'] = date("Y-m-d", strtotime("sunday this week"));
+		return $date;
+	}
 	//callback method for email validation rule, this check if the email used already exits
 	public function email_check($email){
 		$emailCount = $this->db->select('email')->where('email',$email)->get('users')->num_rows();
