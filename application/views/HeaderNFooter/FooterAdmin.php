@@ -233,6 +233,118 @@
 				modal.find('.modal-body #pingIdField').val(pingId);
 			})
 		</script>
-		
+		<!-- support script  -->
+		<script>
+			$(document).ready( function () {
+				$('#supTable').DataTable().destroy();
+				var searchString=$("#supportTxtSearch").val();
+				loadSupportTable(searchString);
+			});
+			$("#supportSearch").submit(function(event){
+				event.preventDefault();
+				$('#supTable').DataTable().destroy();
+				var searchString=$("#supportTxtSearch").val();
+				loadSupportTable(searchString);
+			});
+			function loadSupportTable(txtsearch){
+				// alert('asd');
+				var dataTable = $('#supTable').DataTable({
+					"lengthMenu": [[10, 25, 100, 1000, 3000, -1], [10, 25, 100, 1000, 3000]],
+					"processing":true,
+					"language": {
+						processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span> '
+					},
+					"serverSide":true,
+					"responsive": true,
+					"bPaginate": true,
+					"sPaginationType": "full_numbers",
+					"ajax": {
+						"url": "<?php echo base_url('admin/supportDetailAjax')?>",
+						"type": "POST",
+						"data": {txtSearch:txtsearch}
+					},
+					"columnDefs":[{
+						"targets":[0],
+						"orderable":false,
+					},],
+					"order":[],
+					"searching": false 
+				});
+			}
+			$('#updateSupportDetailModal').on('show.bs.modal', function (event) {
+				var button = $(event.relatedTarget);
+				var status = button.data('status') ;
+				var supportId = button.data('suppid') ; 
+				// alert(productId);
+				var modal = $(this)
+				
+				modal.find('.modal-body #supportStatusField').val(status);
+				modal.find('.modal-body #supportIdField').val(supportId);
+			})
+			// TICKET OVERVIEW CHART
+			document.addEventListener('DOMContentLoaded', function () {
+				const chart1 = Highcharts.chart('supportOverviewChart', {
+					chart: {
+						type: 'areaspline',
+						scrollablePlotArea: {
+							minWidth: 400,
+							scrollPositionX: 1
+						}
+					},
+					title: {
+						text: 'Weekly Ticket Overview'
+					},
+					legend: {
+						layout: 'vertical',
+						align: 'left',
+						verticalAlign: 'top',
+						x: 150,
+						y: 100,
+						floating: true,
+						borderWidth: 1,
+						backgroundColor:
+							Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF'
+					},
+					xAxis: {
+						categories: [
+							'Monday',
+							'Tuesday',
+							'Wednesday',
+							'Thursday',
+							'Friday',
+							'Saturday',
+							'Sunday'
+						],
+						plotBands: [{ // visualize the weekend
+							from: 4.5,
+							to: 6.5,
+							color: 'rgba(68, 170, 213, .2)'
+						}]
+					},
+					yAxis: {
+						title: {
+							text: 'Number of tickets'
+						}
+					},
+					tooltip: {
+						shared: true,
+						valueSuffix: ' tickets'
+					},
+					credits: {
+						enabled: false
+					},
+					plotOptions: {
+						areaspline: {
+							fillOpacity: 0.5
+						}
+					},
+					series: [{
+						name: 'Open/Pending',
+						data: [<?php echo (isset($info1) ? $info1 : 0)?>, <?php echo (isset($info2) ? $info2 : 0)?>, <?php echo (isset($info3) ? $info3 : 0)?>, <?php echo (isset($info4) ? $info4 : 0)?>, <?php echo (isset($info5) ? $info5 : 0)?>, <?php echo (isset($info6) ? $info6 : 0)?>, <?php echo (isset($info7) ? $info7 : 0)?>],
+						color: '#FFB36C'
+					}]
+				})
+			});
+		</script>
 	</body>
 </html>

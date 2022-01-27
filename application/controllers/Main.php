@@ -8,6 +8,7 @@ class Main extends CI_Controller {
 		$this->load->model('inventory_model');
 		$this->load->model('cart_model');
 		$this->load->model('ping_model');
+		$this->load->model('support_model');
 		$this->load->helper('url');
 		$this->load->library('session'); 
 
@@ -63,10 +64,37 @@ class Main extends CI_Controller {
 		}
 	}
 	public function contactus(){
+		// validations
+		$this->form_validation->set_rules('faqfname', 'First Name' ,'required|max_length[50]');
+		$this->form_validation->set_rules('faqlname', 'Last Name' ,'required|max_length[50]');
+		$this->form_validation->set_rules('faqemail', 'Email' ,'required|max_length[50]');
+		$this->form_validation->set_rules('faqqst', 'Concern' ,'required|max_length[255]');
 		$this->load->helper('url');
-		$this->load->view('HeaderNFooter/Header.php');
-		$this->load->view('ClientPages/support.php');
-		$this->load->view('HeaderNFooter/Footer.php');
+		// get data 
+		$data['document'] = (object)$postData = array( 
+			'supportId' => "SUP-".$this->randStrGen(2,7),
+			'firstname' => $this->input->post('faqfname'),
+			'lastname' => $this->input->post('faqlname'),
+			'email' => $this->input->post('faqemail'),
+			'supportMessage' => $this->input->post('faqqst'),
+			'status' => 'Active',
+			'createDate' => date('Y-m-d'),
+		);
+		// store data 
+		if($this->form_validation->run() === true){
+			if($this->support_model->create($postData)){
+				$this->session->set_flashdata('success','Sent Successfully');
+			}
+			else{
+				$this->session->set_flashdata('error','Send Failed');
+			}
+			redirect('contactus');
+		}
+		else{
+			$this->load->view('HeaderNFooter/Header.php');
+			$this->load->view('ClientPages/support.php');
+			$this->load->view('HeaderNFooter/Footer.php');
+		}
 	}
 	public function aboutus(){
 		$this->load->helper('url');

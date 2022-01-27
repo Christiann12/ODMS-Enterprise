@@ -1,4 +1,18 @@
 <div class="faqtitle card my-5 card py-5 px-3 px-lg-5 no-shadow border-0">
+    <div class="alert alert-danger print-error-msg" style="display: <?php echo ((validation_errors() == '' || validation_errors() == null) ? "none;" : "block;")?>">
+        <?php echo validation_errors(); ?>
+    </div>
+
+    <?php if($this->session->flashdata('success')){ ?>
+        <div class="alert alert-success" > 
+            <?php  echo $this->session->flashdata('success'); $this->session->unset_userdata ( 'success' );?>
+        </div>
+    <?php } ?>  
+    <?php if ($this->session->flashdata('error')){ ?>
+        <div class="alert alert-danger" > 
+            <?php  echo $this->session->flashdata('error'); $this->session->unset_userdata ( 'error' );?>
+        </div>
+    <?php } ?>
     <div>
         <div class="details">
             <h4>Table of Contents<br></h4>
@@ -133,30 +147,33 @@
     <div class="textform">
         <p>HAVE SOME <br>QUESTIONS?</p>
     </div>
-    <form class="faqform">
+    <div class="faqform">
+        <?php echo form_open_multipart('main/contactus') ?>
+            <div class="form-label-group">
+                <input type="text" class="faqfname form-control" id="faqfname" placeholder="First Name" name="faqfname" >
+                <label for="faqfname" class="faqlabel">First Name</label>
+            </div>
 
-        <div class="form-label-group">
-            <input type="text" class="faqfname form-control" id="faqfname" placeholder="First Name" name="fname" >
-            <label for="faqfname" class="faqlabel">First Name</label>
-        </div>
+            <div class="form-label-group">
+                <input type="text" class="faqlname form-control" id="faqfname" placeholder="Last Name" name="faqlname" >
+                <label for="faqlname" class="faqlabel">Last Name</label>
+            </div>
 
-        <div class="form-label-group">
-            <input type="text" class="faqlname form-control" id="faqfname" placeholder="Last Name" name="lname" >
-            <label for="faqlname" class="faqlabel">Last Name</label>
-        </div>
+            <div class="form-label-group">
+                <input type="email" class="faqemail form-control" id="faqemail" placeholder="Email Address" name="faqemail" >
+                <label for="faqemail" class="faqlabel">Email Address</label>
+            </div>    
 
-        <div class="form-label-group">
-            <input type="email" class="faqemail form-control" id="faqemail" placeholder="Email Address" name="email" >
-            <label for="faqemail" class="faqlabel">Email Address</label>
-        </div>    
-
-        <div class="form-label-group">
-            <textarea class="faqqst form-control" id="faqqst" rows="3" placeholder="Concern" ></textarea>
-        </div>
-
-        <button type="button" class="faqBtn btn btn-lg">SEND MESSAGE</button>
-
-    </form>
+            <!-- <div class="form-label-group">
+                <textarea class="faqqst form-control" id="faqqst" rows="3" placeholder="Concern" ></textarea>
+            </div> -->
+            <div class="form-label-group">
+                <!-- <label for="faqqst" class="faqlabel">Product Description</label> -->
+                <textarea placeholder="Input Summary of Concern" class="form-control faqqst" id="faqqst" name="faqqst"></textarea>
+            </div>
+            <button type="submit" class="faqBtn btn btn-lg">SEND MESSAGE</button>
+        <?php echo form_close() ?>
+    </div>
     
 </div>
 
