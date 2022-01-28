@@ -76,13 +76,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <p class="welightText">We Light Up Your Life</p>
       <p class="descwelightText">This section is an overview of what the Products function is. It specifies what kind of products the sub-contractors can avail for their projects.</p>
       <p class="descwelightText">Can be summarized in one or two paragraphs</p>
-      <button type="button" class="welightbtn btn mt-md-4 mt-0 ml-0">LEARN MORE</button>
+      <a href="#next">
+        <button type="button" class="welightbtn btn mt-md-4 mt-0 ml-0">LEARN MORE</button>
+      </a>
     </div>
     <div class="col-12 col-md-6">
     </div>
 </div>
 
-<div class="container border-0">
+<div class="container border-0" id="next">
     <h4 class="reaaf text-center">RELIABLE AND AFFORDABLE</h4>
     <h4 class="ourprod text-center">Our Products</h4>
       <div class="prodRowSetion col-12 row" style="text-align:center;" id="prodRowSectionLink">
