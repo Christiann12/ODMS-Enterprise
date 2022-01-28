@@ -150,8 +150,8 @@ class Admin extends CI_Controller {
 			$row[] = $ping->status;
 		
 			//responsible for the additions of action button in the last row
-			$row[] = '<a href="#" data-toggle="modal" data-target="#updatePingModal" data-pingid="'.$ping->pingId.'" data-status="'.$ping->status.'" class="btn btn-xs btn-success"><i class="fa fa-edit"  data-placement="top" title="View"></i></a>
-					 <a href="'.base_url('admin/deletePingRecord/'.$ping->pingId.'').'" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="View"></i></a>';
+			$row[] = '<a href="#" data-toggle="modal" data-target="#updatePingModal" data-pingid="'.$ping->pingId.'" data-status="'.$ping->status.'" class="btn btn-xs btn-success"><i class="fa fa-edit"  data-placement="top" title="Update"></i></a>
+					 <a href="'.base_url('admin/deletePingRecord/'.$ping->pingId.'').'" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="Delete"></i></a>';
 			//carries the values to the view
 			$data[] = $row;
 		}
@@ -252,7 +252,7 @@ class Admin extends CI_Controller {
 		$row[] = $support->lastname;
 		
 		//responsible for the additions of action button in the last row
-		$row[] = '<a href="#" data-toggle="modal" data-target="#updateSupportDetailModal" data-suppid="'.$support->supportId.'" data-status="'.$support->status.'" class="btn btn-xs btn-success"><i class="fa fa-edit"  data-placement="top" title="View"></i></a>';
+		$row[] = '<a href="#" data-toggle="modal" data-target="#updateSupportDetailModal" data-suppid="'.$support->supportId.'" data-status="'.$support->status.'" class="btn btn-xs btn-success"><i class="fa fa-edit" data-toggle="tooltip" data-placement="bottom" title="Update"></i></a>';
 		// 		<a href="'.base_url('admin/deletePingRecord/'.$ping->pingId.'').'" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="View"></i></a>';
 		//carries the values to the view
 		$data[] = $row;
@@ -441,8 +441,8 @@ class Admin extends CI_Controller {
 			$row[] = $user->userRole;
 		
 			//responsible for the additions of action button in the last row
-			$row[] = '<a href="'.base_url('admin/updateUser/'.$user->userId.'').'" class="btn btn-xs btn-success"><i class="fa fa-edit"  data-placement="top" title="View"></i></a>
-					<a href="'.base_url('admin/deleteUser/'.$user->userId.'').'" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="View"></i></a>';
+			$row[] = '<a href="'.base_url('admin/updateUser/'.$user->userId.'').'" class="btn btn-xs btn-success"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Update"></i></a>
+					<a href="'.base_url('admin/deleteUser/'.$user->userId.'').'" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="Delete"></i></a>';
 			//carries the values to the view
 			
 			$data[] = $row;
@@ -660,8 +660,8 @@ class Admin extends CI_Controller {
 			$row[] = $facompany->companyContactNum;
 			$row[] = $facompany->companyEmail;
 			// responsible for the additions of action button in the last row
-			$row[] = '<a href="#" data-toggle="modal" data-target="#FACompanyModal2" data-id="'.$facompany->companyId.'" data-file="'.$facompany->companyImg.'" data-name="'.$facompany->companyName.'" data-desc="'.$facompany->companyDesc.'" data-contact="'.$facompany->companyContactNum.'" data-email="'.$facompany->companyEmail.'" class="btn btn-xs btn-success"><i class="fa fa-edit"  data-placement="top" title="View"></i></a>
-					<a href="'.base_url('admin/deleteFACompanyRecord/'.$facompany->companyId.'').'" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="View"></i></a>';
+			$row[] = '<a href="#" data-toggle="modal" data-target="#FACompanyModal2" data-id="'.$facompany->companyId.'" data-file="'.$facompany->companyImg.'" data-name="'.$facompany->companyName.'" data-desc="'.$facompany->companyDesc.'" data-contact="'.$facompany->companyContactNum.'" data-email="'.$facompany->companyEmail.'" class="btn btn-xs btn-success"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Update"></i></a>
+					<a href="'.base_url('admin/deleteFACompanyRecord/'.$facompany->companyId.'').'" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="Delete"></i></a>';
 			$data[] = $row;
 		}
 		//carries the values to the view
@@ -851,8 +851,8 @@ class Admin extends CI_Controller {
 			$row[] = "PHP ".$product->productPrice;
 			$row[] = $product->productStock;
 			//responsible for the additions of action button in the last row
-			$row[] = '<a href="#" data-toggle="modal" data-target="#modal2" data-file="'.$product->productPicture.'" data-cat="'.$product->productCategory.'" data-id="'.$product->productId.'" data-name="'.$product->productTitle.'" data-desc="'.$product->productDesc.'" data-price="'.$product->productPrice.'" data-stock="'.$product->productStock.'" class="btn btn-xs btn-success"><i class="fa fa-edit"  data-placement="top" title="View"></i></a>
-					<a href="'.base_url('admin/deleteProdRecord/'.$product->productId.'').'" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="View"></i></a>';
+			$row[] = '<a href="#" data-toggle="modal" data-target="#modal2" data-file="'.$product->productPicture.'" data-cat="'.$product->productCategory.'" data-id="'.$product->productId.'" data-name="'.$product->productTitle.'" data-desc="'.$product->productDesc.'" data-price="'.$product->productPrice.'" data-stock="'.$product->productStock.'" class="btn btn-xs btn-success"><i class="fa fa-edit"  data-placement="top" title="Update"></i></a>
+					<a href="'.base_url('admin/deleteProdRecord/'.$product->productId.'').'" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="Delete"></i></a>';
 			$data[] = $row;
 		}
 		//carries the values to the view
