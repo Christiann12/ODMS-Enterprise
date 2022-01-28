@@ -51,7 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <img src="<?php echo base_url(); ?>application/assets/images/ClientPagesImages/services.png" class="serviceImg">
                 <p class="shopCardH1 text-center">Reliable. Less Maintenance. Worry-Free.</p>
                 <p class="shopCardDesc text-center">Our company engages in engineering services such as installation of distribution and transmission lines, installation of high voltage and low voltage equipments and other engineering works.</p>
-                <button type="button" class="browseServiceBtn">BROWSE SERVICES</button>
+                <button type="button" class="browseServiceBtn" id="servicesBtnHome" onclick="location.href = '<?php echo base_url('services')?>';">BROWSE SERVICES</button>
             </div>
 
             <!-- products -->
@@ -59,7 +59,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <img src="<?php echo base_url(); ?>application/assets/images/ClientPagesImages/products.png" class="productImg">
                 <p class="shopCardH1 text-center">Our Products</p>
                 <p class="shopCardDesc text-center">Feel free to contact us for your Power Distribution Line requirements: Poles, Cables, Transformers, Pole Line Hardware, and Accessories.</p>
-                <button type="button" class="browseProdBtn">BROWSE PRODUCTS</button>
+                <button type="button" class="browseProdBtn" id="productsBtnHome" onclick="location.href = '<?php echo base_url('products')?>';">BROWSE PRODUCTS</button>
             </div>
         </div>
     </div>
