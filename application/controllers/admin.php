@@ -24,7 +24,8 @@ class Admin extends CI_Controller {
 		$this->load->model('support_model');
 		$this->load->model('fACompanies_model');
 		$this->load->helper('url');
-		$this->load->library('session'); 
+		$this->load->library('session');
+		 
 	}
 
 	public function index()
