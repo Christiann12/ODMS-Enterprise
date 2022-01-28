@@ -30,7 +30,12 @@
 		<!-- HighChart.js -->
 		<script src="https://code.highcharts.com/highcharts.src.js"></script>
 		
-
+		<!-- ToolTip toggle -->
+		<script>
+			$(function () {
+				$('[data-toggle="tooltip"]').tooltip()
+			})
+		</script>
 		
 		<!-- general script -->
 		<script>
