@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <p class="aboutUsH1" >WHO WE ARE</p>
             <p class="aboutUsH2" >Providing Quality Products And Services That Goes Beyond What Our Clients Require</p>
             <p class="aboutUsH3" >ODMS Enterprise is a professional organization that specializes in the marketing and distribution of electrical distribution line materials, lighting fixtures, poles, cables and general hardware to the Philippine market, both public and private entities.  </p>
-            <button type="button" class="learnMoreBtn">LEARN MORE</button>
+            <button type="button" class="learnMoreBtn"  id="aboutUsBtn" onclick="location.href = '<?php echo base_url('aboutus')?>';">LEARN MORE</button>
         </div>
         
         <!-- second column -->
