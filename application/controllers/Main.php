@@ -9,6 +9,7 @@ class Main extends CI_Controller {
 		$this->load->model('cart_model');
 		$this->load->model('ping_model');
 		$this->load->model('support_model');
+		$this->load->model('fACompanies_model');
 		$this->load->helper('url');
 		$this->load->library('session'); 
 
@@ -22,12 +23,17 @@ class Main extends CI_Controller {
 		$this->load->view('ClientPages/Main.php');
 		$this->load->view('HeaderNFooter/Footer.php');
 	}
+	
 	public function fa(){
 		$this->load->helper('url');
+
+		$data['fACompanyRecord'] = $this->fACompanies_model->getFACompanyData();
+
 		$this->load->view('HeaderNFooter/Header.php');
-		$this->load->view('ClientPages/FA.php');
+		$this->load->view('ClientPages/FA.php', $data);
 		$this->load->view('HeaderNFooter/Footer.php');
 	}
+	
 	public function ping(){
 		$this->load->helper('url');
 		$this->load->view('HeaderNFooter/Header.php');
