@@ -11,7 +11,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <p class="serviceBannerH1">ABOUT</p>
             <p class="serviceBannerH2">Reliable. Less Maintenance. Worry-free</p>
             <p class="serviceBannerH3">This section is an overview of what the Services function is. It specifies what kind of services the sub-contractors can avail from ODMS Enterprise. Can be summarized in one or two paragraphs.</p>
-            <button type="button" class="serviceBannerBtn">LEARN MORE</button>
+            <a href="#next">
+                <button type="button" class="serviceBannerBtn">LEARN MORE</button>
+            </a>
         </div>
         <div class="col-12 col-md-6">
         </div>
@@ -19,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 
 <!-- Services --> 
-<div class="services">
+<div class="services" id="next">
     <!-- heading -->
     <div>
         <p class="servicesH1 text-center">RELIABLE AND AFFORDABLE</p>
