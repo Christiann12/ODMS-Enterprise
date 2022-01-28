@@ -20,7 +20,7 @@
 }
 
 .fAssistanceAdminSection .fAssistanceAdminHeadingDiv .row .fAssistanceAdminBtnDiv {
-    padding-top: 10px; margin-left: auto; margin-right: 0;
+    padding-top: 10px; margin-left: auto; margin-right: 0; 
 }
 
 .fAssistanceAdminBtn {
@@ -66,4 +66,38 @@
 
 .loanAdminSection .loanAdminTableWrapper .loanAdminTableHeader {
     background-color: #BEBEBE; 
+}
+
+/* MEDIA QUERIES */
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 100px) {
+    .fAssistanceAdminSection .fAssistanceAdminHeadingDiv .row .fAssistanceAdminBtnDiv {
+        padding-top: 10px; padding-bottom: 10px; margin-left: 0; margin-right: auto; 
+    }
+    
+}
+  
+/* Medium devices (tablets, 768px and up) */
+@media (min-width: 768px) {
+    .fAssistanceAdminSection .fAssistanceAdminHeadingDiv .row .fAssistanceAdminBtnDiv {
+        padding-top: 10px; padding-bottom: 10px; margin-left: 0; margin-right: auto; 
+    }
+
+
+}
+
+/* Large devices (desktops, 992px and up) */
+@media (min-width: 992px) {
+    .fAssistanceAdminSection .fAssistanceAdminHeadingDiv .row .fAssistanceAdminBtnDiv {
+        padding-top: 10px; padding-bottom: 10px; margin-left: auto; margin-right: 0; 
+    }
+
+}
+
+/* Extra large devices (large desktops, 1200px and up) */
+@media (min-width: 1200px) {
+    .fAssistanceAdminSection .fAssistanceAdminHeadingDiv .row .fAssistanceAdminBtnDiv {
+        padding-top: 10px; padding-bottom: 10px; margin-left: auto; margin-right: 0; 
+    }
+
 }

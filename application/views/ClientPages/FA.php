@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
 <!-- FA Company modal --> 
-<div class="modal hide fade" id="FACompanyModal" tabindex="-1" role="dialog">
+<div class="modal hide fade" id="fACompanyModal" tabindex="-1" role="dialog" style="display: none;">
   <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -15,20 +15,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <div class="modal-body" style="margin-left: auto; margin-right: auto;">
           <div class="row">
             <div class="col-lg-6">
-                <img src="<?php echo base_url(); ?>application/assets/images/ClientPagesImages/company.jpg" style="width: 100%; height: 100%;" alt="">
+                <img id="fACompanyPic" src="<?php echo base_url(); ?>application/assets/images/ClientPagesImages/company.jpg" style="width: 100%; height: 100%;" alt="">
             </div>
             <div class="col-lg-6" style="padding-top: 50px; padding-bottom: 50px;">
                 <p class="fACompanyName">Stark Industries</p>
                 <p class="fADescription">A short description of the company goes here.</p>
                 <p class="fAContact">Contact No.: 09xx-xxx-xxxx</p>
                 <p class="fAEmail">Email: companyname@domainname.com</p>
-                <p class="fARequirements">Requirements</p> <!-- should be in file format -->
+                <!-- <p class="fARequirements">Requirements</p> should be in file format -->
             </div>
           </div>
+          
       </div>
       <div class="modal-footer">
-        <!-- <button type="button" class="btn btn-primary">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
@@ -159,72 +159,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <p class="heading2">Our Business Partners</p>
     </center>
     <div class="row">
- 
-        <div class="col-12 col-md-4 mb-md-3 mb-5" >
-            <div class="card bg-dark text-white">
-                <img class="card-img" src="<?php echo base_url(); ?>application/assets/images/ClientPagesImages/team 4.jpg" alt="Card image">
-                <div class="card-img-overlay">
-                    <div style="margin-top: 20rem;">
+        <?php 
+            $counter = 0;
+            foreach($fACompanyRecord as $fACompany) {
+                $counter++;
+                echo '<div class="col-12 col-md-4 mb-md-3 mb-5" >
+                    <div class="card fAItems bg-dark text-white">
+                        <img class="card-img sample" src="'.base_url().'application/assets/attachments/'.$fACompany->companyImg.'" alt="Card image">
+                        <div class="card-img-overlay">
+                            <div style="margin-top: 20rem;">
 
-                        <h5 class="card-title">Company Name</h5>
-                        <p class="card-text" style="margin: 0;">Contact Number</p>
-                        <p class="card-text" style="margin: 0;">Email</p>
+                                <h5 class="card-title">'.$fACompany->companyName.'</h5>
+                                <p class="card-text" style="margin: 0;">Contact No.: '.$fACompany->companyContactNum.'</p>
+                                <p class="card-text" style="margin: 0;">Email: '.$fACompany->companyEmail.'</p>
 
+                            </div>
+                        </div>
+
+                        <div class="d-flex buttonContainer" style="">
+                            <button type="button" class="btn btn-warning m-auto" data-id="'.$fACompany->companyId.'" data-pic="'.$fACompany->companyImg.'" data-name="'.$fACompany->companyName.'" data-desc="Description: '.$fACompany->companyDesc.'" data-contact="Company Contact No.: '.$fACompany->companyContactNum.'" data-email="Company Email: '.$fACompany->companyEmail.'" data-toggle="modal" data-target="#fACompanyModal">View</button>
+                        </div>
                     </div>
+                </div>';
+            }
+
+            if($counter==0){
+                echo '
+                <div class="container">
+                    <center>
+                        <p style="font-size: 20px; font-weight: bold;">No Options Available</p>
+                    </center>
                 </div>
-
-                <div class="d-flex buttonContainer" style="">
-                  
-                    <button type="button" class="btn btn-warning m-auto" style="" data-toggle="modal" data-target="#FACompanyModal">View</button>
-   
-                </div>
-            </div>
-        </div>
-
-        <div class="col-12 col-md-4 mb-md-3 mb-5" >
-            <div class="card bg-dark text-white">
-                <img class="card-img" src="<?php echo base_url(); ?>application/assets/images/ClientPagesImages/team 4.jpg" alt="Card image">
-                <div class="card-img-overlay">
-                    <div style="margin-top: 20rem;">
-
-                        <h5 class="card-title">Company Name</h5>
-                        <p class="card-text" style="margin: 0;">Contact Number</p>
-                        <p class="card-text" style="margin: 0;">Email</p>
-
-                    </div>
-                </div>
-
-                <div class="d-flex buttonContainer" style="">
-                  
-                    <button type="button" class="btn btn-warning m-auto" style="">View</button>
-   
-                </div>
-            </div>
-        </div>
+                ';
+            }
         
-
-        <div class="col-12 col-md-4 mb-md-3 mb-5" >
-            <div class="card bg-dark text-white">
-                <img class="card-img" src="<?php echo base_url(); ?>application/assets/images/ClientPagesImages/team 4.jpg" alt="Card image">
-                <div class="card-img-overlay">
-                    <div style="margin-top: 20rem;">
-
-                        <h5 class="card-title">Company Name</h5>
-                        <p class="card-text" style="margin: 0;">Contact Number</p>
-                        <p class="card-text" style="margin: 0;">Email</p>
-
-                    </div>
-                </div>
-
-                <div class="d-flex buttonContainer" style="">
-                  
-                    <button type="button" class="btn btn-warning m-auto" style="">View</button>
-   
-                </div>
-            </div>
-        </div>
-
+        ?>
     </div>
+    
 </div>
 
 <div class="getStartedButtonSection">

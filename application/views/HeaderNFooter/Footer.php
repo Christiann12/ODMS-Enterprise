@@ -22,7 +22,7 @@
 		<script src="<?php echo base_url(); ?>application/assets/js/ClientPagesJs/products.js"></script>
 		<!-- <script src="<?php echo base_url(); ?>application/assets/js/ClientPagesJs/services.js"></script> -->
 		
-
+		<!-- PRODUCTS Script -->
 		<script>
 			// $(window).scroll(function(){
 			// 	$('nav').toggleClass('scrolled', $(this).scrollTop() > 100);
@@ -70,6 +70,31 @@
 			modal.find('.modal-body #prodTitle').val(name);
 			modal.find('.modal-body #prodPic').val(pic);
 			modal.find('.modal-body #prodPrice').val(Price);
+			})
+		</script>
+
+		<!-- FINANCIAL ASSISTANCE Script -->
+		<script>
+			$('#fACompanyModal').on('show.bs.modal', function (event) {
+
+			var button = $(event.relatedTarget);
+			var comp_desc = button.data('desc');
+			var comp_name = button.data('name');
+			var comp_contact = button.data('contact');
+			var comp_email = button.data('email');
+			var comp_img = button.data('pic');
+			// var comp_id = button.data('id');
+			var base_url = "<?= base_url('application/assets/attachments/') ?>";
+			var url = base_url+comp_img;
+
+			var modal = $(this)
+
+			modal.find('.modal-body .fACompanyName').text(comp_name);
+			modal.find('.modal-body .fADescription').text(comp_desc);
+			modal.find('.modal-body .fAContact').text(comp_contact);
+			modal.find('.modal-body .fAEmail').text(comp_email);
+			modal.find('.modal-body #fACompanyPic').attr("src", url);
+
 			})
 		</script>
 		

@@ -346,5 +346,73 @@
 				})
 			});
 		</script>
+
+		<!-- Script for Financial Assistance (company) -->	
+		<script>
+			<?php
+				if($this->uri->segment(2)=="financialAssistance" || $this->uri->segment(2)=="updateFACompanyRecord"){
+					echo '
+					
+					$(document).ready( function () {
+						$(\'#fAssistanceAdminTable\').DataTable().destroy();
+						var VtxtSearch=$("#txtSearch").val();
+						loadFACompanyTable(VtxtSearch);
+					});
+					
+					';
+				}
+			?>
+			
+			$("#fACompanySearch").submit(function(event){
+				event.preventDefault();
+				$('#fAssistanceAdminTable').DataTable().destroy();
+				var VtxtSearch=$("#txtSearch").val();
+				loadFACompanyTable(VtxtSearch);
+			});
+			function loadFACompanyTable(txtSearch=''){
+				
+				var dataTable = $('#fAssistanceAdminTable').DataTable({
+					"lengthMenu": [[10, 25, 100, 1000, 3000, -1], [10, 25, 100, 1000, 3000]],
+					"processing":true,
+					"language": {
+						processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span> '
+					},
+					"serverSide":true,
+					"responsive": true,
+					"bPaginate": true,
+					"sPaginationType": "full_numbers",
+					"ajax": {
+						"url": "<?php echo base_url('admin/fACompanyAjax')?>",
+						"type": "POST",
+						"data": {txtSearch:txtSearch}
+					},
+					"columnDefs":[{
+						"targets":[0,6],
+						"orderable":false,
+					},],
+					"order":[],
+					"searching": false 
+				});
+			}
+			$('#FACompanyModal2').on('show.bs.modal', function (event) {
+				var button = $(event.relatedTarget);
+				var companyName = button.data('name');
+				var companyDesc = button.data('desc');
+				var companyContactNum = button.data('contact');
+				var companyEmail = button.data('email');
+				var companyId = button.data('id') ; 
+				var companyFileName = button.data('file') ; 
+				// alert(productId);
+				var modal = $(this)
+				
+				modal.find('.modal-body #fACompanyName').val(companyName);
+				modal.find('.modal-body #fACompanyDesc').val(companyDesc);
+				modal.find('.modal-body #fACompanyContactNum').val(companyContactNum);
+				modal.find('.modal-body #fACompanyEmail').val(companyEmail);
+				modal.find('.modal-body #fACompanyId').val(companyId);
+				modal.find('.modal-body #fACompanyFileName').val(companyFileName);
+			})
+			
+		</script>
 	</body>
 </html>
