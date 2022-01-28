@@ -139,6 +139,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <p class="fAText1" > INQUIRE FINANCIAL ASSISTANCE </p>
         <p class="fAText2" > We Light Up Your Life </p>
         <p class="fAText3">This is where the description of Financial Assistance goes. By clicking the "Browse List" button, it directs the user to the Financial Assistance page. </p>
-        <center><button type="button" class="browseListBtn">BROWSE LIST</button></center>
+        <center><button type="button" class="browseListBtn" id="faBtn" onclick="location.href = '<?php echo base_url('fa')?>';">BROWSE LIST</button></center>
     </div>
 </div>
