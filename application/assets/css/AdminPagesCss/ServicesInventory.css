@@ -1,43 +1,88 @@
-.servicesInventoryDiv {
+.srvcsSection {
     width: auto; height: auto; margin: 50px; padding: 20px; background: #FFFFFF; box-shadow: 5px 4px 70px 5px rgba(0, 0, 0, 0.1); border-radius: 20px; 
 }
 
-.servicesInventoryDiv .servicesInventoryHeadingDiv {
+.srvcsSection .srvcsHeadingDiv {
     padding: 20px; margin-bottom: 10px; 
+    
 }
 
-.servicesInventoryDiv .servicesInventoryHeadingDiv .row .servicesInventoryTextDiv {
-    width: fit-content; padding: 10px; 
+.srvcsSection .srvcsTableHeader {
+    background-color: #BEBEBE; 
 }
 
-.servicesInventoryDiv .servicesInventoryHeadingDiv .row .servicesInventoryIcon {
-    width: fit-content; color: rgba(75, 78, 48, 0.34); padding: 10px; 
+
+.srvcsSection .srvcsHeadingDiv .row .srvcsTextDiv {
+    width: fit-content; padding: 20px; 
+    
 }
 
-.servicesInventoryText {
-    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 34px; line-height: 41px; display: flex; align-items: center; letter-spacing: 0.25em; color: #000000; 
-
+.srvcsSection .srvcsHeadingDiv .row .srvcsIcon {
+    width: fit-content; color: rgba(75, 78, 48, 0.34); padding: 20px; 
+    
 }
 
-.servicesInventoryDiv {
-    width: auto; height: auto; margin: 50px; padding: 20px; background: #FFFFFF; box-shadow: 5px 4px 70px 5px rgba(0, 0, 0, 0.1); border-radius: 20px; 
+.srvcsText {
+font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 34px; line-height: 41px; display: flex; align-items: center; letter-spacing: 0.25em; color: #000000; 
 }
 
-.servicesInventoryDiv .servicesInventoryHeadingDiv .row .servicesInventoryBtnDiv {
-    padding-top: 10px; margin-left: auto; margin-right: 0;
+.srvcsSection .srvcsHeadingDiv .row .srvcsButtonDiv {
+    padding-top: 20px; padding-bottom: 20px; padding-left: 20px; padding-right: 0px; margin-left: auto; margin-right: 0; 
 }
 
-.servicesInventoryBtn {
-    flex-direction: column; padding: 10px 20px; align-self: center; width: 150px; height: 47px; background-color: #F6C510; border: none; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 4px; 
+.srvcsSection .srvcsHeadingDiv .row .srvcsButtonDiv .addItemBtn {
+    flex-direction: column; align-items: center; padding: 10px 20px; width: 157px; height: 47px; background-color: #F6C510; border: none; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 4px; 
 
     /* Button text */
     font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 14px; line-height: 24px; align-items: center; text-align: center; letter-spacing: 1.25px;
 }
 
-.servicesInventoryDiv .serviceTableWrapper {
-    padding: 20px;
-}
+/* MEDIA QUERIES */
+/* Small devices (landscape phones, 576px and up) */
+@media (min-width: 100px) {
+    .srvcsSection .srvcsHeadingDiv .row .srvcsButtonDiv {
+        margin-left:0; margin-right: 0;
+    }
 
-.servicesInventoryDiv .serviceTableWrapper .serviceInventoryTableHeader {
-    background-color: #BEBEBE; 
+    .srvcsText {
+        font-size: 20px; 
+    }
+    
 }
+  
+  /* Medium devices (tablets, 768px and up) */
+  @media (min-width: 768px) {
+    .srvcsSection .srvcsHeadingDiv .row .srvcsButtonDiv {
+        margin-left:auto; margin-right: 0;
+    }
+
+    .srvcsText {
+        font-size: 24px; 
+    }
+  
+  
+  }
+  
+  /* Large devices (desktops, 992px and up) */
+  @media (min-width: 992px) {
+    .srvcsSection .srvcsHeadingDiv .row .srvcsButtonDiv {
+        margin-left:auto; margin-right: 0;
+    }
+
+    .srvcsText {
+        font-size: 34px; 
+    }
+    
+  }
+  
+  /* Extra large devices (large desktops, 1200px and up) */
+  @media (min-width: 1200px) {
+    .srvcsSection .srvcsHeadingDiv .row .srvcsButtonDiv {
+        margin-left:auto; margin-right: 0;
+    }
+
+    .srvcsText {
+        font-size: 34px; 
+    }
+    
+  }

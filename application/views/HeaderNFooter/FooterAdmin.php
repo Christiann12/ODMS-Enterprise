@@ -419,5 +419,73 @@
 			})
 			
 		</script>
+
+		<!-- Script for Services Inventory -->	
+		<script>
+			<?php
+				if($this->uri->segment(2)=="servicesInventory" || $this->uri->segment(2)=="updateServicesInventoryRecord"){
+					echo '
+					
+					$(document).ready( function () {
+						$(\'#servicesInventoryTable\').DataTable().destroy();
+						var VtxtSearch=$("#txtSearch").val();
+						loadSrvcsInventoryTable(VtxtSearch);
+					});
+					
+					';
+				}
+			?>
+			
+			$("#srvcsInventorySearch").submit(function(event){
+				event.preventDefault();
+				$('#servicesInventoryTable').DataTable().destroy();
+				var VtxtSearch=$("#txtSearch").val();
+				loadSrvcsInventoryTable(VtxtSearch);
+			});
+			function loadSrvcsInventoryTable(txtSearch=''){
+				
+				var dataTable = $('#servicesInventoryTable').DataTable({
+					"lengthMenu": [[10, 25, 100, 1000, 3000, -1], [10, 25, 100, 1000, 3000]],
+					"processing":true,
+					"language": {
+						processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span> '
+					},
+					"serverSide":true,
+					"responsive": true,
+					"bPaginate": true,
+					"sPaginationType": "full_numbers",
+					"ajax": {
+						"url": "<?php echo base_url('admin/servicesInventoryAjax')?>",
+						"type": "POST",
+						"data": {txtSearch:txtSearch}
+					},
+					"columnDefs":[{
+						"targets":[0,6],
+						"orderable":false,
+					},],
+					"order":[],
+					"searching": false 
+				});
+			}
+			$('#modal2').on('show.bs.modal', function (event) {
+				var button = $(event.relatedTarget);
+				var srvcsTitle = button.data('name');
+				var srvcsDesc = button.data('desc');
+				var srvcsPrice = button.data('price');
+				var srvcsAvailability = button.data('avlblty');
+				var srvcsId = button.data('id') ; 
+				var file = button.data('file') ; 
+				// alert(productId);
+				var modal = $(this)
+				
+				modal.find('.modal-body #srvcsTitle').val(srvcsTitle);
+				modal.find('.modal-body #srvcsDesc').val(srvcsDesc);
+				modal.find('.modal-body #srvcsPrice').val(srvcsPrice);
+				modal.find('.modal-body #srvcsAvailability').val(srvcsAvailability);
+				modal.find('.modal-body #srvcsId').val(srvcsId);
+				modal.find('.modal-body #fileName').val(file);
+			})
+			
+		</script>
 	</body>
 </html>
