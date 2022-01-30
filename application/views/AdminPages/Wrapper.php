@@ -16,41 +16,41 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
         <div class="list-group list-group-flush">
     
-            <a href="<?php echo base_url('admin/dashboard')?>" class=" <?php echo (($this->uri->segment(2) == 'dashboard') ? "active" : null) ?> list-group-item list-group-item-action mx-auto mt-3" id="elementadmin1"><i class="fa fa-home "></i></a>
+            <a href="<?php echo base_url('admin/dashboard')?>" class=" <?php echo (($this->uri->segment(2) == 'dashboard') ? "active" : null) ?> list-group-item list-group-item-action mx-auto mt-3" id="elementadmin1" data-toggle="tooltip" data-placement="right" title="Home"><i class="fa fa-home "></i></a>
 
             <?php if($this->session->userdata('userRole') == "admin" || $this->session->userdata('userRole') == "financial" )
             {
-                echo '<a href="'.base_url('admin/transaction').'" class="'.(($this->uri->segment(2) == 'transaction') ?"active":"") .' list-group-item list-group-item-action mx-auto mt-3" id="elementadmin2"><i class="fa fa-book"></i></a>';
+                echo '<a href="'.base_url('admin/transaction').'" class="'.(($this->uri->segment(2) == 'transaction') ?"active":"") .' list-group-item list-group-item-action mx-auto mt-3" id="elementadmin2" data-toggle="tooltip" data-placement="right" title="Transaction"><i class="fa fa-book"></i></a>';
             }
             ?>
             <?php if($this->session->userdata('userRole') == "admin" || $this->session->userdata('userRole') == "support" )
             {
-                echo '<a href="'.base_url('admin/ping').'" class="'.(($this->uri->segment(2) == 'ping') ?"active":"") .' list-group-item list-group-item-action mx-auto mt-3" id="elementadmin2"><i class="fa fa-bell"></i></a>';
+                echo '<a href="'.base_url('admin/ping').'" class="'.(($this->uri->segment(2) == 'ping') ?"active":"") .' list-group-item list-group-item-action mx-auto mt-3" id="elementadmin2" data-toggle="tooltip" data-placement="right" title="Ping"><i class="fa fa-bell"></i></a>';
             }
             ?>
             <?php if($this->session->userdata('userRole') == "admin" || $this->session->userdata('userRole') == "support" )
             {
-                echo '<a href="'.base_url('admin/support').'" class="'.(($this->uri->segment(2) == 'support') ?"active":"") .' list-group-item list-group-item-action mx-auto mt-3" id="elementadmin2"><i class="fa fa-user "></i></a>';
+                echo '<a href="'.base_url('admin/support').'" class="'.(($this->uri->segment(2) == 'support') ?"active":"") .' list-group-item list-group-item-action mx-auto mt-3" id="elementadmin2" data-toggle="tooltip" data-placement="right" title="Support"><i class="fa fa-user "></i></a>';
             }
             ?>
             <?php if($this->session->userdata('userRole') == "admin" || $this->session->userdata('userRole') == "inventory" )
             {
-                echo '<a href="'.base_url('admin/inventory').'" class="'.(($this->uri->segment(2) == 'inventory') ?"active":"") .' list-group-item list-group-item-action mx-auto mt-3" id="elementadmin2"><i class="fa fa-pencil-square"></i></a>';
+                echo '<a href="'.base_url('admin/inventory').'" class="'.(($this->uri->segment(2) == 'inventory') ?"active":"") .' list-group-item list-group-item-action mx-auto mt-3" id="elementadmin2" data-toggle="tooltip" data-placement="right" title="Inventory (Products)"><i class="fa fa-pencil-square"></i></a>';
             }
             ?>
             <?php if($this->session->userdata('userRole') == "admin")
             {
-                echo '<a href="'.base_url('admin/userManagement').'" class="'.(($this->uri->segment(2) == 'userManagement' || $this->uri->segment(2) == 'updateUser') ?"active":"") .' list-group-item list-group-item-action mx-auto mt-3" id="elementadmin2"><i class="fa fa-id-card"></i></a>';
+                echo '<a href="'.base_url('admin/userManagement').'" class="'.(($this->uri->segment(2) == 'userManagement' || $this->uri->segment(2) == 'updateUser') ?"active":"") .' list-group-item list-group-item-action mx-auto mt-3" id="elementadmin2" data-toggle="tooltip" data-placement="right" title="User Management"><i class="fa fa-id-card"></i></a>';
             }
             ?>
             <?php if($this->session->userdata('userRole') == "admin" || $this->session->userdata('userRole') == "inventory")
             {
-                echo '<a href="'.base_url('admin/servicesInventory').'" class="'.(($this->uri->segment(2) == 'servicesInventory') ?"active":"") .' list-group-item list-group-item-action mx-auto mt-3" id="elementadmin2"><i class="fa fa-cogs"></i></a>';
+                echo '<a href="'.base_url('admin/servicesInventory').'" class="'.(($this->uri->segment(2) == 'servicesInventory') ?"active":"") .' list-group-item list-group-item-action mx-auto mt-3" id="elementadmin2" data-toggle="tooltip" data-placement="right" title="Inventory (Services)"><i class="fa fa-cogs"></i></a>';
             }
             ?>
             <?php if($this->session->userdata('userRole') == "admin")
             {
-                echo '<a href="'.base_url('admin/financialAssistance').'" class="'.(($this->uri->segment(2) == 'financialAssistance') ?"active":"") .' list-group-item list-group-item-action mx-auto mt-3" id="elementadmin2"><i class="fa fa-handshake-o"></i></a>';
+                echo '<a href="'.base_url('admin/financialAssistance').'" class="'.(($this->uri->segment(2) == 'financialAssistance') ?"active":"") .' list-group-item list-group-item-action mx-auto mt-3" id="elementadmin2" data-toggle="tooltip" data-placement="right" title="Financial Assistance"><i class="fa fa-handshake-o"></i></a>';
             }
             ?>
         </div>
