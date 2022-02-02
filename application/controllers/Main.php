@@ -1,6 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+use vonage\client;
+
 class Main extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
@@ -57,6 +59,47 @@ class Main extends CI_Controller {
 		if($this->form_validation->run() === true){
 			if($this->ping_model->create($postData)){
 				$this->session->set_flashdata('success','Add Successful');
+				//-------------- SEND SMS -------------- // 
+				// $basic  = new \Vonage\Client\Credentials\Basic("fbd703ae", "x7UUWUz2NR6t78fi");
+				// $client = new \Vonage\Client($basic);
+
+				// $response = $client->sms()->send(
+				// 	new \Vonage\SMS\Message\SMS("639154547628", 'ODMS Enterprise', 'WARNING: Emergency at ' .$postData['locationcode']. ' NOTE: ' . $postData['note'])
+				// );
+				
+				// $message = $response->current();
+				
+				// if ($message->getStatus() == 0) {
+				// 	$this->session->set_flashdata('successLogin','text Successful');
+				// } else {
+				// 	$this->session->set_flashdata('errorLogin','text asdasd');
+				// }
+
+				// -------------- SEND EMAIL -------------- // 
+				$this->load->library('email');
+				
+				$config = array();
+				$config['protocol'] = 'smtp';
+				$config['smtp_host'] = 'ssl://smtp.gmail.com';
+				$config['smtp_user'] = 'odmsenterprise@gmail.com';
+				$config['smtp_pass'] = 'Thisismypassword123!';
+				$config['smtp_port'] = 465;
+				$config['crlf'] = '\r\n';
+				$config['newline'] = '\r\n';
+				$config['mailtype'] = "html";
+
+				$this->email->initialize($config);
+				$this->email->set_newline("\r\n");  
+
+				$this->email->to('isaiahlumod1827@gmail.com');
+				$this->email->from('odmsenterprise@gmail.com');
+				$this->email->subject('qweqwe');
+				$data['test'] = 'test';
+				$body = $this->load->view('AdminPages/Email_template.php',$data,TRUE);
+				$this->email->message($body);
+
+				$this->email->send();
+				
 			}
 			else{
 				$this->session->set_flashdata('error','Add Failed');
