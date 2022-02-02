@@ -711,6 +711,35 @@ class Admin extends CI_Controller {
 				$postData['productPicture'] = $upload['file_name'];
 				if($this->inventory_model->create($postData)){
 					$this->session->set_flashdata('success','Add Successful');
+					// $this->load->library('email');
+					
+					// $config = array();
+					// $config['protocol'] = 'smtp';
+					// $config['smtp_host'] = 'ssl://smtp.gmail.com';
+					// $config['smtp_user'] = 'odmsenterprise@gmail.com';
+					// $config['smtp_pass'] = 'Thisismypassword123!';
+					// $config['smtp_port'] = 465;
+					// $config['crlf'] = '\r\n';
+					// $config['newline'] = '\r\n';
+					// $config['mailtype'] = "html";
+
+					// $this->email->initialize($config);
+					// $this->email->set_newline("\r\n");  
+
+					// $this->email->to('christianpaulpili@gmail.com');
+					// $this->email->from('odmsenterprise@gmail.com');
+					// $this->email->subject('qweqwe');
+					// $data['test'] = 'test';
+					// $body = $this->load->view('AdminPages/Email_template.php',$data,TRUE);
+					// $this->email->message($body);
+
+					// if($this->email->send()){
+					// 	$this->session->set_flashdata('success','Add iwiwiw');
+					// }
+					// else{
+					// 	$this->session->set_flashdata('error',$this->email->print_debugger());
+					// }
+					
 				}
 				else {
 					$this->session->set_flashdata('error','Add Failed');
