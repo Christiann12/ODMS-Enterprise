@@ -31,53 +31,38 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <!-- services cards -->
     <div class="serviceCards container">
         <div class="row">
-            <div class="col-12 col-md-4 mb-md-3 mb-5">
-                <div class="card bg-dark text-white">
-                    <img class="card-img" src="<?php echo base_url(); ?>application/assets/images/ClientPagesImages/services.jpg" alt="Card image">
-                    <div class="card-img-overlay">
-                        <div style="margin-top: 20rem;">
-                            <h5 class="serviceName card-title">Service Name</h5>
-                            <p class="serviceDesc card-text" style="margin: 0;">Service Description</p>
-                        </div>
-                    </div>
+            <?php
+                $counter = 0;
+                foreach($srvcsInventoryRecord as $srvcsRecord) {
+                    $counter++;
+                    echo '
+                    <div class="col-12 col-md-4 mb-md-3 mb-5">
+                            <div class="card bg-dark text-white">
+                                <img class="card-img" src="'.base_url().'application/assets/attachments/'.$srvcsRecord->srvcsPicture.'" alt="Card image">
+                                <div class="card-img-overlay">
+                                    <div style="margin-top: 20rem;">
+                                        <h5 class="serviceName card-title">'.$srvcsRecord->srvcsTitle.'</h5>
+                                        <p class="serviceDesc card-text" style="margin: 0;">'.$srvcsRecord->srvcsDesc.'</p>
+                                    </div>
+                                </div>
 
-                    <div class="d-flex buttonContainer" style="">
-                        <button type="button" class="btn btn-warning m-auto" id="serviceViewBtn" onclick="location.href = '<?php echo base_url('servicesOrder')?>';">View</button>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-12 col-md-4 mb-md-3 mb-5">
-                <div class="card bg-dark text-white">
-                    <img class="card-img" src="<?php echo base_url(); ?>application/assets/images/ClientPagesImages/services.jpg" alt="Card image">
-                    <div class="card-img-overlay">
-                        <div style="margin-top: 20rem;">
-                            <h5 class="serviceName card-title">Service Name</h5>
-                            <p class="serviceDesc card-text" style="margin: 0;">Service Description</p>
-                        </div>
-                    </div>
+                                <div class="d-flex buttonContainer" style="">
+                                    <button type="button"  class="btn btn-warning m-auto" id="serviceViewBtn" data-id="'.$srvcsRecord->srvcsId.'" data-pic="'.$srvcsRecord->srvcsPicture.'" data-name="'.$srvcsRecord->srvcsTitle.'" data-desc="'.$srvcsRecord->srvcsDesc.'" data-price="'.$srvcsRecord->srvcsPrice.'" onclick="location.href = \''.base_url('servicesOrder').'\';">View</button>
+                                </div>
+                            </div>
+                        </div>';
+                }
 
-                    <div class="d-flex buttonContainer" style="">
-                        <button type="submit" class="btn btn-warning m-auto" id="serviceViewBtn" onclick="location.href = '<?php echo base_url('servicesOrder')?>';">View</button>
+                if($counter==0){
+                    echo '
+                    <div class="container">
+                        <center>
+                            <p style="font-size: 20px; font-weight: bold;">No Options Available</p>
+                        </center>
                     </div>
-                </div>
-            </div>
-
-            <div class="col-12 col-md-4 mb-md-3 mb-5">
-                <div class="card bg-dark text-white">
-                    <img class="card-img" src="<?php echo base_url(); ?>application/assets/images/ClientPagesImages/services.jpg" alt="Card image">
-                    <div class="card-img-overlay">
-                        <div style="margin-top: 20rem;">
-                            <h5 class="serviceName card-title">Service Name</h5>
-                            <p class="serviceDesc card-text" style="margin: 0;">Service Description</p>
-                        </div>
-                    </div>
-
-                    <div class="d-flex buttonContainer" style="">
-                        <button type="button" class="btn btn-warning m-auto" id="serviceViewBtn" onclick="location.href = '<?php echo base_url('servicesOrder')?>';">View</button>
-                    </div>
-                </div>
-            </div>
+                    ';
+                }
+            ?>
         </div>
     </div>
 

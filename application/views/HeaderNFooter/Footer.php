@@ -97,6 +97,15 @@
 
 			})
 		</script>
+
+		<script>
+			$('serviceView'),function(event){
+				var button = $(event.relatedTarget);
+				var srvcsPicture = button.data('srvcsPicture');
+				var srvcsTitle = button.data('srvcsTitle');
+				var srvcsPrice = button.data('srvcsPrice');
+			}
+		</script>
 		
 	</body>
 </html>

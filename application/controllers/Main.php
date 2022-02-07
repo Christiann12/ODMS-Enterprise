@@ -12,6 +12,7 @@ class Main extends CI_Controller {
 		$this->load->model('ping_model');
 		$this->load->model('support_model');
 		$this->load->model('fACompanies_model');
+		$this->load->model('srvcsinventory_model');
 		$this->load->helper('url');
 		$this->load->library('session'); 
 
@@ -151,18 +152,7 @@ class Main extends CI_Controller {
 		$this->load->view('ClientPages/aboutus.php');
 		$this->load->view('HeaderNFooter/Footer.php');
 	}
-	public function services(){
-		$this->load->helper('url');
-		$this->load->view('HeaderNFooter/Header.php');
-		$this->load->view('ClientPages/services.php');
-		$this->load->view('HeaderNFooter/Footer.php');
-	}
-	public function servicesOrder(){
-		$this->load->helper('url');
-		$this->load->view('HeaderNFooter/Header.php');
-		$this->load->view('ClientPages/ServicesOrder.php');
-		$this->load->view('HeaderNFooter/Footer.php');
-	}
+
 	public function servicesOrderSuccess(){
 		$this->load->helper('url');
 		$this->load->view('HeaderNFooter/Header.php');
@@ -182,6 +172,30 @@ class Main extends CI_Controller {
 		$this->load->view('ClientPages/products.php', $data);
 		$this->load->view('HeaderNFooter/Footer.php');
 	}
+
+	public function services(){
+		$this->load->helper('url');
+		
+		if(!$this->session->has_userdata('userSessionId')){
+			$this->session->set_userdata('userSessionId', 'SESSID-'.$this->randStrGen(2,8));
+		}
+			$data['srvcsInventoryRecord'] = $this->srvcsinventory_model->getInvData();
+
+			$this->load->view('HeaderNFooter/Header.php');
+			$this->load->view('ClientPages/Services.php',$data);
+			$this->load->view('HeaderNFooter/Footer.php');
+
+	}
+
+	public function servicesOrder(){
+			$this->load->view('HeaderNFooter/Header.php');
+			$this->load->view('ClientPages/ServicesOrder.php');
+			$this->load->view('HeaderNFooter/Footer.php');
+
+	}
+
+
+	
 
 	public function addToCart(){
 		//Form Validations

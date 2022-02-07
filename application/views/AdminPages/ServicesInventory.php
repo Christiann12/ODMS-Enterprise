@@ -140,7 +140,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         </div>
         <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal2">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button class="btn btn-primary">Save changes</button>
         </div>
         <?php echo form_close() ?>
@@ -176,8 +176,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             
             <div class="inventoryButtonDiv">
-                <button type="button" class="btn btn-primary addItemBtn" data-toggle="modal" data-target="#modal1">
-                    Add Item
+                <button type="button" class="btn btn-primary addItemBtn" data-toggle="modal" data-target="#modal1" style="color:black;">
+                    Add Service
                 </button>
             </div>
             <div class="col-sm-12">
