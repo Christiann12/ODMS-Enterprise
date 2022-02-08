@@ -60,7 +60,6 @@ $route['fa'] = 'main/fa';
 $route['ping'] = 'main/ping';
 $route['products'] = 'main/products';
 $route['services'] = 'main/services';
-$route['servicesOrder/(:any)'] = 'main/servicesOrder/$1';
 $route['servicesOrder'] = 'main/servicesOrder';
 $route['servicesOrderSuccess'] = 'main/servicesOrderSuccess';
 $route['admin/updateUser/(:any)'] = 'admin/userManagement/$1';

@@ -74,7 +74,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             
                 <div class="textContainer">
                     <p class="text-title">Good Day, <?php echo $this->session->userdata('firstName'); ?></p>
-                    <p class="text-desc">Today, <?php date_default_timezone_set('Asia/Singapore'); echo date('F j, Y');?></p>
+                    <p class="text-desc">Today, <?php echo date('F j, Y')?></p>
                 </div>
 
                 <li class="nav-item active">

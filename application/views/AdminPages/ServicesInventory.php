@@ -3,7 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
 <!-- create record modal -->
-<div class="modal hide fade" id="createServiceRecordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div class="modal hide fade" id="modal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
         <div class="modal-content">
         <div class="modal-header">
@@ -16,51 +16,51 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <?php echo form_open_multipart('admin/servicesInventory') ?>
             
             <div class="form-group row d-flex justify-content-around">
-                <label for="serviceTitle" class="col-3 ">Service Title<i class="text-danger">*</i></label>
+                <label for="srvcsTitle" class="col-3 ">Service Title<i class="text-danger">*</i></label>
                 <div class="col-9">
-                    <input name="serviceTitle"  type="text" class="form-control" id="serviceTitle" placeholder="Input Service Title" value="">
+                    <input name="srvcsTitle"  type="text" class="form-control" id="srvcsTitle" placeholder="Input Service Title" value="">
                 </div>
             </div>
 
             <div class="form-group row d-flex justify-content-around">
-                <label for="servicePicture" class="col-3 ">Attach Picture<i class="text-danger">*</i></label>
+                <label for="attachment" class="col-3 ">Attach Picture<i class="text-danger">*</i></label>
                 <div class="col-9">
-                    <input type="file" name="servicePicture" id="servicePicture">
+                    <input type="file" name="attachment" id="attachment">
                     <!-- <input name="attachment"  type="text" class="form-control" id="attachment" placeholder="Input Product Name" value=""> -->
                    
                 </div>
             </div>
             
             <div class="form-group row d-flex justify-content-around">
-                <label for="serviceDesc" class="col-3 ">Service Description</label>
+                <label for="srvcsDesc" class="col-3 ">Service Description</label>
                 <div class="col-9">
-                    <textarea placeholder="Input Service Description" class="form-control" id="serviceDesc" name="serviceDesc"></textarea>
+                    <textarea placeholder="Input Service Description" class="form-control" id="srvcsDesc" name="srvcsDesc"></textarea>
                 </div>
             </div>
             <div class="form-group row d-flex justify-content-around">
-                <label for="servicePrice" class="col-3 ">Service Price<i class="text-danger">*</i></label>
+                <label for="srvcsPrice" class="col-3 ">Service Price<i class="text-danger">*</i></label>
                 <div class="col-9">
-                    <input name="servicePrice"  type="text" class="form-control" id="servicePrice" placeholder="Input Service Price" value="">
+                    <input name="srvcsPrice"  type="text" class="form-control" id="srvcsPrice" placeholder="Input Service Price" value="">
                 </div>
             </div>
 
             <div class="form-group row d-flex justify-content-around">
-                <label for="serviceAvailability" class="col-3 ">Service Availability<i class="text-danger">*</i></label>
+                <label for="srvcsAvailability" class="col-3 ">Service Availability<i class="text-danger">*</i></label>
                    <div class="col-9">
                     <?php
-                            $serviceAvailability = array(
+                            $srvcsAvailability = array(
                                 '' => 'Select',
                                 "Available" => "Available",
                                 "Not Available" => "Not Available",
                             ); 
-                            echo form_dropdown('serviceAvailability', $serviceAvailability, "", 'class="form-control " id="serviceAvailability"');
+                            echo form_dropdown('srvcsAvailability', $srvcsAvailability, "", 'class="form-control " id="srvcsAvailability"');
                         ?>
                    </div>
             </div>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Close</button>
-            <button class="btn btn-primary">Add</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal1">Close</button>
+                <button class="btn btn-primary">Add</button>
         </div>
         <?php echo form_close() ?>
         </div>
@@ -69,7 +69,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 <!-- update record modal -->
-<div class="modal hide fade" id="updateServiceRecordModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div class="modal hide fade" id="modal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
         <div class="modal-content">
         <div class="modal-header">
@@ -82,66 +82,66 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <?php echo form_open_multipart('admin/updateServicesInventoryRecord') ?>
             
             <div class="form-group row d-flex justify-content-around">
-                <label for="serviceId" class="col-3 ">Service Code</label>
+                <label for="srvcsId" class="col-3 ">Service Code</label>
                 <div class="col-9">
-                    <input name="serviceId"  type="text" class="form-control" id="serviceId" placeholder="Input Service Id" value="" readonly>
+                    <input name="srvcsId"  type="text" class="form-control" id="srvcsId" placeholder="Input Service Id" value="" readonly>
                 </div>
             </div>
 
             <div class="form-group row d-none">
-                <label for="serviceFileName" class="col-3 ">File Name</label>
+                <label for="fileName" class="col-3 ">File Name</label>
                 <div class="col-9">
-                    <input name="serviceFileName"  type="text" class="form-control" id="serviceFileName" placeholder="Input Service Attachment" value="" readonly>
+                    <input name="fileName"  type="text" class="form-control" id="fileName" placeholder="Input Service Attachment" value="" readonly>
                 </div>
             </div>
 
             <div class="form-group row d-flex justify-content-around">
-                <label for="serviceTitle" class="col-3 ">Service Title<i class="text-danger">*</i></label>
+                <label for="srvcsTitle" class="col-3 ">Service Title<i class="text-danger">*</i></label>
                 <div class="col-9">
-                    <input name="serviceTitle"  type="text" class="form-control" id="serviceTitle" placeholder="Input Service Title" value="">
+                    <input name="srvcsTitle"  type="text" class="form-control" id="srvcsTitle" placeholder="Input Service Title" value="">
                 </div>
             </div>
 
             <div class="form-group row d-flex justify-content-around">
-                <label for="servicePicture" class="col-3 ">Attach Picture</label>
+                <label for="attachment" class="col-3 ">Attach Picture</label>
                 <div class="col-9">
-                    <input type="file" name="servicePicture" id="servicePicture">
+                    <input type="file" name="attachment" id="attachment">
                     <!-- <input name="attachment"  type="text" class="form-control" id="attachment" placeholder="Input Product Name" value=""> -->
                    
                 </div>
             </div>
 
             <div class="form-group row d-flex justify-content-around">
-                <label for="serviceDesc" class="col-3 ">Service Description</label>
+                <label for="srvcsDesc" class="col-3 ">Service Description</label>
                 <div class="col-9">
-                    <textarea placeholder="Input Service Desc" class="form-control" id="serviceDesc" name="serviceDesc"></textarea>
+                    <textarea placeholder="Input Service Desc" class="form-control" id="srvcsDesc" name="srvcsDesc"></textarea>
                 </div>
             </div>
             <div class="form-group row d-flex justify-content-around">
-                <label for="servicePrice" class="col-3 ">Service Price<i class="text-danger">*</i></label>
+                <label for="srvcsPrice" class="col-3 ">Service Price<i class="text-danger">*</i></label>
                 <div class="col-9">
-                    <input name="servicePrice"  type="text" class="form-control" id="servicePrice" placeholder="Input Service Price" value="">
+                    <input name="srvcsPrice"  type="text" class="form-control" id="srvcsPrice" placeholder="Input Service Price" value="">
                 </div>
             </div>
 
             <div class="form-group row d-flex justify-content-around">
-                <label for="serviceAvailability" class="col-3 ">Service Availability<i class="text-danger">*</i></label>
+                <label for="srvcsAvailability" class="col-3 ">Service Availability<i class="text-danger">*</i></label>
                    <div class="col-9">
                     <?php
-                            $serviceAvailability = array(
+                            $srvcsAvailability = array(
                                 '' => 'Select',
                                 "Available" => "Available",
                                 "Not Available" => "Not Available",
                             ); 
-                            echo form_dropdown('serviceAvailability', $serviceAvailability, "", 'class="form-control " id="serviceAvailability"');
+                            echo form_dropdown('srvcsAvailability', $srvcsAvailability, "", 'class="form-control " id="srvcsAvailability"');
                         ?>
                    </div>
             </div>
 
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Close</button>
-            <button class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary">Save changes</button>
         </div>
         <?php echo form_close() ?>
         </div>
@@ -176,7 +176,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             
             <div class="inventoryButtonDiv">
-                <button type="button" class="btn btn-primary addItemBtn" data-toggle="modal" data-target="#createServiceRecordModal" style="color:black;">
+                <button type="button" class="btn btn-primary addItemBtn" data-toggle="modal" data-target="#modal1" style="color:black;">
                     Add Service
                 </button>
             </div>
@@ -193,7 +193,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
    
    
     <div>
-        <table id="servicesInventoryTable" class="display responsive cell-border hover" width="100%">
+        <table id="servicesInventoryTable" class="display responsive nowrap cell-border hover" width="100%">
             <thead class="inventoryTableHeader">
                 <tr>
                     <th>No.</th>

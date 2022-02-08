@@ -241,7 +241,7 @@
                         <br>
                         <span style="color:#3bcdb0; font-size:20px; font-weight:bold;">two last step and you're done!</span><br>
                         <!-- We need you to update your account information. If there is ever a problem with your account, this information will make it easier for you to log back in. -->
-                        <p><?php echo $tranId ?></p>
+                        <p><?php echo base_url('admin/dashboard'); ?></p>
                       </td>
                     </tr>
                   </table>
@@ -276,21 +276,21 @@
                 <td style="background-color:#363636; text-align:center;">
                 <br>
                 <br>
-                  <!-- <img width="62" height="56" img src="https://www.filepicker.io/api/file/FjkhDKXsTFyaHnXhhBCw">
+                  <img width="62" height="56" img src="https://www.filepicker.io/api/file/FjkhDKXsTFyaHnXhhBCw">
                   <img width="68" height="56" src="https://www.filepicker.io/api/file/W6gXqm5BRL6qSvQRcI7u">
-                  <img width="61" height="56" src="https://www.filepicker.io/api/file/eV9YfQkBTiaOu9PA9gxv"> -->
+                  <img width="61" height="56" src="https://www.filepicker.io/api/file/eV9YfQkBTiaOu9PA9gxv">
                 <br>
                 <br>
                 </td>
               </tr>
               <tr>
                 <td style="color:#f0f0f0; font-size: 14px; text-align:center; padding-bottom:4px;">
-                  ODMS Enterprise © 2022 All Rights Reserved
+                  © 2014 All Rights Reserved
                 </td>
               </tr>
               <tr>
                 <td style="color:#27aa90; font-size: 14px; text-align:center;">
-                  <a href="<?php echo base_url('')?>">ODMS Website</a> | <a href="<?php echo base_url('contactus')?>">Contact Us</a></a>
+                  <a href="#">View in browser</a> | <a href="#">Contact</a> | <a href="#">Unsubscribe</a>
                 </td>
               </tr>
               <tr>

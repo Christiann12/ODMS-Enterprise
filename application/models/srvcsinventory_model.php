@@ -4,9 +4,9 @@ class srvcsinventory_model extends CI_Model {
     //global variable for table name
     private $table = "services";
     //column order basis
-    var $column_order = array(null,'serviceId','serviceTitle','serviceDesc','servicePrice','serviceAvailability'); //set column field database for datatable orderable
+    var $column_order = array(null,'srvcsId','srvcsTitle','srvcsDesc','srvcsPrice','srvcsAvailability'); //set column field database for datatable orderable
     //default column order
-    var $order = array('services.serviceId' => 'asc');
+    var $order = array('services.srvcsId' => 'asc');
     public function __construct() {
         parent::__construct();
 
@@ -16,30 +16,30 @@ class srvcsinventory_model extends CI_Model {
             $this->load->dbforge();
             // define table fields
             $fields = array(
-                'serviceId' => array(
+                'srvcsId' => array(
                 'type' => 'VARCHAR',
                 'constraint' =>20,
                 ),
-                'serviceTitle' => array(
+                'srvcsTitle' => array(
                 'type' => 'VARCHAR',
                 'constraint' => 50
                 ),
-                'serviceDesc' => array(
+                'srvcsDesc' => array(
                 'type' => 'VARCHAR',
                 'constraint' => 255,
                 'default' => 'No desc'
                 ),
-                'servicePicture' => array(
+                'srvcsPicture' => array(
                     'type' => 'VARCHAR',
                     'constraint' => 255,
                     'default' => 'Unverified'
                 ),
-                'servicePrice' => array(
+                'srvcsPrice' => array(
                 'type' => 'Decimal',
                 'constraint' => '50,2',
                 'default' => 0
                 ),
-                'serviceAvailability' => array(
+                'srvcsAvailability' => array(
                     'type' => 'VARCHAR',
                     'constraint' => 255,
                     'default' => 'Unverified'
@@ -48,7 +48,7 @@ class srvcsinventory_model extends CI_Model {
             ); 
             $this->dbforge->add_field($fields);
             // define primary key
-            $this->dbforge->add_key('serviceId', TRUE);
+            $this->dbforge->add_key('srvcsId', TRUE);
             // create table
             $this->dbforge->create_table($this->table);
         }
@@ -64,10 +64,10 @@ class srvcsinventory_model extends CI_Model {
         $this->db->from($this->table);
         if ($searchKey!=''){
 			$this->db->group_start();
-			$this->db->like("services.serviceId", $searchKey);
-            $this->db->or_like("services.serviceTitle", $searchKey);
-			$this->db->or_like("services.serviceDesc", $searchKey);
-            $this->db->or_like("services.servicePrice", $searchKey);
+			$this->db->like("services.srvcsId", $searchKey);
+            $this->db->or_like("services.srvcsTitle", $searchKey);
+			$this->db->or_like("services.srvcsDesc", $searchKey);
+            $this->db->or_like("services.srvcsPrice", $searchKey);
 			$this->db->group_end();
 		}
         if(isset($_POST['order'])){
@@ -80,7 +80,7 @@ class srvcsinventory_model extends CI_Model {
        
     }
     //get data for the table
-    public function getServiceInvTable($searchKey=''){
+    public function getInvTable($searchKey=''){
         $this->servicesInventoryTable($searchKey);
 		if($_POST['length'] != -1)
 		$this->db->limit($_POST['length'], $_POST['start']);
@@ -101,11 +101,11 @@ class srvcsinventory_model extends CI_Model {
 	}
     //update query for services
     public function updateSrvcsItm($data = []){
-        return $this->db->where('serviceId',$data['serviceId'])->update($this->table,$data); 
+        return $this->db->where('srvcsId',$data['srvcsId'])->update($this->table,$data); 
     }
     //delete per id services
     public function deleteSrvcsItm($id = null){
-        $this->db->where('serviceId',$id)->delete($this->table);
+        $this->db->where('srvcsId',$id)->delete($this->table);
 		if ($this->db->affected_rows()) {
 			return true;
 		} 
@@ -114,11 +114,11 @@ class srvcsinventory_model extends CI_Model {
 		}
     }
     //get all data in the table and display in the view
-    public function getServiceInvData(){
+    public function getInvData(){
         return $this->db->select("*")->from($this->table)->get()->result();
     } 
     //search table per id
-    public function getServiceInvDataById($id = null){
-        return $this->db->select("*")->from($this->table)->where('serviceId',$id)->get()->row();
+    public function getInvDataById($id = null){
+        return $this->db->select("*")->from($this->table)->where('srvcsId',$id)->get()->row();
     }
 }

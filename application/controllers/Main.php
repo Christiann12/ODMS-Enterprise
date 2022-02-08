@@ -208,6 +208,8 @@ class Main extends CI_Controller {
 				'productId' => $cartRecord->productId,
 				'quan' => $cartRecord->quan
 			);
+		if(!$this->session->has_userdata('userSessionId')){
+			$this->session->set_userdata('userSessionId', 'SESSID-'.$this->randStrGen(2,8));
 		}
 		// store data 
 		if($this->form_validation->run() === true){
@@ -235,7 +237,6 @@ class Main extends CI_Controller {
 						);
 						// update query
 						$this->inventory_model->updateStock($array);
-
 						// -------------- SEND EMAIL -------------- // 
 						$this->load->library('email');
 						
@@ -260,7 +261,7 @@ class Main extends CI_Controller {
 						$emailInfo['content'] = $this->db->select('*')->where('transactionId',$tranId)->get('prodtransaction')->result();;
 						$body = $this->load->view('EmailTemplates/ProdTranEmailTemp.php',$emailInfo,TRUE);
 						$this->email->message($body);
-
+		$data['inventoryRecord'] = $this->inventory_model->getInvData();
 						$this->email->send();
 					}
 					// $list = $this->inventory_model->getStock();
@@ -282,100 +283,52 @@ class Main extends CI_Controller {
 	public function services(){
 		$this->load->helper('url');
 		
-		// if(!$this->session->has_userdata('userSessionId')){
-		// 	$this->session->set_userdata('userSessionId', 'SESSID-'.$this->randStrGen(2,8));
-		// }
-		$data['srvcsInventoryRecord'] = $this->srvcsinventory_model->getServiceInvData();
+		if(!$this->session->has_userdata('userSessionId')){
+			$this->session->set_userdata('userSessionId', 'SESSID-'.$this->randStrGen(2,8));
+		}
+			$data['srvcsInventoryRecord'] = $this->srvcsinventory_model->getInvData();
 
-		$this->load->view('HeaderNFooter/Header.php');
-		$this->load->view('ClientPages/Services.php',$data);
-		$this->load->view('HeaderNFooter/Footer.php');
+			$this->load->view('HeaderNFooter/Header.php');
+			$this->load->view('ClientPages/Services.php',$data);
+			$this->load->view('HeaderNFooter/Footer.php');
 
 	}
 
 	public function servicesOrder(){
-		$this->load->helper('url');
-
-		$data['serviceInventoryRecord'] = $this->srvcsinventory_model->getServiceInvDataById($this->uri->segment(2));
-
-		$this->load->view('HeaderNFooter/Header.php');
-		$this->load->view('ClientPages/ServicesOrder.php', $data);
-		$this->load->view('HeaderNFooter/Footer.php');
+			$this->load->view('HeaderNFooter/Header.php');
+			$this->load->view('ClientPages/ServicesOrder.php');
+			$this->load->view('HeaderNFooter/Footer.php');
 
 	}
+
+
+	
 
 	public function addToCart(){
 		//Form Validations
-		$this->form_validation->set_rules('prodQuan', 'Quantity' ,'required|max_length[30]');
+		$this->form_validation->set_rules('sample1', 'Name' ,'max_length[30]');
 		//Data Collection
 		$quan = (int)$this->input->post('prodQuan');
 		$price = (float)$this->input->post('prodPrice');
-		$stock = (int)$this->input->post('prodQuanData');
-		if($quan > $stock){
-			$this->session->set_flashdata('error','Exceeded Stock');
-			redirect('products#orderSection');
-		}
-		else{
-			if($this->checkExistingCartItemForUser($this->input->post('sessid'),$this->input->post('prodId'))){
-				$list = $this->cart_model->getPrice($this->input->post('sessid'),$this->input->post('prodId'));
-				$currentQuan = $list->quan;
-				$newQuan = $currentQuan + $quan;
-				if($newQuan > $stock){
-					$this->session->set_flashdata('error','Exceeded Stock');
-					redirect('products#orderSection');
-				}
-				else{
-					$data['document'] = (object)$postData = array( 
-						
-						'quan' => $newQuan,
-						'productPrice' => $price * $newQuan,
-						
-					); 
-					if($this->form_validation->run() === true){
-						if($this->cart_model->update($postData,$this->input->post('sessid'),$this->input->post('prodId'))){
-							
-							
-						}
-						else{
-							
-						}
-						redirect('products#orderSection');
-					}
-				}
+		$data['document'] = (object)$postData = array( 
+			'sessid' => $this->input->post('sessid'),
+			'productId' => $this->input->post('prodId'),
+            'productTitle' => $this->input->post('prodTitle'),
+			'productPicture' => $this->input->post('prodPic'),
+            'productPrice' => $price * $quan,
+            'quan' => $this->input->post('prodQuan')
+        ); 
+		if($this->form_validation->run() === true){
+			if($this->cart_model->create($postData)){
+				$this->session->set_flashdata('success','Edit Successful');
+				// unlink(APPPATH.'assets/attachments/'.$this->input->post('fileName'));
 			}
 			else{
-				$quan = (int)$this->input->post('prodQuan');
-				$price = (float)$this->input->post('prodPrice');
-				$data['document'] = (object)$postData = array( 
-					'sessid' => $this->input->post('sessid'),
-					'productId' => $this->input->post('prodId'),
-					'productTitle' => $this->input->post('prodTitle'),
-					'productPicture' => $this->input->post('prodPic'),
-					'productPrice' => $price * $quan,
-					'quan' => $this->input->post('prodQuan'),
-					'createDate' => date('Y-m-d')
-				); 
-				if($this->form_validation->run() === true){
-					if($this->cart_model->create($postData)){
-						
-						
-					}
-					else{
-						
-					}
-					redirect('products#orderSection');
-				}
+				$this->session->set_flashdata('error','Edit Failed');
 			}
+			redirect('main/products');
 		}
-	}
-	public function deleteCartItem($sessid,$prodId){
-		if($this->cart_model->delCartItem($sessid,$prodId)){
-			// $this->session->set_flashdata('success','Delete Success');
-		}
-		else{
-			// $this->session->set_flashdata('error','Delete Failed');
-		}
-		redirect('products');
+		// redirect('main/shop');
 	}
 	public function randStrGen($mode = null, $len = null){
         $result = "";
@@ -396,12 +349,4 @@ class Main extends CI_Controller {
         }
         return $result;
     }
-	public function checkExistingCartItemForUser($sessid, $prodId){
-		$recordCount = $this->db->select('sessid')->where('productId',$prodId)->where('sessid',$sessid)->where('createDate', date('Y-m-d'))->get('cart')->num_rows();
-		if ($recordCount > 0) {
-            return true;
-        } else {
-            return false;
-        }
-	}
 }

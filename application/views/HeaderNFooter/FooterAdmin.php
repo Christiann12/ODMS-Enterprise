@@ -240,20 +240,11 @@
 		</script>
 		<!-- support script  -->
 		<script>
-			<?php
-				if($this->uri->segment(2)=="support"){
-					echo '
-					
-					$(document).ready( function () {
-						$(\'#supTable\').DataTable().destroy();
-						var searchString=$("#supportTxtSearch").val();
-						loadSupportTable(searchString);
-					});
-					
-					';
-				}
-			?>
-			
+			$(document).ready( function () {
+				$('#supTable').DataTable().destroy();
+				var searchString=$("#supportTxtSearch").val();
+				loadSupportTable(searchString);
+			});
 			$("#supportSearch").submit(function(event){
 				event.preventDefault();
 				$('#supTable').DataTable().destroy();
@@ -445,7 +436,7 @@
 				}
 			?>
 			
-			$("#servicesInventorySearch").submit(function(event){
+			$("#srvcsInventorySearch").submit(function(event){
 				event.preventDefault();
 				$('#servicesInventoryTable').DataTable().destroy();
 				var VtxtSearch=$("#txtSearch").val();
@@ -476,111 +467,25 @@
 					"searching": false 
 				});
 			}
-			$('#updateServiceRecordModal').on('show.bs.modal', function (event) {
+			$('#modal2').on('show.bs.modal', function (event) {
 				var button = $(event.relatedTarget);
-				var serviceTitle = button.data('name');
-				var serviceDesc = button.data('desc');
-				var servicePrice = button.data('price');
-				var serviceAvailability = button.data('avlblty');
-				var serviceId = button.data('id') ; 
-				var serviceFileName = button.data('file') ; 
+				var srvcsTitle = button.data('name');
+				var srvcsDesc = button.data('desc');
+				var srvcsPrice = button.data('price');
+				var srvcsAvailability = button.data('avlblty');
+				var srvcsId = button.data('id') ; 
+				var file = button.data('file') ; 
 				// alert(productId);
 				var modal = $(this)
 				
-				modal.find('.modal-body #serviceTitle').val(serviceTitle);
-				modal.find('.modal-body #serviceDesc').val(serviceDesc);
-				modal.find('.modal-body #servicePrice').val(servicePrice);
-				modal.find('.modal-body #serviceAvailability').val(serviceAvailability);
-				modal.find('.modal-body #serviceId').val(serviceId);
-				modal.find('.modal-body #serviceFileName').val(serviceFileName);
+				modal.find('.modal-body #srvcsTitle').val(srvcsTitle);
+				modal.find('.modal-body #srvcsDesc').val(srvcsDesc);
+				modal.find('.modal-body #srvcsPrice').val(srvcsPrice);
+				modal.find('.modal-body #srvcsAvailability').val(srvcsAvailability);
+				modal.find('.modal-body #srvcsId').val(srvcsId);
+				modal.find('.modal-body #fileName').val(file);
 			})
-		</script>
-
-		<!-- script for transaction -->
-		<script>
-			<?php
-				if($this->uri->segment(2)=="transaction" || $this->uri->segment(2)=="prodTransRecUpdate"){
-					echo '
-					
-					$(document).ready( function () {
-						$(\'#transactprodTable\').DataTable().destroy();
-						var VtxtSearch=$("#prodSearchTxT").val();
-						loadProdTransTable(VtxtSearch);
-					});
-					
-					';
-				}
-			?>
 			
-			$("#transactionProdSearchForm").submit(function(event){
-				event.preventDefault();
-				$('#transactprodTable').DataTable().destroy();
-				var VtxtSearch=$("#prodSearchTxT").val();
-				loadProdTransTable(VtxtSearch);
-			});
-			function loadProdTransTable(txtSearch=''){
-				
-				var dataTable = $('#transactprodTable').DataTable({
-					"lengthMenu": [[10, 25, 100, 1000, 3000, -1], [10, 25, 100, 1000, 3000]],
-					"processing":true,
-					"language": {
-						processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span> '
-					},
-					"serverSide":true,
-					"responsive": true,
-					"bPaginate": true,
-					"sPaginationType": "full_numbers",
-					"ajax": {
-						"url": "<?php echo base_url('admin/prodTransTableAjax')?>",
-						"type": "POST",
-						"data": {txtSearch:txtSearch}
-					},
-					"columnDefs":[{
-						"targets":[0],
-						"orderable":false,
-					},],
-					"order":[],
-					"searching": false 
-				});
-			}
-			$('#prodTransModal').on('show.bs.modal', function (event) {
-				var button = $(event.relatedTarget);
-				var transId = button.data('trid');
-				var fNameLabel = button.data('fname');
-				var lNameLabel = button.data('lname');
-				var emailAdd = button.data('email');
-				var phoNum = button.data('phn') ; 
-				var compName = button.data('compname') ; 
-				var compAdd = button.data('compadd');
-				var cityLabel = button.data('city');
-				var provinceLabel = button.data('provi');
-				var postalLabel = button.data('post');
-				var prodIdLabel = button.data('prid') ; 
-				var prodNameLabel = button.data('prdname') ; 
-				var totalPriceLabel = button.data('total');
-				var quanLabel = button.data('quan') ; 
-				var dateLabel = button.data('date') ; 
-				var statusProdTran = button.data('stat') ; 
-				// alert(productId);
-				var modal = $(this)
-				
-				modal.find('.modal-body #transId').val(transId);
-				modal.find('.modal-body #fNameLabel').val(fNameLabel);
-				modal.find('.modal-body #lNameLabel').val(lNameLabel);
-				modal.find('.modal-body #emailAdd').val(emailAdd);
-				modal.find('.modal-body #phoNum').val(phoNum);
-				modal.find('.modal-body #compName').val(compName);
-				modal.find('.modal-body #compAdd').val(compAdd);
-				modal.find('.modal-body #cityLabel').val(cityLabel);
-				modal.find('.modal-body #provinceLabel').val(provinceLabel);
-				modal.find('.modal-body #postalLabel').val(postalLabel);
-				modal.find('.modal-body #prodIdLabel').val(prodIdLabel);
-				modal.find('.modal-body #prodNameLabel').val(prodNameLabel);
-				modal.find('.modal-body #totalPriceLabel').val(totalPriceLabel);
-				modal.find('.modal-body #quanLabel').val(quanLabel);
-				modal.find('.modal-body #dateLabel').val(dateLabel);
-				modal.find('.modal-body #statusProdTran').val(statusProdTran);
-			})
 		</script>
 	</body>
 </html>

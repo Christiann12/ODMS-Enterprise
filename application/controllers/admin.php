@@ -118,8 +118,7 @@ class Admin extends CI_Controller {
 		else{
 			redirect('login');
 		}
-	} 
-
+	}
 	public function prodTransTableAjax(){
 		//helpers
 		$this->load->helper('url');
@@ -184,6 +183,7 @@ class Admin extends CI_Controller {
 			// $this->load->view('HeaderNFooter/FooterAdmin.php');
 		}
 	}
+
 	public function ping()
 	{
 		$data['param'] = 'ping';
@@ -954,13 +954,13 @@ class Admin extends CI_Controller {
 		$data['param'] ='servicesInventory';
 
 		//Form Validation
-		$this->form_validation->set_rules('serviceTitle', 'Title' ,'required|max_length[30]');
-		$this->form_validation->set_rules('serviceDesc', 'Description' ,'required|max_length[255]');
-		if (empty($_FILES['servicePicture']['name'])){
-			$this->form_validation->set_rules('servicePicture', 'Attachment' ,'required');
+		$this->form_validation->set_rules('srvcsTitle', 'Title' ,'required|max_length[30]');
+		$this->form_validation->set_rules('srvcsDesc', 'Description' ,'required|max_length[255]');
+		if (empty($_FILES['attachment']['name'])){
+			$this->form_validation->set_rules('attachment', 'Attachment' ,'required');
 		}
-		$this->form_validation->set_rules('servicePrice', 'Price' ,'required|max_length[30]');
-		$this->form_validation->set_rules('serviceAvailability', 'Service Availability' ,'required');
+		$this->form_validation->set_rules('srvcsPrice', 'Price' ,'required|max_length[30]');
+		$this->form_validation->set_rules('srvcsAvailability', 'Service Availability' ,'required');
 		
 		//load config for upload library
 		$config['upload_path']   = APPPATH.'assets/attachments/';
@@ -975,14 +975,14 @@ class Admin extends CI_Controller {
 		$this->load->library('upload', $config);
 		$filename = "";
 		
-		$name = 'servicePicture';
+		$name = 'attachment';
 		// StoreData
 		$data['document'] = (object)$postData = array( 
-			'serviceId' => "SRVC-".$this->randStrGen(2,7),
-            'serviceTitle' => $this->input->post('serviceTitle'),
-            'serviceDesc' => $this->input->post('serviceDesc'),
-            'servicePrice' => $this->input->post('servicePrice'),
-			'serviceAvailability' => $this->input->post('serviceAvailability')
+			'srvcsId' => "SRVC-".$this->randStrGen(2,7),
+            'srvcsTitle' => $this->input->post('srvcsTitle'),
+            'srvcsDesc' => $this->input->post('srvcsDesc'),
+            'srvcsPrice' => $this->input->post('srvcsPrice'),
+			'srvcsAvailability' => $this->input->post('srvcsAvailability')
         ); 
 		// SendToDatabase
 		if($this->form_validation->run() === true){
@@ -992,7 +992,7 @@ class Admin extends CI_Controller {
 			else {
                 $upload =  $this->upload->data();
                 
-				$postData['servicePicture'] = $upload['file_name'];
+				$postData['srvcsPicture'] = $upload['file_name'];
 				if($this->srvcsinventory_model->create($postData)){
 					$this->session->set_flashdata('success','Add Successful');
 				}
@@ -1019,10 +1019,10 @@ class Admin extends CI_Controller {
 	{
 		// screen to open
 		$data['param'] ='servicesInventory';
-		$this->form_validation->set_rules('serviceTitle', 'Title' ,'required|max_length[30]');
-		$this->form_validation->set_rules('serviceDesc', 'Description' ,'required|max_length[255]');
-		$this->form_validation->set_rules('servicePrice', 'Price' ,'required|max_length[30]');
-		$this->form_validation->set_rules('serviceAvailability', 'Service Availability' ,'required');
+		$this->form_validation->set_rules('srvcsTitle', 'Title' ,'required|max_length[30]');
+		$this->form_validation->set_rules('srvcsDesc', 'Description' ,'required|max_length[255]');
+		$this->form_validation->set_rules('srvcsPrice', 'Price' ,'required|max_length[30]');
+		$this->form_validation->set_rules('srvcsAvailability', 'Service Availability' ,'required');
 		//load config for upload library
 		$config['upload_path']   = APPPATH.'assets/attachments/';
 		$config['allowed_types'] = 'jpg|jpeg|jpe|png';
@@ -1037,17 +1037,17 @@ class Admin extends CI_Controller {
 		$this->load->library('upload', $config);
 		// StoreData
 		$data['document'] = (object)$postData = array( 
-			'serviceId' => $this->input->post('serviceId'),
-            'serviceTitle' => $this->input->post('serviceTitle'),
-            'serviceDesc' => $this->input->post('serviceDesc'),
-            'servicePrice' => $this->input->post('servicePrice'),
-			'serviceAvailability' => $this->input->post('serviceAvailability')
+			'srvcsId' => $this->input->post('srvcsId'),
+            'srvcsTitle' => $this->input->post('srvcsTitle'),
+            'srvcsDesc' => $this->input->post('srvcsDesc'),
+            'srvcsPrice' => $this->input->post('srvcsPrice'),
+			'srvcsAvailability' => $this->input->post('srvcsAvailability')
         ); 
-		$name = 'servicePicture';
+		$name = 'attachment';
 		// SendToDatabase
 		if($this->form_validation->run() === true){
 			//check if there's an update with the image
-			if (!empty($_FILES['servicePicture']['name'])){
+			if (!empty($_FILES['attachment']['name'])){
 				//if upload fails abort process and display error
 				if ( ! $this->upload->do_upload($name) ) {
 					$this->session->set_flashdata('error',$this->upload->display_errors());
@@ -1056,7 +1056,7 @@ class Admin extends CI_Controller {
 				else {
 					$upload =  $this->upload->data();
 					
-					$postData['servicePicture'] = $upload['file_name'];
+					$postData['srvcsPicture'] = $upload['file_name'];
 					if($this->srvcsinventory_model->updateSrvcsItm($postData)){
 						$this->session->set_flashdata('success','Edit Successful');
 						unlink(APPPATH.'assets/attachments/'.$this->input->post('fileName'));
@@ -1087,8 +1087,8 @@ class Admin extends CI_Controller {
 	// delete services record
 	public function deleteSrvcsInventoryRecord(){
 		//get file name to remove picture as the record is deleted
-		$query = $this->srvcsinventory_model->getServiceInvDataById($this->uri->segment(3));
-		$file = $query->servicePicture;
+		$query = $this->srvcsinventory_model->getInvDataById($this->uri->segment(3));
+		$file = $query->srvcsPicture;
 		if($this->srvcsinventory_model->deleteSrvcsItm($this->uri->segment(3))){
 			unlink(APPPATH.'assets/attachments/'.$file);
 			$this->session->set_flashdata('success','Delete Success');
@@ -1103,7 +1103,7 @@ class Admin extends CI_Controller {
 		//helpers
 		$this->load->helper('url');
 		//load query
-		$list = $this->srvcsinventory_model->getServiceInvTable($this->input->post('txtSearch'));
+		$list = $this->srvcsinventory_model->getInvTable($this->input->post('txtSearch'));
 		//variable initializations
 		$data = array();
 		$no = $_POST['start'];
@@ -1112,14 +1112,14 @@ class Admin extends CI_Controller {
 			$no++;
 			$row = array();
 			$row[] = $no;
-			$row[] = $services->serviceId;
-			$row[] = $services->serviceTitle;
-			$row[] = $services->serviceDesc;
-			$row[] = "PHP ".$services->servicePrice;
-			$row[] = $services->serviceAvailability;
+			$row[] = $services->srvcsId;
+			$row[] = $services->srvcsTitle;
+			$row[] = $services->srvcsDesc;
+			$row[] = "PHP ".$services->srvcsPrice;
+			$row[] = $services->srvcsAvailability;
 			//responsible for the additions of action button in the last row
-			$row[] = '<a href="#" data-toggle="modal" data-target="#updateServiceRecordModal" data-file="'.$services->servicePicture.'" data-id="'.$services->serviceId.'" data-name="'.$services->serviceTitle.'" data-desc="'.$services->serviceDesc.'" data-price="'.$services->servicePrice.'" data-avlblty="'.$services->serviceAvailability.'" class="btn btn-xs btn-success"><i class="fa fa-edit"  data-placement="top" title="Update"></i></a>
-					<a href="'.base_url('admin/deleteSrvcsInventoryRecord/'.$services->serviceId.'').'" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="Delete"></i></a>';
+			$row[] = '<a href="#" data-toggle="modal" data-target="#modal2" data-file="'.$services->srvcsPicture.'" data-id="'.$services->srvcsId.'" data-name="'.$services->srvcsTitle.'" data-desc="'.$services->srvcsDesc.'" data-price="'.$services->srvcsPrice.'" data-cat="'.$services->srvcsAvailability.'" class="btn btn-xs btn-success"><i class="fa fa-edit"  data-placement="top" title="View"></i></a>
+					<a href="'.base_url('admin/deleteSrvcsInventoryRecord/'.$services->srvcsId.'').'" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="View"></i></a>';
 			$data[] = $row;
 		}
 		//carries the values to the view
