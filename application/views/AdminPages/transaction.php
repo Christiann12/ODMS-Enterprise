@@ -1,6 +1,132 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
+<!-- View and Update Prod Trans Record -->
+<div class="modal hide fade" id="prodTransModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+<div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="updateModal">View and Update(Status) Product Transaction Record</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body" style="word-wrap: break-word;">
+            <?php echo form_open_multipart('admin/prodTransRecUpdate') ?>
+            
+            <div class="form-group row d-flex justify-content-around">
+                <label for="transId" class="col-3 ">Transaction Id</label>
+                <div class="col-9">
+                    <input name="transId"  type="text" class="form-control" id="transId" placeholder="Transaction Id" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="fNameLabel" class="col-3 ">First Name</label>
+                <div class="col-9">
+                    <input name="fNameLabel"  type="text" class="form-control" id="fNameLabel" placeholder="First Name" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="lNameLabel" class="col-3 ">Last Name</label>
+                <div class="col-9">
+                    <input name="lNameLabel"  type="text" class="form-control" id="lNameLabel" placeholder="Last Name" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="emailAdd" class="col-3 ">Email Address</label>
+                <div class="col-9">
+                    <input name="emailAdd"  type="text" class="form-control" id="emailAdd" placeholder="Email Address" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="phoNum" class="col-3 ">Phone Number</label>
+                <div class="col-9">
+                    <input name="phoNum"  type="text" class="form-control" id="phoNum" placeholder="Phone Number" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="compName" class="col-3 ">Company Name</label>
+                <div class="col-9">
+                    <input name="compName"  type="text" class="form-control" id="compName" placeholder="Company Name" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="compAdd" class="col-3 ">Company Address</label>
+                <div class="col-9">
+                    <input name="compAdd"  type="text" class="form-control" id="compAdd" placeholder="Company Address" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="cityLabel" class="col-3 ">City</label>
+                <div class="col-9">
+                    <input name="cityLabel"  type="text" class="form-control" id="cityLabel" placeholder="City" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="provinceLabel" class="col-3 ">Province</label>
+                <div class="col-9">
+                    <input name="provinceLabel"  type="text" class="form-control" id="provinceLabel" placeholder="Province" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="postalLabel" class="col-3 ">Postal Code</label>
+                <div class="col-9">
+                    <input name="postalLabel"  type="text" class="form-control" id="postalLabel" placeholder="Postal Code" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="prodIdLabel" class="col-3 ">Product Id</label>
+                <div class="col-9">
+                    <input name="prodIdLabel"  type="text" class="form-control" id="prodIdLabel" placeholder="Product Id" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="prodNameLabel" class="col-3 ">Product Name</label>
+                <div class="col-9">
+                    <input name="prodNameLabel"  type="text" class="form-control" id="prodNameLabel" placeholder="Product Name" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="totalPriceLabel" class="col-3 ">Total Price</label>
+                <div class="col-9">
+                    <input name="totalPriceLabel"  type="text" class="form-control" id="totalPriceLabel" placeholder="Total Price" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="quanLabel" class="col-3 ">Quantity</label>
+                <div class="col-9">
+                    <input name="quanLabel"  type="text" class="form-control" id="quanLabel" placeholder="Quantity" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="dateLabel" class="col-3 ">Order Date</label>
+                <div class="col-9">
+                    <input name="dateLabel"  type="text" class="form-control" id="dateLabel" placeholder="Date" value="" readonly>
+                </div>
+            </div>
+            
+            <div class="form-group row d-flex justify-content-around">
+                <label for="statusProdTran" class="col-3 ">Status<i class="text-danger">*</i></label>
+                   <div class="col-9">
+                    <?php
+                            $statusProdTran = array(
+                                '' => 'Select',
+                                "Not Paid" => "Not Paid",
+                                "Paid" => "Paid",
+                            ); 
+                            echo form_dropdown('statusProdTran', $statusProdTran, "", 'class="form-control " id="statusProdTran"');
+                        ?>
+                   </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Close</button>
+                <button class="btn btn-primary">Add</button>
+        </div>
+        <?php echo form_close() ?>
+        </div>
+  </div>
+</div>
 
 <!-- Start of Services -->
 <div class="transsrvSection">
@@ -12,6 +138,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
             <div class="transsrvTextDiv" >
                 <p class="transsrvText">Services</p>
+            </div>
+            <div class="col-sm-12">
+                <form id="transactionServSearchForm" style="width: 300px;margin: auto;">
+                    <div class="form-group">
+                        <label for="servSearchTxT" style="text-transform: uppercase;width: 100%;text-align: center;">Search</label>
+                        <input type="text" class="form-control" id="servSearchTxT" name="servSearchTxT" placeholder="Search here">
+                    </div>
+                </form>
             </div>
         </div>
     </div> <!-- pingHeadingDiv -->
@@ -29,77 +163,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>10001</td>
-                    <td>Installation of Post lines</td>
-                    <td>Globe</td>
-                    <td>YES</td>
-                    <td>PAID</td>
-                    <td><center><i class="fa fa-pencil" aria-hidden="true"></i><center></td>
-                </tr>
 
-                <tr>
-                    <td>10002</td>
-                    <td>Installation of Post lines</td>
-                    <td>Globe</td>
-                    <td>NO</td>
-                    <td>PENDING PAYMENT</td>
-                    <td><center><i class="fa fa-pencil" aria-hidden="true"></i><center></td>
-                </tr>
-
-                <tr>
-                    <td>10003</td>
-                    <td>Installation of Post lines</td>
-                    <td>Globe</td>
-                    <td>NO</td>
-                    <td>PAID</td>
-                    <td><center><i class="fa fa-pencil" aria-hidden="true"></i><center></td>
-                </tr>
-
-                <tr>
-                    <td>10004</td>
-                    <td>Installation of Post lines</td>
-                    <td>Globe</td>
-                    <td>YES</td>
-                    <td>PAID</td>
-                    <td><center><i class="fa fa-pencil" aria-hidden="true"></i><center></td>
-                </tr>
-
-                <tr>
-                    <td>10005</td>
-                    <td>Installation of Post lines</td>
-                    <td>Globe</td>
-                    <td>YES</td>
-                    <td>PENDING PAYMENT</td>
-                    <td><center><i class="fa fa-pencil" aria-hidden="true"></i><center></td>
-                </tr>
-
-                <tr>
-                    <td>10006</td>
-                    <td>Installation of Post lines</td>
-                    <td>Globe</td>
-                    <td>NO</td>
-                    <td>PAID</td>
-                    <td><center><i class="fa fa-pencil" aria-hidden="true"></i><center></td>
-                </tr>
-
-                <tr>
-                    <td>10007</td>
-                    <td>Installation of Post lines</td>
-                    <td>Globe</td>
-                    <td>YES</td>
-                    <td>PENDING PAYMENT</td>
-                    <td><center><i class="fa fa-pencil" aria-hidden="true"></i><center></td>
-                </tr>
-
-                <tr>
-                    <td>10008</td>
-                    <td>Installation of Post lines</td>
-                    <td>Globe</td>
-                    <td>NO</td>
-                    <td>PAID</td>
-                    <td><center><i class="fa fa-pencil" aria-hidden="true"></i><center></td>
-                </tr>
             </tbody>
         </table>
     </div>
@@ -109,6 +173,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- Start of Products -->
 <div class="transprodSection">
     <!-- table heading --> 
+    <div class="alert alert-danger print-error-msg" style="display: <?php echo ((validation_errors() == '' || validation_errors() == null) ? "none;" : "block;")?>">
+        <?php echo validation_errors(); ?>
+    </div>
+   
+    <?php if($this->session->flashdata('success')){ ?>
+        <div class="alert alert-success" > 
+            <?php  echo $this->session->flashdata('success'); $this->session->unset_userdata ( 'success' );?>
+        </div>
+    <?php } ?>  
+    <?php if ($this->session->flashdata('error')){ ?>
+        <div class="alert alert-danger" > 
+            <?php  echo $this->session->flashdata('error'); $this->session->unset_userdata ( 'error' );?>
+        </div>
+    <?php } ?>
     <div class="transprodHeadingDiv">
         <div class="row">
             <div class="transprodIcon">
@@ -117,6 +195,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="transprodTextDiv" >
                 <p class="transprodText">Products</p>
             </div>
+            <div class="col-sm-12">
+                <form id="transactionProdSearchForm" style="width: 300px;margin: auto;">
+                    <div class="form-group">
+                        <label for="prodSearchTxT" style="text-transform: uppercase;width: 100%;text-align: center;">Search</label>
+                        <input type="text" class="form-control" id="prodSearchTxT" name="prodSearchTxT" placeholder="Search here">
+                    </div>
+                </form>
+            </div>
         </div>
     </div> <!-- pingHeadingDiv -->
 
@@ -124,87 +210,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <table id="transactprodTable" class="display responsive nowrap cell-border hover" width="100%">
             <thead class="transprodTableHeader">
                 <tr>
+                    <th>No.</th>
                     <th>Transaction ID</th>
-                    <th>Company</th>
-                    <th>Purchased on</th>
-                    <th>With Loan?</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Phone No.</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>10001</td>
-                    <td>Globe</td>
-                    <td>8 Nov 2021</td>
-                    <td>YES</td>
-                    <td>PAID</td>
-                    <td><center><i class="fa fa-pencil" aria-hidden="true"></i><center></td>
-                </tr>
-
-                <tr>
-                    <td>10002</td>
-                    <td>Globe</td>
-                    <td>8 Nov 2021</td>
-                    <td>NO</td>
-                    <td>PENDING PAYMENT</td>
-                    <td><center><i class="fa fa-pencil" aria-hidden="true"></i><center></td>
-                </tr>
-
-                <tr>
-                    <td>10003</td>
-                    <td>Globe</td>
-                    <td>8 Nov 2021</td>
-                    <td>PEDING</td>
-                    <td>PAID</td>
-                    <td><center><i class="fa fa-pencil" aria-hidden="true"></i><center></td>
-                </tr>
-
-                <tr>
-                    <td>10004</td>
-                    <td>Globe</td>
-                    <td>8 Nov 2021</td>
-                    <td>YES</td>
-                    <td>PAID</td>
-                    <td><center><i class="fa fa-pencil" aria-hidden="true"></i><center></td>
-                </tr>
-
-                <tr>
-                    <td>10005</td>
-                    <td>Globe</td>
-                    <td>8 Nov 2021</td>
-                    <td>YES</td>
-                    <td>PENDING PAYMENT</td>
-                    <td><center><i class="fa fa-pencil" aria-hidden="true"></i><center></td>
-                </tr>
-
-                <tr>
-                    <td>10006</td>
-                    <td>Globe</td>
-                    <td>8 Nov 2021</td>
-                    <td>NO</td>
-                    <td>PAID</td>
-                    <td><center><i class="fa fa-pencil" aria-hidden="true"></i><center></td>
-                </tr>
-
-                <tr>
-                    <td>10007</td>
-                    <td>Globe</td>
-                    <td>8 Nov 2021</td>
-                    <td>YES</td>
-                    <td>PENDING PAYMENT</td>
-                    <td><center><i class="fa fa-pencil" aria-hidden="true"></i><center></td>
-                </tr>
-
-                <tr>
-                    <td>10008</td>
-                    <td>Globe</td>
-                    <td>8 Nov 2021</td>
-                    <td>NO</td>
-                    <td>PAID</td>
-                    <td><center><i class="fa fa-pencil" aria-hidden="true"></i><center></td>
-                </tr>
-
             </tbody>
         </table>
     </div>

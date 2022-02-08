@@ -18,12 +18,14 @@ class Admin extends CI_Controller {
 		// catch(Throwable $e){
 		// 	echo 'no';
 		// }
+		date_default_timezone_set('Asia/Singapore');
 		$this->load->model('inventory_model');
 		$this->load->model('user_model');
 		$this->load->model('ping_model');
 		$this->load->model('support_model');
 		$this->load->model('fACompanies_model');
 		$this->load->model('srvcsinventory_model');
+		$this->load->model('prodtransaction_model');
 		$this->load->helper('url');
 		$this->load->library('session');
 		 
@@ -117,6 +119,71 @@ class Admin extends CI_Controller {
 			redirect('login');
 		}
 	} 
+
+	public function prodTransTableAjax(){
+		//helpers
+		$this->load->helper('url');
+		//load query
+		$list = $this->prodtransaction_model->getProdTransTable($this->input->post('txtSearch'));
+		//variable initializations
+		$data = array();
+		$no = $_POST['start'];
+		//iterate per record and organize by row
+		foreach($list as $prodTran){
+			$no++;
+			$row = array();
+			$row[] = $no;
+			$row[] = $prodTran->transactionId;
+			$row[] = $prodTran->firstName;
+			$row[] = $prodTran->lastName;
+			$row[] = $prodTran->phoneNumber;
+			$row[] = $prodTran->status;
+			//responsible for the additions of action button in the last row
+			 $row[] = '<a href="#" data-toggle="modal" data-target="#prodTransModal" data-trid="'.$prodTran->transactionId.'" data-fname="'.$prodTran->firstName.'" data-lname="'.$prodTran->lastName.'" data-email="'.$prodTran->emailAddress.'" data-phn="'.$prodTran->phoneNumber.'" data-compname="'.$prodTran->companyName.'" data-compadd="'.$prodTran->companyAddress.'" data-city="'.$prodTran->cityName.'" data-provi="'.$prodTran->stateProvince.'" data-post="'.$prodTran->postalCode.'" data-prid="'.$prodTran->productId.'" data-prdname="'.$prodTran->productTitle.'" data-total="'.$prodTran->totalPrice.'" data-quan="'.$prodTran->quan.'" data-date="'.$prodTran->createDate.'" data-stat="'.$prodTran->status.'" class="btn btn-xs btn-primary"><i class="fa fa-edit"  data-placement="top" title="Update"></i></a>';
+				// '<a href="'.base_url('admin/deleteProdRecord/'.$product->productId.'').'" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="Delete"></i></a>';
+			$data[] = $row;
+		}
+		//carries the values to the view
+		$output = array(
+			"draw" => $_POST['draw'],
+			"recordsTotal" => $this->prodtransaction_model->count($this->input->post('txtSearch')),
+			"recordsFiltered" => $this->prodtransaction_model->count_filtered($this->input->post('txtSearch')),
+			"data" => $data
+		);
+		echo json_encode($output);
+	}
+	public function prodTransRecUpdate(){
+		// screen to open
+		$data['param'] ='transaction';
+		$this->form_validation->set_rules('statusProdTran', 'Status' ,'required');
+		// Helpers
+		$this->load->helper('url');
+	
+		// StoreData
+		$data['document'] = (object)$postData = array( 
+			'status' => $this->input->post('statusProdTran'),
+			'transactionId' => $this->input->post('transId'),
+			'productId' => $this->input->post('prodIdLabel'),
+		); 
+		$name = 'attachment';
+		// SendToDatabase
+		if($this->form_validation->run() === true){
+			if($this->prodtransaction_model->updatePrdRec($postData)){
+				$this->session->set_flashdata('success','Edit Successful');
+			}
+			else{
+				$this->session->set_flashdata('error','Edit Failed');
+			}
+			
+		}
+		else{
+			$this->session->set_flashdata('error',validation_errors());
+			redirect('admin/transaction');
+			// $this->load->view('HeaderNFooter/HeaderAdmin.php');
+			// $this->load->view('AdminPages/wrapper.php', $data);
+			// $this->load->view('HeaderNFooter/FooterAdmin.php');
+		}
+	}
 	public function ping()
 	{
 		$data['param'] = 'ping';
