@@ -445,7 +445,7 @@
 				}
 			?>
 			
-			$("#srvcsInventorySearch").submit(function(event){
+			$("#servicesInventorySearch").submit(function(event){
 				event.preventDefault();
 				$('#servicesInventoryTable').DataTable().destroy();
 				var VtxtSearch=$("#txtSearch").val();
@@ -476,23 +476,23 @@
 					"searching": false 
 				});
 			}
-			$('#modal2').on('show.bs.modal', function (event) {
+			$('#updateServiceRecordModal').on('show.bs.modal', function (event) {
 				var button = $(event.relatedTarget);
-				var srvcsTitle = button.data('name');
-				var srvcsDesc = button.data('desc');
-				var srvcsPrice = button.data('price');
-				var srvcsAvailability = button.data('avlblty');
-				var srvcsId = button.data('id') ; 
-				var file = button.data('file') ; 
+				var serviceTitle = button.data('name');
+				var serviceDesc = button.data('desc');
+				var servicePrice = button.data('price');
+				var serviceAvailability = button.data('avlblty');
+				var serviceId = button.data('id') ; 
+				var serviceFile = button.data('file') ; 
 				// alert(productId);
 				var modal = $(this)
 				
-				modal.find('.modal-body #srvcsTitle').val(srvcsTitle);
-				modal.find('.modal-body #srvcsDesc').val(srvcsDesc);
-				modal.find('.modal-body #srvcsPrice').val(srvcsPrice);
-				modal.find('.modal-body #srvcsAvailability').val(srvcsAvailability);
-				modal.find('.modal-body #srvcsId').val(srvcsId);
-				modal.find('.modal-body #fileName').val(file);
+				modal.find('.modal-body #serviceTitle').val(serviceTitle);
+				modal.find('.modal-body #serviceDesc').val(serviceDesc);
+				modal.find('.modal-body #servicePrice').val(servicePrice);
+				modal.find('.modal-body #serviceAvailability').val(serviceAvailability);
+				modal.find('.modal-body #serviceId').val(serviceId);
+				modal.find('.modal-body #serviceFileName').val(serviceFile);
 			})
 		</script>
 

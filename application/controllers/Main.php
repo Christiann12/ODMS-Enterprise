@@ -12,6 +12,7 @@ class Main extends CI_Controller {
 		$this->load->model('ping_model');
 		$this->load->model('support_model');
 		$this->load->model('fACompanies_model');
+		$this->load->model('srvcsinventory_model');
 		$this->load->model('prodtransaction_model');
 		$this->load->helper('url');
 		$this->load->library('session'); 
@@ -156,14 +157,20 @@ class Main extends CI_Controller {
 	}
 	public function services(){
 		$this->load->helper('url');
+
+		$data['srvcsInventoryRecord'] = $this->srvcsinventory_model->getServiceInvData();
+
 		$this->load->view('HeaderNFooter/Header.php');
-		$this->load->view('ClientPages/services.php');
+		$this->load->view('ClientPages/services.php', $data);
 		$this->load->view('HeaderNFooter/Footer.php');
 	}
 	public function servicesOrder(){
 		$this->load->helper('url');
+
+		$data['srvcsInventoryRecord'] = $this->srvcsinventory_model->getServiceInvDataById($this->uri->segment(2));
+
 		$this->load->view('HeaderNFooter/Header.php');
-		$this->load->view('ClientPages/ServicesOrder.php');
+		$this->load->view('ClientPages/ServicesOrder.php', $data);
 		$this->load->view('HeaderNFooter/Footer.php');
 	}
 	public function servicesOrderSuccess(){

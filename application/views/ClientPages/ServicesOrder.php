@@ -5,20 +5,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <!-- Service view --> 
 <div class="serviceView">
     <div class="row">
-        <!-- picture -->
-        <div class="serviceImgDiv col-lg-6 col-md-12 col-sm-12">
-            <img src="<?php echo base_url(); ?>application/assets/images/ClientPagesImages/services.jpg" class="serviceImg" />
-        </div>
+        <?php 
+            echo '
+                <!-- picture -->
+                <div class="serviceImgDiv col-lg-6 col-md-12 col-sm-12">
+                    <img src="'.base_url().'application/assets/attachments/'.$srvcsInventoryRecord->servicePicture.'" class="serviceImg" />
+                </div>
 
-        <!-- description -->
-        <div class="serviceContent col-lg-6 col-md-12 col-sm-12"> 
-            <p class="serviceCategory" >CATEGORY</p>
-            <p class="serviceTitle" >Power Lines Installation</p>
-            <p class="servicePrice" >PHP 300.00 </p>
-            <div class="serviceDivider"></div>
-            <p class="serviceOverview">This part shows a description of the service. It can include the specifications or scope of the service; what the sub-contractor can expect, etc.</p>
-            <p class="serviceOverview">Can be summarized into one or two paragraphs.</p>
-        </div>
+                <!-- description -->
+                <div class="serviceContent col-lg-6 col-md-12 col-sm-12"> 
+                    <p class="serviceTitle">'.$srvcsInventoryRecord->serviceTitle.'</p>
+                    <p class="servicePrice">Service Price: PHP '.$srvcsInventoryRecord->servicePrice.'</p>
+                    <div class="serviceDivider"></div>
+                    <p class="serviceOverview">Description: '.$srvcsInventoryRecord->serviceDesc.'</p>
+                </div>
+            ';
+        
+        ?>
     </div>
 </div>
 
