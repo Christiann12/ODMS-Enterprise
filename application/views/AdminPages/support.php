@@ -34,7 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
          
         </div>
         <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal2">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Close</button>
                 <button class="btn btn-primary">Save changes</button>
         </div>
         <?php echo form_close() ?>

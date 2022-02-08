@@ -51,11 +51,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <div class="form-group row d-none">
                   <label for="prodPrice" class="col-3 ">Product price<i class="text-danger">*</i></label>
                   <div class="col-9">
-                      <input name="prodPrice"  type="text" class="form-control" id="prodPrice" placeholder="Input Product Name" value="" readonly>
+                      <input name="prodPrice" type="text" class="form-control" id="prodPrice" placeholder="Input Product Name" value="" readonly>
+                  </div>
+                </div>
+                <div class="form-group row d-none">
+                  <label for="prodQuanData" class="col-3 ">Product Quantity<i class="text-danger">*</i></label>
+                  <div class="col-9">
+                      <input name="prodQuanData" type="text" class="form-control" id="prodQuanData" placeholder="Input Product Name" value="" readonly>
                   </div>
                 </div>
                 
-                <input name="prodQuan" id="prodQuan" class="quanProdView" style="border-color:#e0ddd3;" value="1">
+                <input name="prodQuan" min="1" type="number" id="prodQuan" class="quanProdView" style="border-color:#e0ddd3;" value="1">
                 <!-- <button type="submit" class="quanProdViewSub border-0" value="ADD"> -->
                 <button type="submit"class="quanProdViewSub border-0">Add</button>
                
@@ -68,7 +74,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
 </div>
 <!-- End of Product Modal Section -->
-
+<div class="container">
+  
+</div>
 <div class="bannerProducts row">
     <div class="bannerimageProducts" style="background-image: url('<?php echo base_url(); ?>application/assets/images/ClientPagesImages/poles_edited.jpg');"></div>
     <div class="col-12 col-md-6 productsBannerLeftPanel"> 
@@ -107,21 +115,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php 
         $counter = 0;
         foreach($inventoryRecord as $record){ 
-          $counter++;
-          echo '<div class="col-12 col-md-4 mb-md-3 mb-5" >
-            <div class="card prodItems bg-dark text-white">
-              <img class="card-img sample" src="'.base_url().'application/assets/attachments/'.$record->productPicture.'" alt="Card image">
-              <div class="card-img-overlay">
-                <div style="margin-top: 23rem;">
-                  <h5 class="card-title">'.$record->productTitle.'</h5>
-                  <p class="card-text" style="margin: 0;">PHP '.$record->productPrice.'</p>
+            $stock = (int) $record->productStock;
+            if($stock!=0){
+              $counter++;
+              echo '<div class="col-12 col-md-4 mb-md-3 mb-5" >
+                <div class="card prodItems bg-dark text-white">
+                  <img class="card-img sample" src="'.base_url().'application/assets/attachments/'.$record->productPicture.'" alt="Card image">
+                  <div class="card-img-overlay">
+                    <div style="margin-top: 23rem;">
+                      <h5 class="card-title">'.$record->productTitle.'</h5>
+                      <p class="card-text" style="margin: 0;">PHP '.$record->productPrice.'</p>
+                    </div>
+                  </div>
+                  <div class="d-flex prodButtonContainer">
+                      <button type="button" class="prodBtn btn btn-warning m-auto" data-quan="'.$record->productStock.'" data-sessid="'. $this->session->userdata('userSessionId').'" data-id="'.$record->productId.'" data-pic="'.$record->productPicture.'" data-name="'.$record->productTitle.'" data-cat="'.$record->productCategory.'" data-desc="'.$record->productDesc.'" data-price="'.$record->productPrice.'" data-toggle="modal" data-target="#modConProd1"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                  </div>
                 </div>
-              </div>
-              <div class="d-flex prodButtonContainer">
-                  <button type="button" class="prodBtn btn btn-warning m-auto" data-sessid="'. $this->session->userdata('userSessionId').'" data-id="'.$record->productId.'" data-pic="'.$record->productPicture.'" data-name="'.$record->productTitle.'" data-cat="'.$record->productCategory.'" data-desc="'.$record->productDesc.'" data-price="'.$record->productPrice.'" data-toggle="modal" data-target="#modConProd1"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
-              </div>
-            </div>
-          </div>';
+              </div>';
+            }
           } 
           
           if($counter==0){
@@ -148,7 +159,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <?php 
         $counter = 0;
         foreach($inventoryRecord as $record){ 
-            if($record->productCategory == "Lighting Fixtures"){
+          $stock = (int) $record->productStock;
+            if($record->productCategory == "Lighting Fixtures" && $stock!=0){
               $counter++;
               echo '<div class="col-12 col-md-4 mb-md-3 mb-5" >
               <div class="card prodItems bg-dark text-white">
@@ -160,7 +172,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                   </div>
                 </div>
                 <div class="d-flex prodButtonContainer">
-                    <button type="button" class="prodBtn btn btn-warning m-auto" data-pic="'.$record->productPicture.'" data-toggle="modal"  data-name="'.$record->productTitle.'" data-cat="'.$record->productCategory.'" data-desc="'.$record->productDesc.'" data-price="'.$record->productPrice.'" data-target="#modConProd1"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                    <button type="button" class="prodBtn btn btn-warning m-auto" data-quan="'.$record->productStock.'" data-sessid="'. $this->session->userdata('userSessionId').'" data-pic="'.$record->productPicture.'" data-toggle="modal"  data-name="'.$record->productTitle.'" data-cat="'.$record->productCategory.'" data-desc="'.$record->productDesc.'" data-price="'.$record->productPrice.'" data-target="#modConProd1"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
                 </div>
               </div>
             </div>';
@@ -194,7 +206,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <?php 
         $counter = 0;
         foreach($inventoryRecord as $record){ 
-          if($record->productCategory == "Transformers"){
+          $stock = (int) $record->productStock;
+          if($record->productCategory == "Transformers" && $stock != 0){
             $counter++;
             echo '<div class="col-12 col-md-4 mb-md-3 mb-5" >
             <div class="card prodItems bg-dark text-white">
@@ -206,7 +219,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
               </div>
               <div class="d-flex prodButtonContainer">
-                  <button type="button" class="prodBtn btn btn-warning m-auto" data-pic="'.$record->productPicture.'" data-name="'.$record->productTitle.'" data-cat="'.$record->productCategory.'" data-desc="'.$record->productDesc.'" data-price="'.$record->productPrice.'" data-toggle="modal" data-target="#modConProd1"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+                  <button type="button" class="prodBtn btn btn-warning m-auto" data-quan="'.$record->productStock.'" data-sessid="'. $this->session->userdata('userSessionId').'" data-pic="'.$record->productPicture.'" data-name="'.$record->productTitle.'" data-cat="'.$record->productCategory.'" data-desc="'.$record->productDesc.'" data-price="'.$record->productPrice.'" data-toggle="modal" data-target="#modConProd1"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
               </div>
             </div>
           </div>';
@@ -241,7 +254,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
       <?php 
       $counter = 0;
       foreach($inventoryRecord as $record){ 
-        if($record->productCategory == "Accessories"){
+        $stock = (int) $record->productStock;
+        if($record->productCategory == "Accessories" && $stock != 0){
           $counter++;
           echo '<div class="col-12 col-md-4 mb-md-3 mb-5" >
           <div class="card prodItems bg-dark text-white">
@@ -253,7 +267,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               </div>
             </div>
             <div class="d-flex prodButtonContainer">
-            <button type="button" class="prodBtn btn btn-warning m-auto" data-pic="'.$record->productPicture.'" data-name="'.$record->productTitle.'" data-cat="'.$record->productCategory.'" data-desc="'.$record->productDesc.'" data-price="'.$record->productPrice.'" data-toggle="modal" data-target="#modConProd1"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
+            <button type="button" class="prodBtn btn btn-warning m-auto" data-quan="'.$record->productStock.'" data-sessid="'. $this->session->userdata('userSessionId').'" data-pic="'.$record->productPicture.'" data-name="'.$record->productTitle.'" data-cat="'.$record->productCategory.'" data-desc="'.$record->productDesc.'" data-price="'.$record->productPrice.'" data-toggle="modal" data-target="#modConProd1"><i class="fa fa-arrow-right" aria-hidden="true"></i></button>
             </div>
           </div>
         </div>';
@@ -280,10 +294,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <!-- Product Order Section -->
 
-<div class=" orderSection">
-  <div class="row">
-    <div class="orderProdCol col-xl-6 col-l-6 col-md-12 col-sm-12 border-0" style="overflow-y: auto;">
+<div class=" orderSection" >
 
+  
+
+  <div class="row" id="orderSection">
+    
+    <div class="orderProdCol col-xl-6 col-l-6 col-md-12 col-sm-12 border-0" style="overflow-y: auto;">
+      
+
+      <?php if($this->session->flashdata('success')){ ?>
+          <div class="alert alert-success" > 
+              <?php  echo $this->session->flashdata('success'); $this->session->unset_userdata ( 'success' );?>
+          </div>
+      <?php } ?>  
+      <?php if ($this->session->flashdata('error')){ ?>
+          <div class="alert alert-danger" > 
+              <?php  echo $this->session->flashdata('error'); $this->session->unset_userdata ( 'error' );?>
+          </div>
+      <?php } ?>
       <div class="fprow">
         <h3 class="yourOrder">Your Order</h3>
       </div>
@@ -296,116 +325,77 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           <div class="col"><h5 class="ordProdLabel"></h3></div>
       </div>
 
-      <div >
+      <div>
       <?php
        if($this->session->has_userdata('userSessionId')){
-        for($x = 0; $x <= 10; $x++){
-          echo '<div class="row prodOrdRow border-bottom">
-              <div class="col-2">
-                <img class="prodPicOrd" src="'.base_url().'application/assets/images/ClientPagesImages/cables.jpg" alt="Card image">
-              </div>
-      
-              <div class="col-3">
-                <div class="col"><h5 class="ordProdDet">Cables</h3></div>
-              </div>
-      
-              <div class="col-2">
-                <div class="col"><h5 class="ordProdDetNum">x24</h3></div>
-              </div>
-      
-              <div class="col-3">
-                <div class="col"><h5 class="ordProdDetPri">PHP 7,200.00</h3></div>
-              </div>
-      
-              <div class="col-2">
-                <div class="col"><i class="fa fa-trash ordProdDelt"></i></div>
-              </div>
-          </div>';
+          $count = 0;
+          foreach($cartRecord as $cart){
+            $count++;
+            echo '<div class="row prodOrdRow border-bottom">
+                  <div class="col-2">
+                    <img class="prodPicOrd" src="'.base_url().'application/assets/attachments/'.$cart->productPicture.'" alt="Card image">
+                  </div>
+          
+                  <div class="col-3">
+                    <div class="col"><h5 class="ordProdDet">'.$cart->productTitle.'</h3></div>
+                  </div>
+          
+                  <div class="col-2">
+                    <div class="col"><h5 class="ordProdDetNum">'.$cart->quan.'</h3></div>
+                  </div>
+          
+                  <div class="col-3">
+                    <div class="col"><h5 class="ordProdDetPri">PHP '.$cart->productPrice.'</h3></div>
+                  </div>
+          
+                  <div class="col-2">
+                    <div class="col"><a href="main/deleteCartItem/'.$cart->sessid.'/'.$cart->productId.'"> <i class="fa fa-trash ordProdDelt"></i></a></div>
+                  </div>
+              </div>';
+          }
+          if($count == 0){
+            echo '
+            <div class="container py-5">
+                  <center>
+                    <p style="font-size: 20px; font-weight: bold;">No items in cart</p>
+                  </center>
+            </div>
+            ';
+          }
         }
-       }
+      
       ?>
       </div>
 
-      <!-- <div class="row prodOrdRow border-bottom">
-          <div class="col-2">
-            <img class="prodPicOrd" src="<?php echo base_url(); ?>application/assets/images/ClientPagesImages/fixture.jpg" alt="Card image">
-          </div>
-
-          <div class="col-3">
-            <div class="col"><h5 class="ordProdDet">Fixture</h3></div>
-          </div>
-
-          <div class="col-2">
-            <div class="col"><h5 class="ordProdDetNum">x3</h3></div>
-          </div>
-
-          <div class="col-3">
-            <div class="col"><h5 class="ordProdDetPri">PHP 6,900.00</h3></div>
-          </div>
-
-          <div class="col-2">
-            <div class="col"><i class="fa fa-trash ordProdDelt"></i></div>
-          </div>
-      </div>
-
       <div class="row prodOrdRow border-bottom">
-          <div class="col-2">
-            <img class="prodPicOrd" src="<?php echo base_url(); ?>application/assets/images/ClientPagesImages/transformer.png" alt="Card image">
-          </div>
+          <div class="col"><h5 class="ordProdLabel"></h5></div>
+          <div class="col"><h5 class="prodTotPriLbl">TOTAL PRICE:</h5></div>
+          <div class="col"><h5 class="prodTotPri">PHP 
 
-          <div class="col-3">
-            <div class="col"><h5 class="ordProdDet">Transformer</h3></div>
-          </div>
 
-          <div class="col-2">
-            <div class="col"><h5 class="ordProdDetNum">x2</h3></div>
-          </div>
+          <?php
+            $total = 0;
+            foreach($cartRecord as $cart){
+              $total = $total + $cart->productPrice;
+            }
+            echo $total;
+          ?>
 
-          <div class="col-3">
-            <div class="col"><h5 class="ordProdDetPri">PHP 61,000.00</h3></div>
-          </div>
 
-          <div class="col-2">
-            <div class="col"><i class="fa fa-trash ordProdDelt"></i></div>
-          </div>
-      </div>
-
-      <div class="row prodOrdRow border-bottom">
-          <div class="col-2">
-            <img class="prodPicOrd" src="<?php echo base_url(); ?>application/assets/images/ClientPagesImages/accessories.jpg" alt="Card image">
-          </div>
-
-          <div class="col-3">
-            <div class="col"><h5 class="ordProdDet">Accessories</h3></div>
-          </div>
-
-          <div class="col-2">
-            <div class="col"><h5 class="ordProdDetNum">x100</h3></div>
-          </div>
-
-          <div class="col-3">
-            <div class="col"><h5 class="ordProdDetPri">PHP 50,000.00</h3></div>
-          </div>
-
-          <div class="col-2">
-            <div class="col"><i class="fa fa-trash ordProdDelt"></i></div>
-          </div>
-      </div> -->
-
-      <div class="row prodOrdRow border-bottom">
-          <div class="col"><h5 class="ordProdLabel"></h3></div>
-          <div class="col"><h5 class="prodTotPriLbl">TOTAL PRICE:</h3></div>
-          <div class="col"><h5 class="prodTotPri">PHP 125,100.00</h3></div>
+          </h5></div>
       </div>
       
     </div>
-
+    
     <!-- Product Form Section -->
-    <div class="orderProdCol col-xl-6 col-l-6 col-md-12 col-sm-12 border-0" style="background-image: url('<?php echo base_url(); ?>application/assets/images/ClientPagesImages/poles_edited.jpg');">
-      <div class="orderProdForm">
+    <div class="orderProdCol col-xl-6 col-l-6 col-md-12 col-sm-12 border-0" style="background-image: url('<?php echo base_url(); ?>application/assets/images/ClientPagesImages/poles_edited.jpg'); <?php echo ((validation_errors()) ? "overflow-y: auto;" : null)?>">
+      <div class="orderProdForm" style="">
+        <div class="alert alert-danger print-error-msg" style="display: <?php echo ((validation_errors() == '' || validation_errors() == null) ? "none;" : "block;")?>">
+            <?php echo validation_errors(); ?>
+        </div>
         <p class="orderProdFormTitle col-12">Order Form</p>
-        <form>
-          
+    
+        <?php echo form_open_multipart('main/products') ?>
             <div class="col-12">
               <div class="form-label-group">
                 <input name="firstName" type="text" id="firstName" class="inputDesign form-control" placeholder="First Name" >
@@ -422,50 +412,47 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           
 
           <div class="form-label-group col-12">
-            <input type="email" id="emailAddress" class="inputDesign form-control" placeholder="Email Address" >
+            <input name="emailAddress" type="email" id="emailAddress" class="inputDesign form-control" placeholder="Email Address" >
             <label for="emailAddress" class="labelDesign">Email Address</label>
           </div>
 
           <div class="form-label-group col-12 ">
-            <input type="text" id="phoneNumber" class="inputDesign form-control" placeholder="Phone Number" >
+            <input name="phoneNumber" type="text" id="phoneNumber" class="inputDesign form-control" placeholder="Phone Number" >
             <label for="phoneNumber" class="labelDesign">Phone Number</label>
           </div>
 
           <div class="form-label-group col-12">
-            <input type="text" id="companyName" class="inputDesign form-control" placeholder="Company Name" >
+            <input name="companyName" type="text" id="companyName" class="inputDesign form-control" placeholder="Company Name" >
             <label for="companyName" class="labelDesign">Company Name</label>
           </div>
 
           <div class="form-label-group col-12">
-            <input type="text" id="companyAddress" class="inputDesign form-control" placeholder="Company Address" >
+            <input name="companyAddress" type="text" id="companyAddress" class="inputDesign form-control" placeholder="Company Address" >
             <label for="companyAddress" class="labelDesign">Company Address</label>
           </div>
 
           <div class="form-row col-12">
             <div class="col-6">
               <div class="form-label-group">
-                <input type="text" id="cityName" class="inputDesign form-control" placeholder="City" >
+                <input  name="cityName"type="text" id="cityName" class="inputDesign form-control" placeholder="City" >
                 <label for="cityName" class="labelDesign">City</label>
               </div>
             </div>
                             
+            
             <div class="col-6">
               <div class="form-label-group">
-                <select class="form-control" name="stateProvince" id="stateProvince" style="width: 100%; height: 100%;">
-                  <option>State/Province</option>
-                  <option>Laguna</option>
-                  <option>Cavite</option>
-                  <option>Batangas</option>
-                  <option>Metro Manila</option>
-                </select>
+                <input name="stateProvince" type="text" id="stateProvince" class="inputDesign form-control" placeholder="State/Province" >
+                <label for="stateProvince" class="labelDesign">State/Province</label>
               </div>
             </div>
           </div>
 
+
           <div class="form-row col-12">
             <div class="col-12">
               <div class="form-label-group">
-                <input type="text" id="postalCode" class="inputDesign form-control" placeholder="Postal Code" >
+                <input  name="postalCode" type="text" id="postalCode" class="inputDesign form-control" placeholder="Postal Code" >
                 <label for="postalCode" class="labelDesign">Postal Code</label>
               </div>
             </div>
@@ -478,7 +465,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
 
           <button type="submit" class="ordCheckOutBtn">CHECK-OUT</button>
-        </form>
+          <?php echo form_close() ?>
       </div> <!-- orderForm -->
     </div>
   </div> <!-- row -->

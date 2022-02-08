@@ -38,16 +38,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     echo '
                     <div class="col-12 col-md-4 mb-md-3 mb-5">
                             <div class="card bg-dark text-white">
-                                <img class="card-img" src="'.base_url().'application/assets/attachments/'.$srvcsRecord->srvcsPicture.'" alt="Card image">
+                                <img class="card-img" src="'.base_url().'application/assets/attachments/'.$srvcsRecord->servicePicture.'" alt="Card image">
                                 <div class="card-img-overlay">
                                     <div style="margin-top: 20rem;">
-                                        <h5 class="serviceName card-title">'.$srvcsRecord->srvcsTitle.'</h5>
-                                        <p class="serviceDesc card-text" style="margin: 0;">'.$srvcsRecord->srvcsDesc.'</p>
+                                        <h3 class="card-title">'.$srvcsRecord->serviceTitle.'</h3>
+                                        <div class="cardDescriptionDiv">Description: '.$srvcsRecord->serviceDesc.'</div>
+                                        <p class="card-title">PHP '.$srvcsRecord->servicePrice.'</p>
                                     </div>
                                 </div>
 
                                 <div class="d-flex buttonContainer" style="">
-                                    <button type="button"  class="btn btn-warning m-auto" id="serviceViewBtn" data-id="'.$srvcsRecord->srvcsId.'" data-pic="'.$srvcsRecord->srvcsPicture.'" data-name="'.$srvcsRecord->srvcsTitle.'" data-desc="'.$srvcsRecord->srvcsDesc.'" data-price="'.$srvcsRecord->srvcsPrice.'" onclick="location.href = \''.base_url('servicesOrder').'\';">View</button>
+                                    <button type="button" class="btn btn-warning m-auto" id="serviceViewBtn" data-id="'.$srvcsRecord->serviceId.'" data-pic="'.$srvcsRecord->servicePicture.'" data-name="'.$srvcsRecord->serviceTitle.'" data-desc="'.$srvcsRecord->serviceDesc.'" data-price="'.$srvcsRecord->servicePrice.'" onclick="location.href = \''.base_url('servicesOrder/'.$srvcsRecord->serviceId.'').'\';">View</button>
                                 </div>
                             </div>
                         </div>';

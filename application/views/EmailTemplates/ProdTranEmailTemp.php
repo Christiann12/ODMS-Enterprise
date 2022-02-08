@@ -135,31 +135,21 @@
           <tr>
             <td align="center" valign="top">
 
-
-            <table style="margin:0 auto;" cellspacing="0" cellpadding="0" width="100%">
+            <table cellspacing="0" cellpadding="0" class="force-full-width" style="background-color:#F6C510; margin: 0px">
               <tr>
-                <td style="text-align: center;">
-                  <a href="#"><img class="w320" width="311" height="83" src="https://www.filepicker.io/api/file/HotdLrI8SCq4ZW3NRAUh" alt="company logo" ></a>
-                </td>
-              </tr>
-            </table>
-
-
-            <table cellspacing="0" cellpadding="0" class="force-full-width" style="background-color:#3bcdb0;">
-              <tr>
-                <td style="background-color:#3bcdb0;">
+                <td style="background-color:#F6C510;">
 
                   <table cellspacing="0" cellpadding="0" class="force-full-width">
                     <tr>
                       <td style="font-size:40px; font-weight: 600; color: #ffffff; text-align:center;" class="mobile-spacing">
                       <div class="mobile-br">&nbsp;</div>
-                        You're almost finished!
+                        Order Receipt
                       <br>
                       </td>
                     </tr>
                     <tr>
                       <td style="font-size:24px; text-align:center; padding: 0 75px; color:#6f6f6f;" class="w320 mobile-spacing; ">
-                          Two out of three steps are completed.
+                          Save and show it to the closest ODMS Branch
                       </td>
                     </tr>
                   </table>
@@ -167,7 +157,10 @@
                   <table cellspacing="0" cellpadding="0" width="600" class="force-full-width">
                     <tr>
                       <td>
-                        <img src="https://www.filepicker.io/api/file/4BgENLefRVCrgMGTAENj" style="max-width:100%; display:block;">
+                        <center>
+                        <img src="https://cdn.discordapp.com/attachments/696238130596020308/940229323519045712/success.png" style="max-width:100%; display:block;">
+                        </center>
+                        
                       </td>
                     </tr>
                   </table>
@@ -175,75 +168,83 @@
                 </td>
               </tr>
             </table>
+           
+            <table cellspacing="0" cellpadding="" class="force-full-width" style="background-color: white;">
+            <tr >
+                <center>
+                <h1 style="">
+                    <?php echo $tranId?>
+                </h1>
+                </center>
+            </tr>
+            <tr >
+                <center>
+                <h3 style="color: grey;">
+                    <?php echo $createDate?>
+                </h3>
+                </center>
+            </tr>
+            <tr >
+                <center>
+                <h3 style="color: grey;">
+                    <?php 
+                    
+                        $totalPrice = 0;
 
-            <table cellspacing="0" cellpadding="0" class="force-full-width" bgcolor="#ffffff" >
+                        foreach($content as $list){
+                            $price = (int)$list->totalPrice;
+                            $totalPrice = $totalPrice + $price;
+                        }
+                        
+                        echo 'Total Price: PHP ' .$totalPrice;
+                    ?>
+                </h3>
+                </center>
+            </tr>
               <tr>
                 <td style="background-color:#ffffff;">
                   <br>
-                  <table class="columns" cellspacing="0" cellpadding="0" width="49%" align="left">
-                    <tr>
-
-                    <!-- ############# STEP ONE ############### -->
-                    <!-- To change number images to step one:
-                        - Replace image below with this url: https://www.filepicker.io/api/file/acgdn9j9T16oHaZ8znhv
-                        - Then replace step two with this url: https://www.filepicker.io/api/file/iqmbVoMtT7ukbPUoo9zH
-                        - Finally replace step three with this url: https://www.filepicker.io/api/file/ni2yEbRCRJKzRm3cYGnn
-
-                        Finished!
-                     -->
-                      <td style="padding-left: 60px; padding-top: 10px;">
-                        <img src="https://www.filepicker.io/api/file/zNDJy10QemuMhAcirOwQ" alt="step one" width="60" height="62">
-                      </td>
-
-
-                      <td style="color:#f3a389; text-align:left; padding-top: 10px;">
-                        Account Activation Complete
-                      </td>
-                    </tr>
-                    <tr>
-
-                    <!-- ############# STEP TWO ############### -->
-                    <!-- To change number images to step two:
-                        - Replace image below with this url: https://www.filepicker.io/api/file/23h1I8Ts2PNLx755Dsfg
-                        - Then replace step one with this url: https://www.filepicker.io/api/file/zNDJy10QemuMhAcirOwQ
-                        - Finally replace step three with this url: https://www.filepicker.io/api/file/ni2yEbRCRJKzRm3cYGnn
-
-                        Finished!
-                     -->
-                      <td style="padding-left: 60px; padding-top: 10px;">
-                        <img src="https://www.filepicker.io/api/file/23h1I8Ts2PNLx755Dsfg" alt="step two" width="60" height="65">
-                      </td>
-                      <td style="color:#f5774e; text-align:left; padding-top: 10px;">
-                        Update Account <br> Info
-                      </td>
-                    </tr>
-                    <tr>
-
-                    <!-- ############# STEP THREE ############### -->
-                    <!-- To change number images to step three:
-                        - Replace image below with this url: https://www.filepicker.io/api/file/OombIcyT92WWTaHB4vlE
-                        - Then replace step one with this url: https://www.filepicker.io/api/file/zNDJy10QemuMhAcirOwQ
-                        - Finally replace step three with this url: https://www.filepicker.io/api/file/iqmbVoMtT7ukbPUoo9zH
-
-                        Finished!
-                     -->
-                      <td style="padding-left: 60px; padding-top: 10px;">
-                        <img src="https://www.filepicker.io/api/file/ni2yEbRCRJKzRm3cYGnn" alt="step three" width="60" height="60">
-                      </td>
-                      <td  style="color:#f3a389; text-align:left; padding-top: 10px;">
-                        Account set up <br>complete!
-                      </td>
-                    </tr>
-                  </table>
-                  <table class="columns" cellspacing="0" cellpadding="0" width="49%" align="right">
-                    <tr>
-                      <td class="column-padding" style="text-align:left; vertical-align:top; padding-left: 20px; padding-right:30px;">
-                        <br>
-                        <span style="color:#3bcdb0; font-size:20px; font-weight:bold;">two last step and you're done!</span><br>
-                        <!-- We need you to update your account information. If there is ever a problem with your account, this information will make it easier for you to log back in. -->
-                        <p><?php echo $tranId ?></p>
-                      </td>
-                    </tr>
+                  <table class="columns" cellspacing="0" cellpadding="0" width="75%" align="center" >
+                        
+                        <tr>
+                            <td style="padding-top: 10px; font-weight: bold;">
+                                ID
+                            </td>
+                            <td style="padding-top: 10px; font-weight: bold;">
+                                Name
+                            </td>
+                            <td style="padding-top: 10px; font-weight: bold;">
+                                Price
+                            </td>
+                            <td style="padding-top: 10px; font-weight: bold;">
+                                Quantity
+                            </td>
+                        </tr>
+                      <?php 
+                      $Counter = 0;
+                      foreach($content as $list){
+                          $Counter++;
+                          echo '
+                            <tr>
+                                <td style="padding-top: 10px;">
+                                    '.$list->productId.'
+                                </td>
+                                <td style="color:#f3a389; padding-top: 10px;">
+                                    '.$list->productTitle.'
+                                </td>
+                                <td style="color:#f3a389; padding-top: 10px;">
+                                    '.$list->totalPrice.'
+                                </td>
+                                <td style="color:#f3a389; padding-top: 10px;">
+                                    '.$list->quan.'
+                                </td>
+                            </tr>
+                          
+                          ';
+                      }
+                      
+                      ?>
+                    
                   </table>
                 </td>
               </tr>
@@ -258,8 +259,8 @@
                       <w:anchorlock/>
                       <center>
                     <![endif]-->
-                        <a href="http://"
-                        style="background-color:#f5774e;color:#ffffff;display:inline-block;font-family:'Source Sans Pro', Helvetica, Arial, sans-serif;font-size:18px;font-weight:400;line-height:45px;text-align:center;text-decoration:none;width:220px;-webkit-text-size-adjust:none;">Update Account</a>
+                        <!-- <a href="http://"
+                        style="background-color:#f5774e;color:#ffffff;display:inline-block;font-family:'Source Sans Pro', Helvetica, Arial, sans-serif;font-size:18px;font-weight:400;line-height:45px;text-align:center;text-decoration:none;width:220px;-webkit-text-size-adjust:none;">Update Account</a> -->
                         <!--[if mso]>
                       </center>
                     </v:rect>
