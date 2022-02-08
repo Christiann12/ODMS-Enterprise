@@ -126,4 +126,10 @@ class Inventory_model extends CI_Model {
     public function getInvDataById($id = null){
         return $this->db->select("*")->from($this->table)->where('productId',$id)->get()->row();
     }    
+    public function getStock($prodId){
+        return $this->db->select('*')->from($this->table)->where('productId',$prodId)->get()->row();
+    }
+    public function updateStock($data = []){
+        return $this->db->where('productId',$data['productId'])->update($this->table,$data); 
+    }
 }
