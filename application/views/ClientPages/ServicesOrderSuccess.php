@@ -3,6 +3,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 ?>
 
 <div class="successPage container">
+    <!-- Form Validations -->
+    <div class="alert alert-danger print-error-msg" style="display: <?php echo ((validation_errors() == '' || validation_errors() == null) ? "none;" : "block;")?>">
+        <?php echo validation_errors(); ?>
+    </div>
+
+    <?php if($this->session->flashdata('success')){ ?>
+        <div class="alert alert-success" > 
+            <?php  echo $this->session->flashdata('success'); $this->session->unset_userdata ( 'success' );?>
+        </div>
+    <?php } ?>  
+    <?php if ($this->session->flashdata('error')){ ?>
+        <div class="alert alert-danger" > 
+            <?php  echo $this->session->flashdata('error'); $this->session->unset_userdata ( 'error' );?>
+        </div>
+    <?php } ?>
+    <!-- End of Form Validations -->
+
     <center>
         <img src="<?php echo base_url(); ?>application/assets/images/ClientPagesImages/success.png" class="successImg">
         <p class="successHeading">Success!</p>

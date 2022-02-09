@@ -582,5 +582,91 @@
 				modal.find('.modal-body #statusProdTran').val(statusProdTran);
 			})
 		</script>
+
+		<!-- serviceTransaction script  -->
+		<script>
+			<?php
+				if($this->uri->segment(2)=="transaction" || $this->uri->segment(2)=="serviceTransactionUpdateRecord"){
+					echo '
+					
+						$(document).ready( function () {
+							$(\'#serviceTransactionTable\').DataTable().destroy();
+							var VtxtSearch=$("#servSearchTxT").val();
+							loadServiceTransTable(VtxtSearch);
+						});	
+					
+					';
+				}
+			?>
+			$("#transactionServSearchForm").submit(function(event){
+				event.preventDefault();
+				$('#serviceTransactionTable').DataTable().destroy();
+				var VtxtSearch=$("#servSearchTxT").val();
+				loadServiceTransTable(VtxtSearch);
+			});
+			function loadServiceTransTable(txtSearch=''){
+				// alert('asd');
+				var dataTable = $('#serviceTransactionTable').DataTable({
+					"lengthMenu": [[10, 25, 100, 1000, 3000, -1], [10, 25, 100, 1000, 3000]],
+					"processing":true,
+					"language": {
+						processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span> '
+					},
+					"serverSide":true,
+					"responsive": true,
+					"bPaginate": true,
+					"sPaginationType": "full_numbers",
+					"ajax": {
+						"url": "<?php echo base_url('admin/serviceTransactionAjax')?>",
+						"type": "POST",
+						"data": {txtSearch:txtSearch}
+					},
+					"columnDefs":[{
+						"targets":[0,8],
+						"orderable":false,
+					},],
+					"order":[],
+					"searching": false 
+				});
+			}
+			$('#updateServiceTransRecord').on('show.bs.modal', function (event) {
+				var button = $(event.relatedTarget);
+				var service_transactionId = button.data('strid');
+				var availed_serviceId = button.data('srid') ; 
+				var availed_serviceName = button.data('servname') ; 
+				var availed_servicePrice = button.data('price');
+				var client_firstname = button.data('fname');
+				var client_lastname = button.data('lname');
+				var client_email = button.data('email');
+				var client_contact = button.data('phn') ; 
+				var client_compName = button.data('compname') ; 
+				var client_compAdd = button.data('compadd');
+				var client_city = button.data('city');
+				var client_stateProvince = button.data('provi');
+				var client_postalCode = button.data('post');
+				var order_date = button.data('date') ; 
+				var with_loan = button.data('loan')
+				var availed_serviceStatus = button.data('stat') ; 
+				// alert(productId);
+				var modal = $(this)
+				
+				modal.find('.modal-body #service_transaction_id').val(service_transactionId);
+				modal.find('.modal-body #availed_serviceId').val(availed_serviceId);
+				modal.find('.modal-body #availed_serviceName').val(availed_serviceName);
+				modal.find('.modal-body #service_price').val(availed_servicePrice);
+				modal.find('.modal-body #first_name').val(client_firstname);
+				modal.find('.modal-body #last_name').val(client_lastname);
+				modal.find('.modal-body #email_address').val(client_email);
+				modal.find('.modal-body #phone_number').val(client_contact);
+				modal.find('.modal-body #company_name').val(client_compName);
+				modal.find('.modal-body #company_address').val(client_compAdd);
+				modal.find('.modal-body #city_name').val(client_city);
+				modal.find('.modal-body #state_province').val(client_stateProvince);
+				modal.find('.modal-body #postal_code').val(client_postalCode);
+				modal.find('.modal-body #order_date').val(order_date);
+				modal.find('.modal-body #with_loan').val(with_loan);
+				modal.find('.modal-body #serviceTrans_status').val(availed_serviceStatus);
+			})
+		</script>
 	</body>
 </html>

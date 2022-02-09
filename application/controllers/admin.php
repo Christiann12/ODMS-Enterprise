@@ -26,6 +26,7 @@ class Admin extends CI_Controller {
 		$this->load->model('fACompanies_model');
 		$this->load->model('srvcsinventory_model');
 		$this->load->model('prodtransaction_model');
+		$this->load->model('serviceTransaction_model');
 		$this->load->helper('url');
 		$this->load->library('session');
 		 
@@ -169,11 +170,12 @@ class Admin extends CI_Controller {
 		// SendToDatabase
 		if($this->form_validation->run() === true){
 			if($this->prodtransaction_model->updatePrdRec($postData)){
-				$this->session->set_flashdata('success','Edit Successful');
+				$this->session->set_flashdata('productSuccess','Edit Successful');
 			}
 			else{
-				$this->session->set_flashdata('error','Edit Failed');
+				$this->session->set_flashdata('productError','Edit Failed');
 			}
+			redirect('admin/transaction');
 			
 		}
 		else{
@@ -184,6 +186,81 @@ class Admin extends CI_Controller {
 			// $this->load->view('HeaderNFooter/FooterAdmin.php');
 		}
 	}
+
+	// fetch data for serviceTransaction data table
+	public function serviceTransactionAjax(){
+		//helpers
+		$this->load->helper('url');
+		//load query
+		$list = $this->serviceTransaction_model->getServiceTransTable($this->input->post('txtSearch'));
+		//variable initializations
+		$data = array();
+		$no = $_POST['start'];
+		//iterate per record and organize by row
+		foreach($list as $servicesTrans){
+			$no++;
+			$row = array();
+			$row[] = $no;
+			$row[] = $servicesTrans->serviceTransactionId;
+			$row[] = $servicesTrans->availedService;
+			$row[] = "PHP ".$servicesTrans->servicePrice;
+			$row[] = $servicesTrans->fName;
+			$row[] = $servicesTrans->lName;
+			$row[] = $servicesTrans->emailAdd;
+			$row[] = $servicesTrans->contactNum;
+			$row[] = $servicesTrans->withLoan;
+			$row[] = $servicesTrans->status;
+			//responsible for the additions of action button in the last row
+			$row[] = '<a href="#" data-toggle="modal" data-target="#updateServiceTransRecord" data-strid="'.$servicesTrans->serviceTransactionId.'" data-srid="'.$servicesTrans->availedServiceId.'" data-servname="'.$servicesTrans->availedService.'" data-price="'.$servicesTrans->servicePrice.'" data-fname="'.$servicesTrans->fName.'" data-lname="'.$servicesTrans->lName.'" data-email="'.$servicesTrans->emailAdd.'" data-phn="'.$servicesTrans->contactNum.'" data-compname="'.$servicesTrans->compName.'" data-compadd="'.$servicesTrans->compAdd.'" data-city="'.$servicesTrans->city.'" data-provi="'.$servicesTrans->stateProvince.'" data-post="'.$servicesTrans->postalCode.'" data-date="'.$servicesTrans->createDate.'" data-loan="'.$servicesTrans->withLoan.'" data-stat="'.$servicesTrans->status.'" class="btn btn-xs btn-primary"><i class="fa fa-edit"  data-placement="top" title="Update"></i></a>';
+				// '<a href="'.base_url('admin/deleteProdRecord/'.$product->productId.'').'" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="Delete"></i></a>';
+			$data[] = $row;
+		}
+		//carries the values to the view
+		$output = array(
+			"draw" => $_POST['draw'],
+			"recordsTotal" => $this->serviceTransaction_model->count($this->input->post('txtSearch')),
+			"recordsFiltered" => $this->serviceTransaction_model->count_filtered($this->input->post('txtSearch')),
+			"data" => $data
+		);
+		echo json_encode($output);
+	}
+
+	// update serviceTransaction Record Status
+	public function serviceTransactionUpdateRecord(){
+		// screen to open
+		$data['param'] ='transaction';
+		$this->form_validation->set_rules('serviceTrans_status', 'Status' ,'required');
+		// Helpers
+		$this->load->helper('url');
+	
+		// StoreData
+		$data['document'] = (object)$postData = array( 
+			'status' => $this->input->post('serviceTrans_status'),
+			'serviceTransactionId' => $this->input->post('service_transaction_id'),
+			'availedServiceId' => $this->input->post('availed_serviceId'),
+		); 
+		
+		$name = 'attachment';
+		// SendToDatabase
+		if($this->form_validation->run() === true){
+			if($this->serviceTransaction_model->updateServiceTransRecord($postData)){
+				$this->session->set_flashdata('serviceSuccess','Edit Successful');
+			}
+			else{
+				$this->session->set_flashdata('serviceError','Edit Failed');
+			}
+			redirect('admin/transaction');
+			
+		}
+		else{
+			$this->session->set_flashdata('serviceError',validation_errors());
+			redirect('admin/transaction');
+			// $this->load->view('HeaderNFooter/HeaderAdmin.php');
+			// $this->load->view('AdminPages/wrapper.php', $data);
+			// $this->load->view('HeaderNFooter/FooterAdmin.php');
+		}
+	}
+
 	public function ping()
 	{
 		$data['param'] = 'ping';

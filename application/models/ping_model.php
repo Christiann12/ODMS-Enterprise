@@ -37,7 +37,7 @@ class Ping_model extends CI_Model {
             ); 
             $this->dbforge->add_field($fields);
             // define primary key
-            $this->dbforge->add_key('productId', TRUE);
+            $this->dbforge->add_key('pingId', TRUE);
             // create table
             $this->dbforge->create_table($this->table);
         }
@@ -108,6 +108,6 @@ class Ping_model extends CI_Model {
     } 
     //search table per id
     public function getInvDataById($id = null){
-        return $this->db->select("*")->from($this->table)->where('productId',$id)->get()->row();
+        return $this->db->select("*")->from($this->table)->where('pingId',$id)->get()->row();
     }    
 }
