@@ -128,9 +128,149 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
 </div>
 
+<!-- View and Update Services Transaction Record -->
+<div class="modal hide fade" id="updateServiceTransRecord" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="updateModal">View and Update (Status) Service Transaction Record</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body" style="word-wrap: break-word;">
+            <?php echo form_open_multipart('admin/serviceTransactionUpdateRecord') ?>
+            
+            <div class="form-group row d-flex justify-content-around">
+                <label for="service_transaction_id" class="col-3 ">Transaction Id</label>
+                <div class="col-9">
+                    <input name="service_transaction_id"  type="text" class="form-control" id="service_transaction_id" placeholder="Transaction Id" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="availed_serviceId" class="col-3 ">Availed Service Id</label>
+                <div class="col-9">
+                    <input name="availed_serviceId"  type="text" class="form-control" id="availed_serviceId" placeholder="Availed Service" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="availed_serviceName" class="col-3 ">Availed Service</label>
+                <div class="col-9">
+                    <input name="availed_serviceName"  type="text" class="form-control" id="availed_serviceName" placeholder="Availed Service" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="service_price" class="col-3 ">Service Price</label>
+                <div class="col-9">
+                    <input name="service_price"  type="text" class="form-control" id="service_price" placeholder="Service Price" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="first_name" class="col-3 ">First Name</label>
+                <div class="col-9">
+                    <input name="first_name"  type="text" class="form-control" id="first_name" placeholder="First Name" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="last_name" class="col-3 ">Last Name</label>
+                <div class="col-9">
+                    <input name="last_name"  type="text" class="form-control" id="last_name" placeholder="Last Name" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="email_address" class="col-3 ">Email Address</label>
+                <div class="col-9">
+                    <input name="email_address"  type="text" class="form-control" id="email_address" placeholder="Email Address" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="phone_number" class="col-3 ">Phone Number</label>
+                <div class="col-9">
+                    <input name="phone_number"  type="text" class="form-control" id="phone_number" placeholder="Phone Number" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="company_name" class="col-3 ">Company Name</label>
+                <div class="col-9">
+                    <input name="company_name"  type="text" class="form-control" id="company_name" placeholder="Company Name" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="company_address" class="col-3 ">Company Address</label>
+                <div class="col-9">
+                    <input name="company_address"  type="text" class="form-control" id="company_address" placeholder="Company Address" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="city_name" class="col-3 ">City</label>
+                <div class="col-9">
+                    <input name="city_name"  type="text" class="form-control" id="city_name" placeholder="City" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="state_province" class="col-3 ">Province</label>
+                <div class="col-9">
+                    <input name="state_province"  type="text" class="form-control" id="state_province" placeholder="Province" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="postal_code" class="col-3 ">Postal Code</label>
+                <div class="col-9">
+                    <input name="postal_code"  type="text" class="form-control" id="postal_code" placeholder="Postal Code" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="order_date" class="col-3 ">Order Date</label>
+                <div class="col-9">
+                    <input name="order_date"  type="text" class="form-control" id="order_date" placeholder="Date" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="with_loan" class="col-3 ">With Loan</label>
+                <div class="col-9">
+                    <input name="with_loan"  type="text" class="form-control" id="with_loan" placeholder="With Loan?" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="serviceTrans_status" class="col-3 ">Status<i class="text-danger">*</i></label>
+                   <div class="col-9">
+                    <?php
+                            $serviceTrans_status = array(
+                                '' => 'Select',
+                                "Not Paid" => "Not Paid",
+                                "Paid" => "Paid",
+                            ); 
+                            echo form_dropdown('serviceTrans_status', $serviceTrans_status, "", 'class="form-control " id="serviceTrans_status"');
+                        ?>
+                   </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Close</button>
+                <button class="btn btn-primary">Add</button>
+        </div>
+        <?php echo form_close() ?>
+        </div>
+  </div>
+</div>
+
 <!-- Start of Services -->
 <div class="transsrvSection">
     <!-- table heading --> 
+    <div class="alert alert-danger print-error-msg" style="display: <?php echo ((validation_errors() == '' || validation_errors() == null) ? "none;" : "block;")?>">
+        <?php echo validation_errors(); ?>
+    </div>
+   
+    <?php if($this->session->flashdata('serviceSuccess')){ ?>
+        <div class="alert alert-success" > 
+            <?php  echo $this->session->flashdata('serviceSuccess'); $this->session->unset_userdata ( 'serviceSuccess' );?>
+        </div>
+    <?php } ?>  
+    <?php if ($this->session->flashdata('serviceError')){ ?>
+        <div class="alert alert-danger" > 
+            <?php  echo $this->session->flashdata('serviceError'); $this->session->unset_userdata ( 'serviceError' );?>
+        </div>
+    <?php } ?>
     <div class="transsrvHeadingDiv">
         <div class="row">
             <div class="transsrvIcon">
@@ -151,12 +291,17 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div> <!-- pingHeadingDiv -->
 
     <div>
-        <table id="transactsrvTable" class="display responsive nowrap cell-border hover" width="100%">
+        <table id="serviceTransactionTable" class="display responsive nowrap cell-border hover" width="100%">
             <thead class="transsrvTableHeader">
                 <tr>
+                    <th>No.</th>
                     <th>Transaction ID</th>
-                    <th>Service Name</th>
-                    <th>Company</th>
+                    <th>Availed Service</th>
+                    <th>Service Price</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email Address</th>
+                    <th>Contact Number</th>
                     <th>With Loan?</th>
                     <th>Status</th>
                     <th>Action</th>
@@ -177,14 +322,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <?php echo validation_errors(); ?>
     </div>
    
-    <?php if($this->session->flashdata('success')){ ?>
+    <?php if($this->session->flashdata('productSuccess')){ ?>
         <div class="alert alert-success" > 
-            <?php  echo $this->session->flashdata('success'); $this->session->unset_userdata ( 'success' );?>
+            <?php  echo $this->session->flashdata('productSuccess'); $this->session->unset_userdata ( 'productSuccess' );?>
         </div>
     <?php } ?>  
-    <?php if ($this->session->flashdata('error')){ ?>
+    <?php if ($this->session->flashdata('productError')){ ?>
         <div class="alert alert-danger" > 
-            <?php  echo $this->session->flashdata('error'); $this->session->unset_userdata ( 'error' );?>
+            <?php  echo $this->session->flashdata('productError'); $this->session->unset_userdata ( 'productError' );?>
         </div>
     <?php } ?>
     <div class="transprodHeadingDiv">

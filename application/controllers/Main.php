@@ -14,6 +14,7 @@ class Main extends CI_Controller {
 		$this->load->model('fACompanies_model');
 		$this->load->model('srvcsinventory_model');
 		$this->load->model('prodtransaction_model');
+		$this->load->model('serviceTransaction_model');
 		$this->load->helper('url');
 		$this->load->library('session'); 
 
@@ -164,7 +165,7 @@ class Main extends CI_Controller {
 		$this->load->view('ClientPages/services.php', $data);
 		$this->load->view('HeaderNFooter/Footer.php');
 	}
-	public function servicesOrder(){
+	public function servicesOrder() {
 		$this->load->helper('url');
 
 		$data['srvcsInventoryRecord'] = $this->srvcsinventory_model->getServiceInvDataById($this->uri->segment(2));
@@ -172,7 +173,88 @@ class Main extends CI_Controller {
 		$this->load->view('HeaderNFooter/Header.php');
 		$this->load->view('ClientPages/ServicesOrder.php', $data);
 		$this->load->view('HeaderNFooter/Footer.php');
+		
 	}
+
+	public function saveServicesOrderRecord() {
+		//form validations
+		$this->form_validation->set_rules('firstName', 'First Name' ,'required|max_length[50]');
+		$this->form_validation->set_rules('lastName', 'Last Name' ,'required|max_length[50]');
+		$this->form_validation->set_rules('emailAddress', 'Email Address' ,'required|max_length[100]');
+		$this->form_validation->set_rules('phoneNumber', 'Phone Number' ,'required|max_length[20]');
+		$this->form_validation->set_rules('companyName', 'Company Name' ,'required|max_length[50]');
+		$this->form_validation->set_rules('companyAddress', 'Company Address' ,'required|max_length[100]');
+		$this->form_validation->set_rules('cityName', 'City' ,'required|max_length[50]');
+		$this->form_validation->set_rules('stateProvince', 'State/Province' ,'required|max_length[50]');
+		$this->form_validation->set_rules('postalCode', 'Postal Code' ,'required|max_length[10]');
+		// get data
+		$services_transactionId = "TRN-".$this->randStrGen(2,7);
+		$service_price = $this->input->post('servicePrice');
+		$data['document'] = (object)$postData = array( 
+			'serviceTransactionId' => $services_transactionId,
+			'availedServiceId' => $this->input->post('serviceId'),
+			'availedService' => $this->input->post('serviceText'),
+			'servicePrice' => $service_price,
+			'fName' => $this->input->post('firstName'),
+			'lName' => $this->input->post('lastName'),
+			'emailAdd' => $this->input->post('emailAddress'),
+			'contactNum' => $this->input->post('phoneNumber'),
+			'compName' => $this->input->post('companyName'),
+			'compAdd' => $this->input->post('companyAddress'),
+			'city' => $this->input->post('cityName'),
+			'stateProvince' => $this->input->post('stateProvince'),
+			'postalCode' => $this->input->post('postalCode'),
+			'createDate' => date('Y-m-d'),
+			'withLoan' => 'No',
+			'status' => 'Not Paid'
+		);
+		// store data 
+		if($this->form_validation->run() === true){
+			if($this->serviceTransaction_model->create($postData)){
+				// -------------- SEND EMAIL -------------- // 
+				$this->load->library('email');
+								
+				$config = array();
+				$config['protocol'] = 'smtp';
+				$config['smtp_host'] = 'ssl://smtp.gmail.com';
+				$config['smtp_user'] = 'odmsenterprise@gmail.com';
+				$config['smtp_pass'] = 'Thisismypassword123!';
+				$config['smtp_port'] = 465;
+				$config['crlf'] = '\r\n';
+				$config['newline'] = '\r\n';
+				$config['mailtype'] = "html";
+
+				$this->email->initialize($config);
+				$this->email->set_newline("\r\n");  
+
+				$this->email->to($this->input->post('emailAddress'));
+				$this->email->from('odmsenterprise@gmail.com');
+				$this->email->subject('Transaction No.' . $services_transactionId);
+				$emailInfo['servTransId'] = $services_transactionId;
+				$emailInfo['servicePrice'] = $service_price;
+				$emailInfo['createDate'] = date('Y-m-d');
+				$emailInfo['content'] = $this->db->select('*')->where('serviceTransactionId',$services_transactionId)->get('services_transaction')->result();;
+				$body = $this->load->view('EmailTemplates/ServTranEmailTemp.php',$emailInfo,TRUE);
+				$this->email->message($body);
+
+				$this->email->send();
+
+				$this->session->set_flashdata('success','Sent Successfully');
+
+			}
+			else{
+				$this->session->set_flashdata('error','Send Failed');
+			}
+			redirect('servicesOrderSuccess');
+		}
+		
+		else {
+			$this->load->view('HeaderNFooter/Header.php');
+			$this->load->view('ClientPages/servicesOrderSuccess.php');
+			$this->load->view('HeaderNFooter/Footer.php');
+		}
+	}
+
 	public function servicesOrderSuccess(){
 		$this->load->helper('url');
 		$this->load->view('HeaderNFooter/Header.php');

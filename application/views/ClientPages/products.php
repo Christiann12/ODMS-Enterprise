@@ -465,7 +465,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
 
           <button type="submit" class="ordCheckOutBtn">CHECK-OUT</button>
-          <?php echo form_close() ?>
+        <?php echo form_close() ?>
       </div> <!-- orderForm -->
     </div>
   </div> <!-- row -->
