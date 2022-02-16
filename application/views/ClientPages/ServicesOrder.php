@@ -9,7 +9,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             echo '
                 <!-- picture -->
                 <div class="serviceImgDiv col-lg-6 col-md-12 col-sm-12">
-                    <img src="'.base_url().'application/assets/attachments/'.$srvcsInventoryRecord->servicePicture.'" class="serviceImg" />
+                    <img src="'.base_url().'application/assets/attachments/images/'.$srvcsInventoryRecord->servicePicture.'" class="serviceImg" />
                 </div>
 
                 <!-- description -->

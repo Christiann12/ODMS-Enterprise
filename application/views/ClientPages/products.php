@@ -120,7 +120,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               $counter++;
               echo '<div class="col-12 col-md-4 mb-md-3 mb-5" >
                 <div class="card prodItems bg-dark text-white">
-                  <img class="card-img sample" src="'.base_url().'application/assets/attachments/'.$record->productPicture.'" alt="Card image">
+                  <img class="card-img sample" src="'.base_url().'application/assets/attachments/images/'.$record->productPicture.'" alt="Card image">
                   <div class="card-img-overlay">
                     <div style="margin-top: 23rem;">
                       <h5 class="card-title">'.$record->productTitle.'</h5>
@@ -164,7 +164,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
               $counter++;
               echo '<div class="col-12 col-md-4 mb-md-3 mb-5" >
               <div class="card prodItems bg-dark text-white">
-                <img class="card-img sample" src="'.base_url().'application/assets/attachments/'.$record->productPicture.'" alt="Card image">
+                <img class="card-img sample" src="'.base_url().'application/assets/attachments/images/'.$record->productPicture.'" alt="Card image">
                 <div class="card-img-overlay">
                   <div style="margin-top: 23rem;">
                     <h5 class="card-title">'.$record->productTitle.'</h5>
@@ -211,7 +211,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $counter++;
             echo '<div class="col-12 col-md-4 mb-md-3 mb-5" >
             <div class="card prodItems bg-dark text-white">
-              <img class="card-img sample" src="'.base_url().'application/assets/attachments/'.$record->productPicture.'" alt="Card image">
+              <img class="card-img sample" src="'.base_url().'application/assets/attachments/images/'.$record->productPicture.'" alt="Card image">
               <div class="card-img-overlay">
                 <div style="margin-top: 23rem;">
                   <h5 class="card-title">'.$record->productTitle.'</h5>
@@ -259,7 +259,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           $counter++;
           echo '<div class="col-12 col-md-4 mb-md-3 mb-5" >
           <div class="card prodItems bg-dark text-white">
-            <img class="card-img sample" src="'.base_url().'application/assets/attachments/'.$record->productPicture.'" alt="Card image">
+            <img class="card-img sample" src="'.base_url().'application/assets/attachments/images/'.$record->productPicture.'" alt="Card image">
             <div class="card-img-overlay">
               <div style="margin-top: 23rem;">
                 <h5 class="card-title">'.$record->productTitle.'</h5>
@@ -333,7 +333,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $count++;
             echo '<div class="row prodOrdRow border-bottom">
                   <div class="col-2">
-                    <img class="prodPicOrd" src="'.base_url().'application/assets/attachments/'.$cart->productPicture.'" alt="Card image">
+                    <img class="prodPicOrd" src="'.base_url().'application/assets/attachments/images/'.$cart->productPicture.'" alt="Card image">
                   </div>
           
                   <div class="col-3">

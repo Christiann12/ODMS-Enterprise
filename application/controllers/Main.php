@@ -15,6 +15,7 @@ class Main extends CI_Controller {
 		$this->load->model('srvcsinventory_model');
 		$this->load->model('prodtransaction_model');
 		$this->load->model('serviceTransaction_model');
+		$this->load->model('loan_model');
 		$this->load->helper('url');
 		$this->load->library('session'); 
 
@@ -35,10 +36,108 @@ class Main extends CI_Controller {
 		$this->load->helper('url');
 
 		$data['fACompanyRecord'] = $this->fACompanies_model->getFACompanyData();
+		// $fa_company_id = $this->fACompanies->getFACompanyDataById($companyId);
 
 		$this->load->view('HeaderNFooter/Header.php');
 		$this->load->view('ClientPages/FA.php', $data);
 		$this->load->view('HeaderNFooter/Footer.php');
+	}
+
+	public function saveLoanDetails() {
+		// form validations
+		$this->form_validation->set_rules('fAFName', 'First Name' ,'required|max_length[50]');
+		$this->form_validation->set_rules('fALName', 'Last Name' ,'required|max_length[50]');
+		$this->form_validation->set_rules('fASelectCompany', 'Select FA Company' ,'required');
+		$this->form_validation->set_rules('fAClientEmail', 'Email' ,'required|max_length[100]');
+		if (empty($_FILES['fAClientRequirement']['name'])){
+			$this->form_validation->set_rules('fAClientRequirement', 'Requirements', 'required');
+		}
+		//load config for upload library
+		$config['upload_path']   = APPPATH.'assets/attachments/files/';
+		$config['allowed_types'] = 'jpg|jpeg|jpe|png|zip|pdf|docx|rar';
+		$config['max_size']      = 0;
+		$config['max_width']     = 0;
+		$config['max_height']    = 0;
+		$config['overwrite']     = false;
+		// helpers
+		$this->load->helper('url');
+		$this->load->library('upload', $config);
+		$name='fAClientRequirement';
+		$loanId = "LOAN-".$this->randStrGen(2,7);
+		$availedFACompany = $this->input->post('fASelectCompany');
+		$clientFirstName = $this->input->post('fAFName');
+		$clientLastName = $this->input->post('fALName');
+		$clientEmail = $this->input->post('fAClientEmail');
+		$clientRequirement = $this->input->post('fAClientRequirement');
+		
+		// get data
+		$data['document'] = (object)$postData = array( 
+			'loanId' => $loanId,
+			'fACompanyId' => $availedFACompany,
+            'firstName' => $clientFirstName,
+			'lastName' => $clientLastName,
+			'emailAddress' => $clientEmail,
+			'requirements' => $clientRequirement,
+        );
+		// store data 
+		if($this->form_validation->run() === true){
+			$faData = $this->fACompanies_model->getFACompanyDataById($availedFACompany);
+			// checks if user uploaded a file
+			if(!$this->upload->do_upload($name)) {
+				$this->session->set_flashdata('error', $this->upload->display_errors());
+			}
+			else {
+				$upload = $this->upload->data();
+
+				$postData['requirements'] = $upload['file_name'];
+
+				if($this->loan_model->create($postData)){
+					
+					// -------------- SEND EMAIL -------------- // 
+					$this->load->library('email');
+									
+					$config = array();
+					$config['protocol'] = 'smtp';
+					$config['smtp_host'] = 'ssl://smtp.gmail.com';
+					$config['smtp_user'] = 'odmsenterprise@gmail.com';
+					$config['smtp_pass'] = 'Thisismypassword123!';
+					$config['smtp_port'] = 465;
+					$config['crlf'] = '\r\n';
+					$config['newline'] = '\r\n';
+					$config['mailtype'] = "html";
+					$config['smtp_timeout'] = '60';
+
+					$this->email->initialize($config);
+					$this->email->set_newline("\r\n");  
+
+					$this->email->to($faData->companyEmail);
+					$this->email->from('odmsenterprise@gmail.com');
+					$this->email->subject('A client wants to avail Financial Assistance!');
+
+					$emailInfo['createDate'] = date('Y-m-d');
+					$emailInfo['content'] = $this->db->select('*')->where('loanId',$loanId)->get('loan')->row();
+					$body = $this->load->view('EmailTemplates/LoanEmailTemp.php',$emailInfo,TRUE);
+					$this->email->attach(base_url('application/assets/attachments/files/'.$postData['requirements']));
+					$this->email->message($body);
+
+					$this->email->send();
+
+					$this->session->set_flashdata('success','Add Success');
+				}
+				else{
+					$this->session->set_flashdata('error','Add Failed');
+				}
+			}
+			redirect('fa');
+		}
+		else{
+			$this->session->set_flashdata('error',validation_errors());
+			redirect('fa');
+			// $this->load->view('HeaderNFooter/Header.php');
+			// $this->load->view('ClientPages/FA.php');
+			// $this->load->view('HeaderNFooter/Footer.php');
+		}
+
 	}
 	
 	public function ping(){

@@ -65,6 +65,10 @@ $route['servicesOrder'] = 'main/servicesOrder';
 $route['servicesOrderSuccess'] = 'main/servicesOrderSuccess';
 $route['admin/updateUser/(:any)'] = 'admin/userManagement/$1';
 $route['admin/updateUser'] = 'admin/userManagement';
+$route['admin/acceptFA/(:any)'] = 'admin/acceptFA/$1';
+$route['admin/acceptFA'] = 'admin/acceptFA';
+$route['admin/rejectFA/(:any)'] = 'admin/rejectFA/$1';
+$route['admin/rejectFA'] = 'admin/rejectFA';
 
 // end client routes
 

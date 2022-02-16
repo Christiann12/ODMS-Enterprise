@@ -27,6 +27,7 @@ class Admin extends CI_Controller {
 		$this->load->model('srvcsinventory_model');
 		$this->load->model('prodtransaction_model');
 		$this->load->model('serviceTransaction_model');
+		$this->load->model('loan_model');
 		$this->load->helper('url');
 		$this->load->library('session');
 		 
@@ -619,7 +620,7 @@ class Admin extends CI_Controller {
 		// }
 
 		//load config for upload library
-		$config['upload_path']   = APPPATH.'assets/attachments/';
+		$config['upload_path']   = APPPATH.'assets/attachments/images';
 		$config['allowed_types'] = 'jpg|jpeg|jpe|png';
 		$config['max_size']      = 0;
 		$config['max_width']     = 0;
@@ -692,7 +693,7 @@ class Admin extends CI_Controller {
 		$this->form_validation->set_rules('fACompanyEmail', 'Company Email', 'required|max_length[100]');
 		
 		//load config for upload library
-		$config['upload_path']   = APPPATH.'assets/attachments/';
+		$config['upload_path']   = APPPATH.'assets/attachments/images/';
 		$config['allowed_types'] = 'jpg|jpeg|jpe|png';
 		$config['max_size']      = 0;
 		$config['max_width']     = 0;
@@ -729,7 +730,7 @@ class Admin extends CI_Controller {
 					$postData['companyImg'] = $upload['file_name'];
 					if($this->fACompanies_model->updateFACompanyItm($postData)){
 						$this->session->set_flashdata('success','Edit Successful');
-						unlink(APPPATH.'assets/attachments/'.$this->input->post('fACompanyFileName'));
+						unlink(APPPATH.'assets/attachments/images/'.$this->input->post('fACompanyFileName'));
 					}
 					else{
 						$this->session->set_flashdata('error','Edit Failed');
@@ -761,7 +762,7 @@ class Admin extends CI_Controller {
 		$query = $this->fACompanies_model->getFACompanyDataById($this->uri->segment(3));
 		$file = $query->companyImg;
 		if($this->fACompanies_model->deleteFACompanyItm($this->uri->segment(3))){
-			unlink(APPPATH.'assets/attachments/'.$file);
+			unlink(APPPATH.'assets/attachments/images/'.$file);
 			$this->session->set_flashdata('success','Delete Success');
 		}
 		else{
@@ -804,6 +805,156 @@ class Admin extends CI_Controller {
 		echo json_encode($output);
 	}
 
+	// fetch data for FA Loan data table
+	public function fALoanAjax(){
+		//helpers
+		$this->load->helper('url');
+		//load query
+		$list = $this->loan_model->getLoanTable($this->input->post('txtSearch'));
+		//variable initializations
+		$data = array();
+		$no = $_POST['start'];
+		//iterate per record and organize by row
+		foreach($list as $loan){
+			$no++;
+			$row = array();
+			$row[] = $no;
+			$row[] = $loan->loanId;
+			$row[] = $loan->fACompanyId;
+			$row[] = $loan->firstName;
+			$row[] = $loan->lastName;
+			$row[] = $loan->emailAddress;
+			$row[] = $loan->requestStatus;
+			//responsible for the additions of action button in the last row
+			$row[] = '<a href="#" data-toggle="modal" data-target="#updateLoanRecord" data-loanid="'.$loan->loanId.'" data-faid="'.$loan->fACompanyId.'" data-fname="'.$loan->firstName.'" data-lname="'.$loan->lastName.'" data-email="'.$loan->emailAddress.'" data-stat="'.$loan->requestStatus.'" class="btn btn-xs btn-primary"><i class="fa fa-edit"  data-placement="top" title="Update"></i></a>';
+				// '<a href="'.base_url('admin/deleteProdRecord/'.$product->productId.'').'" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="Delete"></i></a>';
+			$data[] = $row;
+		}
+		//carries the values to the view
+		$output = array(
+			"draw" => $_POST['draw'],
+			"recordsTotal" => $this->loan_model->count($this->input->post('txtSearch')),
+			"recordsFiltered" => $this->loan_model->count_filtered($this->input->post('txtSearch')),
+			"data" => $data
+		);
+		echo json_encode($output);
+	}
+
+	// update Loan Record Status
+	public function loanUpdateRecord(){
+		// screen to open
+		$data['param'] ='financialAssistance';
+		$this->form_validation->set_rules('loan_status', 'Status' ,'required');
+		// Helpers
+		$this->load->helper('url');
+	
+		// StoreData
+		$data['document'] = (object)$postData = array( 
+			'requestStatus' => $this->input->post('loan_status'),
+			'loanId' => $this->input->post('loan_id'),
+			'fACompanyId' => $this->input->post('availed_fa_companyId'),
+		); 
+		
+		$name = 'attachment';
+		// SendToDatabase
+		if($this->form_validation->run() === true){
+			if($this->loan_model->updateLoanItm($postData)){
+				$this->session->set_flashdata('loanSuccess','Edit Successful');
+			}
+			else{
+				$this->session->set_flashdata('loanError','Edit Failed');
+			}
+			redirect('admin/financialAssistance');
+			
+		}
+		else{
+			$this->session->set_flashdata('loanError',validation_errors());
+			redirect('admin/financialAssistance');
+			// $this->load->view('HeaderNFooter/HeaderAdmin.php');
+			// $this->load->view('AdminPages/wrapper.php', $data);
+			// $this->load->view('HeaderNFooter/FooterAdmin.php');
+		}
+	}
+
+	public function acceptFA() {
+		$data['loanData'] = $this->loan_model->getLoanDataById($this->uri->segment(3));
+
+		if($this->loan_model->updateLoanStatusApprove($data['loanData']->loanId)){
+			// -------------- SEND EMAIL -------------- // 
+			$this->load->library('email');
+										
+			$config = array();
+			$config['protocol'] = 'smtp';
+			$config['smtp_host'] = 'ssl://smtp.gmail.com';
+			$config['smtp_user'] = 'odmsenterprise@gmail.com';
+			$config['smtp_pass'] = 'Thisismypassword123!';
+			$config['smtp_port'] = 465;
+			$config['crlf'] = '\r\n';
+			$config['newline'] = '\r\n';
+			$config['mailtype'] = "html";
+			$config['smtp_timeout'] = '60';
+
+			$this->email->initialize($config);
+			$this->email->set_newline("\r\n");  
+
+			$this->email->to($data['loanData']->emailAddress);
+			$this->email->from('odmsenterprise@gmail.com');
+			$this->email->subject('Financial Assistance Request result');
+			$body = $this->load->view('EmailTemplates/FALoanAcceptEmail.php',$data,TRUE);
+			$this->email->message($body);
+
+			$this->email->send();
+
+		}
+		else{
+			$this->session->set_flashdata('loanError','Edit Failed');
+		}
+		
+		$this->load->view('HeaderNFooter/HeaderAdmin.php');
+		$this->load->view('AdminPages/FALoan_Accept.php', $data);
+		$this->load->view('HeaderNFooter/FooterAdmin.php');
+		
+	}
+
+	public function rejectFA() {
+		$data['loanData'] = $this->loan_model->getLoanDataById($this->uri->segment(3));
+
+		if($this->loan_model->updateLoanStatusReject($data['loanData']->loanId)){
+			// -------------- SEND EMAIL -------------- // 
+			$this->load->library('email');
+										
+			$config = array();
+			$config['protocol'] = 'smtp';
+			$config['smtp_host'] = 'ssl://smtp.gmail.com';
+			$config['smtp_user'] = 'odmsenterprise@gmail.com';
+			$config['smtp_pass'] = 'Thisismypassword123!';
+			$config['smtp_port'] = 465;
+			$config['crlf'] = '\r\n';
+			$config['newline'] = '\r\n';
+			$config['mailtype'] = "html";
+			$config['smtp_timeout'] = '60';
+
+			$this->email->initialize($config);
+			$this->email->set_newline("\r\n");  
+
+			$this->email->to($data['loanData']->emailAddress);
+			$this->email->from('odmsenterprise@gmail.com');
+			$this->email->subject('Financial Assistance Request result');
+			$body = $this->load->view('EmailTemplates/FALoanRejectEmail.php',$data,TRUE);
+			$this->email->message($body);
+
+			$this->email->send();
+
+		}
+		else{
+			$this->session->set_flashdata('loanError','Edit Failed');
+		}
+
+		$this->load->view('HeaderNFooter/HeaderAdmin.php');
+		$this->load->view('AdminPages/FALoan_Reject.php', $data);
+		$this->load->view('HeaderNFooter/FooterAdmin.php');
+
+	}
 	
 	// show and save create data for inventory page
 	public function inventory()
@@ -822,7 +973,7 @@ class Admin extends CI_Controller {
 		$this->form_validation->set_rules('prodStock', 'Stock' ,'required|max_length[30]');
 		
 		//load config for upload library
-		$config['upload_path']   = APPPATH.'assets/attachments/';
+		$config['upload_path']   = APPPATH.'assets/attachments/images/';
 		$config['allowed_types'] = 'jpg|jpeg|jpe|png';
 		$config['max_size']      = 0;
 		$config['max_width']     = 0;
@@ -914,7 +1065,7 @@ class Admin extends CI_Controller {
 		$this->form_validation->set_rules('prodPrice', 'Price' ,'required|max_length[30]');
 		$this->form_validation->set_rules('prodStock', 'Stock' ,'required|max_length[30]');
 		//load config for upload library
-		$config['upload_path']   = APPPATH.'assets/attachments/';
+		$config['upload_path']   = APPPATH.'assets/attachments/images/';
 		$config['allowed_types'] = 'jpg|jpeg|jpe|png';
 		$config['max_size']      = 0;
 		$config['max_width']     = 0;
@@ -950,7 +1101,7 @@ class Admin extends CI_Controller {
 					$postData['productPicture'] = $upload['file_name'];
 					if($this->inventory_model->updateProdItm($postData)){
 						$this->session->set_flashdata('success','Edit Successful');
-						unlink(APPPATH.'assets/attachments/'.$this->input->post('fileName'));
+						unlink(APPPATH.'assets/attachments/images/'.$this->input->post('fileName'));
 					}
 					else{
 						$this->session->set_flashdata('error','Edit Failed');
@@ -981,7 +1132,7 @@ class Admin extends CI_Controller {
 		$query = $this->inventory_model->getInvDataById($this->uri->segment(3));
 		$file = $query->productPicture;
 		if($this->inventory_model->deleteProdItm($this->uri->segment(3))){
-			unlink(APPPATH.'assets/attachments/'.$file);
+			unlink(APPPATH.'assets/attachments/images/'.$file);
 			$this->session->set_flashdata('success','Delete Success');
 		}
 		else{
@@ -1041,7 +1192,7 @@ class Admin extends CI_Controller {
 		$this->form_validation->set_rules('serviceAvailability', 'Service Availability' ,'required');
 		
 		//load config for upload library
-		$config['upload_path']   = APPPATH.'assets/attachments/';
+		$config['upload_path']   = APPPATH.'assets/attachments/images/';
 		$config['allowed_types'] = 'jpg|jpeg|jpe|png';
 		$config['max_size']      = 0;
 		$config['max_width']     = 0;
@@ -1102,7 +1253,7 @@ class Admin extends CI_Controller {
 		$this->form_validation->set_rules('servicePrice', 'Price' ,'required|max_length[30]');
 		$this->form_validation->set_rules('serviceAvailability', 'Service Availability' ,'required');
 		//load config for upload library
-		$config['upload_path']   = APPPATH.'assets/attachments/';
+		$config['upload_path']   = APPPATH.'assets/attachments/images/';
 		$config['allowed_types'] = 'jpg|jpeg|jpe|png';
 		$config['max_size']      = 0;
 		$config['max_width']     = 0;
@@ -1137,7 +1288,7 @@ class Admin extends CI_Controller {
 					$postData['servicePicture'] = $upload['file_name'];
 					if($this->srvcsinventory_model->updateSrvcsItm($postData)){
 						$this->session->set_flashdata('success','Edit Successful');
-						unlink(APPPATH.'assets/attachments/'.$this->input->post('fileName'));
+						unlink(APPPATH.'assets/attachments/images/'.$this->input->post('fileName'));
 					}
 					else{
 						$this->session->set_flashdata('error','Edit Failed');
@@ -1168,7 +1319,7 @@ class Admin extends CI_Controller {
 		$query = $this->srvcsinventory_model->getServiceInvDataById($this->uri->segment(3));
 		$file = $query->servicePicture;
 		if($this->srvcsinventory_model->deleteSrvcsItm($this->uri->segment(3))){
-			unlink(APPPATH.'assets/attachments/'.$file);
+			unlink(APPPATH.'assets/attachments/images/'.$file);
 			$this->session->set_flashdata('success','Delete Success');
 		}
 		else{

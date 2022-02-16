@@ -41,7 +41,7 @@
 .dashboardSection .monthlyReportSection .monthlyReportCharts .reportCharts .activeUsersCard {
     width: 100%;
     height: 100%;
-    background: rgba(246, 197, 16, 0.8);
+    /* background: linear-gradient(90deg, hsla(47, 93%, 51%, 1) 0%, hsla(62, 76%, 64%, 1) 100%); */
     border-radius: 10px;
     padding: 20px;
 }
@@ -49,7 +49,7 @@
 .dashboardSection .monthlyReportSection .monthlyReportCharts .reportCharts .transactionCountCard {
     width: 100%;
     height: 100%;
-    background: #d1c418;
+    background: linear-gradient(90deg, hsla(145, 84%, 73%, 1) 0%, hsla(150, 61%, 48%, 1) 100%);
     border-radius: 10px;
     padding: 20px;
 }
@@ -57,7 +57,7 @@
 .dashboardSection .monthlyReportSection .monthlyReportCharts .reportCharts .transactionSalesCard {
     width: 100%;
     height: 100%;
-    background: #adc029;
+    background: linear-gradient(90deg, hsla(266, 75%, 55%, 1) 0%, hsla(340, 47%, 77%, 1) 100%);
     border-radius: 10px;
     padding: 20px;
 }
@@ -65,7 +65,7 @@
 .dashboardSection .monthlyReportSection .monthlyReportCharts .reportCharts .pingCountCard {
     width: 100%;
     height: 100%;
-    background: #8cbb3a;
+    background: linear-gradient(90deg, hsla(281, 37%, 45%, 1) 0%, hsla(1, 62%, 48%, 1) 100%);
     border-radius: 10px;
     padding: 20px;
 }

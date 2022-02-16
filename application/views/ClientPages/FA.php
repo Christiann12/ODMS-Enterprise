@@ -45,6 +45,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </button>
       </div>
       <div class="modal-body" style="word-wrap: break-word;">
+
+        <?php echo form_open_multipart('main/saveLoanDetails') ?>
+
         <div class="form-group row d-flex justify-content-around">
             <label for="fAFName" class="col-3 ">First Name<i class="text-danger">*</i></label>
             <div class="col-9">
@@ -60,12 +63,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="form-group row d-flex justify-content-around">
             <label for="fASelectCompany" class="col-3 ">Select Financial Company<i class="text-danger">*</i></label>
             <div class="col-9">
-            <select class="form-control" id="fASelectCompany">
-                <option>Select Financial Company</option>
-                <option>Stark Industries</option>
-                <option>Wayne Enterprises, Inc.</option>
-                <option>Oscorp</option>
-            </select>
+                <select class="form-control" id="fASelectCompany" name="fASelectCompany">
+                    <?php
+                        foreach($fACompanyRecord as $selectedCompany) {
+                            echo '
+                                <option value="'.$selectedCompany->companyId.'">'.$selectedCompany->companyName.'</option>
+                            ';
+                        }
+                    ?>
+                </select>
             </div>
         </div>
         <div class="form-group row d-flex justify-content-around">
@@ -83,12 +89,31 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Confirm</button>
+        <button type="submit" class="btn btn-primary">Confirm</button>
       </div>
+
+    <?php echo form_close() ?>
+
     </div>
   </div>
 </div>
 
+<!-- FORM VALIDATIONS DISPLAY --> 
+<div class="alert alert-danger print-error-msg" style="display: <?php echo ((validation_errors() == '' || validation_errors() == null) ? "none;" : "block;")?>">
+    <?php echo validation_errors(); ?>
+</div>
+
+<?php if($this->session->flashdata('success')){ ?>
+    <div class="alert alert-success" > 
+        <?php  echo $this->session->flashdata('success'); $this->session->unset_userdata ( 'success' );?>
+    </div>
+<?php } ?>  
+<?php if ($this->session->flashdata('error')){ ?>
+    <div class="alert alert-danger" > 
+        <?php  echo $this->session->flashdata('error'); $this->session->unset_userdata ( 'error' );?>
+    </div>
+<?php } ?>
+<!-- END OF FORM VALIDATIONS -->
 <div class="bannerFa row">
     <div class="bannerimageFa" style="background-image: url('<?php echo base_url(); ?>application/assets/images/ClientPagesImages/team 4.jpg'); "></div>
     <div class="bannerBackgroundOverlayFa"></div>
@@ -165,13 +190,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $counter++;
                 echo '<div class="col-12 col-md-4 mb-md-3 mb-5" >
                     <div class="card fAItems bg-dark text-white">
-                        <img class="card-img sample" src="'.base_url().'application/assets/attachments/'.$fACompany->companyImg.'" alt="Card image">
+                        <img class="card-img sample" src="'.base_url().'application/assets/attachments/images/'.$fACompany->companyImg.'" alt="Card image">
                         <div class="card-img-overlay">
                             <div style="margin-top: 20rem;">
 
                                 <h5 class="card-title">'.$fACompany->companyName.'</h5>
                                 <p class="card-text" style="margin: 0;">Contact No.: '.$fACompany->companyContactNum.'</p>
                                 <p class="card-text" style="margin: 0;">Email: '.$fACompany->companyEmail.'</p>
+                                
 
                             </div>
                         </div>
@@ -199,7 +225,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 
 <div class="getStartedButtonSection">
-    
     <div class="img" style="background-image: url('<?php echo base_url(); ?>application/assets/images/ClientPagesImages/team 2.jpg'); "></div>
     <div class="overlay"></div>
     <div class="content">

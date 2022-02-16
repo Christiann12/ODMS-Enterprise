@@ -668,5 +668,72 @@
 				modal.find('.modal-body #serviceTrans_status').val(availed_serviceStatus);
 			})
 		</script>
+
+		<!-- FA Loan script  -->
+		<script>
+			<?php
+				if($this->uri->segment(2)=="financialAssistance" || $this->uri->segment(2)=="loanUpdateRecord"){
+					echo '
+					
+						$(document).ready( function () {
+							$(\'#loanAdminTable\').DataTable().destroy();
+							var VtxtSearch=$("#loanTxtSearch").val();
+							loadFALoanTable(VtxtSearch);
+						});	
+					
+					';
+				}
+			?>
+			$("#fALoanSearch").submit(function(event){
+				event.preventDefault();
+				$('#loanAdminTable').DataTable().destroy();
+				var VtxtSearch=$("#loanTxtSearch").val();
+				loadFALoanTable(VtxtSearch);
+			});
+
+			function loadFALoanTable(txtSearch=''){
+				// alert('asd');
+				var dataTable = $('#loanAdminTable').DataTable({
+					"lengthMenu": [[10, 25, 100, 1000, 3000, -1], [10, 25, 100, 1000, 3000]],
+					"processing":true,
+					"language": {
+						processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span> '
+					},
+					"serverSide":true,
+					"responsive": true,
+					"bPaginate": true,
+					"sPaginationType": "full_numbers",
+					"ajax": {
+						"url": "<?php echo base_url('admin/fALoanAjax')?>",
+						"type": "POST",
+						"data": {txtSearch:txtSearch}
+					},
+					"columnDefs":[{
+						"targets":[0,7],
+						"orderable":false,
+					},],
+					"order":[],
+					"searching": false 
+				});
+			}
+			$('#updateLoanRecord').on('show.bs.modal', function (event) {
+				var button = $(event.relatedTarget);
+				var loan_id = button.data('loanid');
+				var availed_facompany_id = button.data('faid') ; 
+				var client_firstname = button.data('fname');
+				var client_lastname = button.data('lname');
+				var client_email = button.data('email');
+				var loan_status = button.data('stat') ; 
+				// alert(productId);
+				var modal = $(this)
+				
+				modal.find('.modal-body #loan_id').val(loan_id);
+				modal.find('.modal-body #availed_fa_companyId').val(availed_facompany_id);
+				modal.find('.modal-body #first_name').val(client_firstname);
+				modal.find('.modal-body #last_name').val(client_lastname);
+				modal.find('.modal-body #email_address').val(client_email);
+				modal.find('.modal-body #loan_status').val(loan_status);
+			})
+		</script>
 	</body>
 </html>

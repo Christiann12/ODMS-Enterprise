@@ -38,7 +38,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     echo '
                         <div class="col-12 col-md-4 mb-md-3 mb-5">
                             <div class="card bg-dark text-white">
-                                <img class="card-img" src="'.base_url().'application/assets/attachments/'.$srvcsRecord->servicePicture.'">
+                                <img class="card-img" src="'.base_url().'application/assets/attachments/images/'.$srvcsRecord->servicePicture.'">
                                 <div class="card-img-overlay">
                                     <div style="margin-top: 20rem;">
                                         <h3 class="card-title">'.$srvcsRecord->serviceTitle.'</h3>
