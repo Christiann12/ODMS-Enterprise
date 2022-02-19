@@ -171,11 +171,13 @@
            
             <table cellspacing="0" cellpadding="" class="force-full-width" style="background-color: white;">
             <tr >
-                <center>
-                <h1 style="">
-                    This is your Loan ID: <?php echo $loanData->loanId ?>
-                </h1>
-                </center>
+                <td  style="background-color: white;">
+                  <center>
+                  <h1 style="">
+                      This is your Loan ID: <?php echo $loanData->loanId ?>
+                  </h1>
+                  </center>
+                </td>
             </tr>
               <tr>
                 <td style="background-color:#ffffff;">

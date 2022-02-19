@@ -141,7 +141,7 @@ class Admin extends CI_Controller {
 			$row[] = $prodTran->phoneNumber;
 			$row[] = $prodTran->status;
 			//responsible for the additions of action button in the last row
-			 $row[] = '<a href="#" data-toggle="modal" data-target="#prodTransModal" data-trid="'.$prodTran->transactionId.'" data-fname="'.$prodTran->firstName.'" data-lname="'.$prodTran->lastName.'" data-email="'.$prodTran->emailAddress.'" data-phn="'.$prodTran->phoneNumber.'" data-compname="'.$prodTran->companyName.'" data-compadd="'.$prodTran->companyAddress.'" data-city="'.$prodTran->cityName.'" data-provi="'.$prodTran->stateProvince.'" data-post="'.$prodTran->postalCode.'" data-prid="'.$prodTran->productId.'" data-prdname="'.$prodTran->productTitle.'" data-total="'.$prodTran->totalPrice.'" data-quan="'.$prodTran->quan.'" data-date="'.$prodTran->createDate.'" data-stat="'.$prodTran->status.'" class="btn btn-xs btn-primary"><i class="fa fa-edit"  data-placement="top" title="Update"></i></a>';
+			 $row[] = '<a href="#" data-toggle="modal" data-target="#prodTransModal" data-loid="'.($prodTran->loanId == null ? 'No Value' : $prodTran->loanId).'" data-lostat="'.$prodTran->loanStatus.'" data-trid="'.$prodTran->transactionId.'" data-fname="'.$prodTran->firstName.'" data-lname="'.$prodTran->lastName.'" data-email="'.$prodTran->emailAddress.'" data-phn="'.$prodTran->phoneNumber.'" data-compname="'.$prodTran->companyName.'" data-compadd="'.$prodTran->companyAddress.'" data-city="'.$prodTran->cityName.'" data-provi="'.$prodTran->stateProvince.'" data-post="'.$prodTran->postalCode.'" data-prid="'.$prodTran->productId.'" data-prdname="'.$prodTran->productTitle.'" data-total="'.$prodTran->totalPrice.'" data-quan="'.$prodTran->quan.'" data-date="'.$prodTran->createDate.'" data-stat="'.$prodTran->status.'" class="btn btn-xs btn-primary"><i class="fa fa-edit"  data-placement="top" title="Update"></i></a>';
 				// '<a href="'.base_url('admin/deleteProdRecord/'.$product->productId.'').'" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="Delete"></i></a>';
 			$data[] = $row;
 		}
@@ -203,16 +203,16 @@ class Admin extends CI_Controller {
 			$row = array();
 			$row[] = $no;
 			$row[] = $servicesTrans->serviceTransactionId;
-			$row[] = $servicesTrans->availedService;
-			$row[] = "PHP ".$servicesTrans->servicePrice;
+			// $row[] = $servicesTrans->availedService;
+			// $row[] = "PHP ".$servicesTrans->servicePrice;
 			$row[] = $servicesTrans->fName;
 			$row[] = $servicesTrans->lName;
-			$row[] = $servicesTrans->emailAdd;
+			// $row[] = $servicesTrans->emailAdd;
 			$row[] = $servicesTrans->contactNum;
-			$row[] = $servicesTrans->withLoan;
+			// $row[] = $servicesTrans->withLoan;
 			$row[] = $servicesTrans->status;
 			//responsible for the additions of action button in the last row
-			$row[] = '<a href="#" data-toggle="modal" data-target="#updateServiceTransRecord" data-strid="'.$servicesTrans->serviceTransactionId.'" data-srid="'.$servicesTrans->availedServiceId.'" data-servname="'.$servicesTrans->availedService.'" data-price="'.$servicesTrans->servicePrice.'" data-fname="'.$servicesTrans->fName.'" data-lname="'.$servicesTrans->lName.'" data-email="'.$servicesTrans->emailAdd.'" data-phn="'.$servicesTrans->contactNum.'" data-compname="'.$servicesTrans->compName.'" data-compadd="'.$servicesTrans->compAdd.'" data-city="'.$servicesTrans->city.'" data-provi="'.$servicesTrans->stateProvince.'" data-post="'.$servicesTrans->postalCode.'" data-date="'.$servicesTrans->createDate.'" data-loan="'.$servicesTrans->withLoan.'" data-stat="'.$servicesTrans->status.'" class="btn btn-xs btn-primary"><i class="fa fa-edit"  data-placement="top" title="Update"></i></a>';
+			$row[] = '<a href="#" data-toggle="modal" data-target="#updateServiceTransRecord" data-loanstat="'.$servicesTrans->loanStatus.'" data-strid="'.$servicesTrans->serviceTransactionId.'" data-srid="'.$servicesTrans->availedServiceId.'" data-servname="'.$servicesTrans->availedService.'" data-price="'.$servicesTrans->servicePrice.'" data-fname="'.$servicesTrans->fName.'" data-lname="'.$servicesTrans->lName.'" data-email="'.$servicesTrans->emailAdd.'" data-phn="'.$servicesTrans->contactNum.'" data-compname="'.$servicesTrans->compName.'" data-compadd="'.$servicesTrans->compAdd.'" data-city="'.$servicesTrans->city.'" data-provi="'.$servicesTrans->stateProvince.'" data-post="'.$servicesTrans->postalCode.'" data-date="'.$servicesTrans->createDate.'" data-loanid="'.($servicesTrans->loanId == null ? 'No Value' : $servicesTrans->loanId).'" data-stat="'.$servicesTrans->status.'" class="btn btn-xs btn-primary"><i class="fa fa-edit"  data-placement="top" title="Update"></i></a>';
 				// '<a href="'.base_url('admin/deleteProdRecord/'.$product->productId.'').'" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="Delete"></i></a>';
 			$data[] = $row;
 		}

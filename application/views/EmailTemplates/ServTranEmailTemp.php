@@ -169,35 +169,52 @@
               </tr>
             </table>
            
-            <table cellspacing="0" cellpadding="" class="force-full-width" style="background-color: white;">
-            <tr >
-                <center>
-                <h1 style="">
-                    <?php echo $servTransId ?>
-                </h1>
-                </center>
+            <table cellspacing="0" class="force-full-width" style="background-color:#ffffff;" bgcolor="#ffffff">
+            <tr>
+                <td style="background-color:#ffffff;">
+                  <center>
+                  <h1>
+                      <?php echo $servTransId ?>
+                  </h1>
+                  </center>
+                </td>
             </tr>
-            <tr >
-                <center>
-                <h3 style="color: grey;">
-                    <?php echo $createDate?>
-                </h3>
-                </center>
+            <tr>
+                <td style="background-color:#ffffff;">
+                  <center>
+                  <h3 style="color: grey;">
+                      <?php echo $createDate?>
+                  </h3>
+                  </center>
+                </td>
             </tr>
-            <tr >
+            <tr>
+                <td style="background-color:#ffffff;">
+                  <center>
+                  <h3 style="color: grey;">
+                      <?php 
+                          
+                          echo 'Total Price to pay: PHP ' .$servicePrice;
+                      ?>
+                  </h3>
+                  </center>
+                </td>
+            </tr>
+            <tr>
+                <td style="background-color:#ffffff;">
                 <center>
-                <h3 style="color: grey;">
-                    <?php 
-                        
-                        echo 'Total Price to pay: PHP ' .$servicePrice;
-                    ?>
-                </h3>
-                </center>
+                  <h3 style="color: grey;">
+                      <?php 
+                          echo 'Loan Status is: ' .$content[0]->loanStatus .' Loan Id is: ' . (empty($content[0]->loanId)? 'No Value' : $content[0]->loanId).'';
+                      ?>
+                  </h3>
+                  </center>
+                </td>
             </tr>
               <tr>
                 <td style="background-color:#ffffff;">
                   <br>
-                  <table class="columns" cellspacing="0" cellpadding="0" width="75%" align="center" >
+                  <table class="columns" cellspacing="0" cellpadding="0" width="75%" align="center" bgcolor="#ffffff">
                         
                         <tr>
                             <td style="padding-top: 10px; font-weight: bold;">
@@ -295,5 +312,8 @@
       </td>
     </tr>
   </table>
+  <p style="display: none;">
+      <?php echo time().date('y-m-d')?>
+  </p>
   </body>
 </html>

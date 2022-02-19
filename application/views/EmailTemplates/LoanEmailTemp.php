@@ -176,25 +176,29 @@
               </tr>
             </table>
            
-            <table cellspacing="0" cellpadding="" class="force-full-width" style="background-color: white;">
+            <table cellspacing="0" cellpadding="" class="force-full-width" style="background-color: white;" bgcolor="#ffffff">
               <tr >
+                  <td style="background-color: white;">
                   <center>
                   <h1 style="">
                    <?php echo $content->loanId ?>
                   </h1>
                   </center>
+                  </td>
               </tr>
               <tr >
+                  <td style="background-color: white;">
                   <center>
                   <h3 style="color: grey;">
                     <?php echo $createDate ?>
                   </h3>
                   </center>
+                  </td>
               </tr>
               <tr>
                 <td style="background-color:#ffffff;">
                   <center>
-                  <table class="columns" cellspacing="0" cellpadding="0" width="75%" align="center" >
+                  <table class="columns" cellspacing="0" cellpadding="0" width="75%" align="center" bgcolor="#ffffff">
                       <?php 
                     
                           echo '

@@ -459,7 +459,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </div>
 
           <div class="form-label-group col-12">
-            <input type="text" id="faCode" class="inputDesign form-control" placeholder="Financial Assistance Code" >
+            <input type="text" name="faCode" id="faCode" class="inputDesign form-control" placeholder="Financial Assistance Code" >
             <label for="faCode" class="labelDesign">Financial Assistance Code</label>
             <small id="faCode" class="additionalInfo form-text">Interested to avail? <strong class="clH">Click here</strong></small>
           </div>

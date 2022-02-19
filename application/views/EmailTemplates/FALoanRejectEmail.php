@@ -171,10 +171,12 @@
            
             <table class="message" cellspacing="0" cellpadding="25px" align="center" style="background-color: white;">
                 <tr>
-                    <h3>Good day, <?php echo $loanData->firstName?></h3>
-                    <p style="">
-                        We're sorry to say but your request for Financial Assistance to the company, <b><?php echo $loanData->fACompanyId ?></b> , has been rejected. Don't worry, though. You can still apply for Financial Assistance to other companies from our list.
-                    </p>
+                    <td style="background-color: white;">
+                      <h3>Good day, <?php echo $loanData->firstName?></h3>
+                      <p style="">
+                          We're sorry to say but your request for Financial Assistance to the company, <b><?php echo $loanData->fACompanyId ?></b> , has been rejected. Don't worry, though. You can still apply for Financial Assistance to other companies from our list.
+                      </p>
+                    </td>
                 </tr>
             </table>
 

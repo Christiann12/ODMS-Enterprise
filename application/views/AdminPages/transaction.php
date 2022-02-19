@@ -104,7 +104,26 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <input name="dateLabel"  type="text" class="form-control" id="dateLabel" placeholder="Date" value="" readonly>
                 </div>
             </div>
-            
+            <div class="form-group row d-flex justify-content-around">
+                <label for="loanIdLabel" class="col-3 ">Loan Id</label>
+                <div class="col-9">
+                    <input name="loanIdLabel"  type="text" class="form-control" id="loanIdLabel" placeholder="Date" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="loanStatus" class="col-3 ">Loan Status<i class="text-danger">*</i></label>
+                   <div class="col-9">
+                    <?php
+                            $loanStatus = array(
+                                '' => 'Select',
+                                "Active" => "Active",
+                                "Paid" => "Paid",
+                                "Inactive" => "Inactive",
+                            ); 
+                            echo form_dropdown('loanStatus', $loanStatus, "", 'class="form-control " id="loanStatus"');
+                        ?>
+                   </div>
+            </div>
             <div class="form-group row d-flex justify-content-around">
                 <label for="statusProdTran" class="col-3 ">Status<i class="text-danger">*</i></label>
                    <div class="col-9">
@@ -226,10 +245,24 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
             <div class="form-group row d-flex justify-content-around">
-                <label for="with_loan" class="col-3 ">With Loan</label>
+                <label for="loanIdLabelServ" class="col-3 ">Loan Id</label>
                 <div class="col-9">
-                    <input name="with_loan"  type="text" class="form-control" id="with_loan" placeholder="With Loan?" value="" readonly>
+                    <input name="loanIdLabelServ"  type="text" class="form-control" id="loanIdLabelServ" placeholder="Date" value="" readonly>
                 </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="loanStatusServ" class="col-3 ">Loan Status<i class="text-danger">*</i></label>
+                   <div class="col-9">
+                    <?php
+                            $loanStatus = array(
+                                '' => 'Select',
+                                "Active" => "Active",
+                                "Paid" => "Paid",
+                                "Inactive" => "Inactive",
+                            ); 
+                            echo form_dropdown('loanStatusServ', $loanStatus, "", 'class="form-control " id="loanStatusServ"');
+                        ?>
+                   </div>
             </div>
             <div class="form-group row d-flex justify-content-around">
                 <label for="serviceTrans_status" class="col-3 ">Status<i class="text-danger">*</i></label>
@@ -296,13 +329,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <tr>
                     <th>No.</th>
                     <th>Transaction ID</th>
-                    <th>Availed Service</th>
-                    <th>Service Price</th>
+                    <!-- <th>Availed Service</th>
+                    <th>Service Price</th> -->
                     <th>First Name</th>
                     <th>Last Name</th>
-                    <th>Email Address</th>
-                    <th>Contact Number</th>
-                    <th>With Loan?</th>
+                    <!-- <th>Email Address</th> -->
+                    <th>Phone no.</th>
+                    <!-- <th>With Loan?</th> -->
                     <th>Status</th>
                     <th>Action</th>
                 </tr>

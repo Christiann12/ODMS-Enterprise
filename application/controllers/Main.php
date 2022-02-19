@@ -286,6 +286,9 @@ class Main extends CI_Controller {
 		$this->form_validation->set_rules('cityName', 'City' ,'required|max_length[50]');
 		$this->form_validation->set_rules('stateProvince', 'State/Province' ,'required|max_length[50]');
 		$this->form_validation->set_rules('postalCode', 'Postal Code' ,'required|max_length[10]');
+		if($this->input->post('faCode') != ""){
+			$this->form_validation->set_rules('faCode', 'Financial Assistance Field' ,'callback_loanid_check');
+		}
 		// get data
 		$services_transactionId = "TRN-".$this->randStrGen(2,7);
 		$service_price = $this->input->post('servicePrice');
@@ -304,7 +307,8 @@ class Main extends CI_Controller {
 			'stateProvince' => $this->input->post('stateProvince'),
 			'postalCode' => $this->input->post('postalCode'),
 			'createDate' => date('Y-m-d'),
-			'withLoan' => 'No',
+			'loanId' =>  (!empty($this->input->post('faCode'))? $this->input->post('faCode') : null),
+			'loanStatus' => (!empty($this->input->post('faCode'))? 'Active' : 'Inactive'),
 			'status' => 'Not Paid'
 		);
 		// store data 
@@ -348,9 +352,8 @@ class Main extends CI_Controller {
 		}
 		
 		else {
-			$this->load->view('HeaderNFooter/Header.php');
-			$this->load->view('ClientPages/servicesOrderSuccess.php');
-			$this->load->view('HeaderNFooter/Footer.php');
+			$this->session->set_flashdata('error',validation_errors());
+			redirect('servicesOrder/'.$this->input->post('serviceId').'#orderSection');
 		}
 	}
 
@@ -380,6 +383,9 @@ class Main extends CI_Controller {
 		$this->form_validation->set_rules('cityName', 'City' ,'required|max_length[50]');
 		$this->form_validation->set_rules('stateProvince', 'State/Province' ,'required|max_length[50]');
 		$this->form_validation->set_rules('postalCode', 'Postal Code' ,'required|max_length[10]');
+		if($this->input->post('faCode') != ""){
+			$this->form_validation->set_rules('faCode', 'Financial Assistance Field' ,'callback_loanid_check');
+		}
 		// get record
 		$tranId = "TRN-".$this->randStrGen(2,7);
 		$record = [];
@@ -396,6 +402,8 @@ class Main extends CI_Controller {
 				'cityName' => $this->input->post('cityName'),
 				'stateProvince' => $this->input->post('stateProvince'),
 				'postalCode' => $this->input->post('postalCode'),
+				'loanId' =>  (!empty($this->input->post('faCode'))? $this->input->post('faCode') : null),
+				'loanStatus' => (!empty($this->input->post('faCode'))? 'Active' : 'Inactive'),
 				'productId' => $cartRecord->productId,
 				'productTitle' => $cartRecord->productTitle,
 				'totalPrice' => $cartRecord->productPrice,
@@ -574,6 +582,15 @@ class Main extends CI_Controller {
 		if ($recordCount > 0) {
             return true;
         } else {
+            return false;
+        }
+	}
+	public function loanid_check($email){
+		$loanCount = $this->db->select('loanId')->where('loanId',$email)->where('requestStatus', 'Approved')->get('loan')->num_rows();
+		if ($loanCount > 0) {
+			return true;
+        } else {
+            $this->form_validation->set_message('loanid_check', 'The loan ID doest not exists or it is still not approved.');
             return false;
         }
 	}

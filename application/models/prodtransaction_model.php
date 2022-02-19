@@ -88,6 +88,16 @@ class Prodtransaction_model extends CI_Model {
                 'constraint' => 30,
                 'default' => 'Not Paid'
                 ),
+                'loanId' => array(
+                'type' => 'VARCHAR',
+                'constraint' => 30,
+                'null' => TRUE
+                ),
+                'loanStatus' => array(
+                'type' => 'VARCHAR',
+                'constraint' => 30,
+                'default' => 'Inactive'
+                ),
             ); 
             $this->dbforge->add_field($fields);
             // define primary key

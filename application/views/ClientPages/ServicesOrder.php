@@ -26,7 +26,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 
 <!-- Service order with form --> 
-<div class="serviceOrder">
+<div class="serviceOrder" id="orderSection">
     <div class="row">
         <!-- picture -->
         <div class="serviceOrderImgDiv col-lg-6 col-md-6 col-sm-12">
@@ -37,7 +37,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="serviceOrderForm col-lg-6 col-md-6 col-sm-12">
             <div class="orderFormCol" style="background-image: url('<?php echo base_url(); ?>application/assets/images/ClientPagesImages/poles.jpg');">
                 <div class="orderForm">
-                    
+                <?php if($this->session->flashdata('success')){ ?>
+                    <div class="alert alert-success" > 
+                        <?php  echo $this->session->flashdata('success'); $this->session->unset_userdata ( 'success' );?>
+                    </div>
+                <?php } ?>  
+                <?php if ($this->session->flashdata('error')){ ?>
+                    <div class="alert alert-danger" > 
+                        <?php  echo $this->session->flashdata('error'); $this->session->unset_userdata ( 'error' );?>
+                    </div>
+                <?php } ?>
                     <p class="orderFormTitle">Order form</p>
                     <?php echo form_open_multipart('main/saveServicesOrderRecord') ?>
                         <?php 
@@ -128,7 +137,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
 
                         <div class="form-label-group">
-                            <input type="text" id="faCode" class="inputDesign form-control" placeholder="Financial Assistance Code">
+                            <input type="text" name="faCode" id="faCode" class="inputDesign form-control" placeholder="Financial Assistance Code">
                             <label for="faCode" class="labelDesign">Financial Assistance Code</label>
                             <small id="faCode" class="additionalInfo form-text">Interested to avail? <strong>Click here</strong></small>
                         </div>

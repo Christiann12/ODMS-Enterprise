@@ -68,12 +68,7 @@ class serviceTransaction_model extends CI_Model {
                 'postalCode' => array(
                 'type' => 'VARCHAR',
                 'constraint' => 10,
-                ),
-                'withLoan' => array(
-                'type' => 'VARCHAR',
-                'constraint' => 30,
-                'default' => 'No'
-                ),
+                ),  
                 'createDate' => array(
                 'type' => 'VARCHAR',
                 'constraint' => 50,
@@ -82,6 +77,16 @@ class serviceTransaction_model extends CI_Model {
                 'type' => 'VARCHAR',
                 'constraint' => 30,
                 'default' => 'Not Paid'
+                ),
+                'loanId' => array(
+                'type' => 'VARCHAR',
+                'constraint' => 30,
+                'null' => TRUE
+                ),
+                'loanStatus' => array(
+                'type' => 'VARCHAR',
+                'constraint' => 30,
+                'default' => 'Inactive'
                 ),
             ); 
             $this->dbforge->add_field($fields);
