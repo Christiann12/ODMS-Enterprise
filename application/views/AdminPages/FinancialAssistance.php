@@ -145,6 +145,79 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
 </div>
 
+<!-- View and Update Loan Record -->
+<div class="modal hide fade" id="updateLoanRecord" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="updateModal">View and Update (Status) Loan Record</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="modal-body" style="word-wrap: break-word;">
+            <?php echo form_open_multipart('admin/loanUpdateRecord') ?>
+            
+            <div class="form-group row d-flex justify-content-around">
+                <label for="loan_id" class="col-3 ">Loan Id</label>
+                <div class="col-9">
+                    <input name="loan_id"  type="text" class="form-control" id="loan_id" placeholder="Loan Id" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around d-none">
+                <label for="availed_fa_companyId" class="col-3 ">Availed FA Company Id</label>
+                <div class="col-9">
+                    <input name="availed_fa_companyId"  type="text" class="form-control" id="availed_fa_companyId" placeholder="Availed FA Company Id" value="" readonly>
+                </div>
+            </div>
+            <!-- <div class="form-group row d-flex justify-content-around">
+                <label for="availed_fa_companyName" class="col-3 ">Availed FA Company Name</label>
+                <div class="col-9">
+                    <input name="availed_fa_companyName"  type="text" class="form-control" id="availed_fa_companyName" placeholder="Availed Service" value="" readonly>
+                </div>
+            </div> -->
+            <div class="form-group row d-flex justify-content-around">
+                <label for="first_name" class="col-3 ">First Name</label>
+                <div class="col-9">
+                    <input name="first_name"  type="text" class="form-control" id="first_name" placeholder="First Name" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="last_name" class="col-3 ">Last Name</label>
+                <div class="col-9">
+                    <input name="last_name"  type="text" class="form-control" id="last_name" placeholder="Last Name" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="email_address" class="col-3 ">Email Address</label>
+                <div class="col-9">
+                    <input name="email_address"  type="text" class="form-control" id="email_address" placeholder="Email Address" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="loan_status" class="col-3 ">Status<i class="text-danger">*</i></label>
+                   <div class="col-9">
+                    <?php
+                            $loan_status = array(
+                                '' => 'Select',
+                                "Pending" => "Pending",
+                                "Approved" => "Approved",
+                                "Rejected" => "Rejected",
+                            ); 
+                            echo form_dropdown('loan_status', $loan_status, "", 'class="form-control " id="loan_status"');
+                        ?>
+                   </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal" aria-label="Close">Close</button>
+                <button class="btn btn-primary">Update</button>
+        </div>
+        <?php echo form_close() ?>
+        </div>
+  </div>
+</div>
+
 <div class="fAssistanceAdminSection">
     <!-- displaying form_validation errors --> 
     <div class="alert alert-danger print-error-msg" style="display: <?php echo ((validation_errors() == '' || validation_errors() == null) ? "none;" : "block;")?>">
@@ -207,6 +280,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 <div class="loanAdminSection">
     <div class="loanAdminHeadingDiv">
+        <!-- displaying form_validation errors --> 
+        <div class="alert alert-danger print-error-msg" style="display: <?php echo ((validation_errors() == '' || validation_errors() == null) ? "none;" : "block;")?>">
+            <?php echo validation_errors(); ?>
+        </div>
+    
+        <?php if($this->session->flashdata('loanSuccess')){ ?>
+            <div class="alert alert-success" > 
+                <?php  echo $this->session->flashdata('loanSuccess'); $this->session->unset_userdata ( 'loanSuccess' );?>
+            </div>
+        <?php } ?>  
+        <?php if ($this->session->flashdata('loanError')){ ?>
+            <div class="alert alert-danger" > 
+                <?php  echo $this->session->flashdata('loanError'); $this->session->unset_userdata ( 'loanError' );?>
+            </div>
+        <?php } ?>
+        <!-- end of displaying form_validation errors --> 
         <div class="row">
             <div class="loanAdminIcon">
                 <i class="fa fa-money fa-3x" aria-hidden="true"></i>
@@ -214,9 +303,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div class="loanAdminTextDiv" >
                 <p class="loanAdminText">Loans</p>
             </div>
-            <!-- <div class="fAssistanceAdminBtnDiv">
-                <button type="button" class="fAssistanceAdminBtn ">Add Company</button>
-            </div> -->
+            <div class="col-sm-12">
+                <form id="fALoanSearch" style="width: 300px; margin-left: auto; margin-right: auto; margin-top: 10px; margin-bottom: 10px;">
+                    <div class="form-group">
+                        <label for="loanTxtSearch" style="text-transform: uppercase;width: 100%;text-align: center;">Search</label>
+                        <input type="text" class="form-control" id="loanTxtSearch" name="loanTxtSearch" placeholder="Search here">
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
@@ -224,31 +318,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <table id="loanAdminTable" class="display responsive cell-border hover" width="100%">
             <thead class="loanAdminTableHeader">
                 <tr>
+                    <th>No.</th>
                     <th>Loan ID</th>
-                    <th>Confirmation ID</th>
-                    <th>Financial Company ID</th> <!-- should this be an id? kasi diba maraming requirements ang isang company? --> 
-                    <th>Request Status</th>
+                    <th>Availed Financial Company</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
                     <th>Email</th>
+                    <th>Request Status</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>LOAN-01</td>
-                    <td>FA-RANDOMCODEHERE</td>
-                    <td>FC-01</td>
-                    <td>PENDING</td>
-                    <td>companyname@domain.com</td>
-                    <td><center><i class="fa fa-pencil fa-1x" aria-hidden="true"></i></center></td>
-                </tr>
-                <tr>
-                    <td>LOAN-02</td>
-                    <td>FA-RANDOMCODEHERE</td>
-                    <td>FC-02</td>
-                    <td>PENDING</td>
-                    <td>companyname@domain.com</td>
-                    <td><center><i class="fa fa-pencil fa-1x" aria-hidden="true"></i></center></td>
-                </tr>
+               
 
             </tbody>
         </table>

@@ -536,7 +536,7 @@
 						"data": {txtSearch:txtSearch}
 					},
 					"columnDefs":[{
-						"targets":[0],
+						"targets":[0,6],
 						"orderable":false,
 					},],
 					"order":[],
@@ -561,6 +561,8 @@
 				var quanLabel = button.data('quan') ; 
 				var dateLabel = button.data('date') ; 
 				var statusProdTran = button.data('stat') ; 
+				var loanIdLabel = button.data('loid') ; 
+				var loanStatus = button.data('lostat') ; 
 				// alert(productId);
 				var modal = $(this)
 				
@@ -579,6 +581,8 @@
 				modal.find('.modal-body #totalPriceLabel').val(totalPriceLabel);
 				modal.find('.modal-body #quanLabel').val(quanLabel);
 				modal.find('.modal-body #dateLabel').val(dateLabel);
+				modal.find('.modal-body #loanIdLabel').val(loanIdLabel);
+				modal.find('.modal-body #loanStatus').val(loanStatus);
 				modal.find('.modal-body #statusProdTran').val(statusProdTran);
 			})
 		</script>
@@ -622,7 +626,7 @@
 						"data": {txtSearch:txtSearch}
 					},
 					"columnDefs":[{
-						"targets":[0,8],
+						"targets":[0,6],
 						"orderable":false,
 					},],
 					"order":[],
@@ -645,7 +649,8 @@
 				var client_stateProvince = button.data('provi');
 				var client_postalCode = button.data('post');
 				var order_date = button.data('date') ; 
-				var with_loan = button.data('loan')
+				var loanIdLabelServ = button.data('loanid');
+				var loanStatusServ = button.data('loanstat');
 				var availed_serviceStatus = button.data('stat') ; 
 				// alert(productId);
 				var modal = $(this)
@@ -664,8 +669,76 @@
 				modal.find('.modal-body #state_province').val(client_stateProvince);
 				modal.find('.modal-body #postal_code').val(client_postalCode);
 				modal.find('.modal-body #order_date').val(order_date);
-				modal.find('.modal-body #with_loan').val(with_loan);
+				modal.find('.modal-body #loanIdLabelServ').val(loanIdLabelServ);
+				modal.find('.modal-body #loanStatusServ').val(loanStatusServ);
 				modal.find('.modal-body #serviceTrans_status').val(availed_serviceStatus);
+			})
+		</script>
+
+		<!-- FA Loan script  -->
+		<script>
+			<?php
+				if($this->uri->segment(2)=="financialAssistance" || $this->uri->segment(2)=="loanUpdateRecord"){
+					echo '
+					
+						$(document).ready( function () {
+							$(\'#loanAdminTable\').DataTable().destroy();
+							var VtxtSearch=$("#loanTxtSearch").val();
+							loadFALoanTable(VtxtSearch);
+						});	
+					
+					';
+				}
+			?>
+			$("#fALoanSearch").submit(function(event){
+				event.preventDefault();
+				$('#loanAdminTable').DataTable().destroy();
+				var VtxtSearch=$("#loanTxtSearch").val();
+				loadFALoanTable(VtxtSearch);
+			});
+
+			function loadFALoanTable(txtSearch=''){
+				// alert('asd');
+				var dataTable = $('#loanAdminTable').DataTable({
+					"lengthMenu": [[10, 25, 100, 1000, 3000, -1], [10, 25, 100, 1000, 3000]],
+					"processing":true,
+					"language": {
+						processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span> '
+					},
+					"serverSide":true,
+					"responsive": true,
+					"bPaginate": true,
+					"sPaginationType": "full_numbers",
+					"ajax": {
+						"url": "<?php echo base_url('admin/fALoanAjax')?>",
+						"type": "POST",
+						"data": {txtSearch:txtSearch}
+					},
+					"columnDefs":[{
+						"targets":[0,7],
+						"orderable":false,
+					},],
+					"order":[],
+					"searching": false 
+				});
+			}
+			$('#updateLoanRecord').on('show.bs.modal', function (event) {
+				var button = $(event.relatedTarget);
+				var loan_id = button.data('loanid');
+				var availed_facompany_id = button.data('faid') ; 
+				var client_firstname = button.data('fname');
+				var client_lastname = button.data('lname');
+				var client_email = button.data('email');
+				var loan_status = button.data('stat') ; 
+				// alert(productId);
+				var modal = $(this)
+				
+				modal.find('.modal-body #loan_id').val(loan_id);
+				modal.find('.modal-body #availed_fa_companyId').val(availed_facompany_id);
+				modal.find('.modal-body #first_name').val(client_firstname);
+				modal.find('.modal-body #last_name').val(client_lastname);
+				modal.find('.modal-body #email_address').val(client_email);
+				modal.find('.modal-body #loan_status').val(loan_status);
 			})
 		</script>
 	</body>

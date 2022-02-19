@@ -63,6 +63,13 @@
       width: 100% !important;
     }
 
+    .columns, .colHeader {
+      margin-left: auto;
+      margin-right: auto;
+      border: 1px solid;
+      border-color: #E7E7E7;
+      border-collapse: collapse;
+    }
 
     </style>
 
@@ -114,7 +121,7 @@
         }
 
         table[class*="columns"] {
-          width: 100% !important;
+          width: 100% !important;  
         }
 
         td[class*="column-padding"] {
@@ -143,13 +150,13 @@
                     <tr>
                       <td style="font-size:40px; font-weight: 600; color: #ffffff; text-align:center;" class="mobile-spacing">
                       <div class="mobile-br">&nbsp;</div>
-                        Order Receipt
+                        Loan
                       <br>
                       </td>
                     </tr>
                     <tr>
                       <td style="font-size:24px; text-align:center; padding: 0 75px; color:#6f6f6f;" class="w320 mobile-spacing; ">
-                          Save and show this email to the closest ODMS Enterprise branch
+                          A client wants to avail Financial Assistance!
                       </td>
                     </tr>
                   </table>
@@ -158,7 +165,7 @@
                     <tr>
                       <td>
                         <center>
-                        <img src="https://cdn.discordapp.com/attachments/696238130596020308/940229323519045712/success.png" style="max-width:100%; display:block;">
+                        <img src="https://cdn.discordapp.com/attachments/696238130596020308/941953362797133844/FA.png" style="max-width:100%; display:block;">
                         </center>
                         
                       </td>
@@ -169,87 +176,60 @@
               </tr>
             </table>
            
-            <table cellspacing="0" class="force-full-width" style="background-color:#ffffff;" bgcolor="#ffffff">
-            <tr>
-                <td style="background-color:#ffffff;">
+            <table cellspacing="0" cellpadding="" class="force-full-width" style="background-color: white;" bgcolor="#ffffff">
+              <tr >
+                  <td style="background-color: white;">
                   <center>
-                  <h1>
-                      <?php echo $servTransId ?>
+                  <h1 style="">
+                   <?php echo $content->loanId ?>
                   </h1>
                   </center>
-                </td>
-            </tr>
-            <tr>
-                <td style="background-color:#ffffff;">
+                  </td>
+              </tr>
+              <tr >
+                  <td style="background-color: white;">
                   <center>
                   <h3 style="color: grey;">
-                      <?php echo $createDate?>
+                    <?php echo $createDate ?>
                   </h3>
                   </center>
-                </td>
-            </tr>
-            <tr>
-                <td style="background-color:#ffffff;">
-                  <center>
-                  <h3 style="color: grey;">
-                      <?php 
-                          
-                          echo 'Total Price to pay: PHP ' .$servicePrice;
-                      ?>
-                  </h3>
-                  </center>
-                </td>
-            </tr>
-            <tr>
-                <td style="background-color:#ffffff;">
-                <center>
-                  <h3 style="color: grey;">
-                      <?php 
-                          echo 'Loan Status is: ' .$content[0]->loanStatus .' Loan Id is: ' . (empty($content[0]->loanId)? 'No Value' : $content[0]->loanId).'';
-                      ?>
-                  </h3>
-                  </center>
-                </td>
-            </tr>
+                  </td>
+              </tr>
               <tr>
                 <td style="background-color:#ffffff;">
-                  <br>
+                  <center>
                   <table class="columns" cellspacing="0" cellpadding="0" width="75%" align="center" bgcolor="#ffffff">
-                        
-                        <tr>
-                            <td style="padding-top: 10px; font-weight: bold;">
-                                ID
-                            </td>
-                            <td style="padding-top: 10px; font-weight: bold;">
-                                Availed Service
-                            </td>
-                            <td style="padding-top: 10px; font-weight: bold;">
-                                Service Price
-                            </td>
-                        </tr>
                       <?php 
-                      $Counter = 0;
-                      foreach($content as $list){
-                          $Counter++;
+                    
                           echo '
                             <tr>
-                                <td style="padding-top: 10px;">
-                                    '.$list->availedServiceId.'
+                                <td class="colHeader" style="font-weight: bold; padding-top: 10px; text-align: center;">
+                                   Loan Id
                                 </td>
-                                <td style="color:#f3a389; padding-top: 10px;">
-                                    '.$list->availedService.'
-                                </td>
-                                <td style="color:#f3a389; padding-top: 10px;">
-                                    '.$list->servicePrice.'
+                                <td class="colHeader" style="color:#f3a389; padding-top: 10px; text-align: center;">
+                                  '.$content->loanId.'
                                 </td>
                             </tr>
-                          
+                            <tr>
+                              <td class="colHeader" style="font-weight: bold; padding-top: 10px; text-align: center;">
+                                  Name
+                              </td>
+                              <td class="colHeader" style="color:#f3a389; padding-top: 10px; text-align: center;">
+                                 '.$content->firstName.' '.$content->lastName.'
+                              </td>
+                            </tr>
+                            <tr>
+                              <td class="colHeader" style="font-weight: bold; padding-top: 10px; text-align: center;">
+                                  Email
+                              </td>
+                              <td class="colHeader" style="color:#f3a389 !important; padding-top: 10px; text-align: center;">
+                               '.$content->emailAddress.'
+                              </td>
+                            </tr>
                           ';
-                      }
-                      
                       ?>
-                    
                   </table>
+                  </center>
                 </td>
               </tr>
             </table>
@@ -257,33 +237,25 @@
             <table style="margin:0 auto;" cellspacing="0" cellpadding="0" class="force-full-width" bgcolor="#ffffff">
               <tr>
                 <td style="text-align:center; margin:0 auto;">
-                <br>
-                  <div><!--[if mso]>
-                    <v:rect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://" style="height:45px;v-text-anchor:middle;width:220px;" stroke="f" fillcolor="#f5774e">
-                      <w:anchorlock/>
+                    <div>
+                    <br>
                       <center>
-                    <![endif]-->
-                        <!-- <a href="http://"
-                        style="background-color:#f5774e;color:#ffffff;display:inline-block;font-family:'Source Sans Pro', Helvetica, Arial, sans-serif;font-size:18px;font-weight:400;line-height:45px;text-align:center;text-decoration:none;width:220px;-webkit-text-size-adjust:none;">Update Account</a> -->
-                        <!--[if mso]>
+                      <a href="<?php echo base_url('admin/acceptFA/'.$content->loanId.'') ?>"
+                        style="background-color:green;color:#ffffff;display:inline-block;font-family:'Source Sans Pro', Helvetica, Arial, sans-serif;font-size:18px;font-weight:400;line-height:45px;text-align:center;text-decoration:none;width:220px;-webkit-text-size-adjust:none;">Approve</a>
+                        <a href="<?php echo base_url('admin/rejectFA/'.$content->loanId.'') ?>"
+                        style="background-color:#f5774e;color:#ffffff;display:inline-block;font-family:'Source Sans Pro', Helvetica, Arial, sans-serif;font-size:18px;font-weight:400;line-height:45px;text-align:center;text-decoration:none;width:220px;-webkit-text-size-adjust:none;">Reject</a>
                       </center>
-                    </v:rect>
-                  <![endif]--></div>
-                  <br>
+                      <br>
+                    </div>
                 </td>
               </tr>
             </table>
-
-
 
             <table cellspacing="0" cellpadding="0" bgcolor="#363636"  class="force-full-width">
               <tr>
                 <td style="background-color:#363636; text-align:center;">
                 <br>
                 <br>
-                  <!-- <img width="62" height="56" img src="https://www.filepicker.io/api/file/FjkhDKXsTFyaHnXhhBCw">
-                  <img width="68" height="56" src="https://www.filepicker.io/api/file/W6gXqm5BRL6qSvQRcI7u">
-                  <img width="61" height="56" src="https://www.filepicker.io/api/file/eV9YfQkBTiaOu9PA9gxv"> -->
                 <br>
                 <br>
                 </td>

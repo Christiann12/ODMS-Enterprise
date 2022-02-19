@@ -135,21 +135,21 @@
           <tr>
             <td align="center" valign="top">
 
-            <table cellspacing="0" cellpadding="0" class="force-full-width" style="background-color:#F6C510; margin: 0px">
+            <table cellspacing="0" cellpadding="0" class="force-full-width" style="background-color:#F5F5F5; margin: 0px">
               <tr>
-                <td style="background-color:#F6C510;">
+                <td style="background-color:#F5F5F5;">
 
                   <table cellspacing="0" cellpadding="0" class="force-full-width">
                     <tr>
-                      <td style="font-size:40px; font-weight: 600; color: #ffffff; text-align:center;" class="mobile-spacing">
+                      <td style="font-size:40px; font-weight: 600; color: #191919; text-align:center;" class="mobile-spacing">
                       <div class="mobile-br">&nbsp;</div>
-                        Order Receipt
+                        Financial Assistance Request result
                       <br>
                       </td>
                     </tr>
                     <tr>
                       <td style="font-size:24px; text-align:center; padding: 0 75px; color:#6f6f6f;" class="w320 mobile-spacing; ">
-                          Save and show this email to the closest ODMS Enterprise branch
+                          Your request has been rejected
                       </td>
                     </tr>
                   </table>
@@ -158,7 +158,7 @@
                     <tr>
                       <td>
                         <center>
-                        <img src="https://cdn.discordapp.com/attachments/696238130596020308/940229323519045712/success.png" style="max-width:100%; display:block;">
+                        <img src="https://cdn.discordapp.com/attachments/696238130596020308/942648692773629972/deny.png" style="max-width:100%; display:block;">
                         </center>
                         
                       </td>
@@ -169,112 +169,16 @@
               </tr>
             </table>
            
-            <table cellspacing="0" class="force-full-width" style="background-color:#ffffff;" bgcolor="#ffffff">
-            <tr>
-                <td style="background-color:#ffffff;">
-                  <center>
-                  <h1>
-                      <?php echo $servTransId ?>
-                  </h1>
-                  </center>
-                </td>
-            </tr>
-            <tr>
-                <td style="background-color:#ffffff;">
-                  <center>
-                  <h3 style="color: grey;">
-                      <?php echo $createDate?>
-                  </h3>
-                  </center>
-                </td>
-            </tr>
-            <tr>
-                <td style="background-color:#ffffff;">
-                  <center>
-                  <h3 style="color: grey;">
-                      <?php 
-                          
-                          echo 'Total Price to pay: PHP ' .$servicePrice;
-                      ?>
-                  </h3>
-                  </center>
-                </td>
-            </tr>
-            <tr>
-                <td style="background-color:#ffffff;">
-                <center>
-                  <h3 style="color: grey;">
-                      <?php 
-                          echo 'Loan Status is: ' .$content[0]->loanStatus .' Loan Id is: ' . (empty($content[0]->loanId)? 'No Value' : $content[0]->loanId).'';
-                      ?>
-                  </h3>
-                  </center>
-                </td>
-            </tr>
-              <tr>
-                <td style="background-color:#ffffff;">
-                  <br>
-                  <table class="columns" cellspacing="0" cellpadding="0" width="75%" align="center" bgcolor="#ffffff">
-                        
-                        <tr>
-                            <td style="padding-top: 10px; font-weight: bold;">
-                                ID
-                            </td>
-                            <td style="padding-top: 10px; font-weight: bold;">
-                                Availed Service
-                            </td>
-                            <td style="padding-top: 10px; font-weight: bold;">
-                                Service Price
-                            </td>
-                        </tr>
-                      <?php 
-                      $Counter = 0;
-                      foreach($content as $list){
-                          $Counter++;
-                          echo '
-                            <tr>
-                                <td style="padding-top: 10px;">
-                                    '.$list->availedServiceId.'
-                                </td>
-                                <td style="color:#f3a389; padding-top: 10px;">
-                                    '.$list->availedService.'
-                                </td>
-                                <td style="color:#f3a389; padding-top: 10px;">
-                                    '.$list->servicePrice.'
-                                </td>
-                            </tr>
-                          
-                          ';
-                      }
-                      
-                      ?>
-                    
-                  </table>
-                </td>
-              </tr>
+            <table class="message" cellspacing="0" cellpadding="25px" align="center" style="background-color: white;">
+                <tr>
+                    <td style="background-color: white;">
+                      <h3>Good day, <?php echo $loanData->firstName?></h3>
+                      <p style="">
+                          We're sorry to say but your request for Financial Assistance to the company, <b><?php echo $loanData->fACompanyId ?></b> , has been rejected. Don't worry, though. You can still apply for Financial Assistance to other companies from our list.
+                      </p>
+                    </td>
+                </tr>
             </table>
-
-            <table style="margin:0 auto;" cellspacing="0" cellpadding="0" class="force-full-width" bgcolor="#ffffff">
-              <tr>
-                <td style="text-align:center; margin:0 auto;">
-                <br>
-                  <div><!--[if mso]>
-                    <v:rect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://" style="height:45px;v-text-anchor:middle;width:220px;" stroke="f" fillcolor="#f5774e">
-                      <w:anchorlock/>
-                      <center>
-                    <![endif]-->
-                        <!-- <a href="http://"
-                        style="background-color:#f5774e;color:#ffffff;display:inline-block;font-family:'Source Sans Pro', Helvetica, Arial, sans-serif;font-size:18px;font-weight:400;line-height:45px;text-align:center;text-decoration:none;width:220px;-webkit-text-size-adjust:none;">Update Account</a> -->
-                        <!--[if mso]>
-                      </center>
-                    </v:rect>
-                  <![endif]--></div>
-                  <br>
-                </td>
-              </tr>
-            </table>
-
-
 
             <table cellspacing="0" cellpadding="0" bgcolor="#363636"  class="force-full-width">
               <tr>

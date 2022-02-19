@@ -56,7 +56,7 @@
 			var id = button.data('id');
 			var sessid = button.data('sessid');
 			var quan = button.data('quan');
-			var base_url = "<?= base_url('application/assets/attachments/') ?>";
+			var base_url = "<?= base_url('application/assets/attachments/images/') ?>";
 			var url = base_url+pic;
 		
 			var modal = $(this)
@@ -86,7 +86,7 @@
 			var comp_email = button.data('email');
 			var comp_img = button.data('pic');
 			// var comp_id = button.data('id');
-			var base_url = "<?= base_url('application/assets/attachments/') ?>";
+			var base_url = "<?= base_url('application/assets/attachments/images/') ?>";
 			var url = base_url+comp_img;
 
 			var modal = $(this)
@@ -99,6 +99,34 @@
 
 			})
 		</script>
+
+		<!-- FA Loan Script -->
+		<!-- <script>
+			$(document).ready(function(){
+ 
+				$('#fASelectCompany').change(function(){ 
+					var id=$(this).val();
+					$.ajax({
+						url : "<?php echo base_url('main/saveLoanDetails');?>",
+						method : "POST",
+						data : {id: id},
+						async : true,
+						dataType : 'json',
+						success: function(data){
+							var html = '';
+							var i;
+							for(i=0; i<data.length; i++){
+								html += '<option value='+data[i].companyId+'>'+data[i].companyId+'</option>';
+							}
+							$('#fACompanyId').html(html);
+
+						}
+					});
+					return false;
+				}); 
+				
+			});
+		</script> -->
 		
 	</body>
 </html>

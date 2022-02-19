@@ -40,7 +40,7 @@ class fACompanies_model extends CI_Model {
                 'companyEmail' => array(
                 'type' => 'VARCHAR',
                 'constraint' => 255,
-                )
+                ),
                 // ,
                 // 'companyRequirements' => array(
                 // 'type' => 'VARCHAR',
