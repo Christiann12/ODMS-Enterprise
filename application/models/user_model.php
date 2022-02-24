@@ -55,9 +55,7 @@ class User_model extends CI_Model {
     public function userTable($searchKey=''){
         $this->db->select('*');
         $this->db->from($this->table);
-        // $columnIndex = $_POST['order'][0]['column']; // Column index
-        // $columnName = $_POST['columns'][$columnIndex]['data']; // Column name
-        // $columnSortOrder = $_POST['order'][0]['dir']; // asc or desc
+
         if ($searchKey!=''){
 			$this->db->group_start();
 			$this->db->like("users.userId", $searchKey);

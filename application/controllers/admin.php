@@ -7,17 +7,7 @@ class Admin extends CI_Controller {
 
 	public function __construct(){
 		parent::__construct();
-		// uncomment to create db
-		// $this->load->dbforge();
-		// try{
-		// 	if ($this->dbforge->create_database('odms'))
-		// 	{
-		// 		echo 'Database created successfully...';
-		// 	}
-		// }
-		// catch(Throwable $e){
-		// 	echo 'no';
-		// }
+
 		date_default_timezone_set('Asia/Singapore');
 		$this->load->model('inventory_model');
 		$this->load->model('user_model');
@@ -51,14 +41,13 @@ class Admin extends CI_Controller {
 			if(!empty($userData)){
 				// $this->session->set_flashdata('successLogin','Login Successful');
 		
-				
 				$this->session->set_userdata([
 					'isLogIn'     => true,
 					'userRole'     => $userData->userRole,
 					'adminId'     => $userData->userId,
 					'firstName'     => $userData->firstName,
 					'lastName'  => $userData->lastName,
-					'email'       => $userData->email
+					'email'       => $userData->email,
 				]);
 
 				// $basic  = new \Vonage\Client\Credentials\Basic("fbd703ae", "x7UUWUz2NR6t78fi");
@@ -99,10 +88,69 @@ class Admin extends CI_Controller {
 	{
 		$data['param'] ='dashboard';
 		$this->load->helper('url');
+
+		$data['dateDetail'] = $this->getWeekDetail();
+		
+		// montly overview data
+		$data['pingCount'] = $this->ping_model->countRecordPerMonth();
+		$data['prodTransTotalEarnings'] = $this->prodtransaction_model->countEarningPerMonth();
+		$data['servTransTotalEarnings'] = $this->serviceTransaction_model->countEarningPerMonth();
+		$data['prodTranCount'] = $this->prodtransaction_model->countRecordPerMonth();
+		$data['servTranCount'] = $this->serviceTransaction_model->countRecordPerMonth();
+		$data['supportResolvedCount'] = $this->support_model->countResolvedRecordPerMonth();
+
+		// ping count per day
+		$data['pingCountMon'] = $this->ping_model->getDateDetail($data['dateDetail']['monday']);
+		$data['pingCountTue'] = $this->ping_model->getDateDetail($data['dateDetail']['tuesday']);
+		$data['pingCountWed'] = $this->ping_model->getDateDetail($data['dateDetail']['wednesday']);
+		$data['pingCountThur'] = $this->ping_model->getDateDetail($data['dateDetail']['thursday']);
+		$data['pingCountFri'] = $this->ping_model->getDateDetail($data['dateDetail']['friday']);
+		$data['pingCountSat'] = $this->ping_model->getDateDetail($data['dateDetail']['saturday']);
+		$data['pingCountSun'] = $this->ping_model->getDateDetail($data['dateDetail']['sunday']);
+
+		// ping count per day
+		$data['tranCountMon'] = $this->prodtransaction_model->getDateDetail($data['dateDetail']['monday']);
+		$data['tranCountTue'] = $this->prodtransaction_model->getDateDetail($data['dateDetail']['tuesday']);
+		$data['tranCountWed'] = $this->prodtransaction_model->getDateDetail($data['dateDetail']['wednesday']);
+		$data['tranCountThur'] = $this->prodtransaction_model->getDateDetail($data['dateDetail']['thursday']);
+		$data['tranCountFri'] = $this->prodtransaction_model->getDateDetail($data['dateDetail']['friday']);
+		$data['tranCountSat'] = $this->prodtransaction_model->getDateDetail($data['dateDetail']['saturday']);
+		$data['tranCountSun'] = $this->prodtransaction_model->getDateDetail($data['dateDetail']['sunday']);
+
+		// pie chart data
+		$data['prodPercent'] = $this->prodtransaction_model->getPercentProd($data['dateDetail']['monday']);
+		$data['servPercent'] = $this->prodtransaction_model->getPercentServ($data['dateDetail']['tuesday']);
+		
+		// Ticket Count
+		$data['loanCountMon'] = $this->loan_model->getDateDetail($data['dateDetail']['monday']);
+		$data['loanCountTue'] = $this->loan_model->getDateDetail($data['dateDetail']['tuesday']);
+		$data['loanCountWed'] = $this->loan_model->getDateDetail($data['dateDetail']['wednesday']);
+		$data['loanCountThur'] = $this->loan_model->getDateDetail($data['dateDetail']['thursday']);
+		$data['loanCountFri'] = $this->loan_model->getDateDetail($data['dateDetail']['friday']);
+		$data['loanCountSat'] = $this->loan_model->getDateDetail($data['dateDetail']['saturday']);
+		$data['loanCountSun'] = $this->loan_model->getDateDetail($data['dateDetail']['sunday']);
+
+		//notifications
+		$data['supportNotif'] = $this->support_model->notification();
+		$data['pingNotif'] = $this->ping_model->notification();
+		$data['invNotif'] = $this->inventory_model->notification();
+		
+		$counter = 0;
+		if(!empty($data['pingNotif'])){
+			$counter++;
+		}
+		if(!empty($data['supportNotif'])){
+			$counter++;
+		}
+		if(!empty($data['invNotif'])){
+			$counter++;
+		}
+		$data['notifCount'] = $counter;
+		
 		if($this->session->has_userdata('adminId')){
 			$this->load->view('HeaderNFooter/HeaderAdmin.php');
 			$this->load->view('AdminPages/wrapper.php', $data);
-			$this->load->view('HeaderNFooter/FooterAdmin.php');
+			$this->load->view('HeaderNFooter/FooterAdmin.php',$data);
 		}
 		else{
 			redirect('login');
@@ -112,7 +160,7 @@ class Admin extends CI_Controller {
 	{
 		$data['param'] ='transaction';
 		$this->load->helper('url');
-		if($this->session->has_userdata('adminId')){
+		if($this->session->has_userdata('adminId') && ($this->session->userdata('userRole') == 'admin' || $this->session->userdata('userRole') == 'financial')){
 			$this->load->view('HeaderNFooter/HeaderAdmin.php');
 			$this->load->view('AdminPages/wrapper.php', $data);
 			$this->load->view('HeaderNFooter/FooterAdmin.php');
@@ -266,7 +314,7 @@ class Admin extends CI_Controller {
 	{
 		$data['param'] = 'ping';
 		$this->load->helper('url');
-		if($this->session->has_userdata('adminId')){
+		if($this->session->has_userdata('adminId') && ($this->session->userdata('userRole') == 'admin' || $this->session->userdata('userRole') == 'support')){
 			$this->load->view('HeaderNFooter/HeaderAdmin.php');
 			$this->load->view('AdminPages/wrapper.php', $data);
 			$this->load->view('HeaderNFooter/FooterAdmin.php');
@@ -367,7 +415,7 @@ class Admin extends CI_Controller {
 		
 		$this->load->helper('url');
 		
-		if($this->session->has_userdata('adminId')){
+		if($this->session->has_userdata('adminId') && ($this->session->userdata('userRole') == 'admin' || $this->session->userdata('userRole') == 'support')){
 			$this->load->view('HeaderNFooter/HeaderAdmin.php');
 			$this->load->view('AdminPages/wrapper.php', $data);
 			$this->load->view('HeaderNFooter/FooterAdmin.php', $data);
@@ -519,7 +567,7 @@ class Admin extends CI_Controller {
 			}
 			// OpenPage
 			else{
-				if($this->session->has_userdata('adminId')){
+				if($this->session->has_userdata('adminId') && ($this->session->userdata('userRole') == 'admin')){
 					$this->load->view('HeaderNFooter/HeaderAdmin.php');
 					$this->load->view('AdminPages/wrapper.php', $data);
 					$this->load->view('HeaderNFooter/FooterAdmin.php');
@@ -544,11 +592,17 @@ class Admin extends CI_Controller {
 			}
 			// OpenPage
 			else{
-				if($this->session->has_userdata('adminId')){
-					$data['userData'] = $this->user_model->readbyUserDataById($this->uri->segment(3));
-					$this->load->view('HeaderNFooter/HeaderAdmin.php');
-					$this->load->view('AdminPages/wrapper.php', $data);
-					$this->load->view('HeaderNFooter/FooterAdmin.php');
+				if($this->session->has_userdata('adminId') && ($this->session->userdata('userRole') == 'admin')){
+					if(!empty(validation_errors())){
+						$this->session->set_flashdata('error',validation_errors());
+						redirect('admin/updateUser/'.$this->input->post('userIdField'));
+					}
+					else{
+						$data['userData'] = $this->user_model->readbyUserDataById($this->uri->segment(3));
+						$this->load->view('HeaderNFooter/HeaderAdmin.php');
+						$this->load->view('AdminPages/wrapper.php', $data);
+						$this->load->view('HeaderNFooter/FooterAdmin.php');
+					}
 				}
 				else{
 					redirect('login');
@@ -606,10 +660,14 @@ class Admin extends CI_Controller {
 	public function financialAssistance()
 	{
 		$data['param'] ='financialAssistance';
-
+		// Helpers
+		$this->load->helper('url');
 		//Form Validation
 		if (empty($_FILES['fACompanyPic']['name'])){
 			$this->form_validation->set_rules('fACompanyPic', 'Company Image', 'required');
+		}
+		if (empty($_FILES['fACompanyReq']['name'])){
+			$this->form_validation->set_rules('fACompanyReq', 'Company Requirement', 'required');
 		}
 		$this->form_validation->set_rules('fACompanyName', 'Company Name', 'required|max_length[30]');
 		$this->form_validation->set_rules('fACompanyDesc', 'Company Description', 'required|max_length[255]');
@@ -620,20 +678,33 @@ class Admin extends CI_Controller {
 		// }
 
 		//load config for upload library
+		$config = array();
 		$config['upload_path']   = APPPATH.'assets/attachments/images';
 		$config['allowed_types'] = 'jpg|jpeg|jpe|png';
 		$config['max_size']      = 0;
 		$config['max_width']     = 0;
 		$config['max_height']    = 0;
 		$config['overwrite']     = false;
+	
+		$this->load->library('upload', $config, 'companyimgupload');
+		$this->companyimgupload->initialize($config);
 
-		// Helpers
-		$this->load->helper('url');
-		$this->load->library('upload', $config);
+		$newConfig = array();
+		$newConfig['upload_path']   = APPPATH.'assets/attachments/requirements';
+		$newConfig['allowed_types'] = 'zip|rar';
+		$newConfig['max_size']      = 0;
+		$newConfig['max_width']     = 0;
+		$newConfig['max_height']    = 0;
+		$newConfig['overwrite']     = false;
+	
+		$this->load->library('upload', $newConfig, 'companyrequpload');
+		$this->companyrequpload->initialize($newConfig);
+
 		$filename = "";
 
-		$name = 'fACompanyPic';
-		
+		$name1 = 'fACompanyPic';
+		$name2 = 'fACompanyReq';
+	
 		// StoreData
 		$data['document'] = (object)$postData = array( 
 			'companyId' => "FC-".$this->randStrGen(2,7),
@@ -642,33 +713,42 @@ class Admin extends CI_Controller {
 			'companyContactNum' => $this->input->post('fACompanyContactNum'),
             'companyEmail' => $this->input->post('fACompanyEmail')
         ); 
+
 		// SendToDatabase
 		if($this->form_validation->run() === true){
-			if ( ! $this->upload->do_upload($name) ) {
-                $this->session->set_flashdata('error',$this->upload->display_errors());
-            } 
+			$status1  = $this->companyimgupload->do_upload($name1);
+			$status2 = $this->companyrequpload->do_upload($name2);
+			if (!$status1 && !$status2) {
+                $this->session->set_flashdata('error','(Company Image)'.$this->companyimgupload->display_errors().'(Company Requirement)'.$this->companyrequpload->display_errors());
+            }
+			else if(!$status1 && $status2){
+				$upload2 =  $this->companyrequpload->data();
+				$file = $upload2['file_name'];
+				unlink(APPPATH.'assets/attachments/requirements/'.$file);
+				$this->session->set_flashdata('error','(Company Image)'.$this->companyimgupload->display_errors());
+			}
+			else if($status1 && !$status2){
+				$upload1 =  $this->companyimgupload->data();
+				$file = $upload1['file_name'];
+				unlink(APPPATH.'assets/attachments/images/'.$file);
+				$this->session->set_flashdata('error','(Company Requirement)'.$this->companyrequpload->display_errors());
+			}
 			else {
-                $upload =  $this->upload->data();
+                $upload1 =  $this->companyimgupload->data();
+				$upload2 =  $this->companyrequpload->data();
             
-				$postData['companyImg'] = $upload['file_name'];
+				$postData['companyImg'] = $upload1['file_name'];
+				$postData['companyReq'] = $upload2['file_name'];
 				if($this->fACompanies_model->create($postData)){
 					$this->session->set_flashdata('success','Add Successful');
 				}
 				else {
 					$this->session->set_flashdata('error','Add Failed');
 				}
-
-				// $postData['fACompanyReq'] = $upload['file_name'];
-				// if($this->fACompanies_model->create($postData)){
-				// 	$this->session->set_flashdata('success','Add Successful');
-				// }
-				// else {
-				// 	$this->session->set_flashdata('error','Add Failed');
-				// }
             }
 			redirect('admin/financialAssistance');
 		} else {
-			if($this->session->has_userdata('adminId')){
+			if($this->session->has_userdata('adminId') && ($this->session->userdata('userRole') == 'admin')){
 				$this->load->view('HeaderNFooter/HeaderAdmin.php');
 				$this->load->view('AdminPages/wrapper.php', $data);
 				$this->load->view('HeaderNFooter/FooterAdmin.php');
@@ -677,7 +757,6 @@ class Admin extends CI_Controller {
 				redirect('login');
 			}
 		}
-
 	}
 
 	// update fACompany record
@@ -685,24 +764,41 @@ class Admin extends CI_Controller {
 	{
 		// screen to open
 		$data['param'] ='financialAssistance';
-
+		// Helpers
+		$this->load->helper('url');
 		// form validations
+
 		$this->form_validation->set_rules('fACompanyName', 'Company Name', 'required|max_length[30]');
 		$this->form_validation->set_rules('fACompanyDesc', 'Company Description', 'required|max_length[255]');
 		$this->form_validation->set_rules('fACompanyContactNum', 'Company Contact Num', 'required');
 		$this->form_validation->set_rules('fACompanyEmail', 'Company Email', 'required|max_length[100]');
 		
-		//load config for upload library
-		$config['upload_path']   = APPPATH.'assets/attachments/images/';
+		$config = array();
+		$config['upload_path']   = APPPATH.'assets/attachments/images';
 		$config['allowed_types'] = 'jpg|jpeg|jpe|png';
 		$config['max_size']      = 0;
 		$config['max_width']     = 0;
 		$config['max_height']    = 0;
 		$config['overwrite']     = false;
-		
-		// Helpers
-		$this->load->helper('url');
-		$this->load->library('upload', $config);
+	
+		$this->load->library('upload', $config, 'companyimgupload');
+		$this->companyimgupload->initialize($config);
+
+		$newConfig = array();
+		$newConfig['upload_path']   = APPPATH.'assets/attachments/requirements';
+		$newConfig['allowed_types'] = 'zip|rar';
+		$newConfig['max_size']      = 0;
+		$newConfig['max_width']     = 0;
+		$newConfig['max_height']    = 0;
+		$newConfig['overwrite']     = false;
+	
+		$this->load->library('upload', $newConfig, 'companyrequpload');
+		$this->companyrequpload->initialize($newConfig);
+
+		$filename = "";
+
+		$name1 = 'fACompanyPic';
+		$name2 = 'fACompanyReq';
 
 		// StoreData
 		$data['document'] = (object)$postData = array( 
@@ -713,21 +809,20 @@ class Admin extends CI_Controller {
             'companyEmail' => $this->input->post('fACompanyEmail'),
         ); 
 
-		$name = 'fACompanyPic';
-
 		// SendToDatabase
 		if($this->form_validation->run() === true){
 			//check if there's an update with the image
-			if (!empty($_FILES['fACompanyPic']['name'])){
+			if (!empty($_FILES['fACompanyPic']['name']) && empty($_FILES['fACompanyReq']['name'])){
 				//if upload fails abort process and display error
-				if ( ! $this->upload->do_upload($name) ) {
-					$this->session->set_flashdata('error',$this->upload->display_errors());
+				if ( ! $this->companyimgupload->do_upload($name1) ) {
+					$this->session->set_flashdata('error','(Company Image)'.$this->companyimgupload->display_errors());
 				} 
 				//if upload success update the database with the correct filename
 				else {
-					$upload =  $this->upload->data();
+					$upload =  $this->companyimgupload->data();
 					
 					$postData['companyImg'] = $upload['file_name'];
+
 					if($this->fACompanies_model->updateFACompanyItm($postData)){
 						$this->session->set_flashdata('success','Edit Successful');
 						unlink(APPPATH.'assets/attachments/images/'.$this->input->post('fACompanyFileName'));
@@ -737,6 +832,61 @@ class Admin extends CI_Controller {
 					}
 				}
 				
+			}
+			else if (!empty($_FILES['fACompanyReq']['name']) && empty($_FILES['fACompanyPic']['name'])){
+				//if upload fails abort process and display error
+				if ( ! $this->companyrequpload->do_upload($name2) ) {
+					$this->session->set_flashdata('error','(Company Requirement)'.$this->companyrequpload->display_errors());
+				} 
+				//if upload success update the database with the correct filename
+				else {
+					$upload =  $this->companyrequpload->data();
+					
+					$postData['companyReq'] = $upload['file_name'];
+					
+					if($this->fACompanies_model->updateFACompanyItm($postData)){
+						$this->session->set_flashdata('success','Edit Successful');
+						unlink(APPPATH.'assets/attachments/requirements/'.$this->input->post('fACompanyReqFileName'));
+					}
+					else{
+						$this->session->set_flashdata('error','Edit Failed');
+					}
+				}
+				
+			}
+			else if ( !empty($_FILES['fACompanyReq']['name']) && !empty($_FILES['fACompanyPic']['name']) ){
+				$status1  = $this->companyimgupload->do_upload($name1);
+				$status2 = $this->companyrequpload->do_upload($name2);
+				if (!$status1 && !$status2) {
+					$this->session->set_flashdata('error','(Company Image)'.$this->companyimgupload->display_errors().'(Company Requirement)'.$this->companyrequpload->display_errors());
+				}
+				else if(!$status1 && $status2){
+					$upload2 =  $this->companyrequpload->data();
+					$file = $upload2['file_name'];
+					unlink(APPPATH.'assets/attachments/requirements/'.$file);
+					$this->session->set_flashdata('error','(Company Image)'.$this->companyimgupload->display_errors());
+				}
+				else if($status1 && !$status2){
+					$upload1 =  $this->companyimgupload->data();
+					$file = $upload1['file_name'];
+					unlink(APPPATH.'assets/attachments/images/'.$file);
+					$this->session->set_flashdata('error','(Company Requirement)'.$this->companyrequpload->display_errors());
+				}
+				else {
+					$upload1 =  $this->companyimgupload->data();
+					$upload2 =  $this->companyrequpload->data();
+				
+					$postData['companyImg'] = $upload1['file_name'];
+					$postData['companyReq'] = $upload2['file_name'];
+					if($this->fACompanies_model->updateFACompanyItm($postData)){
+						$this->session->set_flashdata('success','Add Successful');
+						unlink(APPPATH.'assets/attachments/requirements/'.$this->input->post('fACompanyReqFileName'));
+						unlink(APPPATH.'assets/attachments/images/'.$this->input->post('fACompanyFileName'));
+					}
+					else {
+						$this->session->set_flashdata('error','Add Failed');
+					}
+				}
 			}
 			//if not continue with the normal update process
 			else{
@@ -761,8 +911,10 @@ class Admin extends CI_Controller {
 		//get file name to remove picture as the record is deleted
 		$query = $this->fACompanies_model->getFACompanyDataById($this->uri->segment(3));
 		$file = $query->companyImg;
+		$file1 = $query->companyReq;
 		if($this->fACompanies_model->deleteFACompanyItm($this->uri->segment(3))){
 			unlink(APPPATH.'assets/attachments/images/'.$file);
+			unlink(APPPATH.'assets/attachments/requirements/'.$file1);
 			$this->session->set_flashdata('success','Delete Success');
 		}
 		else{
@@ -791,7 +943,7 @@ class Admin extends CI_Controller {
 			$row[] = $facompany->companyContactNum;
 			$row[] = $facompany->companyEmail;
 			// responsible for the additions of action button in the last row
-			$row[] = '<a href="#" data-toggle="modal" data-target="#FACompanyModal2" data-id="'.$facompany->companyId.'" data-file="'.$facompany->companyImg.'" data-name="'.$facompany->companyName.'" data-desc="'.$facompany->companyDesc.'" data-contact="'.$facompany->companyContactNum.'" data-email="'.$facompany->companyEmail.'" class="btn btn-xs btn-success"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Update"></i></a>
+			$row[] = '<a href="#" data-toggle="modal" data-target="#FACompanyModal2" data-file2="'.$facompany->companyReq.'" data-id="'.$facompany->companyId.'" data-file="'.$facompany->companyImg.'" data-name="'.$facompany->companyName.'" data-desc="'.$facompany->companyDesc.'" data-contact="'.$facompany->companyContactNum.'" data-email="'.$facompany->companyEmail.'" class="btn btn-xs btn-success"><i class="fa fa-edit" data-toggle="tooltip" data-placement="top" title="Update"></i></a>
 					<a href="'.base_url('admin/deleteFACompanyRecord/'.$facompany->companyId.'').'" class="btn btn-xs btn-danger"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="Delete"></i></a>';
 			$data[] = $row;
 		}
@@ -1006,35 +1158,6 @@ class Admin extends CI_Controller {
 				$postData['productPicture'] = $upload['file_name'];
 				if($this->inventory_model->create($postData)){
 					$this->session->set_flashdata('success','Add Successful');
-					// $this->load->library('email');
-					
-					// $config = array();
-					// $config['protocol'] = 'smtp';
-					// $config['smtp_host'] = 'ssl://smtp.gmail.com';
-					// $config['smtp_user'] = 'odmsenterprise@gmail.com';
-					// $config['smtp_pass'] = 'Thisismypassword123!';
-					// $config['smtp_port'] = 465;
-					// $config['crlf'] = '\r\n';
-					// $config['newline'] = '\r\n';
-					// $config['mailtype'] = "html";
-
-					// $this->email->initialize($config);
-					// $this->email->set_newline("\r\n");  
-
-					// $this->email->to('christianpaulpili@gmail.com');
-					// $this->email->from('odmsenterprise@gmail.com');
-					// $this->email->subject('qweqwe');
-					// $data['test'] = 'test';
-					// $body = $this->load->view('AdminPages/Email_template.php',$data,TRUE);
-					// $this->email->message($body);
-
-					// if($this->email->send()){
-					// 	$this->session->set_flashdata('success','Add iwiwiw');
-					// }
-					// else{
-					// 	$this->session->set_flashdata('error',$this->email->print_debugger());
-					// }
-					
 				}
 				else {
 					$this->session->set_flashdata('error','Add Failed');
@@ -1044,7 +1167,7 @@ class Admin extends CI_Controller {
 		}
 		// OpenPage
 		else{
-			if($this->session->has_userdata('adminId')){
+			if($this->session->has_userdata('adminId') && ($this->session->userdata('userRole') == 'admin' || $this->session->userdata('userRole') == 'inventory')){
 				$this->load->view('HeaderNFooter/HeaderAdmin.php');
 				$this->load->view('AdminPages/wrapper.php', $data);
 				$this->load->view('HeaderNFooter/FooterAdmin.php');
@@ -1233,7 +1356,7 @@ class Admin extends CI_Controller {
 		}
 		// OpenPage
 		else{
-			if($this->session->has_userdata('adminId')){
+			if($this->session->has_userdata('adminId') && ($this->session->userdata('userRole') == 'admin' || $this->session->userdata('userRole') == 'inventory')){
 				$this->load->view('HeaderNFooter/HeaderAdmin.php');
 				$this->load->view('AdminPages/wrapper.php', $data);
 				$this->load->view('HeaderNFooter/FooterAdmin.php');

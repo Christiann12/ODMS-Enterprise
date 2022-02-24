@@ -34,6 +34,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <!-- form --> 
         <div class="userFormDiv">
             <?php echo form_open_multipart((($this->uri->segment(2) == 'userManagement') ? "admin/userManagement" : "admin/updateUser")) ?>
+    
                 <div class="form-label-group <?php echo (($this->uri->segment(2) == 'updateUser') ? "" : "d-none") ?> ">
                     <input name="userIdField" type="text" id="userIdField" class="inputDesign form-control" readonly placeholder="User Id" value="<?php echo (($this->uri->segment(3) == '') ? "" : $userData->userId)?>">
                     <label for="userIdField" class="labelDesign">User Id</label>

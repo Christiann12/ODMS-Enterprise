@@ -416,6 +416,7 @@
 				var companyEmail = button.data('email');
 				var companyId = button.data('id') ; 
 				var companyFileName = button.data('file') ; 
+				var companyFile2Name = button.data('file2') ; 
 				// alert(productId);
 				var modal = $(this)
 				
@@ -425,6 +426,7 @@
 				modal.find('.modal-body #fACompanyEmail').val(companyEmail);
 				modal.find('.modal-body #fACompanyId').val(companyId);
 				modal.find('.modal-body #fACompanyFileName').val(companyFileName);
+				modal.find('.modal-body #fACompanyReqFileName').val(companyFile2Name);
 			})
 			
 		</script>
@@ -740,6 +742,174 @@
 				modal.find('.modal-body #email_address').val(client_email);
 				modal.find('.modal-body #loan_status').val(loan_status);
 			})
+		</script>
+
+		<!-- dashboard script  -->
+		<script>
+			// PING COUNT
+			document.addEventListener('DOMContentLoaded', function () {
+				const chart1 = Highcharts.chart('pingCountBar', {
+					chart: {
+						type: 'column',
+						scrollablePlotArea: {
+							minWidth: 400,
+							scrollPositionX: 1
+						}
+					},
+
+					title: {
+						text: 'Ping Count'
+					},
+
+					xAxis: {
+						categories: ['Mon', 'Tue','Wed','Thu','Fri','Sat','Sun'],
+						labels: {
+							overflow: 'justify'
+						}
+					},
+					yAxis: {
+						type: 'linear',
+
+						title: {
+							text: 'Count'
+						}
+					},
+
+					series: [{
+						name: 'Number of Pings Received Daily',
+						data: [<?php echo (isset($pingCountMon) ? $pingCountMon : 0)?>, <?php echo (isset($pingCountTue) ? $pingCountTue : 0)?>, <?php echo (isset($pingCountWed) ? $pingCountWed : 0)?>, <?php echo (isset($pingCountThur) ? $pingCountThur : 0)?>, <?php echo (isset($pingCountFri) ? $pingCountFri : 0)?>, <?php echo (isset($pingCountSat) ? $pingCountSat : 0)?>, <?php echo (isset($pingCountSun) ? $pingCountSun : 0)?>]
+					}]
+
+				});
+			});
+
+			// TRANSACTION COUNT
+			document.addEventListener('DOMContentLoaded', function () {
+				const chart3 = Highcharts.chart('transactionCountLine', {
+					chart: {
+						type: 'line',
+						scrollablePlotArea: {
+							minWidth: 400,
+							scrollPositionX: 1
+						}
+					},
+
+					title: {
+						text: 'Services & Products'
+					},
+
+					xAxis: {
+						categories: ['Mon', 'Tue','Wed','Thu','Fri','Sat','Sun'],
+						labels: {
+							overflow: 'justify'
+						}
+					},
+					yAxis: {
+						type: 'logarithmic',
+
+						title: {
+							text: 'Transaction Count'
+						}
+					},
+
+					series: [{
+						name: 'Number of Transactions Daily',
+						data: [<?php echo (isset($tranCountMon) ? $tranCountMon : 0)?>, <?php echo (isset($tranCountTue) ? $tranCountTue : 0)?>, <?php echo (isset($tranCountWed) ? $tranCountWed : 0)?>, <?php echo (isset($tranCountThur) ? $tranCountThur : 0)?>, <?php echo (isset($tranCountFri) ? $tranCountFri : 0)?>, <?php echo (isset($tranCountSat) ? $tranCountSat : 0)?>, <?php echo (isset($tranCountSun) ? $tranCountSun : 0)?>]
+					}]
+
+				});
+			});
+
+			// SERVICES AND PRODUCTS COUNT
+			document.addEventListener('DOMContentLoaded', function () {
+				const chart2 = Highcharts.chart('serviceProdCountPie', {
+					chart: {
+						type: 'pie',
+						plotBackgroundColor: null,
+						plotBorderWidth: null,
+						plotShadow: false,
+						scrollablePlotArea: {
+							minWidth: 400,
+							scrollPositionX: 1
+						}
+					},
+
+					title: {
+						text: 'Services & Products'
+					},
+
+					tooltip: {
+						pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+					},
+					accessibility: {
+						point: {
+							valueSuffix: '%'
+						}
+					},
+					plotOptions: {
+						pie: {
+							allowPointSelect: true,
+							cursor: 'pointer',
+							dataLabels: {
+								enabled: true,
+								format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+							}
+						}
+					},
+
+					series: [{
+						name: 'Count',
+						colorByPoint: true,
+						data: [{
+							name: 'Services',
+							y: <?php echo $servPercent?>,
+							sliced: true,
+							selected: true
+						}, {
+							name: 'Products',
+							y: <?php echo $prodPercent?>
+						}]
+					}]
+
+				});
+			});
+
+			// ACTIVE USERS CHART
+			document.addEventListener('DOMContentLoaded', function () {
+				const chart1 = Highcharts.chart('activeUserLineChart', {
+					chart: {
+						type: 'line',
+						scrollablePlotArea: {
+							minWidth: 400,
+							scrollPositionX: 1
+						}
+					},
+
+					title: {
+						text: 'Weekly Loan Request'
+					},
+
+					xAxis: {
+						categories: ['Mon', 'Tue','Wed','Thu','Fri','Sat','Sun'],
+						labels: {
+							overflow: 'justify'
+						}
+					},
+					yAxis: {
+						type: 'logarithmic',
+
+						title: {
+							text: 'Loan Count'
+						}
+					},
+
+					series: [{
+						name: 'Number of Loan Count Weekly',
+						data: [<?php echo (isset($loanCountMon) ? $loanCountMon : 0)?>, <?php echo (isset($loanCountTue) ? $loanCountTue : 0)?>, <?php echo (isset($loanCountWed) ? $loanCountWed : 0)?>, <?php echo (isset($loanCountThur) ? $loanCountThur : 0)?>, <?php echo (isset($loanCountFri) ? $loanCountFri : 0)?>, <?php echo (isset($loanCountSat) ? $loanCountSat : 0)?>, <?php echo (isset($loanCountSun) ? $loanCountSun : 0)?>]
+					}]
+
+				});
+			});
 		</script>
 	</body>
 </html>

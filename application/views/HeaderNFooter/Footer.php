@@ -85,9 +85,13 @@
 			var comp_contact = button.data('contact');
 			var comp_email = button.data('email');
 			var comp_img = button.data('pic');
+			var comp_req = button.data('req');
 			// var comp_id = button.data('id');
-			var base_url = "<?= base_url('application/assets/attachments/images/') ?>";
-			var url = base_url+comp_img;
+			var base_url1 = "<?= base_url('application/assets/attachments/images/') ?>";
+			var base_url2 = "<?= base_url('application/assets/attachments/requirements/') ?>";
+			var url = base_url1+comp_img;
+			var url1 = base_url2+comp_req;
+
 
 			var modal = $(this)
 
@@ -96,6 +100,7 @@
 			modal.find('.modal-body .fAContact').text(comp_contact);
 			modal.find('.modal-body .fAEmail').text(comp_email);
 			modal.find('.modal-body #fACompanyPic').attr("src", url);
+			modal.find('.modal-body #test').attr("href", url1);
 
 			})
 		</script>

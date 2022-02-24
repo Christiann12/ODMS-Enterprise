@@ -30,14 +30,14 @@ class Inventory_model extends CI_Model {
                 'default' => 'No desc'
                 ),
                 'productCategory' => array(
-                    'type' => 'VARCHAR',
-                    'constraint' => 255,
-                    'default' => 'Unverified'
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+                'default' => 'Unverified'
                 ),
                 'productPicture' => array(
-                    'type' => 'VARCHAR',
-                    'constraint' => 255,
-                    'default' => 'Unverified'
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+                'default' => 'Unverified'
                 ),
                 'productPrice' => array(
                 'type' => 'Decimal',
@@ -73,6 +73,7 @@ class Inventory_model extends CI_Model {
 			$this->db->or_like("products.productDesc", $searchKey);
             $this->db->or_like("products.productPrice", $searchKey);
             $this->db->or_like("products.productStock", $searchKey);
+            $this->db->or_like("products.productCategory", $searchKey);
 			$this->db->group_end();
 		}
         if(isset($_POST['order'])){
@@ -131,5 +132,8 @@ class Inventory_model extends CI_Model {
     }
     public function updateStock($data = []){
         return $this->db->where('productId',$data['productId'])->update($this->table,$data); 
+    }
+    public function notification(){
+        return $this->db->select('*')->from($this->table)->where('productStock <','50')->get()->result();
     }
 }

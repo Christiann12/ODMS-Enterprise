@@ -25,6 +25,10 @@ class fACompanies_model extends CI_Model {
                     'type' => 'VARCHAR',
                     'constraint' => 255,
                 ),
+                'companyReq' => array(
+                'type' => 'VARCHAR',
+                'constraint' => 100,
+                ),
                 'companyName' => array(
                 'type' => 'VARCHAR',
                 'constraint' => 50
@@ -34,8 +38,8 @@ class fACompanies_model extends CI_Model {
                 'constraint' => 255,
                 ),
                 'companyContactNum' => array(
-                    'type' => 'VARCHAR',
-                    'constraint' => 20,
+                'type' => 'VARCHAR',
+                'constraint' => 20,
                 ),
                 'companyEmail' => array(
                 'type' => 'VARCHAR',
