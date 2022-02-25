@@ -45,12 +45,11 @@ class loan_model extends CI_Model {
                 'type' => 'VARCHAR',
                 'constraint' => 30,
                 'default' => 'Pending'
+                ),
+                'createDate' => array(
+                'type' => 'VARCHAR',
+                'constraint' => 50,
                 )
-                // ,
-                // 'companyRequirements' => array(
-                // 'type' => 'VARCHAR',
-                // 'constraint' => 255,
-                // )
             ); 
             $this->dbforge->add_field($fields);
             // define primary key
@@ -144,6 +143,13 @@ class loan_model extends CI_Model {
     //search table per id
     public function getLoanDataById($id = null){
         return $this->db->select("*")->from($this->table)->where('loanId',$id)->get()->row();
+    }
+
+    public function getDateDetail($date){
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->where('createDate',$date);
+        return $this->db->count_all_results();
     }
 
 }

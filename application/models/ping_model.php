@@ -30,10 +30,14 @@ class Ping_model extends CI_Model {
                 'default' => 'inactive'
                 ),
                 'note' => array(
-                    'type' => 'VARCHAR',
-                    'constraint' => 255,
-                    'default' => 'No Desc'
-                )
+                'type' => 'VARCHAR',
+                'constraint' => 255,
+                'default' => 'No Desc'
+                ),
+                'createDate' => array(
+                'type' => 'VARCHAR',
+                'constraint' => 50,
+                ),
             ); 
             $this->dbforge->add_field($fields);
             // define primary key
@@ -110,4 +114,49 @@ class Ping_model extends CI_Model {
     public function getInvDataById($id = null){
         return $this->db->select("*")->from($this->table)->where('pingId',$id)->get()->row();
     }    
+
+    public function countRecordPerMonth(){
+        $query =  $this->db->select("*")->from($this->table)->get()->result();
+        $counter = 0;
+        $currentMonth = date('m');
+        foreach($query as $list){
+            if($currentMonth == date("m", strtotime($list->createDate))){
+                $counter++;
+            }
+        }
+        // return date("m-d-Y", strtotime('-14 day'));
+        return $counter;
+    }
+
+    public function getDateDetail($date){
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->where('createDate',$date);
+        return $this->db->count_all_results();
+    }
+
+    public function notification(){
+    
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->where('status','Active');
+        // $this->db->like('createDate',date("Y-m-d", strtotime("-1 day")));
+        
+        // $this->db->or_like('createDate',date("Y-m-d", strtotime("-3 day")));
+        // $this->db->or_like('createDate',date("Y-m-d", strtotime("-4 day")));
+        // $this->db->or_like('createDate',date("Y-m-d", strtotime("-5 day")));
+        // $this->db->or_like('createDate',date("Y-m-d", strtotime("-6 day")));
+        // $this->db->or_like('createDate',date("Y-m-d", strtotime("-7 day")));
+        // $this->db->or_like('createDate',date("Y-m-d", strtotime("-8 day")));
+        // $this->db->or_like('createDate',date("Y-m-d", strtotime("-9 day")));
+        // $this->db->or_like('createDate',date("Y-m-d", strtotime("-10 day")));
+        // $this->db->or_like('createDate',date("Y-m-d", strtotime("-11 day")));
+        // $this->db->or_like('createDate',date("Y-m-d", strtotime("-12 day")));
+        // $this->db->or_like('createDate',date("Y-m-d", strtotime("-13 day")));
+        // $this->db->or_like('createDate',date("Y-m-d", strtotime("-14 day")));
+        // for ($x = 0; $x <= 30; $x++){
+        //     $this->db->or_like('createDate',date("Y-m-d", strtotime("-".$x."day")));
+        // }
+        return $this->db->get()->result();
+    }
 }

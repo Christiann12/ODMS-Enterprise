@@ -78,6 +78,7 @@ class Main extends CI_Controller {
 			'lastName' => $clientLastName,
 			'emailAddress' => $clientEmail,
 			'requirements' => $clientRequirement,
+			'createDate' => date('Y-m-d')
         );
 		// store data 
 		if($this->form_validation->run() === true){
@@ -158,6 +159,7 @@ class Main extends CI_Controller {
             'locationcode' => $this->input->post('locationCode'),
 			'note' => $this->input->post('emergencyNote'),
 			'status' => 'Active',
+			'createDate' => date('Y-m-d')
         );
 		// store data 
 		if($this->form_validation->run() === true){
@@ -180,29 +182,29 @@ class Main extends CI_Controller {
 				// }
 
 				// -------------- SEND EMAIL -------------- // 
-				$this->load->library('email');
+				// $this->load->library('email');
 				
-				$config = array();
-				$config['protocol'] = 'smtp';
-				$config['smtp_host'] = 'ssl://smtp.gmail.com';
-				$config['smtp_user'] = 'odmsenterprise@gmail.com';
-				$config['smtp_pass'] = 'Thisismypassword123!';
-				$config['smtp_port'] = 465;
-				$config['crlf'] = '\r\n';
-				$config['newline'] = '\r\n';
-				$config['mailtype'] = "html";
+				// $config = array();
+				// $config['protocol'] = 'smtp';
+				// $config['smtp_host'] = 'ssl://smtp.gmail.com';
+				// $config['smtp_user'] = 'odmsenterprise@gmail.com';
+				// $config['smtp_pass'] = 'Thisismypassword123!';
+				// $config['smtp_port'] = 465;
+				// $config['crlf'] = '\r\n';
+				// $config['newline'] = '\r\n';
+				// $config['mailtype'] = "html";
 
-				$this->email->initialize($config);
-				$this->email->set_newline("\r\n");  
+				// $this->email->initialize($config);
+				// $this->email->set_newline("\r\n");  
 
-				$this->email->to('isaiahlumod1827@gmail.com');
-				$this->email->from('odmsenterprise@gmail.com');
-				$this->email->subject('qweqwe');
-				$data['test'] = 'test';
-				$body = $this->load->view('AdminPages/Email_template.php',$data,TRUE);
-				$this->email->message($body);
+				// $this->email->to('isaiahlumod1827@gmail.com');
+				// $this->email->from('odmsenterprise@gmail.com');
+				// $this->email->subject('qweqwe');
+				// $data['test'] = 'test';
+				// $body = $this->load->view('AdminPages/Email_template.php',$data,TRUE);
+				// $this->email->message($body);
 
-				$this->email->send();
+				// $this->email->send();
 				
 			}
 			else{
@@ -442,6 +444,9 @@ class Main extends CI_Controller {
 						// update query
 						$this->inventory_model->updateStock($array);
 
+					
+					}
+
 						// -------------- SEND EMAIL -------------- // 
 						$this->load->library('email');
 						
@@ -468,7 +473,6 @@ class Main extends CI_Controller {
 						$this->email->message($body);
 
 						$this->email->send();
-					}
 					// $list = $this->inventory_model->getStock();
 					$this->session->set_flashdata('success','Send Success');
 				}

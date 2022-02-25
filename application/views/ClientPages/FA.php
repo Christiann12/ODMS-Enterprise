@@ -22,6 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <p class="fADescription">A short description of the company goes here.</p>
                 <p class="fAContact">Contact No.: 09xx-xxx-xxxx</p>
                 <p class="fAEmail">Email: companyname@domainname.com</p>
+                <p style="font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 10px; line-height: 12px; display: flex; align-items: center; color: #000000;">Requirements: <a download id="test"href="google.com">Click To Download</a></p>
                 <!-- <p class="fARequirements">Requirements</p> should be in file format -->
             </div>
           </div>
@@ -64,6 +65,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <label for="fASelectCompany" class="col-3 ">Select Financial Company<i class="text-danger">*</i></label>
             <div class="col-9">
                 <select class="form-control" id="fASelectCompany" name="fASelectCompany">
+                    <option value="">Select Option</option>
                     <?php
                         foreach($fACompanyRecord as $selectedCompany) {
                             echo '
@@ -203,7 +205,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
 
                         <div class="d-flex buttonContainer" style="">
-                            <button type="button" class="btn btn-warning m-auto" data-id="'.$fACompany->companyId.'" data-pic="'.$fACompany->companyImg.'" data-name="'.$fACompany->companyName.'" data-desc="Description: '.$fACompany->companyDesc.'" data-contact="Company Contact No.: '.$fACompany->companyContactNum.'" data-email="Company Email: '.$fACompany->companyEmail.'" data-toggle="modal" data-target="#fACompanyModal">View</button>
+                            <button type="button" class="btn btn-warning m-auto" data-req="'.$fACompany->companyReq.'" data-id="'.$fACompany->companyId.'" data-pic="'.$fACompany->companyImg.'" data-name="'.$fACompany->companyName.'" data-desc="Description: '.$fACompany->companyDesc.'" data-contact="Company Contact No.: '.$fACompany->companyContactNum.'" data-email="Company Email: '.$fACompany->companyEmail.'" data-toggle="modal" data-target="#fACompanyModal">View</button>
                         </div>
                     </div>
                 </div>';

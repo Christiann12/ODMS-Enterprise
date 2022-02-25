@@ -153,10 +153,29 @@ class serviceTransaction_model extends CI_Model {
     public function getServiceTransData(){
         return $this->db->select("*")->from($this->table)->get()->result();
     } 
-    // //search table per id
-    // public function getServiceTransDataById($id = null){
-    //     return $this->db->select("*")->from($this->table)->where('serviceTransactionId',$id)->get()->row();
-    // }
+
+    public function countEarningPerMonth(){
+        $query =  $this->db->select("*")->from($this->table)->get()->result();
+        $counter = 0;
+        $currentMonth = date('m');
+        foreach($query as $list){
+            if($currentMonth == date("m", strtotime($list->createDate))){
+                $counter = $counter + $list->servicePrice;
+            }
+        }
+        return $counter;
+    }
+    public function countRecordPerMonth(){
+        $query =  $this->db->select("*")->from($this->table)->get()->result();
+        $counter = 0;
+        $currentMonth = date('m');
+        foreach($query as $list){
+            if($currentMonth == date("m", strtotime($list->createDate))){
+                $counter++;
+            }
+        }
+        return $counter;
+    }
 
 }
 

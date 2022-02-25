@@ -156,4 +156,81 @@ class Prodtransaction_model extends CI_Model {
     public function updatePrdRec($data = []){
         return $this->db->where('transactionId',$data['transactionId'])->where('productId',$data['productId'])->update($this->table,$data); 
     }
+    public function countEarningPerMonth(){
+        $query =  $this->db->select("*")->from($this->table)->get()->result();
+        $counter = 0;
+        $currentMonth = date('m');
+        foreach($query as $list){
+            if($currentMonth == date("m", strtotime($list->createDate))){
+                $counter = $counter + $list->totalPrice;
+            }
+        }
+        return $counter;
+    }
+    public function countRecordPerMonth(){
+        $query =  $this->db->select("*")->from($this->table)->get()->result();
+        $counter = 0;
+        $currentMonth = date('m');
+        foreach($query as $list){
+            if($currentMonth == date("m", strtotime($list->createDate))){
+                $counter++;
+            }
+        }
+        return $counter;
+    }
+
+    public function getDateDetail($date){
+        $this->db->select('*');
+        $this->db->from('prodtransaction');
+        $this->db->where('createDate',$date);
+        $count1 =  $this->db->count_all_results();
+
+        $this->db->select('*');
+        $this->db->from('services_transaction');
+        $this->db->where('createDate',$date);
+        $count2 =  $this->db->count_all_results();
+
+        return $count1 + $count2;
+    }
+    public function getPercentProd($date){
+        $this->db->select('*');
+        $this->db->from('prodtransaction');
+        // $this->db->where('createDate',$date);
+        $count1 =  $this->db->count_all_results();
+
+        $this->db->select('*');
+        $this->db->from('services_transaction');
+        // $this->db->where('createDate',$date);
+        $count2 =  $this->db->count_all_results();
+
+        $total =  $count1 + $count2;
+
+        
+        if($count1 == 0){
+            return 0;
+        }
+        else{
+            return $count1 / $total;
+        }
+    }
+    public function getPercentServ($date){
+        $this->db->select('*');
+        $this->db->from('prodtransaction');
+        // $this->db->where('createDate',$date);
+        $count1 =  $this->db->count_all_results();
+
+        $this->db->select('*');
+        $this->db->from('services_transaction');
+        // $this->db->where('createDate',$date);
+        $count2 =  $this->db->count_all_results();
+
+        $total =  $count1 + $count2;
+
+        if($count2 == 0){
+            return 0;
+        }
+        else{
+            return $count2 / $total;
+        }
+    }
 }

@@ -49,13 +49,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <input name="fACompanyEmail"  type="email" class="form-control" id="fACompanyEmail" placeholder="Company Email" value="">
             </div>
         </div>
-        <!-- <div class="form-group row d-flex justify-content-around">
+        <div class="form-group row d-flex justify-content-around">
             <label for="fACompanyReq" class="col-3">Company Requirements<i class="text-danger">*</i></label>
             <div class="col-9">
                 <input name="fACompanyReq" type="file" class="form-control-file" id="fACompanyReq" aria-describedby="fAReqHelp">
                 <small id="fAReqHelp" class="form-text text-muted">These are the company's requirements</small>
             </div>
-        </div> -->
+        </div>
 
       </div>
 
@@ -97,6 +97,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <input name="fACompanyFileName"  type="text" class="form-control" id="fACompanyFileName" placeholder="Financial Company Img" value="" readonly>
                     </div>
                 </div>
+                <div class="form-group row d-none">
+                    <label for="fACompanyReqFileName" class="col-3 ">File Name</label>
+                    <div class="col-9">
+                        <input name="fACompanyReqFileName"  type="text" class="form-control" id="fACompanyReqFileName" placeholder="Financial Company Img" value="" readonly>
+                    </div>
+                </div>
 
                 <div class="form-group row d-flex justify-content-around">
                     <label for="fACompanyPic" class="col-3">Company Image</label>
@@ -130,6 +136,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <label for="fACompanyEmail" class="col-3 ">Company Email<i class="text-danger">*</i></label>
                     <div class="col-9">
                         <input name="fACompanyEmail"  type="email" class="form-control" id="fACompanyEmail" placeholder="Company Email" value="">
+                    </div>
+                </div>
+
+                <div class="form-group row d-flex justify-content-around">
+                    <label for="fACompanyReq" class="col-3">Company Requirements<i class="text-danger">*</i></label>
+                    <div class="col-9">
+                        <input name="fACompanyReq" type="file" class="form-control-file" id="fACompanyReq" aria-describedby="fAReqHelp">
+                        <small id="fAReqHelp" class="form-text text-muted">These are the company's requirements</small>
                     </div>
                 </div>
             </div>

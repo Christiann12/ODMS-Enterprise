@@ -64,9 +64,6 @@ class Support_model extends CI_Model {
     public function supportTable($searchKey=''){
         $this->db->select('*');
         $this->db->from($this->table);
-        // $columnIndex = $_POST['order'][0]['column']; // Column index
-        // $columnName = $_POST['columns'][$columnIndex]['data']; // Column name
-        // $columnSortOrder = $_POST['order'][0]['dir']; // asc or desc
         if ($searchKey!=''){
 			$this->db->group_start();
 			$this->db->like("supportdetail.supportId", $searchKey);
@@ -133,22 +130,40 @@ class Support_model extends CI_Model {
         $this->db->where('createDate',$date);
         return $this->db->count_all_results();
     }
-    //delete per id product
-    // public function deleteProdItm($id = null){
-    //     $this->db->where('productId',$id)->delete($this->table);
-	// 	if ($this->db->affected_rows()) {
-	// 		return true;
-	// 	} 
-    //     else {
-	// 		return false;
-	// 	}
-    // }
-    //get all data in the table and display in the view
-    // public function getInvData(){
-    //     return $this->db->select("*")->from($this->table)->get()->result();
-    // } 
-    //search table per id
-    // public function getInvDataById($id = null){
-    //     return $this->db->select("*")->from($this->table)->where('productId',$id)->get()->row();
-    // }    
+    public function countResolvedRecordPerMonth(){
+        $query =  $this->db->select("*")->from($this->table)->where('status','Inactive')->get()->result();
+        $counter = 0;
+        $currentMonth = date('m');
+        foreach($query as $list){
+            if($currentMonth == date("m", strtotime($list->createDate))){
+                $counter++;
+            }
+        }
+        return $counter;
+    }
+    public function notification(){
+    
+        $this->db->select('*');
+        $this->db->from($this->table);
+        $this->db->where('status','Active');
+        // $this->db->like('createDate',date("Y-m-d", strtotime("-1 day")));
+        
+        // $this->db->or_like('createDate',date("Y-m-d", strtotime("-3 day")));
+        // $this->db->or_like('createDate',date("Y-m-d", strtotime("-4 day")));
+        // $this->db->or_like('createDate',date("Y-m-d", strtotime("-5 day")));
+        // $this->db->or_like('createDate',date("Y-m-d", strtotime("-6 day")));
+        // $this->db->or_like('createDate',date("Y-m-d", strtotime("-7 day")));
+        // $this->db->or_like('createDate',date("Y-m-d", strtotime("-8 day")));
+        // $this->db->or_like('createDate',date("Y-m-d", strtotime("-9 day")));
+        // $this->db->or_like('createDate',date("Y-m-d", strtotime("-10 day")));
+        // $this->db->or_like('createDate',date("Y-m-d", strtotime("-11 day")));
+        // $this->db->or_like('createDate',date("Y-m-d", strtotime("-12 day")));
+        // $this->db->or_like('createDate',date("Y-m-d", strtotime("-13 day")));
+        // $this->db->or_like('createDate',date("Y-m-d", strtotime("-14 day")));
+        // for ($x = 0; $x <= 30; $x++){
+        //     $this->db->or_like('createDate',date("Y-m-d", strtotime("-".$x."day")));
+        // }
+        return $this->db->get()->result();
+    }
+   
 }
