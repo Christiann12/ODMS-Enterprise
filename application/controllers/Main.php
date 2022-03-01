@@ -389,7 +389,7 @@ class Main extends CI_Controller {
 					$data = array(
 						'requestStatus' => 'Used'
 					);
-					return $this->db->where('loanId',$this->input->post('faCode'))->update('loan',$data); 
+					$this->db->where('loanId',$this->input->post('faCode'))->update('loan',$data); 
 				}
 				// -------------- SEND EMAIL -------------- // 
 				$this->load->library('email');
@@ -507,7 +507,7 @@ class Main extends CI_Controller {
 						$data = array(
 							'requestStatus' => 'Used'
 						);
-						return $this->db->where('loanId',$this->input->post('faCode'))->update('loan',$data); 
+						$this->db->where('loanId',$this->input->post('faCode'))->update('loan',$data); 
 					}
 					// update stock per item based on how many is availed by the user
 					foreach ($temp as $rec){
