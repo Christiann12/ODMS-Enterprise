@@ -383,6 +383,12 @@ class Main extends CI_Controller {
 		// store data 
 		if($this->form_validation->run() === true){
 			if($this->ServiceTransaction_model->create($postData)){
+				if(!empty($this->input->post('faCode'))){
+					$data = array(
+						'requestStatus' => 'Used'
+					);
+					$this->db->where('loanId',$this->input->post('faCode'))->update('loan',$data); 
+				}
 				// -------------- SEND EMAIL -------------- // 
 				$this->load->library('email');
 								
@@ -495,6 +501,12 @@ class Main extends CI_Controller {
 			else{
 				if($this->Prodtransaction_model->create($record)){
 					$this->Cart_model->deleteAfterTrans($this->session->userdata('userSessionId'));
+					if(!empty($this->input->post('faCode'))){
+						$data = array(
+							'requestStatus' => 'Used'
+						);
+						$this->db->where('loanId',$this->input->post('faCode'))->update('loan',$data); 
+					}
 					// update stock per item based on how many is availed by the user
 					foreach ($temp as $rec){
 						// get table containing the details for product base on ID
