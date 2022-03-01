@@ -86,7 +86,7 @@ class Admin extends CI_Controller {
 	}
 	public function dashboard()
 	{
-		$data['param'] ='dashboard';
+		$data['param'] ='Dashboard';
 		$this->load->helper('url');
 
 		$data['dateDetail'] = $this->getWeekDetail();
@@ -177,7 +177,7 @@ class Admin extends CI_Controller {
 	
 	public function transaction()
 	{
-		$data['param'] ='transaction';
+		$data['param'] ='Transaction';
 		$this->load->helper('url');
 		if($this->session->has_userdata('adminId') && ($this->session->userdata('userRole') == 'admin' || $this->session->userdata('userRole') == 'financial')){
 			$this->load->view('HeaderNFooter/HeaderAdmin.php');
@@ -223,7 +223,7 @@ class Admin extends CI_Controller {
 	}
 	public function prodTransRecUpdate(){
 		// screen to open
-		$data['param'] ='transaction';
+		$data['param'] ='Transaction';
 		$this->form_validation->set_rules('statusProdTran', 'Status' ,'required');
 		// Helpers
 		$this->load->helper('url');
@@ -296,7 +296,7 @@ class Admin extends CI_Controller {
 	// update serviceTransaction Record Status
 	public function serviceTransactionUpdateRecord(){
 		// screen to open
-		$data['param'] ='transaction';
+		$data['param'] ='Transaction';
 		$this->form_validation->set_rules('serviceTrans_status', 'Status' ,'required');
 		// Helpers
 		$this->load->helper('url');
@@ -331,7 +331,7 @@ class Admin extends CI_Controller {
 
 	public function ping()
 	{
-		$data['param'] = 'ping';
+		$data['param'] = 'Ping';
 		$this->load->helper('url');
 		if($this->session->has_userdata('adminId') && ($this->session->userdata('userRole') == 'admin' || $this->session->userdata('userRole') == 'support')){
 			$this->load->view('HeaderNFooter/HeaderAdmin.php');
@@ -394,7 +394,7 @@ class Admin extends CI_Controller {
 	// update ping record
 	public function updatePingRecord(){
 		// screen to open
-		$data['param'] ='ping';
+		$data['param'] ='Ping';
 		$this->form_validation->set_rules('pingStatusField', 'Status' ,'required');
 		// Helpers
 		$this->load->helper('url');
@@ -459,7 +459,7 @@ class Admin extends CI_Controller {
 
 	public function support()
 	{
-		$data['param'] ='support';
+		$data['param'] ='Support';
 		$data['totalTicket'] = $this->Support_model->countTotal();
 		$data['totalOpen'] = $this->Support_model->countOpen();
 		$data['totalClose'] = $this->Support_model->countClose();
@@ -522,7 +522,7 @@ class Admin extends CI_Controller {
 	// update support record
 	public function updateSupportRecord(){
 		// screen to open
-		$data['param'] ='support';
+		$data['param'] ='Support';
 		$data['totalTicket'] = $this->Support_model->countTotal();
 		$data['totalOpen'] = $this->Support_model->countOpen();
 		$data['totalClose'] = $this->Support_model->countClose();
@@ -576,7 +576,7 @@ class Admin extends CI_Controller {
 			$this->form_validation->set_rules('userEmail', 'Email' ,'required');
 		}
 		// view to to open
-		$data['param'] ='userManagement';
+		$data['param'] ='UserManagement';
 		// helper
 		$this->load->helper('url');
 		// store data
@@ -718,7 +718,7 @@ class Admin extends CI_Controller {
 
 	public function financialAssistance()
 	{
-		$data['param'] ='financialAssistance';
+		$data['param'] ='FinancialAssistance';
 		// Helpers
 		$this->load->helper('url');
 		//Form Validation
@@ -822,7 +822,7 @@ class Admin extends CI_Controller {
 	public function updateFACompanyRecord()
 	{
 		// screen to open
-		$data['param'] ='financialAssistance';
+		$data['param'] ='FinancialAssistance';
 		// Helpers
 		$this->load->helper('url');
 		// form validations
@@ -1054,7 +1054,7 @@ class Admin extends CI_Controller {
 	// update Loan Record Status
 	public function loanUpdateRecord(){
 		// screen to open
-		$data['param'] ='financialAssistance';
+		$data['param'] ='FinancialAssistance';
 		$this->form_validation->set_rules('loan_status', 'Status' ,'required');
 		// Helpers
 		$this->load->helper('url');
@@ -1362,7 +1362,7 @@ class Admin extends CI_Controller {
 	public function servicesInventory()
 	{
 		// Screen to open
-		$data['param'] ='servicesInventory';
+		$data['param'] ='ServicesInventory';
 
 		//Form Validation
 		$this->form_validation->set_rules('serviceTitle', 'Title' ,'required|max_length[30]');
@@ -1429,7 +1429,7 @@ class Admin extends CI_Controller {
 	public function updateServicesInventoryRecord()
 	{
 		// screen to open
-		$data['param'] ='servicesInventory';
+		$data['param'] ='ServicesInventory';
 		$this->form_validation->set_rules('serviceTitle', 'Title' ,'required|max_length[30]');
 		$this->form_validation->set_rules('serviceDesc', 'Description' ,'required|max_length[255]');
 		$this->form_validation->set_rules('servicePrice', 'Price' ,'required|max_length[30]');
