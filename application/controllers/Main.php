@@ -202,13 +202,13 @@ class Main extends CI_Controller {
 				$this->load->library('email');
 				
 				$config = array();
-				$config['protocol'] = 'smtp';
+				$config['protocol'] = 'SMTP';
 				$config['smtp_host'] = 'ssl://smtp.gmail.com';
 				$config['smtp_user'] = 'odmsenterprise@gmail.com';
 				$config['smtp_pass'] = 'Thisismypassword123!';
 				$config['smtp_port'] = 465;
-				$config['crlf'] = '\R\N';
-				$config['newline'] = '\R\N';
+				$config['crlf'] = '\r\n';
+				$config['newline'] = '\r\n';
 				$config['mailtype'] = "HTML";
 				$config['smtp_timeout'] = '60';
 
