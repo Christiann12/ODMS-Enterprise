@@ -9,7 +9,7 @@ class Main extends CI_Controller {
 		date_default_timezone_set('Asia/Singapore');
 		$this->load->model('inventory_model');
 		$this->load->model('Cart_model');
-		$this->load->model('ping_model');
+		$this->load->model('Ping_model');
 		$this->load->model('Support_model');
 		$this->load->model('FACompanies_model');
 		$this->load->model('Srvcsinventory_model');
