@@ -156,6 +156,25 @@ class Admin extends CI_Controller {
 			redirect('login');
 		}
 	}
+
+	public function topProductsAjax() {
+		//helpers
+		$this->load->helper('url');
+		//load query
+		$list = $this->prodtransaction_model->getTopProduct($this->input->post('txtSearch'));
+		$json_data['data'] = $list;
+		echo json_encode($json_data);
+	}
+
+	public function topServicesAjax() {
+		//helpers
+		$this->load->helper('url');
+		//load query
+		$list = $this->serviceTransaction_model->getTopService($this->input->post('txtSearch'));
+		$json_data['data'] = $list;
+		echo json_encode($json_data);
+	}
+	
 	public function transaction()
 	{
 		$data['param'] ='transaction';
@@ -339,6 +358,10 @@ class Admin extends CI_Controller {
 			$row = array();
 			$row[] = $no;
 			$row[] = $ping->pingId;
+			$row[] = $ping->firstName;
+			$row[] = $ping->lastName;
+			$row[] = $ping->emailAddress;
+			$row[] = $ping->contactNum;
 			$row[] = $ping->locationcode;
 			$row[] = $ping->note;
 			$row[] = $ping->status;
@@ -398,6 +421,42 @@ class Admin extends CI_Controller {
 			$this->load->view('HeaderNFooter/FooterAdmin.php');
 		}
 	}
+
+	public function sendPingResponseToClient() { 
+		$data['pingData'] = $this->ping_model->getPingDataById($this->uri->segment(3));
+
+		// -------------- SEND EMAIL -------------- // 
+		$this->load->library('email');
+										
+		$config = array();
+		$config['protocol'] = 'smtp';
+		$config['smtp_host'] = 'ssl://smtp.gmail.com';
+		$config['smtp_user'] = 'odmsenterprise@gmail.com';
+		$config['smtp_pass'] = 'Thisismypassword123!';
+		$config['smtp_port'] = 465;
+		$config['crlf'] = '\r\n';
+		$config['newline'] = '\r\n';
+		$config['mailtype'] = "html";
+		$config['smtp_timeout'] = '60';
+
+		$this->email->initialize($config);
+		$this->email->set_newline("\r\n");  
+
+		$this->email->to($data['pingData']->emailAddress);
+		$this->email->from('odmsenterprise@gmail.com');
+		$this->email->subject('ODMS Enterprise response to your Ping');
+
+		$body = $this->load->view('EmailTemplates/PingResponseTemp.php',$data,TRUE);
+		$this->email->message($body);
+
+		$this->email->send();
+		
+		$this->load->view('HeaderNFooter/HeaderAdmin.php');
+		$this->load->view('AdminPages/AcknowledgeClientPing.php', $data);
+		$this->load->view('HeaderNFooter/FooterAdmin.php');
+		
+	}
+
 	public function support()
 	{
 		$data['param'] ='support';

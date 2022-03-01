@@ -238,13 +238,13 @@
               <tr>
                 <td style="text-align:center; margin:0 auto;">
                     <div>
-                    <br>
-                      <center>
-                      <a href="<?php echo base_url('admin/acceptFA/'.$content->loanId.'') ?>"
-                        style="background-color:green;color:#ffffff;display:inline-block;font-family:'Source Sans Pro', Helvetica, Arial, sans-serif;font-size:18px;font-weight:400;line-height:45px;text-align:center;text-decoration:none;width:220px;-webkit-text-size-adjust:none;">Approve</a>
-                        <a href="<?php echo base_url('admin/rejectFA/'.$content->loanId.'') ?>"
-                        style="background-color:#f5774e;color:#ffffff;display:inline-block;font-family:'Source Sans Pro', Helvetica, Arial, sans-serif;font-size:18px;font-weight:400;line-height:45px;text-align:center;text-decoration:none;width:220px;-webkit-text-size-adjust:none;">Reject</a>
-                      </center>
+                      <br>
+                        <center>
+                        <a href="<?php echo base_url('admin/acceptFA/'.$content->loanId.'') ?>"
+                          style="background-color:green;color:#ffffff;display:inline-block;font-family:'Source Sans Pro', Helvetica, Arial, sans-serif;font-size:18px;font-weight:400;line-height:45px;text-align:center;text-decoration:none;width:220px;-webkit-text-size-adjust:none;">Approve</a>
+                          <a href="<?php echo base_url('admin/rejectFA/'.$content->loanId.'') ?>"
+                          style="background-color:#f5774e;color:#ffffff;display:inline-block;font-family:'Source Sans Pro', Helvetica, Arial, sans-serif;font-size:18px;font-weight:400;line-height:45px;text-align:center;text-decoration:none;width:220px;-webkit-text-size-adjust:none;">Reject</a>
+                        </center>
                       <br>
                     </div>
                 </td>

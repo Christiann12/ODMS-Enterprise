@@ -147,17 +147,34 @@ class Main extends CI_Controller {
 		$this->load->view('ClientPages/ping.php');
 		$this->load->view('HeaderNFooter/Footer.php');
 	}
+	
 	public function savePingInfo(){
 		// validations
+		$this->form_validation->set_rules('firstName', 'First Name' ,'required|max_length[50]');
+		$this->form_validation->set_rules('lastName', 'Last Name' ,'required|max_length[50]');
+		$this->form_validation->set_rules('emailAddress', 'Email' ,'required|max_length[100]');
+		$this->form_validation->set_rules('contactNum', 'Contact No.' ,'required|max_length[20]');
 		$this->form_validation->set_rules('locationCode', 'Location Code' ,'required|max_length[30]');
 		$this->form_validation->set_rules('emergencyNote', 'Emergency Note' ,'max_length[255]');
 		// $this->form_validation->set_rules('siteLocation', 'Site Location' ,'required');
 		$this->load->helper('url');
 		// get data 
+		$pingId = "PING-".$this->randStrGen(2,7);
+		$firstName = $this->input->post('firstName');
+		$lastName = $this->input->post('lastName');
+		$email = $this->input->post('emailAddress');
+		$contactNum = $this->input->post('contactNum');
+		$locationCode = $this->input->post('locationCode');
+		$emergencyNote = $this->input->post('emergencyNote');
+
 		$data['document'] = (object)$postData = array( 
-			'pingId' => "PING-".$this->randStrGen(2,7),
-            'locationcode' => $this->input->post('locationCode'),
-			'note' => $this->input->post('emergencyNote'),
+			'pingId' => $pingId,
+			'firstName' => $firstName,
+			'lastName' => $lastName,
+			'emailAddress' => $email,
+			'contactNum' => $contactNum,
+            'locationcode' => $locationCode,
+			'note' => $emergencyNote,
 			'status' => 'Active',
 			'createDate' => date('Y-m-d')
         );
@@ -182,29 +199,38 @@ class Main extends CI_Controller {
 				// }
 
 				// -------------- SEND EMAIL -------------- // 
-				// $this->load->library('email');
+				$this->load->library('email');
 				
-				// $config = array();
-				// $config['protocol'] = 'smtp';
-				// $config['smtp_host'] = 'ssl://smtp.gmail.com';
-				// $config['smtp_user'] = 'odmsenterprise@gmail.com';
-				// $config['smtp_pass'] = 'Thisismypassword123!';
-				// $config['smtp_port'] = 465;
-				// $config['crlf'] = '\r\n';
-				// $config['newline'] = '\r\n';
-				// $config['mailtype'] = "html";
+				$config = array();
+				$config['protocol'] = 'smtp';
+				$config['smtp_host'] = 'ssl://smtp.gmail.com';
+				$config['smtp_user'] = 'odmsenterprise@gmail.com';
+				$config['smtp_pass'] = 'Thisismypassword123!';
+				$config['smtp_port'] = 465;
+				$config['crlf'] = '\r\n';
+				$config['newline'] = '\r\n';
+				$config['mailtype'] = "html";
+				$config['smtp_timeout'] = '60';
 
-				// $this->email->initialize($config);
-				// $this->email->set_newline("\r\n");  
+				$this->email->initialize($config);
+				$this->email->set_newline("\r\n");  
+				$this->email->to('odmsenterprise@gmail.com');
+				$this->email->from('odmsenterprise@gmail.com');
+				$this->email->subject('A client sent a Ping!');
 
-				// $this->email->to('isaiahlumod1827@gmail.com');
-				// $this->email->from('odmsenterprise@gmail.com');
-				// $this->email->subject('qweqwe');
-				// $data['test'] = 'test';
-				// $body = $this->load->view('AdminPages/Email_template.php',$data,TRUE);
-				// $this->email->message($body);
+				$emailInfo['pingId'] = $pingId;
+				$emailInfo['firstName'] = $firstName;
+				$emailInfo['lastName'] = $lastName;
+				$emailInfo['email'] = $email;
+				$emailInfo['contactNum'] = $contactNum;
+				$emailInfo['locationCode'] = $locationCode;
+				$emailInfo['emergencyNote'] = $emergencyNote;
+				$emailInfo['createDate'] = date('Y-m-d');
+				$emailInfo['content'] = $this->db->select('*')->where('pingId',$pingId)->get('pingdetail')->result();
+				$body = $this->load->view('EmailTemplates/PingEmailTemp.php',$emailInfo,TRUE);
+				$this->email->message($body);
 
-				// $this->email->send();
+				$this->email->send();
 				
 			}
 			else{
@@ -225,19 +251,60 @@ class Main extends CI_Controller {
 		$this->form_validation->set_rules('faqemail', 'Email' ,'required|max_length[50]');
 		$this->form_validation->set_rules('faqqst', 'Concern' ,'required|max_length[255]');
 		$this->load->helper('url');
+
+		$supportId = "SUP-".$this->randStrGen(2,7);
+		$firstName = $this->input->post('faqfname');
+		$lastName = $this->input->post('faqlname');
+		$email = $this->input->post('faqemail');
+		$supportMessage = $this->input->post('faqqst');
+		$status = 'Active';
+		$createDate = date('Y-m-d');
+
 		// get data 
 		$data['document'] = (object)$postData = array( 
-			'supportId' => "SUP-".$this->randStrGen(2,7),
-			'firstname' => $this->input->post('faqfname'),
-			'lastname' => $this->input->post('faqlname'),
-			'email' => $this->input->post('faqemail'),
-			'supportMessage' => $this->input->post('faqqst'),
-			'status' => 'Active',
-			'createDate' => date('Y-m-d'),
+			'supportId' => $supportId,
+			'firstname' => $firstName,
+			'lastname' => $lastName,
+			'email' => $email,
+			'supportMessage' => $supportMessage,
+			'status' => $status,
+			'createDate' => $createDate,
 		);
+
 		// store data 
 		if($this->form_validation->run() === true){
 			if($this->support_model->create($postData)){
+
+				// -------------- SEND EMAIL -------------- // 
+				$this->load->library('email');
+				
+				$config = array();
+				$config['protocol'] = 'smtp';
+				$config['smtp_host'] = 'ssl://smtp.gmail.com';
+				$config['smtp_user'] = 'odmsenterprise@gmail.com';
+				$config['smtp_pass'] = 'Thisismypassword123!';
+				$config['smtp_port'] = 465;
+				$config['crlf'] = '\r\n';
+				$config['newline'] = '\r\n';
+				$config['mailtype'] = "html";
+				$config['smtp_timeout'] = '60';
+
+				$this->email->initialize($config);
+				$this->email->set_newline("\r\n");  
+				$this->email->to($this->input->post('faqemail'));
+				$this->email->from('odmsenterprise@gmail.com');
+				$this->email->subject('Your support ticket with ODMS Enterprise');
+
+				$emailInfo['supportId'] = $supportId;
+				$emailInfo['firstName'] = $firstName;
+				$emailInfo['lastName'] = $lastName;
+				$emailInfo['createDate'] = $createDate;
+				$emailInfo['content'] = $this->db->select('*')->where('supportId',$supportId)->get('supportdetail')->result();
+				$body = $this->load->view('EmailTemplates/SupportEmailTemp.php',$emailInfo,TRUE);
+				$this->email->message($body);
+
+				$this->email->send();
+
 				$this->session->set_flashdata('success','Sent Successfully');
 			}
 			else{
@@ -365,6 +432,7 @@ class Main extends CI_Controller {
 		$this->load->view('ClientPages/ServicesOrderSuccess.php');
 		$this->load->view('HeaderNFooter/Footer.php');
 	}
+
 	public function products(){
 		// helper
 		$this->load->helper('url');
@@ -447,32 +515,33 @@ class Main extends CI_Controller {
 					
 					}
 
-						// -------------- SEND EMAIL -------------- // 
-						$this->load->library('email');
-						
-						$config = array();
-						$config['protocol'] = 'smtp';
-						$config['smtp_host'] = 'ssl://smtp.gmail.com';
-						$config['smtp_user'] = 'odmsenterprise@gmail.com';
-						$config['smtp_pass'] = 'Thisismypassword123!';
-						$config['smtp_port'] = 465;
-						$config['crlf'] = '\r\n';
-						$config['newline'] = '\r\n';
-						$config['mailtype'] = "html";
+					// -------------- SEND EMAIL -------------- // 
+					$this->load->library('email');
+					
+					$config = array();
+					$config['protocol'] = 'smtp';
+					$config['smtp_host'] = 'ssl://smtp.gmail.com';
+					$config['smtp_user'] = 'odmsenterprise@gmail.com';
+					$config['smtp_pass'] = 'Thisismypassword123!';
+					$config['smtp_port'] = 465;
+					$config['crlf'] = '\r\n';
+					$config['newline'] = '\r\n';
+					$config['mailtype'] = "html";
+					$config['smtp_timeout'] = '60';
 
-						$this->email->initialize($config);
-						$this->email->set_newline("\r\n");  
+					$this->email->initialize($config);
+					$this->email->set_newline("\r\n");  
 
-						$this->email->to($this->input->post('emailAddress'));
-						$this->email->from('odmsenterprise@gmail.com');
-						$this->email->subject('Transaction No.' . $tranId);
-						$emailInfo['tranId'] = $tranId;
-						$emailInfo['createDate'] = date('Y-m-d');
-						$emailInfo['content'] = $this->db->select('*')->where('transactionId',$tranId)->get('prodtransaction')->result();;
-						$body = $this->load->view('EmailTemplates/ProdTranEmailTemp.php',$emailInfo,TRUE);
-						$this->email->message($body);
+					$this->email->to($this->input->post('emailAddress'));
+					$this->email->from('odmsenterprise@gmail.com');
+					$this->email->subject('Transaction No.' . $tranId);
+					$emailInfo['tranId'] = $tranId;
+					$emailInfo['createDate'] = date('Y-m-d');
+					$emailInfo['content'] = $this->db->select('*')->where('transactionId',$tranId)->get('prodtransaction')->result();;
+					$body = $this->load->view('EmailTemplates/ProdTranEmailTemp.php',$emailInfo,TRUE);
+					$this->email->message($body);
 
-						$this->email->send();
+					$this->email->send();
 					// $list = $this->inventory_model->getStock();
 					$this->session->set_flashdata('success','Send Success');
 				}
@@ -480,7 +549,7 @@ class Main extends CI_Controller {
 					$this->session->set_flashdata('error','Send Failed');
 				}
 			}
-			redirect('products');
+			redirect('productOrderSuccess');
 		}
 		else{
 			$this->load->view('HeaderNFooter/Header.php');
@@ -562,6 +631,14 @@ class Main extends CI_Controller {
 		}
 		redirect('products');
 	}
+
+	public function productOrderSuccess(){
+		$this->load->helper('url');
+		$this->load->view('HeaderNFooter/Header.php');
+		$this->load->view('ClientPages/prodOrdSuccess.php');
+		$this->load->view('HeaderNFooter/Footer.php');
+	}
+
 	public function randStrGen($mode = null, $len = null){
         $result = "";
         if($mode == 1):

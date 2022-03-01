@@ -104,34 +104,6 @@
 
 			})
 		</script>
-
-		<!-- FA Loan Script -->
-		<!-- <script>
-			$(document).ready(function(){
- 
-				$('#fASelectCompany').change(function(){ 
-					var id=$(this).val();
-					$.ajax({
-						url : "<?php echo base_url('main/saveLoanDetails');?>",
-						method : "POST",
-						data : {id: id},
-						async : true,
-						dataType : 'json',
-						success: function(data){
-							var html = '';
-							var i;
-							for(i=0; i<data.length; i++){
-								html += '<option value='+data[i].companyId+'>'+data[i].companyId+'</option>';
-							}
-							$('#fACompanyId').html(html);
-
-						}
-					});
-					return false;
-				}); 
-				
-			});
-		</script> -->
 		
 	</body>
 </html>

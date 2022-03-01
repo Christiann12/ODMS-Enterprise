@@ -4,7 +4,7 @@ class fACompanies_model extends CI_Model {
     //global variable for table name
     private $table = "fa_companies";
     //column order basis
-    var $column_order = array(null,'companyId','companyImg','companyName','companyDesc','companyContactNum','companyEmail'); //set column field database for datatable orderable
+    var $column_order = array(null,'companyId','companyName','companyDesc','companyContactNum','companyEmail'); //set column field database for datatable orderable
     //default column order
     var $order = array('fa_companies.companyId' => 'asc');
 

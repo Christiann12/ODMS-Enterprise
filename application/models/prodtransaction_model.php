@@ -233,4 +233,8 @@ class Prodtransaction_model extends CI_Model {
             return $count2 / $total;
         }
     }
+
+    public function getTopProduct($txtSearch = null){   
+        return $this->db->select('productId, COUNT(productId) as count, productTitle')->group_by('productId')->order_by('count','DESC')->get($this->table)->result();
+    }
 }

@@ -120,5 +120,6 @@ class srvcsinventory_model extends CI_Model {
     //search table per id
     public function getServiceInvDataById($id = null){
         return $this->db->select("*")->from($this->table)->where('serviceId',$id)->get()->row();
-    }    
+    }
+       
 }

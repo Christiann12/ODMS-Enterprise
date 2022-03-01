@@ -5,7 +5,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-lg" role="document">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title" id="updateModal">Update Status</h5>
+            <h5 class="modal-title" id="updateModal">Update Ticket Status</h5>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
             </button>
@@ -13,13 +13,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="modal-body" style="word-wrap: break-word;">
             <?php echo form_open_multipart('admin/updateSupportRecord') ?>
             <div class="form-group row d-flex justify-content-around">
-                <label for="supportIdField" class="col-3 ">Ping ID</label>
+                <label for="supportIdField" class="col-3 ">Support ID</label>
                 <div class="col-9">
                     <input name="supportIdField"  type="text" class="form-control" id="supportIdField" placeholder="Input Product Id" value="" readonly>
                 </div>
             </div>
             <div class="form-group row d-flex justify-content-around">
-                <label for="supportStatusField" class="col-3 ">Ping Status<i class="text-danger">*</i></label>
+                <label for="supportStatusField" class="col-3 ">Ticket Status<i class="text-danger">*</i></label>
                    <div class="col-9">
                     <?php
                             $status = array(
@@ -84,7 +84,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             </div>
                             <div class="totalTicketColTextDiv col-lg-6 col-md-6 col-sm-12" >
                                 <center>
-                                    <p class="totalTicketNumText"><?php echo $totalOpen ?></p>
+                                    <p class="totalTicketNumText"><?php echo $totalTicket ?></p>
                                     <p class="totalTicketText">Total Tickets</p>
                                 </center>
                                 
@@ -170,7 +170,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <th>Support Id</th>
                     <th>Message</th>
                     <th>Status</th>
-                    <th>email</th>
+                    <th>Email</th>
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Action</th>

@@ -10,107 +10,130 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <button style="color: white;" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1" class="btn btn-warning ml-auto">Notification (<?php echo $notifCount; ?>)</button>
         <div class="collapse multi-collapse"> 
             <div class="card" style="background-color: #F3F3F3 ; border-radius: 20px 0px 20px 20px">
-                <div class="chartsSection" style=" <?php echo (!empty($supportNotif)? null: 'display: none;')?>">
-                    <div class="chartsDiv row">
-                        <div class="chartRow1 row col-12">
-                            <div class="charts1 col-lg-12">
-                                <div class="activeUsersChart card">
-                                    <div class="activeUsersChartDetails row">
-                                        <div class="activeUsersTextDiv">
-                                            <p class="chartText">Support Notification</p>
+                <div class="supportNotifSection" style=" <?php echo (!empty($supportNotif)? null: 'display: none;')?>">
+                    <div class="supportNotifDiv row" >
+                        <div class="supportNotifRow row col-12" >
+                            <div class="col-lg-12" style="margin-left: auto; margin-right: auto; padding-top: 10px; padding-bottom: 10px;">
+                                <div class="supportNotifCard card">
+                                    <div class="test row" >
+                                        <div style="padding: auto; ">
+                                            <div class="supportNotifIconDiv" >
+                                                <i class="fa fa-2x fa-user " style="position: absolute; margin-left: 20px; margin-right: 20px; margin-top: 15px; margin-bottom: 15px; color: white;"></i>
+                                            </div>
                                         </div>
-                                        <div class="activeUsersIconDiv">
-                                            <i class="chartIcons fa fa-exclamation fa-3x" aria-hidden="true"></i>
+                                        
+                                        <div class="supportNotifDetails">
+                                            <div class="test2 row" >
+                                                <div class="supportNotifTextDiv col-12" >
+                                                    <p class="notifHeading">Support Notice Board</p>
+                                                </div>
+                                                <div class="supportNotifTextDiv col-12" style="">
+                                                    <p class="notifText" >These tickets are still unresolved:
+                                                        <?php
+                                                            $counter = 0;
+                                                            $length = count($supportNotif);
+                                                            foreach($supportNotif as $list){
+                                                                if($counter === $length-1){
+                                                                    echo $list->supportId.'.';
+                                                                }
+                                                                else {
+                                                                    echo $list->supportId.', ';
+                                                                }
+                                                                $counter++;
+                                                            }
+                                                        ?>
+                                                    </p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <center>
-                                        <h4>These tickets are still unresolved:
-                                            <?php
-                                                $counter = 0;
-                                                $length = count($supportNotif);
-                                                foreach($supportNotif as $list){
-                                                    if($counter === $length-1){
-                                                        echo $list->supportId.'.';
-                                                    }
-                                                    else {
-                                                        echo $list->supportId.', ';
-                                                    }
-                                                    $counter++;
-                                                }
-                                            ?>
-                                        </h4>
-                                    </center>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="chartsSection" style=" <?php echo (!empty($pingNotif)? null: 'display: none;')?>">
-                    <div class="chartsDiv row">
-                        <div class="chartRow1 row col-12">
-                            <div class="charts1 col-lg-12">
-                                <div class="activeUsersChart card">
-                                    <div class="activeUsersChartDetails row">
-                                        <div class="activeUsersTextDiv">
-                                            <p class="chartText">Ping Notification</p>
+                <div class="supportNotifSection" style=" <?php echo (!empty($supportNotif)? null: 'display: none;')?>">
+                    <div class="supportNotifDiv row" >
+                        <div class="supportNotifRow row col-12" >
+                            <div class="col-lg-12" style="margin-left: auto; margin-right: auto; padding-top: 10px; padding-bottom: 10px;">
+                                <div class="supportNotifCard card">
+                                    <div class="test row" >
+                                        <div style="padding: auto; ">
+                                            <div class="supportNotifIconDiv" >
+                                                <i class="fa fa-2x fa-bell " style="position: absolute; margin-left: 20px; margin-right: 20px; margin-top: 15px; margin-bottom: 15px; color: white;"></i>
+                                            </div>
                                         </div>
-                                        <div class="activeUsersIconDiv">
-                                            <i class="chartIcons fa fa-exclamation fa-3x" aria-hidden="true"></i>
+                                        
+                                        <div class="supportNotifDetails">
+                                            <div class="test2 row" >
+                                                <div class="supportNotifTextDiv col-12" >
+                                                    <p class="notifHeading">Ping Notice Board</p>
+                                                </div>
+                                                <div class="supportNotifTextDiv col-12" style="">
+                                                    <p class="notifText">Emergencies that needs to be resolved:
+                                                        <?php
+                                                            $counter = 0;
+                                                            $length = count($pingNotif);
+                                                            foreach($pingNotif as $list){
+                                                                if($counter === $length-1){
+                                                                    echo $list->pingId.'.';
+                                                                }
+                                                                else {
+                                                                    echo $list->pingId.', ';
+                                                                }
+                                                                $counter++;
+                                                            }
+                                                        ?> <a href="<?php echo base_url('admin/ping') ?>">Click Here</a>
+                                                        to redirect to ping module.
+                                                    </p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <center>
-                                        <h4>Emergencies that needs to be resolved:
-                                            <?php
-                                                $counter = 0;
-                                                $length = count($pingNotif);
-                                                foreach($pingNotif as $list){
-                                                    if($counter === $length-1){
-                                                        echo $list->pingId.'.';
-                                                    }
-                                                    else {
-                                                        echo $list->pingId.', ';
-                                                    }
-                                                    $counter++;
-                                                }
-                                            ?> <a href="<?php echo base_url('admin/ping') ?>">Click Here</a>
-                                            to redirect to ping module.
-                                        </h4>
-                                    </center>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="chartsSection" style=" <?php echo (!empty($invNotif)? null: 'display: none;')?>">
-                    <div class="chartsDiv row">
-                        <div class="chartRow1 row col-12">
-                            <div class="charts1 col-lg-12">
-                                <div class="activeUsersChart card">
-                                    <div class="activeUsersChartDetails row">
-                                        <div class="activeUsersTextDiv">
-                                            <p class="chartText">Product Stock Notification</p>
+                <div class="supportNotifSection" style=" <?php echo (!empty($supportNotif)? null: 'display: none;')?>">
+                    <div class="supportNotifDiv row" >
+                        <div class="supportNotifRow row col-12" >
+                            <div class="col-lg-12" style="margin-left: auto; margin-right: auto; padding-top: 10px; padding-bottom: 10px;">
+                                <div class="supportNotifCard card">
+                                    <div class="test row" >
+                                        <div style="padding: auto; ">
+                                            <div class="supportNotifIconDiv" >
+                                                <i class="fa fa-2x fa-pencil-square " style="position: absolute; margin-left: 20px; margin-right: 20px; margin-top: 15px; margin-bottom: 15px; color: white;"></i>
+                                            </div>
                                         </div>
-                                        <div class="activeUsersIconDiv">
-                                            <i class="chartIcons fa fa-exclamation fa-3x" aria-hidden="true"></i>
+                                        
+                                        <div class="supportNotifDetails">
+                                            <div class="test2 row" >
+                                                <div class="supportNotifTextDiv col-12" >
+                                                    <p class="notifHeading">Product Stock Notice Board</p>
+                                                </div>
+                                                <div class="supportNotifTextDiv col-12" style="">
+                                                    <p class="notifText">These products are below 50 stock:
+                                                        <?php
+                                                            
+                                                            $counter = 0;
+                                                            $length = count($invNotif);
+                                                            foreach($invNotif as $list){
+                                                                if($counter === $length-1){
+                                                                    echo $list->productId.'('.$list->productTitle.')'.'. ';
+                                                                }
+                                                                else {
+                                                                    echo $list->productId.'('.$list->productTitle.')'.', ';
+                                                                }
+                                                                $counter++;
+                                                            }
+                                                        ?> 
+                                            
+                                                    </p>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
-                                    <center>
-                                        <h4>These products are below 50 stock:
-                                            <?php
-                                                $counter = 0;
-                                                $length = count($invNotif);
-                                                foreach($invNotif as $list){
-                                                    if($counter === $length-1){
-                                                        echo $list->productId.'('.$list->productTitle.')'.'. ';
-                                                    }
-                                                    else {
-                                                        echo $list->productId.'('.$list->productTitle.')'.', ';
-                                                    }
-                                                    $counter++;
-                                                }
-                                            ?> 
-                                        </h4>
-                                    </center>
                                 </div>
                             </div>
                         </div>
@@ -217,6 +240,59 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     <!-- charts --> 
     <div class="chartsSection">
+        <div class="topSellingTables row ">
+            <!-- top products -->
+            <div class="topProductsDiv col-12">
+                <div class="topProducts card">
+                    <div class="row">
+                        <h4>Top Selling Products</h4>
+                        <div class="topProductsIconDiv">
+                            <i class="chartIcons fa fa-archive fa-2x" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <table id="topProductsTable" class="display responsive nowrap cell-border hover" width="100%">
+                        <thead class="topProductsTableHeader">
+                            <tr>
+                                <th>Item Code</th>
+                                <th>Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <td>annyeong</td>
+                            <td>annyeong</td>
+                            <td>annyeong</td> -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- top services  -->
+            <div class="topServicesDiv col-12">
+                <div class="topServices card" style="padding: 10px;">
+                    <div class="row">
+                        <h4>Top Selling Services</h4>
+                        <div class="topServicesIconDiv">
+                            <i class="chartIcons fa fa-archive fa-2x" aria-hidden="true"></i>
+                        </div>
+                    </div>
+                    <table id="topServicesTable" class="display responsive nowrap cell-border hover" width="100%">
+                        <thead class="topServicesTableHeader">
+                            <tr>
+                                <th>Service Id</th>
+                                <th>Service Name</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- <td>annyeong</td>
+                            <td>annyeong</td>
+                            <td>annyeong</td> -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- entire charts div -->
         <div class="chartsDiv row">
             <div class="chartRow1 row col-12">
                 <div class="charts1 col-lg-6">
