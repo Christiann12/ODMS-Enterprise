@@ -332,7 +332,7 @@ class Main extends CI_Controller {
 		$data['srvcsInventoryRecord'] = $this->Srvcsinventory_model->getServiceInvData();
 
 		$this->load->view('HeaderNFooter/Header.php');
-		$this->load->view('ClientPages/services.php', $data);
+		$this->load->view('ClientPages/Services.php', $data);
 		$this->load->view('HeaderNFooter/Footer.php');
 	}
 	public function servicesOrder() {
