@@ -98,7 +98,7 @@ class Main extends CI_Controller {
 					$this->load->library('email');
 									
 					$config = array();
-					$config['protocol'] = 'SMTP';
+					$config['protocol'] = 'smtp';
 					$config['smtp_host'] = 'ssl://smtp.gmail.com';
 					$config['smtp_user'] = 'odmsenterprise@gmail.com';
 					$config['smtp_pass'] = 'Thisismypassword123!';
@@ -281,7 +281,7 @@ class Main extends CI_Controller {
 				$this->load->library('email');
 				
 				$config = array();
-				$config['protocol'] = 'SMTP';
+				$config['protocol'] = 'smtp';
 				$config['smtp_host'] = 'ssl://smtp.gmail.com';
 				$config['smtp_user'] = 'odmsenterprise@gmail.com';
 				$config['smtp_pass'] = 'Thisismypassword123!';
@@ -389,7 +389,7 @@ class Main extends CI_Controller {
 				$this->load->library('email');
 								
 				$config = array();
-				$config['protocol'] = 'SMTP';
+				$config['protocol'] = 'smtp';
 				$config['smtp_host'] = 'ssl://smtp.gmail.com';
 				$config['smtp_user'] = 'odmsenterprise@gmail.com';
 				$config['smtp_pass'] = 'Thisismypassword123!';
@@ -522,7 +522,7 @@ class Main extends CI_Controller {
 					$this->load->library('email');
 					
 					$config = array();
-					$config['protocol'] = 'SMTP';
+					$config['protocol'] = 'smtp';
 					$config['smtp_host'] = 'ssl://smtp.gmail.com';
 					$config['smtp_user'] = 'odmsenterprise@gmail.com';
 					$config['smtp_pass'] = 'Thisismypassword123!';
