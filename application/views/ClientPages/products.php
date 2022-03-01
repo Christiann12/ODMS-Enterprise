@@ -78,7 +78,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   
 </div>
 <div class="bannerProducts row">
-    <div class="bannerimageProducts" style="background-image: url('<?php echo base_url(); ?>application/assets/images/ClientPagesImages/poles_edited.jpg');"></div>
+    <div class="bannerimageProducts" style="background-image: url('<?php echo base_url(); ?>application/assets/images/ClientPagesImages/poles_edited.JPG');"></div>
     <div class="col-12 col-md-6 productsBannerLeftPanel"> 
       <p class="aboutText">ABOUT</p>
       <p class="welightText">We Light Up Your Life</p>
@@ -388,7 +388,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </div>
     
     <!-- Product Form Section -->
-    <div class="orderProdCol col-xl-6 col-l-6 col-md-12 col-sm-12 border-0" style="background-image: url('<?php echo base_url(); ?>application/assets/images/ClientPagesImages/poles_edited.jpg'); <?php echo ((validation_errors()) ? "overflow-y: auto;" : null)?>">
+    <div class="orderProdCol col-xl-6 col-l-6 col-md-12 col-sm-12 border-0" style="background-image: url('<?php echo base_url(); ?>application/assets/images/ClientPagesImages/poles_edited.JPG'); <?php echo ((validation_errors()) ? "overflow-y: auto;" : null)?>">
       <div class="orderProdForm" style="">
         <div class="alert alert-danger print-error-msg" style="display: <?php echo ((validation_errors() == '' || validation_errors() == null) ? "none;" : "block;")?>">
             <?php echo validation_errors(); ?>

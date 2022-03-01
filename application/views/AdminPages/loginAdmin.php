@@ -21,7 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     </head>
 
     <body>
-        <div class="loginbg container-fluid pt-5" style="background-image: url('<?php echo base_url(); ?>application/assets/images/ClientPagesImages/loginBg.jpg');">
+        <div class="loginbg container-fluid pt-5" style="background-image: url('<?php echo base_url(); ?>application/assets/images/ClientPagesImages/loginBg.JPG');">
             <div class="container loginAdmin">
                 <div class="row">
                     <div class="col-md-4 col-xs-12">
