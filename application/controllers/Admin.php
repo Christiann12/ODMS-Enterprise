@@ -177,7 +177,7 @@ class Admin extends CI_Controller {
 	
 	public function transaction()
 	{
-		$data['param'] ='Transaction';
+		$data['param'] ='transaction';
 		$this->load->helper('url');
 		if($this->session->has_userdata('adminId') && ($this->session->userdata('userRole') == 'admin' || $this->session->userdata('userRole') == 'financial')){
 			$this->load->view('HeaderNFooter/HeaderAdmin.php');
@@ -459,7 +459,7 @@ class Admin extends CI_Controller {
 
 	public function support()
 	{
-		$data['param'] ='Support';
+		$data['param'] ='support';
 		$data['totalTicket'] = $this->Support_model->countTotal();
 		$data['totalOpen'] = $this->Support_model->countOpen();
 		$data['totalClose'] = $this->Support_model->countClose();
