@@ -35,7 +35,7 @@ class Main extends CI_Controller {
 	public function fa(){
 		$this->load->helper('url');
 
-		$data['fACompanyRecord'] = $this->fACompanies_model->getFACompanyData();
+		$data['fACompanyRecord'] = $this->FACompanies_model->getFACompanyData();
 		// $fa_company_id = $this->fACompanies->getFACompanyDataById($companyId);
 
 		$this->load->view('HeaderNFooter/Header.php');
