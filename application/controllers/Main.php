@@ -206,7 +206,7 @@ class Main extends CI_Controller {
 				$config['smtp_host'] = 'ssl://smtp.gmail.com';
 				$config['smtp_user'] = 'odmsenterprise@gmail.com';
 				$config['smtp_pass'] = 'Thisismypassword123!';
-				$config['smtp_port'] = 587;
+				$config['smtp_port'] = 465;
 				$config['crlf'] = '\r\n';
 				$config['newline'] = '\r\n';
 				$config['mailtype'] = "HTML";
