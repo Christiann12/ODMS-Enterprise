@@ -7,21 +7,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <div class="dashboardSection">
     <!-- notifications -->
     <div class="card m-5 border-0" style="background-color: #E5E5E5;">
-        <button style="color: white;" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1" class="btn btn-warning ml-auto">Notification (<?php echo $notifCount; ?>)</button>
+        <button style="color: white;" type="button" data-toggle="collapse" data-target=".multi-collapse" aria-expanded="false" aria-controls="multiCollapseExample1" class="btn btn-warning ml-auto">Notice Board (<?php echo $notifCount; ?>)</button>
         <div class="collapse multi-collapse"> 
-            <div class="card" style="background-color: #F3F3F3 ; border-radius: 20px 0px 20px 20px">
-                <div class="supportNotifSection" style=" <?php echo (!empty($supportNotif)? null: 'display: none;')?>">
-                    <div class="supportNotifDiv row" >
-                        <div class="supportNotifRow row col-12" >
+            <div class="row" style="background-color: #F3F3F3; width: 100%; height: auto; margin: auto; border-radius: 20px 0px 20px 20px">
+                <!-- support notif section -->
+                <div class="supportNotifSection col-lg-4 col-md-12 col-sm-12" style=" <?php echo (!empty($supportNotif)? null: 'display: none;')?>">
+                    <div class="notifDiv row" >
+                        <div class="notifRow row col-12" >
                             <div class="col-lg-12" style="margin-left: auto; margin-right: auto; padding-top: 10px; padding-bottom: 10px;">
                                 <div class="supportNotifCard card">
                                     <div class="test row" >
-                                        <div style="padding: auto; ">
+                                        <div style="width: 100%; height: auto; padding: auto;">
                                             <div class="supportNotifIconDiv" >
-                                                <i class="fa fa-2x fa-user " style="position: absolute; margin-left: 20px; margin-right: 20px; margin-top: 15px; margin-bottom: 15px; color: white;"></i>
+                                                <i class="notifIcon fa fa-2x fa-user "></i>
                                             </div>
                                         </div>
-                                        
                                         <div class="supportNotifDetails">
                                             <div class="test2 row" >
                                                 <div class="supportNotifTextDiv col-12" >
@@ -29,19 +29,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                 </div>
                                                 <div class="supportNotifTextDiv col-12" style="">
                                                     <p class="notifText" >These tickets are still unresolved:
-                                                        <?php
-                                                            $counter = 0;
-                                                            $length = count($supportNotif);
-                                                            foreach($supportNotif as $list){
-                                                                if($counter === $length-1){
-                                                                    echo $list->supportId.'.';
+                                                        <ul>
+                                                            <?php
+                                                                $counter = 0;
+                                                                $length = count($supportNotif);
+                                                                foreach($supportNotif as $list){
+                                                                    if($counter === $length-1){
+                                                                        echo '<li>'.$list->supportId.'</li>';
+                                                                    }
+                                                                    else {
+                                                                        echo '<li>'.$list->supportId.', </li>';
+                                                                    }
+                                                                    $counter++;
                                                                 }
-                                                                else {
-                                                                    echo $list->supportId.', ';
-                                                                }
-                                                                $counter++;
-                                                            }
-                                                        ?>
+                                                            ?>
+                                                        </ul>
+                                                        
                                                     </p>
                                                 </div>
                                             </div>
@@ -52,41 +55,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                     </div>
                 </div>
-                <div class="supportNotifSection" style=" <?php echo (!empty($supportNotif)? null: 'display: none;')?>">
-                    <div class="supportNotifDiv row" >
-                        <div class="supportNotifRow row col-12" >
-                            <div class="col-lg-12" style="margin-left: auto; margin-right: auto; padding-top: 10px; padding-bottom: 10px;">
-                                <div class="supportNotifCard card">
-                                    <div class="test row" >
-                                        <div style="padding: auto; ">
-                                            <div class="supportNotifIconDiv" >
-                                                <i class="fa fa-2x fa-bell " style="position: absolute; margin-left: 20px; margin-right: 20px; margin-top: 15px; margin-bottom: 15px; color: white;"></i>
+
+                <!-- ping notif section -->
+                <div class="pingNotifSection col-lg-4 col-md-12 col-sm-12" style=" <?php echo (!empty($pingNotif)? null: 'display: none;')?>">
+                    <div class="notifDiv row" >
+                        <div class="notifRow row col-12" >
+                            <div class="pingNotifDiv col-lg-12" style="margin-left: auto; margin-right: auto; padding-top: 10px; padding-bottom: 10px;">
+                                <div class="pingNotifCard card">
+                                    <div class="pingNotifRow row">
+                                        <div class="" style="width: 100%; height: auto; padding: auto;">
+                                            <div class="pingNotifIconDiv" >
+                                                <i class="notifIcon fa fa-2x fa-bell " ></i>
                                             </div>
                                         </div>
                                         
-                                        <div class="supportNotifDetails">
-                                            <div class="test2 row" >
-                                                <div class="supportNotifTextDiv col-12" >
-                                                    <p class="notifHeading">Ping Notice Board</p>
-                                                </div>
-                                                <div class="supportNotifTextDiv col-12" style="">
-                                                    <p class="notifText">Emergencies that needs to be resolved:
+                                        <div class="pingNotifDetails" style="width: fit-content; height: fit-content; padding: 10px;">
+                                            <div class="" >
+                                                <p class="notifHeading">Ping Notice Board</p>
+                                                <p class="notifText">Emergencies that needs to be resolved:
+                                                    <ul>
                                                         <?php
                                                             $counter = 0;
                                                             $length = count($pingNotif);
                                                             foreach($pingNotif as $list){
                                                                 if($counter === $length-1){
-                                                                    echo $list->pingId.'.';
+                                                                    echo '<li>'.$list->pingId.'</li>';
                                                                 }
                                                                 else {
-                                                                    echo $list->pingId.', ';
+                                                                    echo '<li>'.$list->pingId.', </li>';
                                                                 }
                                                                 $counter++;
                                                             }
-                                                        ?> <a href="<?php echo base_url('admin/ping') ?>">Click Here</a>
+                                                        ?> 
+                                                        
+                                                    </ul>
+                                                    <a href="<?php echo base_url('admin/ping') ?>">Click Here</a>
                                                         to redirect to ping module.
-                                                    </p>
-                                                </div>
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -95,42 +100,43 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         </div>
                     </div>
                 </div>
-                <div class="supportNotifSection" style=" <?php echo (!empty($supportNotif)? null: 'display: none;')?>">
-                    <div class="supportNotifDiv row" >
-                        <div class="supportNotifRow row col-12" >
+
+                <!-- products inventory notif section -->
+                <div class="productsInvNotifSection col-lg-4 col-md-12 col-sm-12" style=" <?php echo (!empty($invNotif)? null: 'display: none;')?>">
+                    <div class="notifDiv row" >
+                        <div class="notifRow row col-12" >
                             <div class="col-lg-12" style="margin-left: auto; margin-right: auto; padding-top: 10px; padding-bottom: 10px;">
-                                <div class="supportNotifCard card">
-                                    <div class="test row" >
-                                        <div style="padding: auto; ">
-                                            <div class="supportNotifIconDiv" >
-                                                <i class="fa fa-2x fa-pencil-square " style="position: absolute; margin-left: 20px; margin-right: 20px; margin-top: 15px; margin-bottom: 15px; color: white;"></i>
+                                <div class="productsInvNotifCard card">
+                                    <div class="productsInvNotifRow row" >
+                                        <div class="productsInvNotifDivExt">
+                                            <div class="productsInvNotifIconDiv" >
+                                                <i class="notifIcon fa fa-2x fa-pencil-square " ></i>
                                             </div>
                                         </div>
                                         
-                                        <div class="supportNotifDetails">
-                                            <div class="test2 row" >
-                                                <div class="supportNotifTextDiv col-12" >
-                                                    <p class="notifHeading">Product Stock Notice Board</p>
-                                                </div>
-                                                <div class="supportNotifTextDiv col-12" style="">
-                                                    <p class="notifText">These products are below 50 stock:
+                                        <div class="productsInvNotifDetails">
+                                            <div class="" >
+                                                <p class="notifHeading">Product Stock Notice Board</p>
+                                                <p class="notifText">These products are below 50 stock:
+                                                    <ul>
                                                         <?php
                                                             
                                                             $counter = 0;
                                                             $length = count($invNotif);
                                                             foreach($invNotif as $list){
                                                                 if($counter === $length-1){
-                                                                    echo $list->productId.'('.$list->productTitle.')'.'. ';
+                                                                    echo '<li>'.$list->productId.'('.$list->productTitle.')'.' </li>';
                                                                 }
                                                                 else {
-                                                                    echo $list->productId.'('.$list->productTitle.')'.', ';
+                                                                    echo '<li>'.$list->productId.'('.$list->productTitle.')'.', </li>';
                                                                 }
                                                                 $counter++;
                                                             }
                                                         ?> 
-                                            
-                                                    </p>
-                                                </div>
+                                                    </ul>
+                                                    
+                                        
+                                                </p>
                                             </div>
                                         </div>
                                     </div>
@@ -160,6 +166,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         <div class="activeUsersDetails">
                             <center>
                                 <i class="reportIcons fa fa-users fa-4x" aria-hidden="true"></i>
+                                <div style="width: 100%; height: 25px;"></div>
                                 <p class="activeUsersNum" >
                                     <?php 
                                         echo number_format($supportResolvedCount);
@@ -176,6 +183,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="transactionCountCard card col-sm-12" >
                         <div class="transactionCountDetails">
                             <center><i class="reportIcons fa fa-bolt fa-4x" aria-hidden="true"></i></center>
+                            <h6 class="monthlyReportCardTitle">SERVICES AND PRODUCTS COUNT</h6>
                             <p class="servicesText">Services</p>
                             <center><p class="servicesNum">
                                 <?php 
@@ -199,6 +207,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                             <center>
                                 <i class="reportIcons fa fa-shopping-cart fa-4x" aria-hidden="true"></i>
                             </center>
+                            <div style="width: 100%; height: 70px;"></div>
                             <div class="tranTexts">
                                 <p class="tranServiceText">Services</p>
                                 
@@ -223,6 +232,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <div class="pingCountCard card col-sm-12" >
                         <div class="pingCountDetails">
                             <center><i class="reportIcons fa fa-bell fa-4x" aria-hidden="true"></i></center>
+                            <div style="width: 100%; height: 50px;"></div>
                             <p class="pingCountNum">
                                 <?php 
                                     echo number_format($pingCount); 
