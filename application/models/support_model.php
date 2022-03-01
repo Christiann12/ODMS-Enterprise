@@ -68,8 +68,8 @@ class Support_model extends CI_Model {
 			$this->db->group_start();
 			$this->db->like("supportdetail.supportId", $searchKey);
             $this->db->or_like("supportdetail.supportMessage", $searchKey);
-			$this->db->or_like("supportdetail.email", $searchKey);
             $this->db->or_like("supportdetail.status", $searchKey);
+			$this->db->or_like("supportdetail.email", $searchKey);
             $this->db->or_like("supportdetail.firstname", $searchKey);
             $this->db->or_like("supportdetail.lastname", $searchKey);
 			$this->db->group_end();

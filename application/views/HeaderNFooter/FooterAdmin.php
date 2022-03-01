@@ -202,7 +202,7 @@
 				var searchString=$("#pingTextSearch").val();
 				loadPingTable(searchString);
 			});
-			function loadPingTable(txtsearch){
+			function loadPingTable(txtSearch){
 				// alert('asd');
 				var dataTable = $('#pingTable').DataTable({
 					"lengthMenu": [[10, 25, 100, 1000, 3000, -1], [10, 25, 100, 1000, 3000]],
@@ -217,10 +217,10 @@
 					"ajax": {
 						"url": "<?php echo base_url('admin/pingDetailAjax')?>",
 						"type": "POST",
-						"data": {txtSearch:txtsearch}
+						"data": {txtSearch:txtSearch}
 					},
 					"columnDefs":[{
-						"targets":[0,5],
+						"targets":[0,9],
 						"orderable":false,
 					},],
 					"order":[],
@@ -910,6 +910,121 @@
 
 				});
 			});
+		</script>
+
+		<!-- Dashboard top selling products --> 
+		<script>
+			<?php
+				if($this->uri->segment(2)=="dashboard"){
+					echo '
+					
+					$(document).ready( function () {
+						$(\'#topProductsTable\').DataTable().destroy();
+						var VtxtSearch=$("#txtSearch").val();
+						loadTopProductTable(VtxtSearch);
+					});
+					
+					';
+				}
+			?>
+			
+			// $("#topProductsSearch").submit(function(event){
+			// 	event.preventDefault();
+			// 	$('#topProductsTable').DataTable().destroy();
+			// 	var VtxtSearch=$("#txtSearch").val();
+			// 	loadTopProductTable(VtxtSearch);
+			// });
+
+			function loadTopProductTable(txtSearch){
+				// alert('asd');
+				var dataTable = $('#topProductsTable').DataTable({
+					// "lengthMenu": [[10, 25, 100, 1000, 3000, -1], [10, 25, 100, 1000, 3000]],
+					"processing":true,
+					"language": {
+						processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span> '
+					},
+					"serverSide":true,
+					"responsive": true,
+					// "bPaginate": true,
+					// "sPaginationType": "full_numbers",
+					"ajax": {
+						"url": "<?php echo base_url('admin/topProductsAjax')?>",
+						"type": "POST",
+						"data": {txtSearch:txtSearch}
+					},
+					columns :[
+						{"data": 'productId'},
+						{"data": 'productTitle'},
+					],
+					"columnDefs":[{
+						"targets":[0,1],
+						"orderable":false,
+					},],
+					// "order":[],
+					"searching": false,
+					"paging":   false,
+					"ordering": false,
+					"info":     false
+				});
+			}
+		</script>
+
+		<!-- Dashboard top selling services --> 
+		<script>
+			<?php
+				if($this->uri->segment(2)=="dashboard"){
+					echo '
+					
+					$(document).ready( function () {
+						$(\'#topServicesTable\').DataTable().destroy();
+						var VtxtSearch=$("#txtSearch").val();
+						loadTopServicesTable();
+					});
+					
+					';
+				}
+			?>
+			
+			// $("#topServicesSearch").submit(function(event){
+			// 	event.preventDefault();
+			// 	$('#topServicesTable').DataTable().destroy();
+			// 	var VtxtSearch=$("#txtSearch").val();
+			// 	loadTopServicesTable(VtxtSearch);
+			// });
+
+			function loadTopServicesTable(){
+				// alert('asd');
+				var dataTable = $('#topServicesTable').DataTable({
+					// "lengthMenu": [[10, 25, 100, 1000, 3000, -1], [10, 25, 100, 1000, 3000]],
+					"processing":true,
+					"language": {
+						processing: '<i class="fa fa-spinner fa-spin fa-3x fa-fw"></i><span class="sr-only">Loading...</span> '
+					},
+					"serverSide":true,
+					"responsive": true,
+					// "bPaginate": true,
+					// "sPaginationType": "full_numbers",
+					"ajax": {
+						"url": "<?php echo base_url('admin/topServicesAjax')?>",
+						"type": "POST",
+
+					},
+					columns :[
+						{"data": 'availedServiceId'},
+						{"data": 'availedService'},
+					],
+					"columnDefs":[{
+						"targets":[0,1],
+						"orderable":false,
+					},],
+					// "order":[],
+					"searching": false,
+					"paging":   false,
+					"ordering": false,
+					"info":     false
+				});
+			
+			}
 		</script>
 	</body>
 </html>

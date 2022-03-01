@@ -14,6 +14,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="modal-body" style="word-wrap: break-word;">
             <?php echo form_open_multipart('main/savePingInfo') ?>
             <div class="form-group row d-flex justify-content-around">
+                <label for="firstName" class="col-3 ">First Name<i class="text-danger">*</i></label>
+                <div class="col-9">
+                    <input name="firstName"  type="text" class="form-control" id="firstName" placeholder="Input First Name" value="">
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="lastName" class="col-3 ">Last Name<i class="text-danger">*</i></label>
+                <div class="col-9">
+                    <input name="lastName"  type="text" class="form-control" id="lastName" placeholder="Input Last Name" value="">
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="emailAddress" class="col-3 ">Email Address<i class="text-danger">*</i></label>
+                <div class="col-9">
+                    <input name="emailAddress"  type="text" class="form-control" id="emailAddress" placeholder="Input Email Address" value="">
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="contactNum" class="col-3 ">Contact No.<i class="text-danger">*</i></label>
+                <div class="col-9">
+                    <input name="contactNum"  type="text" class="form-control" id="contactNum" placeholder="Input Contact No." value="">
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
                 <label for="locationCode" class="col-3 ">Location Code<i class="text-danger">*</i></label>
                 <div class="col-9">
                     <input name="locationCode"  type="text" class="form-control" id="locationCode" placeholder="Input Location Code" value="">

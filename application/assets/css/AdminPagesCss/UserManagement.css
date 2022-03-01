@@ -14,6 +14,10 @@
     width: fit-content; color: rgba(75, 78, 48, 0.34); padding: 10px; 
 }
 
+.userTableHeader {
+  background-color: #BEBEBE; 
+}
+
 .form-label-group {
     position: relative;
     margin-bottom: 1rem;

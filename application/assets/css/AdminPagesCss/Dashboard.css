@@ -8,7 +8,7 @@
 }
 
 .dashboardSection .monthlyReportSection .row .monthlyReportTextDiv {
-    width: fit-content; padding: 10px; 
+    width: fit-content; padding: 20px; 
     /* background-color: red; */
 }
 
@@ -33,40 +33,40 @@
 
 .dashboardSection .monthlyReportSection .monthlyReportCharts .reportCharts .activeUsersDiv, .transactionCountDiv, .transactionSalesDiv, .pingCountDiv {
     /* background-color: blue; */
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     
 }
 
 .dashboardSection .monthlyReportSection .monthlyReportCharts .reportCharts .activeUsersCard {
     width: 100%;
     height: 100%;
-    /* background: linear-gradient(90deg, hsla(47, 93%, 51%, 1) 0%, hsla(62, 76%, 64%, 1) 100%); */
-    border-radius: 10px;
+    background-color: #e9d787;
+    border-radius: 20px;
     padding: 20px;
 }
 
 .dashboardSection .monthlyReportSection .monthlyReportCharts .reportCharts .transactionCountCard {
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, hsla(145, 84%, 73%, 1) 0%, hsla(150, 61%, 48%, 1) 100%);
-    border-radius: 10px;
+    background-color: #e9d787;
+    border-radius: 20px;
     padding: 20px;
 }
 
 .dashboardSection .monthlyReportSection .monthlyReportCharts .reportCharts .transactionSalesCard {
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, hsla(266, 75%, 55%, 1) 0%, hsla(340, 47%, 77%, 1) 100%);
-    border-radius: 10px;
+    background-color: #e9d787;
+    border-radius: 20px;
     padding: 20px;
 }
 
 .dashboardSection .monthlyReportSection .monthlyReportCharts .reportCharts .pingCountCard {
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, hsla(281, 37%, 45%, 1) 0%, hsla(1, 62%, 48%, 1) 100%);
-    border-radius: 10px;
+    background-color: #e9d787;
+    border-radius: 20px;
     padding: 20px;
 }
 
@@ -131,7 +131,22 @@
 }
 
 .reportIcons {
-    color: rgba(75, 78, 48, 0.6);
+    color: #D0C079;
+}
+
+.monthlyReportCardTitle {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    /* font-size: 10px; */
+    /* line-height: 12px; */
+    /* letter-spacing: 1.5em; */
+    color: #000000;
+    text-align: center;
+
+    /* background-color: blue; */
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 .servicesText {
@@ -207,11 +222,72 @@
 }
 
 .dashboardSection .chartsSection {
-    width: auto; height: auto; margin: 50px; padding: 10px;
+    width: auto; height: auto; margin: 50px; padding: 20px;
     /* background: #FFFFFF; 
     box-shadow: 5px 4px 70px 5px rgba(0, 0, 0, 0.1);  */
     
     /* background-color: red; */
+}
+
+.dashboardSection .chartsSection .topSellingTables {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.dashboardSection .chartsSection .topSellingTables .topProductsDiv {
+    width: 100%;
+    height: 100%;
+}
+
+.dashboardSection .chartsSection .topSellingTables .topServicesDiv {
+    width: 100%;
+    height: 100%;
+}
+
+.dashboardSection .chartsSection .topSellingTables .topProductsDiv .topProducts {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+.dashboardSection .chartsSection .topSellingTables .topServicesDiv .topServices {
+    width: 100%;
+    height: auto;
+    margin-top: 20px;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+
+.dashboardSection .chartsSection .topSellingTables .topProductsDiv .topProducts .row {
+    /* background-color: red; */
+    padding: 10px;
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dashboardSection .chartsSection .topSellingTables .topServicesDiv .topServices .row {
+    padding: 10px;
+    width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.dashboardSection .chartsSection .topSellingTables .topProducts .row .topProductsIconDiv, .topServicesIconDiv {
+    margin-left: auto;
+    margin-right: 0;
+}
+
+#topServicesTable {
+    margin-top: 0;
 }
 
 .dashboardSection .chartsSection .chartsDiv .chartRow1 {
@@ -323,6 +399,84 @@
 
 .chartIcons {
     color: rgba(75, 78, 48, 0.06);
+}
+
+.supportNotifSection .notifDiv, .pingNotifSection .notifDiv, .productsInvNotifSection .notifDiv {
+    width: 100%; margin-top: 10px; margin-bottom: 10px;  margin-left: auto; margin-right: auto;
+}
+
+.supportNotifSection, .pingNotifSection, .productsInvNotifSection, .notifDiv .notifRow {
+    width: 100%; height: auto; margin-left: auto; margin-right: auto;
+}
+
+.supportNotifCard .test {
+    width: 100%; height: auto; margin-left: auto; margin-right: auto; padding: 10px;
+}
+
+.pingNotifCard .pingNotifRow {
+    width: 100%; height: auto; margin-left: auto; margin-right: auto; padding: 10px;
+}
+
+.productsInvNotifCard .productsInvNotifRow .productsInvNotifDivExt {
+    width: 100%; height: auto; padding: auto;
+}
+
+.productsInvNotifCard .productsInvNotifRow {
+    width: 100%; height: auto; margin-left: auto; margin-right: auto; padding: 10px;
+}
+
+.productsInvNotifRow .productsInvNotifDetails {
+    width: 100%; height: fit-content; padding: 10px; margin-left: auto; margin-right: auto;
+
+}
+
+.notifIcon {
+    position: absolute; margin-left: 20px; margin-right: 20px; margin-top: 15px; margin-bottom: 15px; color: white;
+}
+
+.topProductsTableHeader, .topServicesTableHeader {
+    background-color: #BEBEBE; 
+}
+
+.supportNotifIconDiv {
+    background-color: #5281ce; border-radius: 50%; width: 70px; height: 70px; padding:2px; margin:10px auto;
+}
+
+.pingNotifIconDiv {
+    background-color: #e9d787; border-radius: 50%; width: 70px; height: 70px; padding:2px; margin:10px auto;
+}
+
+.productsInvNotifIconDiv {
+    background-color: #bae8ac; border-radius: 50%; width: 70px; height: 70px; padding:2px; margin:10px auto;
+}
+
+.supportNotifDetails .test2 {
+    width: 100%; height: auto; padding: 5px;margin-left: auto; margin-right: auto;
+}
+
+.supportNotifDetails .test2 .supportNotifTextDiv {
+    padding-top: 15px;
+}
+
+.notifHeading {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    text-align: center;
+    line-height: 29px;
+    color: #000000;
+}
+
+.notifText {
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 118.9%;
+    letter-spacing: 0.05em;
+    color: #000000;
+
 }
 
 /* CHARTS */

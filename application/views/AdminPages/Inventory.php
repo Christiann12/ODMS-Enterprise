@@ -183,7 +183,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <i class="fa fa-pencil-square fa-3x" aria-hidden="true"></i>
             </div>
             <div class="inventoryTextDiv" >
-                <p class="inventoryText">Inventory</p>
+                <p class="inventoryText">Products Inventory</p>
             </div>
             
             <div class="inventoryButtonDiv">
@@ -210,7 +210,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <th>No.</th>
                     <th>Item Code</th>
                     <th>Name</th>
-                    <th>Item Desciption</th>
+                    <th>Item Description</th>
                     <th>Item Category</th>
                     <th>Quantity</th>
                     <th>Stock</th>

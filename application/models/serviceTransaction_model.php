@@ -4,7 +4,7 @@ class serviceTransaction_model extends CI_Model {
     //global variable for table name
     private $table = "services_transaction";
     //column order basis
-    var $column_order = array(null,'serviceTransactionId','availedService','servicePrice','fName','lName','emailAdd','contactnum','withLoan','status'); //set column field database for datatable orderable
+    var $column_order = array(null,'serviceTransactionId','fName','lName','emailAdd','contactnum','status'); //set column field database for datatable orderable
     //default column order
     var $order = array('services_transaction.serviceTransactionId' => 'asc');
 
@@ -107,13 +107,9 @@ class serviceTransaction_model extends CI_Model {
         if ($searchKey!=''){
             $this->db->group_start();
             $this->db->like("services_transaction.serviceTransactionId", $searchKey);
-            $this->db->or_like("services_transaction.availedService", $searchKey);
-            $this->db->or_like("services_transaction.servicePrice", $searchKey);
             $this->db->or_like("services_transaction.fName", $searchKey);
             $this->db->or_like("services_transaction.lName", $searchKey);
-            $this->db->or_like("services_transaction.emailAdd", $searchKey);
             $this->db->or_like("services_transaction.contactNum", $searchKey);
-            $this->db->or_like("services_transaction.withLoan", $searchKey);
             $this->db->or_like("services_transaction.status", $searchKey);
             $this->db->group_end();
         }
@@ -176,6 +172,10 @@ class serviceTransaction_model extends CI_Model {
         }
         return $counter;
     }
+
+    public function getTopService(){
+        return $this->db->select('availedServiceId, COUNT(availedServiceId) as count, availedService')->group_by('availedServiceId')->order_by('count','DESC')->get($this->table)->result();
+    } 
 
 }
 

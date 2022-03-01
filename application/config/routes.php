@@ -59,6 +59,7 @@ $route['aboutus'] = 'main/aboutus';
 $route['fa'] = 'main/fa';
 $route['ping'] = 'main/ping';
 $route['products'] = 'main/products';
+$route['productOrderSuccess'] = 'main/productOrderSuccess';
 $route['services'] = 'main/services';
 $route['servicesOrder/(:any)'] = 'main/servicesOrder/$1';
 $route['servicesOrder'] = 'main/servicesOrder';

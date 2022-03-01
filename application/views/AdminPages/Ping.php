@@ -35,7 +35,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
          
         </div>
         <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal2">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button class="btn btn-primary">Save changes</button>
         </div>
         <?php echo form_close() ?>
@@ -87,6 +87,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <tr>
                     <th>No. </th>
                     <th>Ping ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email Address</th>
+                    <th>Contact No.</th>
                     <th>Location Code</th>
                     <th>Note</th>
                     <th>Status</th>

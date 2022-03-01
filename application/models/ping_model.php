@@ -4,7 +4,7 @@ class Ping_model extends CI_Model {
     //global variable for table name
     private $table = "pingdetail";
     //column order basis
-    var $column_order = array(null,'pingId', 'locationcode', 'note', 'status'); //set column field database for datatable orderable
+    var $column_order = array(null,'pingId', 'firstName', 'lastName', 'emailAddress', 'contactNum', 'locationcode', 'note', 'status'); //set column field database for datatable orderable
     //default column order
     var $order = array('pingdetail.pingId' => 'asc');
     public function __construct() {
@@ -17,17 +17,33 @@ class Ping_model extends CI_Model {
             // define table fields
             $fields = array(
                 'pingId' => array(
-                'type' => 'VARCHAR',
-                'constraint' =>20,
+                    'type' => 'VARCHAR',
+                    'constraint' =>20,
+                ),
+                'firstName' => array(
+                    'type' => 'VARCHAR',
+                    'constraint' => 50,
+                ),
+                'lastName' => array(
+                    'type' => 'VARCHAR',
+                    'constraint' => 50,
+                ),
+                'emailAddress' => array(
+                    'type' => 'VARCHAR',
+                    'constraint' => 50
+                ),
+                'contactNum' => array(
+                    'type' => 'VARCHAR',
+                    'constraint' => 20,
                 ),
                 'locationcode' => array(
-                'type' => 'VARCHAR',
-                'constraint' => 50
+                    'type' => 'VARCHAR',
+                    'constraint' => 50
                 ),
                 'status' => array(
-                'type' => 'VARCHAR',
-                'constraint' => 30,
-                'default' => 'inactive'
+                    'type' => 'VARCHAR',
+                    'constraint' => 30,
+                    'default' => 'inactive'
                 ),
                 'note' => array(
                 'type' => 'VARCHAR',
@@ -58,9 +74,13 @@ class Ping_model extends CI_Model {
         if ($searchKey!=''){
 			$this->db->group_start();
 			$this->db->like("pingdetail.pingId", $searchKey);
+            $this->db->or_like("pingdetail.firstName", $searchKey);
+            $this->db->or_like("pingdetail.lastName", $searchKey);
+            $this->db->or_like("pingdetail.emailAddress", $searchKey);
+            $this->db->or_like("pingdetail.contactNum", $searchKey);
             $this->db->or_like("pingdetail.locationcode", $searchKey);
-			$this->db->or_like("pingdetail.status", $searchKey);
             $this->db->or_like("pingdetail.note", $searchKey);
+			$this->db->or_like("pingdetail.status", $searchKey);
 			$this->db->group_end();
 		}
         if(isset($_POST['order'])){
@@ -107,11 +127,11 @@ class Ping_model extends CI_Model {
 		}
     }
     //get all data in the table and display in the view
-    public function getInvData(){
+    public function getPingData(){
         return $this->db->select("*")->from($this->table)->get()->result();
     } 
     //search table per id
-    public function getInvDataById($id = null){
+    public function getPingDataById($id = null){
         return $this->db->select("*")->from($this->table)->where('pingId',$id)->get()->row();
     }    
 

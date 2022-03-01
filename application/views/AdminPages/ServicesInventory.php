@@ -172,7 +172,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <i class="fa fa-cogs fa-3x" aria-hidden="true"></i>
             </div>
             <div class="inventoryTextDiv" >
-                <p class="inventoryText">Services Inventory</p>
+                <p class="inventoryText">List of Services</p>
             </div>
             
             <div class="inventoryButtonDiv">

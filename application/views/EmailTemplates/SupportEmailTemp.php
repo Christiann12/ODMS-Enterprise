@@ -121,7 +121,7 @@
         }
 
         table[class*="columns"] {
-          width: 100% !important;  
+          width: 100% !important;
         }
 
         td[class*="column-padding"] {
@@ -142,30 +142,30 @@
           <tr>
             <td align="center" valign="top">
 
-            <table cellspacing="0" cellpadding="0" class="force-full-width" style="background-color:#F6C510; margin: 0px">
+            <table cellspacing="0" cellpadding="0" class="force-full-width" style="background-color:#F5F5F5; margin: 0px">
               <tr>
-                <td style="background-color:#F6C510;">
+                <td style="background-color:#F5F5F5;">
 
                   <table cellspacing="0" cellpadding="0" class="force-full-width">
                     <tr>
-                      <td style="font-size:40px; font-weight: 600; color: #ffffff; text-align:center;" class="mobile-spacing">
+                      <td style="font-size:40px; font-weight: 600; color: #191919; text-align:center;" class="mobile-spacing">
                       <div class="mobile-br">&nbsp;</div>
-                        Loan
+                        We received your ticket!
                       <br>
                       </td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                       <td style="font-size:24px; text-align:center; padding: 0 75px; color:#6f6f6f;" class="w320 mobile-spacing; ">
-                          A client wants to avail Financial Assistance!
+                        A client needs your help!
                       </td>
-                    </tr>
+                    </tr> -->
                   </table>
 
                   <table cellspacing="0" cellpadding="0" width="600" class="force-full-width">
                     <tr>
                       <td>
                         <center>
-                        <img src="https://cdn.discordapp.com/attachments/696238130596020308/941953362797133844/FA.png" style="max-width:100%; display:block;">
+                        <img src="https://cdn.discordapp.com/attachments/945014702851899422/947460423135924274/Confirmed-bro.png" style="max-width:100%; display:block;">
                         </center>
                         
                       </td>
@@ -176,77 +176,33 @@
               </tr>
             </table>
            
-            <table cellspacing="0" cellpadding="" class="force-full-width" style="background-color: white;" bgcolor="#ffffff">
-              <tr >
-                  <td style="background-color: white;">
+            <table cellspacing="0" cellpadding="25px" class="force-full-width" style="background-color: white;">
+            <tr >
+                <td  style="background-color: white;">
                   <center>
                   <h1 style="">
-                   <?php echo $content->loanId ?>
+                      Acknowledgment of Ticket
                   </h1>
                   </center>
-                  </td>
-              </tr>
-              <tr >
-                  <td style="background-color: white;">
-                  <center>
-                  <h3 style="color: grey;">
-                    <?php echo $createDate ?>
-                  </h3>
-                  </center>
-                  </td>
-              </tr>
+                  <?php 
+                    echo '<h3>Good day, '.$firstName.'</h3>';
+                  ?>
+                    <p style="">
+                        Thank you for sending us a ticket. Please expect another response from us within 24 hours.
+                    </p>
+                    <p style="">
+                        With much pleasure, ODMS Enterprise
+                    </p>
+                </td>
+            </tr>
               <tr>
                 <td style="background-color:#ffffff;">
-                  <center>
-                  <table class="columns" cellspacing="0" cellpadding="0" width="75%" align="center" bgcolor="#ffffff">
-                      <?php 
+                  <br>
+                  <table class="columns" cellspacing="0" cellpadding="0" width="75%" align="center" >
+                        
                     
-                          echo '
-                            <tr>
-                                <td class="colHeader" style="font-weight: bold; padding-top: 10px; text-align: center;">
-                                   Loan Id
-                                </td>
-                                <td class="colHeader" style="color:#f3a389; padding-top: 10px; text-align: center;">
-                                  '.$content->loanId.'
-                                </td>
-                            </tr>
-                            <tr>
-                              <td class="colHeader" style="font-weight: bold; padding-top: 10px; text-align: center;">
-                                  Name
-                              </td>
-                              <td class="colHeader" style="color:#f3a389; padding-top: 10px; text-align: center;">
-                                 '.$content->firstName.' '.$content->lastName.'
-                              </td>
-                            </tr>
-                            <tr>
-                              <td class="colHeader" style="font-weight: bold; padding-top: 10px; text-align: center;">
-                                  Email
-                              </td>
-                              <td class="colHeader" style="color:#f3a389 !important; padding-top: 10px; text-align: center;">
-                               '.$content->emailAddress.'
-                              </td>
-                            </tr>
-                          ';
-                      ?>
                   </table>
-                  </center>
-                </td>
-              </tr>
-            </table>
-
-            <table style="margin:0 auto;" cellspacing="0" cellpadding="0" class="force-full-width" bgcolor="#ffffff">
-              <tr>
-                <td style="text-align:center; margin:0 auto;">
-                    <div>
-                      <br>
-                        <center>
-                        <a href="<?php echo base_url('admin/acceptFA/'.$content->loanId.'') ?>"
-                          style="background-color:green;color:#ffffff;display:inline-block;font-family:'Source Sans Pro', Helvetica, Arial, sans-serif;font-size:18px;font-weight:400;line-height:45px;text-align:center;text-decoration:none;width:220px;-webkit-text-size-adjust:none;">Approve</a>
-                          <a href="<?php echo base_url('admin/rejectFA/'.$content->loanId.'') ?>"
-                          style="background-color:#f5774e;color:#ffffff;display:inline-block;font-family:'Source Sans Pro', Helvetica, Arial, sans-serif;font-size:18px;font-weight:400;line-height:45px;text-align:center;text-decoration:none;width:220px;-webkit-text-size-adjust:none;">Reject</a>
-                        </center>
-                      <br>
-                    </div>
+                  <br>
                 </td>
               </tr>
             </table>
@@ -256,6 +212,9 @@
                 <td style="background-color:#363636; text-align:center;">
                 <br>
                 <br>
+                  <!-- <img width="62" height="56" img src="https://www.filepicker.io/api/file/FjkhDKXsTFyaHnXhhBCw">
+                  <img width="68" height="56" src="https://www.filepicker.io/api/file/W6gXqm5BRL6qSvQRcI7u">
+                  <img width="61" height="56" src="https://www.filepicker.io/api/file/eV9YfQkBTiaOu9PA9gxv"> -->
                 <br>
                 <br>
                 </td>
