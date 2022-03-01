@@ -395,6 +395,7 @@ class Main extends CI_Controller {
 				$config['crlf'] = '\r\n';
 				$config['newline'] = '\r\n';
 				$config['mailtype'] = "html";
+				$config['smtp_timeout'] = '60';
 
 				$this->email->initialize($config);
 				$this->email->set_newline("\r\n");  

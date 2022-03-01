@@ -22,7 +22,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <p class="fADescription">A short description of the company goes here.</p>
                 <p class="fAContact">Contact No.: 09xx-xxx-xxxx</p>
                 <p class="fAEmail">Email: companyname@domainname.com</p>
-                <p style="font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 10px; line-height: 12px; display: flex; align-items: center; color: #000000;">Requirements: <a download id="test"href="google.com">Click To Download</a></p>
+                <p style="font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 14px; line-height: 12px; display: flex; align-items: center; color: #000000;">Requirements: <a download id="test"href="google.com">Click To Download</a></p>
                 <!-- <p class="fARequirements">Requirements</p> should be in file format -->
             </div>
           </div>
