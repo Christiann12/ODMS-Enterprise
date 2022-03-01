@@ -203,7 +203,7 @@ class Main extends CI_Controller {
 				
 				$config = array();
 				$config['protocol'] = 'SMTP';
-				$config['smtp_host'] = 'SSL://smtp.gmail.com';
+				$config['smtp_host'] = 'ssl://smtp.gmail.com';
 				$config['smtp_user'] = 'odmsenterprise@gmail.com';
 				$config['smtp_pass'] = 'Thisismypassword123!';
 				$config['smtp_port'] = 465;
@@ -213,7 +213,7 @@ class Main extends CI_Controller {
 				$config['smtp_timeout'] = '60';
 
 				$this->email->initialize($config);
-				$this->email->set_newline("\r\n");  
+				$this->email->set_newline("\R\N");  
 				$this->email->to('odmsenterprise@gmail.com');
 				$this->email->from('odmsenterprise@gmail.com');
 				$this->email->subject('A client sent a Ping!');
