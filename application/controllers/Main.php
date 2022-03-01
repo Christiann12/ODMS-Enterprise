@@ -209,7 +209,7 @@ class Main extends CI_Controller {
 				$config['smtp_port'] = 465;
 				$config['crlf'] = '\r\n';
 				$config['newline'] = '\r\n';
-				$config['mailtype'] = "HTML";
+				$config['mailtype'] = "html";
 				$config['smtp_timeout'] = '60';
 
 				$this->email->initialize($config);
