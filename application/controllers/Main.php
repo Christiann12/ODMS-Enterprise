@@ -207,8 +207,8 @@ class Main extends CI_Controller {
 				$config['smtp_user'] = 'odmsenterprise@gmail.com';
 				$config['smtp_pass'] = 'Thisismypassword123!';
 				$config['smtp_port'] = 465;
-				$config['crlf'] = '\r\n';
-				$config['newline'] = '\r\n';
+				$config['crlf'] = '\R\N';
+				$config['newline'] = '\R\N';
 				$config['mailtype'] = "HTML";
 				$config['smtp_timeout'] = '60';
 
