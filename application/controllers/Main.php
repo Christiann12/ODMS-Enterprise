@@ -82,7 +82,7 @@ class Main extends CI_Controller {
         );
 		// store data 
 		if($this->form_validation->run() === true){
-			$faData = $this->fACompanies_model->getFACompanyDataById($availedFACompany);
+			$faData = $this->FACompanies_model->getFACompanyDataById($availedFACompany);
 			// checks if user uploaded a file
 			if(!$this->upload->do_upload($name)) {
 				$this->session->set_flashdata('error', $this->upload->display_errors());
@@ -92,7 +92,7 @@ class Main extends CI_Controller {
 
 				$postData['requirements'] = $upload['file_name'];
 
-				if($this->loan_model->create($postData)){
+				if($this->Loan_model->create($postData)){
 					
 					// -------------- SEND EMAIL -------------- // 
 					$this->load->library('email');
@@ -180,7 +180,7 @@ class Main extends CI_Controller {
         );
 		// store data 
 		if($this->form_validation->run() === true){
-			if($this->ping_model->create($postData)){
+			if($this->Ping_model->create($postData)){
 				$this->session->set_flashdata('success','Add Successful');
 				//-------------- SEND SMS -------------- // 
 				// $basic  = new \Vonage\Client\Credentials\Basic("fbd703ae", "x7UUWUz2NR6t78fi");
@@ -273,7 +273,7 @@ class Main extends CI_Controller {
 
 		// store data 
 		if($this->form_validation->run() === true){
-			if($this->support_model->create($postData)){
+			if($this->Support_model->create($postData)){
 
 				// -------------- SEND EMAIL -------------- // 
 				$this->load->library('email');
@@ -327,7 +327,7 @@ class Main extends CI_Controller {
 	public function services(){
 		$this->load->helper('url');
 
-		$data['srvcsInventoryRecord'] = $this->srvcsinventory_model->getServiceInvData();
+		$data['srvcsInventoryRecord'] = $this->Srvcsinventory_model->getServiceInvData();
 
 		$this->load->view('HeaderNFooter/Header.php');
 		$this->load->view('ClientPages/services.php', $data);
@@ -336,7 +336,7 @@ class Main extends CI_Controller {
 	public function servicesOrder() {
 		$this->load->helper('url');
 
-		$data['srvcsInventoryRecord'] = $this->srvcsinventory_model->getServiceInvDataById($this->uri->segment(2));
+		$data['srvcsInventoryRecord'] = $this->Srvcsinventory_model->getServiceInvDataById($this->uri->segment(2));
 
 		$this->load->view('HeaderNFooter/Header.php');
 		$this->load->view('ClientPages/ServicesOrder.php', $data);
@@ -382,7 +382,7 @@ class Main extends CI_Controller {
 		);
 		// store data 
 		if($this->form_validation->run() === true){
-			if($this->serviceTransaction_model->create($postData)){
+			if($this->ServiceTransaction_model->create($postData)){
 				// -------------- SEND EMAIL -------------- // 
 				$this->load->library('email');
 								
@@ -442,7 +442,7 @@ class Main extends CI_Controller {
 		//create session if it doesn't exist
 		
 	
-		$data['cartRecord'] = $this->cart_model->getCartRecord($this->session->userdata('userSessionId'));	
+		$data['cartRecord'] = $this->Cart_model->getCartRecord($this->session->userdata('userSessionId'));	
 		
 		//form validations
 		$this->form_validation->set_rules('firstName', 'First Name' ,'required|max_length[50]');
@@ -493,8 +493,8 @@ class Main extends CI_Controller {
 				$this->session->set_flashdata('error','No Item in Cart');
 			}
 			else{
-				if($this->prodtransaction_model->create($record)){
-					$this->cart_model->deleteAfterTrans($this->session->userdata('userSessionId'));
+				if($this->Prodtransaction_model->create($record)){
+					$this->Cart_model->deleteAfterTrans($this->session->userdata('userSessionId'));
 					// update stock per item based on how many is availed by the user
 					foreach ($temp as $rec){
 						// get table containing the details for product base on ID
@@ -572,7 +572,7 @@ class Main extends CI_Controller {
 		}
 		else{
 			if($this->checkExistingCartItemForUser($this->input->post('sessid'),$this->input->post('prodId'))){
-				$list = $this->cart_model->getPrice($this->input->post('sessid'),$this->input->post('prodId'));
+				$list = $this->Cart_model->getPrice($this->input->post('sessid'),$this->input->post('prodId'));
 				$currentQuan = $list->quan;
 				$newQuan = $currentQuan + $quan;
 				if($newQuan > $stock){
@@ -587,7 +587,7 @@ class Main extends CI_Controller {
 						
 					); 
 					if($this->form_validation->run() === true){
-						if($this->cart_model->update($postData,$this->input->post('sessid'),$this->input->post('prodId'))){
+						if($this->Cart_model->update($postData,$this->input->post('sessid'),$this->input->post('prodId'))){
 							
 							
 						}
@@ -611,7 +611,7 @@ class Main extends CI_Controller {
 					'createDate' => date('Y-m-d')
 				); 
 				if($this->form_validation->run() === true){
-					if($this->cart_model->create($postData)){
+					if($this->Cart_model->create($postData)){
 						
 						
 					}
@@ -624,7 +624,7 @@ class Main extends CI_Controller {
 		}
 	}
 	public function deleteCartItem($sessid,$prodId){
-		if($this->cart_model->delCartItem($sessid,$prodId)){
+		if($this->Cart_model->delCartItem($sessid,$prodId)){
 			// $this->session->set_flashdata('success','Delete Success');
 		}
 		else{

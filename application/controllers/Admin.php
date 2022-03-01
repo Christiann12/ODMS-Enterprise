@@ -9,15 +9,15 @@ class Admin extends CI_Controller {
 		parent::__construct();
 
 		date_default_timezone_set('Asia/Singapore');
-		$this->load->model('inventory_model');
-		$this->load->model('user_model');
-		$this->load->model('ping_model');
-		$this->load->model('support_model');
-		$this->load->model('fACompanies_model');
-		$this->load->model('srvcsinventory_model');
-		$this->load->model('prodtransaction_model');
-		$this->load->model('serviceTransaction_model');
-		$this->load->model('loan_model');
+		$this->load->model('Inventory_model');
+		$this->load->model('User_model');
+		$this->load->model('Ping_model');
+		$this->load->model('Support_model');
+		$this->load->model('FACompanies_model');
+		$this->load->model('Srvcsinventory_model');
+		$this->load->model('Prodtransaction_model');
+		$this->load->model('ServiceTransaction_model');
+		$this->load->model('Loan_model');
 		$this->load->helper('url');
 		$this->load->library('session');
 		 
@@ -37,7 +37,7 @@ class Admin extends CI_Controller {
 		$this->load->helper('url');
 		//on form submit
 		if($this->form_validation->run() === true){
-			$userData = $this->user_model->checkCredentials($postData);
+			$userData = $this->User_model->checkCredentials($postData);
 			if(!empty($userData)){
 				// $this->session->set_flashdata('successLogin','Login Successful');
 		
@@ -92,48 +92,48 @@ class Admin extends CI_Controller {
 		$data['dateDetail'] = $this->getWeekDetail();
 		
 		// montly overview data
-		$data['pingCount'] = $this->ping_model->countRecordPerMonth();
-		$data['prodTransTotalEarnings'] = $this->prodtransaction_model->countEarningPerMonth();
-		$data['servTransTotalEarnings'] = $this->serviceTransaction_model->countEarningPerMonth();
-		$data['prodTranCount'] = $this->prodtransaction_model->countRecordPerMonth();
-		$data['servTranCount'] = $this->serviceTransaction_model->countRecordPerMonth();
-		$data['supportResolvedCount'] = $this->support_model->countResolvedRecordPerMonth();
+		$data['pingCount'] = $this->Ping_model->countRecordPerMonth();
+		$data['prodTransTotalEarnings'] = $this->Prodtransaction_model->countEarningPerMonth();
+		$data['servTransTotalEarnings'] = $this->ServiceTransaction_model->countEarningPerMonth();
+		$data['prodTranCount'] = $this->Prodtransaction_model->countRecordPerMonth();
+		$data['servTranCount'] = $this->ServiceTransaction_model->countRecordPerMonth();
+		$data['supportResolvedCount'] = $this->Support_model->countResolvedRecordPerMonth();
 
 		// ping count per day
-		$data['pingCountMon'] = $this->ping_model->getDateDetail($data['dateDetail']['monday']);
-		$data['pingCountTue'] = $this->ping_model->getDateDetail($data['dateDetail']['tuesday']);
-		$data['pingCountWed'] = $this->ping_model->getDateDetail($data['dateDetail']['wednesday']);
-		$data['pingCountThur'] = $this->ping_model->getDateDetail($data['dateDetail']['thursday']);
-		$data['pingCountFri'] = $this->ping_model->getDateDetail($data['dateDetail']['friday']);
-		$data['pingCountSat'] = $this->ping_model->getDateDetail($data['dateDetail']['saturday']);
-		$data['pingCountSun'] = $this->ping_model->getDateDetail($data['dateDetail']['sunday']);
+		$data['pingCountMon'] = $this->Ping_model->getDateDetail($data['dateDetail']['monday']);
+		$data['pingCountTue'] = $this->Ping_model->getDateDetail($data['dateDetail']['tuesday']);
+		$data['pingCountWed'] = $this->Ping_model->getDateDetail($data['dateDetail']['wednesday']);
+		$data['pingCountThur'] = $this->Ping_model->getDateDetail($data['dateDetail']['thursday']);
+		$data['pingCountFri'] = $this->Ping_model->getDateDetail($data['dateDetail']['friday']);
+		$data['pingCountSat'] = $this->Ping_model->getDateDetail($data['dateDetail']['saturday']);
+		$data['pingCountSun'] = $this->Ping_model->getDateDetail($data['dateDetail']['sunday']);
 
 		// ping count per day
-		$data['tranCountMon'] = $this->prodtransaction_model->getDateDetail($data['dateDetail']['monday']);
-		$data['tranCountTue'] = $this->prodtransaction_model->getDateDetail($data['dateDetail']['tuesday']);
-		$data['tranCountWed'] = $this->prodtransaction_model->getDateDetail($data['dateDetail']['wednesday']);
-		$data['tranCountThur'] = $this->prodtransaction_model->getDateDetail($data['dateDetail']['thursday']);
-		$data['tranCountFri'] = $this->prodtransaction_model->getDateDetail($data['dateDetail']['friday']);
-		$data['tranCountSat'] = $this->prodtransaction_model->getDateDetail($data['dateDetail']['saturday']);
-		$data['tranCountSun'] = $this->prodtransaction_model->getDateDetail($data['dateDetail']['sunday']);
+		$data['tranCountMon'] = $this->Prodtransaction_model->getDateDetail($data['dateDetail']['monday']);
+		$data['tranCountTue'] = $this->Prodtransaction_model->getDateDetail($data['dateDetail']['tuesday']);
+		$data['tranCountWed'] = $this->Prodtransaction_model->getDateDetail($data['dateDetail']['wednesday']);
+		$data['tranCountThur'] = $this->Prodtransaction_model->getDateDetail($data['dateDetail']['thursday']);
+		$data['tranCountFri'] = $this->Prodtransaction_model->getDateDetail($data['dateDetail']['friday']);
+		$data['tranCountSat'] = $this->Prodtransaction_model->getDateDetail($data['dateDetail']['saturday']);
+		$data['tranCountSun'] = $this->Prodtransaction_model->getDateDetail($data['dateDetail']['sunday']);
 
 		// pie chart data
-		$data['prodPercent'] = $this->prodtransaction_model->getPercentProd($data['dateDetail']['monday']);
-		$data['servPercent'] = $this->prodtransaction_model->getPercentServ($data['dateDetail']['tuesday']);
+		$data['prodPercent'] = $this->Prodtransaction_model->getPercentProd($data['dateDetail']['monday']);
+		$data['servPercent'] = $this->Prodtransaction_model->getPercentServ($data['dateDetail']['tuesday']);
 		
 		// Ticket Count
-		$data['loanCountMon'] = $this->loan_model->getDateDetail($data['dateDetail']['monday']);
-		$data['loanCountTue'] = $this->loan_model->getDateDetail($data['dateDetail']['tuesday']);
-		$data['loanCountWed'] = $this->loan_model->getDateDetail($data['dateDetail']['wednesday']);
-		$data['loanCountThur'] = $this->loan_model->getDateDetail($data['dateDetail']['thursday']);
-		$data['loanCountFri'] = $this->loan_model->getDateDetail($data['dateDetail']['friday']);
-		$data['loanCountSat'] = $this->loan_model->getDateDetail($data['dateDetail']['saturday']);
-		$data['loanCountSun'] = $this->loan_model->getDateDetail($data['dateDetail']['sunday']);
+		$data['loanCountMon'] = $this->Loan_model->getDateDetail($data['dateDetail']['monday']);
+		$data['loanCountTue'] = $this->Loan_model->getDateDetail($data['dateDetail']['tuesday']);
+		$data['loanCountWed'] = $this->Loan_model->getDateDetail($data['dateDetail']['wednesday']);
+		$data['loanCountThur'] = $this->Loan_model->getDateDetail($data['dateDetail']['thursday']);
+		$data['loanCountFri'] = $this->Loan_model->getDateDetail($data['dateDetail']['friday']);
+		$data['loanCountSat'] = $this->Loan_model->getDateDetail($data['dateDetail']['saturday']);
+		$data['loanCountSun'] = $this->Loan_model->getDateDetail($data['dateDetail']['sunday']);
 
 		//notifications
-		$data['supportNotif'] = $this->support_model->notification();
-		$data['pingNotif'] = $this->ping_model->notification();
-		$data['invNotif'] = $this->inventory_model->notification();
+		$data['supportNotif'] = $this->Support_model->notification();
+		$data['pingNotif'] = $this->Ping_model->notification();
+		$data['invNotif'] = $this->Inventory_model->notification();
 		
 		$counter = 0;
 		if(!empty($data['pingNotif'])){
@@ -161,7 +161,7 @@ class Admin extends CI_Controller {
 		//helpers
 		$this->load->helper('url');
 		//load query
-		$list = $this->prodtransaction_model->getTopProduct($this->input->post('txtSearch'));
+		$list = $this->Prodtransaction_model->getTopProduct($this->input->post('txtSearch'));
 		$json_data['data'] = $list;
 		echo json_encode($json_data);
 	}
@@ -170,7 +170,7 @@ class Admin extends CI_Controller {
 		//helpers
 		$this->load->helper('url');
 		//load query
-		$list = $this->serviceTransaction_model->getTopService($this->input->post('txtSearch'));
+		$list = $this->ServiceTransaction_model->getTopService($this->input->post('txtSearch'));
 		$json_data['data'] = $list;
 		echo json_encode($json_data);
 	}
@@ -193,7 +193,7 @@ class Admin extends CI_Controller {
 		//helpers
 		$this->load->helper('url');
 		//load query
-		$list = $this->prodtransaction_model->getProdTransTable($this->input->post('txtSearch'));
+		$list = $this->Prodtransaction_model->getProdTransTable($this->input->post('txtSearch'));
 		//variable initializations
 		$data = array();
 		$no = $_POST['start'];
@@ -215,8 +215,8 @@ class Admin extends CI_Controller {
 		//carries the values to the view
 		$output = array(
 			"draw" => $_POST['draw'],
-			"recordsTotal" => $this->prodtransaction_model->count($this->input->post('txtSearch')),
-			"recordsFiltered" => $this->prodtransaction_model->count_filtered($this->input->post('txtSearch')),
+			"recordsTotal" => $this->Prodtransaction_model->count($this->input->post('txtSearch')),
+			"recordsFiltered" => $this->Prodtransaction_model->count_filtered($this->input->post('txtSearch')),
 			"data" => $data
 		);
 		echo json_encode($output);
@@ -237,7 +237,7 @@ class Admin extends CI_Controller {
 		$name = 'attachment';
 		// SendToDatabase
 		if($this->form_validation->run() === true){
-			if($this->prodtransaction_model->updatePrdRec($postData)){
+			if($this->Prodtransaction_model->updatePrdRec($postData)){
 				$this->session->set_flashdata('productSuccess','Edit Successful');
 			}
 			else{
@@ -260,7 +260,7 @@ class Admin extends CI_Controller {
 		//helpers
 		$this->load->helper('url');
 		//load query
-		$list = $this->serviceTransaction_model->getServiceTransTable($this->input->post('txtSearch'));
+		$list = $this->ServiceTransaction_model->getServiceTransTable($this->input->post('txtSearch'));
 		//variable initializations
 		$data = array();
 		$no = $_POST['start'];
@@ -286,8 +286,8 @@ class Admin extends CI_Controller {
 		//carries the values to the view
 		$output = array(
 			"draw" => $_POST['draw'],
-			"recordsTotal" => $this->serviceTransaction_model->count($this->input->post('txtSearch')),
-			"recordsFiltered" => $this->serviceTransaction_model->count_filtered($this->input->post('txtSearch')),
+			"recordsTotal" => $this->ServiceTransaction_model->count($this->input->post('txtSearch')),
+			"recordsFiltered" => $this->ServiceTransaction_model->count_filtered($this->input->post('txtSearch')),
 			"data" => $data
 		);
 		echo json_encode($output);
@@ -311,7 +311,7 @@ class Admin extends CI_Controller {
 		$name = 'attachment';
 		// SendToDatabase
 		if($this->form_validation->run() === true){
-			if($this->serviceTransaction_model->updateServiceTransRecord($postData)){
+			if($this->ServiceTransaction_model->updateServiceTransRecord($postData)){
 				$this->session->set_flashdata('serviceSuccess','Edit Successful');
 			}
 			else{
@@ -348,7 +348,7 @@ class Admin extends CI_Controller {
 		//helpers
 		$this->load->helper('url');
 		//load query
-		$list = $this->ping_model->getPingTable($this->input->post('txtSearch'));
+		$list = $this->Ping_model->getPingTable($this->input->post('txtSearch'));
 		//variable initializations
 		$data = array();
 		$no = $_POST['start'];
@@ -374,8 +374,8 @@ class Admin extends CI_Controller {
 		}
 		$output = array(
 			"draw" => $_POST['draw'],
-			"recordsTotal" => $this->ping_model->count($this->input->post('txtSearch')),
-			"recordsFiltered" => $this->ping_model->count_filtered($this->input->post('txtSearch')),
+			"recordsTotal" => $this->Ping_model->count($this->input->post('txtSearch')),
+			"recordsFiltered" => $this->Ping_model->count_filtered($this->input->post('txtSearch')),
 			"data" => $data
 		);	
 		// $data[] = $row;
@@ -383,7 +383,7 @@ class Admin extends CI_Controller {
 	}
 	// delete ping record
 	public function deletePingRecord(){
-		if($this->ping_model->delPingItem($this->uri->segment(3))){
+		if($this->Ping_model->delPingItem($this->uri->segment(3))){
 			$this->session->set_flashdata('success','Delete Success');
 		}
 		else{
@@ -407,7 +407,7 @@ class Admin extends CI_Controller {
 		$name = 'attachment';
 		// SendToDatabase
 		if($this->form_validation->run() === true){
-			if($this->ping_model->updatePingItm($postData)){
+			if($this->Ping_model->updatePingItm($postData)){
 				$this->session->set_flashdata('success','Edit Successful');
 			}
 			else{
@@ -423,7 +423,7 @@ class Admin extends CI_Controller {
 	}
 
 	public function sendPingResponseToClient() { 
-		$data['pingData'] = $this->ping_model->getPingDataById($this->uri->segment(3));
+		$data['pingData'] = $this->Ping_model->getPingDataById($this->uri->segment(3));
 
 		// -------------- SEND EMAIL -------------- // 
 		$this->load->library('email');
@@ -460,17 +460,17 @@ class Admin extends CI_Controller {
 	public function support()
 	{
 		$data['param'] ='support';
-		$data['totalTicket'] = $this->support_model->countTotal();
-		$data['totalOpen'] = $this->support_model->countOpen();
-		$data['totalClose'] = $this->support_model->countClose();
+		$data['totalTicket'] = $this->Support_model->countTotal();
+		$data['totalOpen'] = $this->Support_model->countOpen();
+		$data['totalClose'] = $this->Support_model->countClose();
 		$data['dateDetail'] = $this->getWeekDetail();
-		$data['info1'] = $this->support_model->getDateDetail($data['dateDetail']['monday']);
-		$data['info2'] = $this->support_model->getDateDetail($data['dateDetail']['tuesday']);
-		$data['info3'] = $this->support_model->getDateDetail($data['dateDetail']['wednesday']);
-		$data['info4'] = $this->support_model->getDateDetail($data['dateDetail']['thursday']);
-		$data['info5'] = $this->support_model->getDateDetail($data['dateDetail']['friday']);
-		$data['info6'] = $this->support_model->getDateDetail($data['dateDetail']['saturday']);
-		$data['info7'] = $this->support_model->getDateDetail($data['dateDetail']['sunday']);
+		$data['info1'] = $this->Support_model->getDateDetail($data['dateDetail']['monday']);
+		$data['info2'] = $this->Support_model->getDateDetail($data['dateDetail']['tuesday']);
+		$data['info3'] = $this->Support_model->getDateDetail($data['dateDetail']['wednesday']);
+		$data['info4'] = $this->Support_model->getDateDetail($data['dateDetail']['thursday']);
+		$data['info5'] = $this->Support_model->getDateDetail($data['dateDetail']['friday']);
+		$data['info6'] = $this->Support_model->getDateDetail($data['dateDetail']['saturday']);
+		$data['info7'] = $this->Support_model->getDateDetail($data['dateDetail']['sunday']);
 		
 		$this->load->helper('url');
 		
@@ -488,7 +488,7 @@ class Admin extends CI_Controller {
 		//helpers
 		$this->load->helper('url');
 		//load query
-		$list = $this->support_model->getSupportTable($this->input->post('txtSearch'));
+		$list = $this->Support_model->getSupportTable($this->input->post('txtSearch'));
 		//variable initializations
 		$data = array();
 		$no = $_POST['start'];
@@ -512,8 +512,8 @@ class Admin extends CI_Controller {
 		}
 		$output = array(
 			"draw" => $_POST['draw'],
-			"recordsTotal" => $this->support_model->count($this->input->post('txtSearch')),
-			"recordsFiltered" => $this->support_model->count_filtered($this->input->post('txtSearch')),
+			"recordsTotal" => $this->Support_model->count($this->input->post('txtSearch')),
+			"recordsFiltered" => $this->Support_model->count_filtered($this->input->post('txtSearch')),
 			"data" => $data
 		);	
 		// $data[] = $row;
@@ -523,9 +523,9 @@ class Admin extends CI_Controller {
 	public function updateSupportRecord(){
 		// screen to open
 		$data['param'] ='support';
-		$data['totalTicket'] = $this->support_model->countTotal();
-		$data['totalOpen'] = $this->support_model->countOpen();
-		$data['totalClose'] = $this->support_model->countClose();
+		$data['totalTicket'] = $this->Support_model->countTotal();
+		$data['totalOpen'] = $this->Support_model->countOpen();
+		$data['totalClose'] = $this->Support_model->countClose();
 		$this->form_validation->set_rules('supportStatusField', 'Status' ,'required');
 		// Helpers
 		$this->load->helper('url');
@@ -538,7 +538,7 @@ class Admin extends CI_Controller {
 		$name = 'attachment';
 		// SendToDatabase
 		if($this->form_validation->run() === true){
-			if($this->support_model->updateSupportItem($postData)){
+			if($this->Support_model->updateSupportItem($postData)){
 				$this->session->set_flashdata('success','Edit Successful');
 			}
 			else{
@@ -616,7 +616,7 @@ class Admin extends CI_Controller {
 		if($this->uri->segment(2)=="userManagement"){
 			// on submit
 			if($this->form_validation->run() === true){
-				if($this->user_model->create($postData)){
+				if($this->User_model->create($postData)){
 					$this->session->set_flashdata('success','Add Successful');
 				}
 				else{
@@ -641,7 +641,7 @@ class Admin extends CI_Controller {
 			// on submit
 			if($this->form_validation->run() === true){
 				
-				if($this->user_model->updateUser($postData)){
+				if($this->User_model->updateUser($postData)){
 					$this->session->set_flashdata('success','Update Successful');
 				}
 				else{
@@ -657,7 +657,7 @@ class Admin extends CI_Controller {
 						redirect('admin/updateUser/'.$this->input->post('userIdField'));
 					}
 					else{
-						$data['userData'] = $this->user_model->readbyUserDataById($this->uri->segment(3));
+						$data['userData'] = $this->User_model->readbyUserDataById($this->uri->segment(3));
 						$this->load->view('HeaderNFooter/HeaderAdmin.php');
 						$this->load->view('AdminPages/wrapper.php', $data);
 						$this->load->view('HeaderNFooter/FooterAdmin.php');
@@ -671,7 +671,7 @@ class Admin extends CI_Controller {
 	}
 	// delete user
 	public function deleteUser(){
-		if($this->user_model->delUser($this->uri->segment(3))){
+		if($this->User_model->delUser($this->uri->segment(3))){
 			$this->session->set_flashdata('success','Delete Success');
 		}
 		else{
@@ -684,7 +684,7 @@ class Admin extends CI_Controller {
 		//helpers
 		$this->load->helper('url');
 		//load query
-		$list = $this->user_model->getUserTable($this->input->post('txtSearch'));
+		$list = $this->User_model->getUserTable($this->input->post('txtSearch'));
 		//variable initializations
 		$data = array();
 		$no = $_POST['start'];
@@ -708,8 +708,8 @@ class Admin extends CI_Controller {
 		}
 		$output = array(
 			"draw" => $_POST['draw'],
-			"recordsTotal" => $this->user_model->count($this->input->post('txtSearch')),
-			"recordsFiltered" => $this->user_model->count_filtered($this->input->post('txtSearch')),
+			"recordsTotal" => $this->User_model->count($this->input->post('txtSearch')),
+			"recordsFiltered" => $this->User_model->count_filtered($this->input->post('txtSearch')),
 			"data" => $data
 		);	
 		// $data[] = $row;
@@ -798,7 +798,7 @@ class Admin extends CI_Controller {
             
 				$postData['companyImg'] = $upload1['file_name'];
 				$postData['companyReq'] = $upload2['file_name'];
-				if($this->fACompanies_model->create($postData)){
+				if($this->FACompanies_model->create($postData)){
 					$this->session->set_flashdata('success','Add Successful');
 				}
 				else {
@@ -882,7 +882,7 @@ class Admin extends CI_Controller {
 					
 					$postData['companyImg'] = $upload['file_name'];
 
-					if($this->fACompanies_model->updateFACompanyItm($postData)){
+					if($this->FACompanies_model->updateFACompanyItm($postData)){
 						$this->session->set_flashdata('success','Edit Successful');
 						unlink(APPPATH.'assets/attachments/images/'.$this->input->post('fACompanyFileName'));
 					}
@@ -903,7 +903,7 @@ class Admin extends CI_Controller {
 					
 					$postData['companyReq'] = $upload['file_name'];
 					
-					if($this->fACompanies_model->updateFACompanyItm($postData)){
+					if($this->FACompanies_model->updateFACompanyItm($postData)){
 						$this->session->set_flashdata('success','Edit Successful');
 						unlink(APPPATH.'assets/attachments/requirements/'.$this->input->post('fACompanyReqFileName'));
 					}
@@ -937,7 +937,7 @@ class Admin extends CI_Controller {
 				
 					$postData['companyImg'] = $upload1['file_name'];
 					$postData['companyReq'] = $upload2['file_name'];
-					if($this->fACompanies_model->updateFACompanyItm($postData)){
+					if($this->FACompanies_model->updateFACompanyItm($postData)){
 						$this->session->set_flashdata('success','Add Successful');
 						unlink(APPPATH.'assets/attachments/requirements/'.$this->input->post('fACompanyReqFileName'));
 						unlink(APPPATH.'assets/attachments/images/'.$this->input->post('fACompanyFileName'));
@@ -949,7 +949,7 @@ class Admin extends CI_Controller {
 			}
 			//if not continue with the normal update process
 			else{
-				if($this->fACompanies_model->updateFACompanyItm($postData)){
+				if($this->FACompanies_model->updateFACompanyItm($postData)){
 					$this->session->set_flashdata('success','Edit Successful');
 				}
 				else{
@@ -968,10 +968,10 @@ class Admin extends CI_Controller {
 	// delete fACompany record
 	public function deleteFACompanyRecord(){
 		//get file name to remove picture as the record is deleted
-		$query = $this->fACompanies_model->getFACompanyDataById($this->uri->segment(3));
+		$query = $this->FACompanies_model->getFACompanyDataById($this->uri->segment(3));
 		$file = $query->companyImg;
 		$file1 = $query->companyReq;
-		if($this->fACompanies_model->deleteFACompanyItm($this->uri->segment(3))){
+		if($this->FACompanies_model->deleteFACompanyItm($this->uri->segment(3))){
 			unlink(APPPATH.'assets/attachments/images/'.$file);
 			unlink(APPPATH.'assets/attachments/requirements/'.$file1);
 			$this->session->set_flashdata('success','Delete Success');
@@ -987,7 +987,7 @@ class Admin extends CI_Controller {
 		//helpers
 		$this->load->helper('url');
 		//load query
-		$list = $this->fACompanies_model->getFACompanyTable($this->input->post('txtSearch'));
+		$list = $this->FACompanies_model->getFACompanyTable($this->input->post('txtSearch'));
 		//variable initializations
 		$data = array();
 		$no = $_POST['start'];
@@ -1009,8 +1009,8 @@ class Admin extends CI_Controller {
 		//carries the values to the view
 		$output = array(
 			"draw" => $_POST['draw'],
-			"recordsTotal" => $this->fACompanies_model->count($this->input->post('txtSearch')),
-			"recordsFiltered" => $this->fACompanies_model->count_filtered($this->input->post('txtSearch')),
+			"recordsTotal" => $this->FACompanies_model->count($this->input->post('txtSearch')),
+			"recordsFiltered" => $this->FACompanies_model->count_filtered($this->input->post('txtSearch')),
 			"data" => $data
 		);
 		echo json_encode($output);
@@ -1021,7 +1021,7 @@ class Admin extends CI_Controller {
 		//helpers
 		$this->load->helper('url');
 		//load query
-		$list = $this->loan_model->getLoanTable($this->input->post('txtSearch'));
+		$list = $this->Loan_model->getLoanTable($this->input->post('txtSearch'));
 		//variable initializations
 		$data = array();
 		$no = $_POST['start'];
@@ -1044,8 +1044,8 @@ class Admin extends CI_Controller {
 		//carries the values to the view
 		$output = array(
 			"draw" => $_POST['draw'],
-			"recordsTotal" => $this->loan_model->count($this->input->post('txtSearch')),
-			"recordsFiltered" => $this->loan_model->count_filtered($this->input->post('txtSearch')),
+			"recordsTotal" => $this->Loan_model->count($this->input->post('txtSearch')),
+			"recordsFiltered" => $this->Loan_model->count_filtered($this->input->post('txtSearch')),
 			"data" => $data
 		);
 		echo json_encode($output);
@@ -1069,7 +1069,7 @@ class Admin extends CI_Controller {
 		$name = 'attachment';
 		// SendToDatabase
 		if($this->form_validation->run() === true){
-			if($this->loan_model->updateLoanItm($postData)){
+			if($this->Loan_model->updateLoanItm($postData)){
 				$this->session->set_flashdata('loanSuccess','Edit Successful');
 			}
 			else{
@@ -1088,9 +1088,9 @@ class Admin extends CI_Controller {
 	}
 
 	public function acceptFA() {
-		$data['loanData'] = $this->loan_model->getLoanDataById($this->uri->segment(3));
+		$data['loanData'] = $this->Loan_model->getLoanDataById($this->uri->segment(3));
 
-		if($this->loan_model->updateLoanStatusApprove($data['loanData']->loanId)){
+		if($this->Loan_model->updateLoanStatusApprove($data['loanData']->loanId)){
 			// -------------- SEND EMAIL -------------- // 
 			$this->load->library('email');
 										
@@ -1128,9 +1128,9 @@ class Admin extends CI_Controller {
 	}
 
 	public function rejectFA() {
-		$data['loanData'] = $this->loan_model->getLoanDataById($this->uri->segment(3));
+		$data['loanData'] = $this->Loan_model->getLoanDataById($this->uri->segment(3));
 
-		if($this->loan_model->updateLoanStatusReject($data['loanData']->loanId)){
+		if($this->Loan_model->updateLoanStatusReject($data['loanData']->loanId)){
 			// -------------- SEND EMAIL -------------- // 
 			$this->load->library('email');
 										
@@ -1215,7 +1215,7 @@ class Admin extends CI_Controller {
                 $upload =  $this->upload->data();
                 
 				$postData['productPicture'] = $upload['file_name'];
-				if($this->inventory_model->create($postData)){
+				if($this->Inventory_model->create($postData)){
 					$this->session->set_flashdata('success','Add Successful');
 				}
 				else {
@@ -1281,7 +1281,7 @@ class Admin extends CI_Controller {
 					$upload =  $this->upload->data();
 					
 					$postData['productPicture'] = $upload['file_name'];
-					if($this->inventory_model->updateProdItm($postData)){
+					if($this->Inventory_model->updateProdItm($postData)){
 						$this->session->set_flashdata('success','Edit Successful');
 						unlink(APPPATH.'assets/attachments/images/'.$this->input->post('fileName'));
 					}
@@ -1293,7 +1293,7 @@ class Admin extends CI_Controller {
 			}
 			//if not continue with the normal update process
 			else{
-				if($this->inventory_model->updateProdItm($postData)){
+				if($this->Inventory_model->updateProdItm($postData)){
 					$this->session->set_flashdata('success','Edit Successful');
 				}
 				else{
@@ -1311,9 +1311,9 @@ class Admin extends CI_Controller {
 	// delete product record
 	public function deleteProdRecord(){
 		//get file name to remove picture as the record is deleted
-		$query = $this->inventory_model->getInvDataById($this->uri->segment(3));
+		$query = $this->Inventory_model->getInvDataById($this->uri->segment(3));
 		$file = $query->productPicture;
-		if($this->inventory_model->deleteProdItm($this->uri->segment(3))){
+		if($this->Inventory_model->deleteProdItm($this->uri->segment(3))){
 			unlink(APPPATH.'assets/attachments/images/'.$file);
 			$this->session->set_flashdata('success','Delete Success');
 		}
@@ -1327,7 +1327,7 @@ class Admin extends CI_Controller {
 		//helpers
 		$this->load->helper('url');
 		//load query
-		$list = $this->inventory_model->getInvTable($this->input->post('txtSearch'));
+		$list = $this->Inventory_model->getInvTable($this->input->post('txtSearch'));
 		//variable initializations
 		$data = array();
 		$no = $_POST['start'];
@@ -1350,8 +1350,8 @@ class Admin extends CI_Controller {
 		//carries the values to the view
 		$output = array(
 			"draw" => $_POST['draw'],
-			"recordsTotal" => $this->inventory_model->count($this->input->post('txtSearch')),
-			"recordsFiltered" => $this->inventory_model->count_filtered($this->input->post('txtSearch')),
+			"recordsTotal" => $this->Inventory_model->count($this->input->post('txtSearch')),
+			"recordsFiltered" => $this->Inventory_model->count_filtered($this->input->post('txtSearch')),
 			"data" => $data
 		);
 		echo json_encode($output);
@@ -1404,7 +1404,7 @@ class Admin extends CI_Controller {
                 $upload =  $this->upload->data();
                 
 				$postData['servicePicture'] = $upload['file_name'];
-				if($this->srvcsinventory_model->create($postData)){
+				if($this->Srvcsinventory_model->create($postData)){
 					$this->session->set_flashdata('success','Add Successful');
 				}
 				else {
@@ -1468,7 +1468,7 @@ class Admin extends CI_Controller {
 					$upload =  $this->upload->data();
 					
 					$postData['servicePicture'] = $upload['file_name'];
-					if($this->srvcsinventory_model->updateSrvcsItm($postData)){
+					if($this->Srvcsinventory_model->updateSrvcsItm($postData)){
 						$this->session->set_flashdata('success','Edit Successful');
 						unlink(APPPATH.'assets/attachments/images/'.$this->input->post('fileName'));
 					}
@@ -1480,7 +1480,7 @@ class Admin extends CI_Controller {
 			}
 			//if not continue with the normal update process
 			else{
-				if($this->srvcsinventory_model->updateSrvcsItm($postData)){
+				if($this->Srvcsinventory_model->updateSrvcsItm($postData)){
 					$this->session->set_flashdata('success','Edit Successful');
 				}
 				else{
@@ -1498,9 +1498,9 @@ class Admin extends CI_Controller {
 	// delete services record
 	public function deleteSrvcsInventoryRecord(){
 		//get file name to remove picture as the record is deleted
-		$query = $this->srvcsinventory_model->getServiceInvDataById($this->uri->segment(3));
+		$query = $this->Srvcsinventory_model->getServiceInvDataById($this->uri->segment(3));
 		$file = $query->servicePicture;
-		if($this->srvcsinventory_model->deleteSrvcsItm($this->uri->segment(3))){
+		if($this->Srvcsinventory_model->deleteSrvcsItm($this->uri->segment(3))){
 			unlink(APPPATH.'assets/attachments/images/'.$file);
 			$this->session->set_flashdata('success','Delete Success');
 		}
@@ -1514,7 +1514,7 @@ class Admin extends CI_Controller {
 		//helpers
 		$this->load->helper('url');
 		//load query
-		$list = $this->srvcsinventory_model->getServiceInvTable($this->input->post('txtSearch'));
+		$list = $this->Srvcsinventory_model->getServiceInvTable($this->input->post('txtSearch'));
 		//variable initializations
 		$data = array();
 		$no = $_POST['start'];
@@ -1536,8 +1536,8 @@ class Admin extends CI_Controller {
 		//carries the values to the view
 		$output = array(
 			"draw" => $_POST['draw'],
-			"recordsTotal" => $this->srvcsinventory_model->count($this->input->post('txtSearch')),
-			"recordsFiltered" => $this->srvcsinventory_model->count_filtered($this->input->post('txtSearch')),
+			"recordsTotal" => $this->Srvcsinventory_model->count($this->input->post('txtSearch')),
+			"recordsFiltered" => $this->Srvcsinventory_model->count_filtered($this->input->post('txtSearch')),
 			"data" => $data
 		);
 		echo json_encode($output);
