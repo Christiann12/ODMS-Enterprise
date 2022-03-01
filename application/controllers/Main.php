@@ -230,9 +230,9 @@ class Main extends CI_Controller {
 				$body = $this->load->view('EmailTemplates/PingEmailTemp.php',$emailInfo,TRUE);
 				$this->email->message($body);
 
-				if(!$this->email->send()){
+			
 					$this->session->set_flashdata('success',$this->email->print_debugger());
-				}
+				
 				
 			}
 			else{
