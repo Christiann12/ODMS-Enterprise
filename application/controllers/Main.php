@@ -8,14 +8,14 @@ class Main extends CI_Controller {
 		parent::__construct();
 		date_default_timezone_set('Asia/Singapore');
 		$this->load->model('inventory_model');
-		$this->load->model('cart_model');
-		$this->load->model('ping_model');
-		$this->load->model('support_model');
-		$this->load->model('fACompanies_model');
-		$this->load->model('srvcsinventory_model');
-		$this->load->model('prodtransaction_model');
-		$this->load->model('serviceTransaction_model');
-		$this->load->model('loan_model');
+		$this->load->model('Cart_model');
+		$this->load->model('Ping_model');
+		$this->load->model('Support_model');
+		$this->load->model('FACompanies_model');
+		$this->load->model('Srvcsinventory_model');
+		$this->load->model('Prodtransaction_model');
+		$this->load->model('ServiceTransaction_model');
+		$this->load->model('Loan_model');
 		$this->load->helper('url');
 		$this->load->library('session'); 
 
