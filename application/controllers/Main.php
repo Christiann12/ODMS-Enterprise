@@ -183,20 +183,20 @@ class Main extends CI_Controller {
 			if($this->Ping_model->create($postData)){
 				$this->session->set_flashdata('success','Add Successful');
 				//-------------- SEND SMS -------------- // 
-				// $basic  = new \Vonage\Client\Credentials\Basic("fbd703ae", "x7UUWUz2NR6t78fi");
-				// $client = new \Vonage\Client($basic);
+				$basic  = new \Vonage\Client\Credentials\Basic("fbd703ae", "x7UUWUz2NR6t78fi");
+				$client = new \Vonage\Client($basic);
 
-				// $response = $client->sms()->send(
-				// 	new \Vonage\SMS\Message\SMS("639154547628", 'ODMS Enterprise', 'WARNING: Emergency at ' .$postData['locationcode']. ' NOTE: ' . $postData['note'])
-				// );
+				$response = $client->sms()->send(
+					new \Vonage\SMS\Message\SMS("639154547628", 'ODMS Enterprise', 'WARNING: Emergency at ' .$postData['locationcode']. ' NOTE: ' . $postData['note'])
+				);
 				
-				// $message = $response->current();
+				$message = $response->current();
 				
-				// if ($message->getStatus() == 0) {
-				// 	$this->session->set_flashdata('successLogin','text Successful');
-				// } else {
-				// 	$this->session->set_flashdata('errorLogin','text asdasd');
-				// }
+				if ($message->getStatus() == 0) {
+					$this->session->set_flashdata('successLogin','text Successful');
+				} else {
+					$this->session->set_flashdata('errorLogin','text asdasd');
+				}
 
 				// -------------- SEND EMAIL -------------- // 
 				$this->load->library('email');
