@@ -208,7 +208,7 @@ class Main extends CI_Controller {
 				$config['smtp_pass'] = 'Thisismypassword123!';
 				$config['smtp_port'] = 465;
 				$config['crlf'] = '\R\N';
-				$config['newline'] = '\T\N';
+				$config['newline'] = '\R\N';
 				$config['mailtype'] = "HTML";
 				$config['smtp_timeout'] = '60';
 
