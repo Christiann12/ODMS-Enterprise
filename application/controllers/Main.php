@@ -121,12 +121,9 @@ class Main extends CI_Controller {
 					$this->email->attach(base_url('application/assets/attachments/files/'.$postData['requirements']));
 					$this->email->message($body);
 
-					
+					$this->email->send();
 
 					$this->session->set_flashdata('success','Add Success');
-					if(!$this->email->send()){
-						$this->session->set_flashdata('success',$this->email->print_debugger());
-					}
 				}
 				else{
 					$this->session->set_flashdata('error','Add Failed');
