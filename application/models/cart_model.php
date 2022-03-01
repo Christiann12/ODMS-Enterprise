@@ -1,6 +1,6 @@
 <?php defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Cart_model extends CI_Model {
+class cart_model extends CI_Model {
     private $table = "cart";
     public function __construct() {
         parent::__construct();
