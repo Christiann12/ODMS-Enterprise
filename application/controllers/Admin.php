@@ -149,7 +149,7 @@ class Admin extends CI_Controller {
 		
 		if($this->session->has_userdata('adminId')){
 			$this->load->view('HeaderNFooter/HeaderAdmin.php');
-			$this->load->view('AdminPages/wrapper.php', $data);
+			$this->load->view('AdminPages/Wrapper.php', $data);
 			$this->load->view('HeaderNFooter/FooterAdmin.php',$data);
 		}
 		else{
@@ -181,7 +181,7 @@ class Admin extends CI_Controller {
 		$this->load->helper('url');
 		if($this->session->has_userdata('adminId') && ($this->session->userdata('userRole') == 'admin' || $this->session->userdata('userRole') == 'financial')){
 			$this->load->view('HeaderNFooter/HeaderAdmin.php');
-			$this->load->view('AdminPages/wrapper.php', $data);
+			$this->load->view('AdminPages/Wrapper.php', $data);
 			$this->load->view('HeaderNFooter/FooterAdmin.php');
 		}
 		else{
@@ -250,7 +250,7 @@ class Admin extends CI_Controller {
 			$this->session->set_flashdata('error',validation_errors());
 			redirect('admin/transaction');
 			// $this->load->view('HeaderNFooter/HeaderAdmin.php');
-			// $this->load->view('AdminPages/wrapper.php', $data);
+			// $this->load->view('AdminPages/Wrapper.php', $data);
 			// $this->load->view('HeaderNFooter/FooterAdmin.php');
 		}
 	}
@@ -324,7 +324,7 @@ class Admin extends CI_Controller {
 			$this->session->set_flashdata('serviceError',validation_errors());
 			redirect('admin/transaction');
 			// $this->load->view('HeaderNFooter/HeaderAdmin.php');
-			// $this->load->view('AdminPages/wrapper.php', $data);
+			// $this->load->view('AdminPages/Wrapper.php', $data);
 			// $this->load->view('HeaderNFooter/FooterAdmin.php');
 		}
 	}
@@ -335,7 +335,7 @@ class Admin extends CI_Controller {
 		$this->load->helper('url');
 		if($this->session->has_userdata('adminId') && ($this->session->userdata('userRole') == 'admin' || $this->session->userdata('userRole') == 'support')){
 			$this->load->view('HeaderNFooter/HeaderAdmin.php');
-			$this->load->view('AdminPages/wrapper.php', $data);
+			$this->load->view('AdminPages/Wrapper.php', $data);
 			$this->load->view('HeaderNFooter/FooterAdmin.php');
 		}
 		else{
@@ -417,7 +417,7 @@ class Admin extends CI_Controller {
 		}
 		else{
 			$this->load->view('HeaderNFooter/HeaderAdmin.php');
-			$this->load->view('AdminPages/wrapper.php', $data);
+			$this->load->view('AdminPages/Wrapper.php', $data);
 			$this->load->view('HeaderNFooter/FooterAdmin.php');
 		}
 	}
@@ -476,7 +476,7 @@ class Admin extends CI_Controller {
 		
 		if($this->session->has_userdata('adminId') && ($this->session->userdata('userRole') == 'admin' || $this->session->userdata('userRole') == 'support')){
 			$this->load->view('HeaderNFooter/HeaderAdmin.php');
-			$this->load->view('AdminPages/wrapper.php', $data);
+			$this->load->view('AdminPages/Wrapper.php', $data);
 			$this->load->view('HeaderNFooter/FooterAdmin.php', $data);
 		}
 		else{
@@ -548,7 +548,7 @@ class Admin extends CI_Controller {
 		}
 		else{
 			$this->load->view('HeaderNFooter/HeaderAdmin.php');
-			$this->load->view('AdminPages/wrapper.php', $data);
+			$this->load->view('AdminPages/Wrapper.php', $data);
 			$this->load->view('HeaderNFooter/FooterAdmin.php');
 		}
 	}
@@ -628,7 +628,7 @@ class Admin extends CI_Controller {
 			else{
 				if($this->session->has_userdata('adminId') && ($this->session->userdata('userRole') == 'admin')){
 					$this->load->view('HeaderNFooter/HeaderAdmin.php');
-					$this->load->view('AdminPages/wrapper.php', $data);
+					$this->load->view('AdminPages/Wrapper.php', $data);
 					$this->load->view('HeaderNFooter/FooterAdmin.php');
 				}
 				else{
@@ -659,7 +659,7 @@ class Admin extends CI_Controller {
 					else{
 						$data['userData'] = $this->User_model->readbyUserDataById($this->uri->segment(3));
 						$this->load->view('HeaderNFooter/HeaderAdmin.php');
-						$this->load->view('AdminPages/wrapper.php', $data);
+						$this->load->view('AdminPages/Wrapper.php', $data);
 						$this->load->view('HeaderNFooter/FooterAdmin.php');
 					}
 				}
@@ -809,7 +809,7 @@ class Admin extends CI_Controller {
 		} else {
 			if($this->session->has_userdata('adminId') && ($this->session->userdata('userRole') == 'admin')){
 				$this->load->view('HeaderNFooter/HeaderAdmin.php');
-				$this->load->view('AdminPages/wrapper.php', $data);
+				$this->load->view('AdminPages/Wrapper.php', $data);
 				$this->load->view('HeaderNFooter/FooterAdmin.php');
 			}
 			else{
@@ -960,7 +960,7 @@ class Admin extends CI_Controller {
 		}
 		else{
 			$this->load->view('HeaderNFooter/HeaderAdmin.php');
-			$this->load->view('AdminPages/wrapper.php', $data);
+			$this->load->view('AdminPages/Wrapper.php', $data);
 			$this->load->view('HeaderNFooter/FooterAdmin.php');
 		}
 	}
@@ -1082,7 +1082,7 @@ class Admin extends CI_Controller {
 			$this->session->set_flashdata('loanError',validation_errors());
 			redirect('admin/financialAssistance');
 			// $this->load->view('HeaderNFooter/HeaderAdmin.php');
-			// $this->load->view('AdminPages/wrapper.php', $data);
+			// $this->load->view('AdminPages/Wrapper.php', $data);
 			// $this->load->view('HeaderNFooter/FooterAdmin.php');
 		}
 	}
@@ -1228,7 +1228,7 @@ class Admin extends CI_Controller {
 		else{
 			if($this->session->has_userdata('adminId') && ($this->session->userdata('userRole') == 'admin' || $this->session->userdata('userRole') == 'inventory')){
 				$this->load->view('HeaderNFooter/HeaderAdmin.php');
-				$this->load->view('AdminPages/wrapper.php', $data);
+				$this->load->view('AdminPages/Wrapper.php', $data);
 				$this->load->view('HeaderNFooter/FooterAdmin.php');
 			}
 			else{
@@ -1304,7 +1304,7 @@ class Admin extends CI_Controller {
 		}
 		else{
 			$this->load->view('HeaderNFooter/HeaderAdmin.php');
-			$this->load->view('AdminPages/wrapper.php', $data);
+			$this->load->view('AdminPages/Wrapper.php', $data);
 			$this->load->view('HeaderNFooter/FooterAdmin.php');
 		}
 	}
@@ -1417,7 +1417,7 @@ class Admin extends CI_Controller {
 		else{
 			if($this->session->has_userdata('adminId') && ($this->session->userdata('userRole') == 'admin' || $this->session->userdata('userRole') == 'inventory')){
 				$this->load->view('HeaderNFooter/HeaderAdmin.php');
-				$this->load->view('AdminPages/wrapper.php', $data);
+				$this->load->view('AdminPages/Wrapper.php', $data);
 				$this->load->view('HeaderNFooter/FooterAdmin.php');
 			}
 			else{
@@ -1491,7 +1491,7 @@ class Admin extends CI_Controller {
 		}
 		else{
 			$this->load->view('HeaderNFooter/HeaderAdmin.php');
-			$this->load->view('AdminPages/wrapper.php', $data);
+			$this->load->view('AdminPages/Wrapper.php', $data);
 			$this->load->view('HeaderNFooter/FooterAdmin.php');
 		}
 	}
