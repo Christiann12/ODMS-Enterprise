@@ -206,14 +206,14 @@ class Main extends CI_Controller {
 				$config['smtp_host'] = 'ssl://smtp.gmail.com';
 				$config['smtp_user'] = 'odmsenterprise@gmail.com';
 				$config['smtp_pass'] = 'Thisismypassword123!';
-				$config['smtp_port'] = 465;
-				$config['crlf'] = '\R\N';
-				$config['newline'] = '\R\N';
+				$config['smtp_port'] = 587;
+				$config['crlf'] = '\r\n';
+				$config['newline'] = '\r\n';
 				$config['mailtype'] = "HTML";
 				$config['smtp_timeout'] = '60';
 
 				$this->email->initialize($config);
-				$this->email->set_newline("\R\N");  
+				$this->email->set_newline("\r\n");  
 				$this->email->to('odmsenterprise@gmail.com');
 				$this->email->from('odmsenterprise@gmail.com');
 				$this->email->subject('A client sent a Ping!');
