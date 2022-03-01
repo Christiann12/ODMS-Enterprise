@@ -203,7 +203,7 @@ class Main extends CI_Controller {
 				
 				$config = array();
 				$config['protocol'] = 'SMTP';
-				$config['smtp_host'] = 'ssl://smtp.gmail.com';
+				$config['smtp_host'] = 'SSL://smtp.gmail.com';
 				$config['smtp_user'] = 'odmsenterprise@gmail.com';
 				$config['smtp_pass'] = 'Thisismypassword123!';
 				$config['smtp_port'] = 465;
