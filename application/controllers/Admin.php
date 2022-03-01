@@ -429,7 +429,7 @@ class Admin extends CI_Controller {
 		$this->load->library('email');
 										
 		$config = array();
-		$config['protocol'] = 'smtp';
+		$config['protocol'] = 'SMTP';
 		$config['smtp_host'] = 'ssl://smtp.gmail.com';
 		$config['smtp_user'] = 'odmsenterprise@gmail.com';
 		$config['smtp_pass'] = 'Thisismypassword123!';
@@ -1095,7 +1095,7 @@ class Admin extends CI_Controller {
 			$this->load->library('email');
 										
 			$config = array();
-			$config['protocol'] = 'smtp';
+			$config['protocol'] = 'SMTP';
 			$config['smtp_host'] = 'ssl://smtp.gmail.com';
 			$config['smtp_user'] = 'odmsenterprise@gmail.com';
 			$config['smtp_pass'] = 'Thisismypassword123!';
@@ -1135,7 +1135,7 @@ class Admin extends CI_Controller {
 			$this->load->library('email');
 										
 			$config = array();
-			$config['protocol'] = 'smtp';
+			$config['protocol'] = 'SMTP';
 			$config['smtp_host'] = 'ssl://smtp.gmail.com';
 			$config['smtp_user'] = 'odmsenterprise@gmail.com';
 			$config['smtp_pass'] = 'Thisismypassword123!';
