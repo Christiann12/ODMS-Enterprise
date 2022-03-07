@@ -278,7 +278,7 @@
 						"data": {txtSearch:txtsearch}
 					},
 					"columnDefs":[{
-						"targets":[0],
+						"targets":[0,9],
 						"orderable":false,
 					},],
 					"order":[],
@@ -538,7 +538,7 @@
 						"data": {txtSearch:txtSearch}
 					},
 					"columnDefs":[{
-						"targets":[0,6],
+						"targets":[0,9],
 						"orderable":false,
 					},],
 					"order":[],
@@ -628,7 +628,7 @@
 						"data": {txtSearch:txtSearch}
 					},
 					"columnDefs":[{
-						"targets":[0,6],
+						"targets":[0,11],
 						"orderable":false,
 					},],
 					"order":[],
@@ -717,7 +717,7 @@
 						"data": {txtSearch:txtSearch}
 					},
 					"columnDefs":[{
-						"targets":[0,7],
+						"targets":[0,9],
 						"orderable":false,
 					},],
 					"order":[],
@@ -730,7 +730,9 @@
 				var availed_facompany_id = button.data('faid') ; 
 				var client_firstname = button.data('fname');
 				var client_lastname = button.data('lname');
+				var client_companyname = button.data('compname');
 				var client_email = button.data('email');
+				var create_date = button.data('cdate');
 				var loan_status = button.data('stat') ; 
 				// alert(productId);
 				var modal = $(this)
@@ -739,7 +741,9 @@
 				modal.find('.modal-body #availed_fa_companyId').val(availed_facompany_id);
 				modal.find('.modal-body #first_name').val(client_firstname);
 				modal.find('.modal-body #last_name').val(client_lastname);
+				modal.find('.modal-body #company_name').val(client_companyname);
 				modal.find('.modal-body #email_address').val(client_email);
+				modal.find('.modal-body #create_date').val(create_date);
 				modal.find('.modal-body #loan_status').val(loan_status);
 			})
 		</script>

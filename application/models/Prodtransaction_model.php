@@ -4,7 +4,7 @@ class Prodtransaction_model extends CI_Model {
     //global variable for table name
     private $table = "prodtransaction";
     //column order basis
-    var $column_order = array(null,'transactionId','firstName','lastName','phoneNumber','status',); //set column field database for datatable orderable
+    var $column_order = array(null,'transactionId','firstName','lastName', 'companyName', 'phoneNumber', 'totalPrice', 'createDate', 'status',); //set column field database for datatable orderable
     //default column order
     var $order = array('prodtransaction.transactionId' => 'asc');
     public function __construct() {
@@ -120,7 +120,10 @@ class Prodtransaction_model extends CI_Model {
 			$this->db->like("prodtransaction.transactionId", $searchKey);
             $this->db->or_like("prodtransaction.firstName", $searchKey);
 			$this->db->or_like("prodtransaction.lastName", $searchKey);
+			$this->db->or_like("prodtransaction.companyName", $searchKey);
             $this->db->or_like("prodtransaction.phoneNumber", $searchKey);
+            $this->db->or_like("prodtransaction.totalPrice", $searchKey);
+            $this->db->or_like("prodtransaction.createDate", $searchKey);
             $this->db->or_like("prodtransaction.status", $searchKey);
 			$this->db->group_end();
 		}

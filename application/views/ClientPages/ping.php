@@ -38,6 +38,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
             <div class="form-group row d-flex justify-content-around">
+                <label for="companyName" class="col-3 ">Company Name<i class="text-danger">*</i></label>
+                <div class="col-9">
+                    <input name="companyName"  type="text" class="form-control" id="companyName" placeholder="Input Company Name" value="">
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
                 <label for="locationCode" class="col-3 ">Location Code<i class="text-danger">*</i></label>
                 <div class="col-9">
                     <input name="locationCode"  type="text" class="form-control" id="locationCode" placeholder="Input Location Code" value="">

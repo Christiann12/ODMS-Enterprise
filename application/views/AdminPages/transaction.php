@@ -287,6 +287,46 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
 </div>
 
+<!-- overview section -->
+<div class="transactionOverviewSection">
+    <div class="transactionOverviewTextRow row">
+        <div class="transactionOverviewTextDiv">
+            <p class="transactionOverviewText">Transaction Overview</p>
+        </div>
+        <div class="transactionOverviewBtnDiv">
+            <button type="button" class="btn btn-primary printReportBtn">
+                Print Report
+            </button>
+        </div>
+    </div>
+    <div class="transactionReportSection row">
+        <div class="receivableProductsDiv col-lg-3 col-md-6 col-sm-12">
+            <div class="receivableProductsCard card">
+                <h6>Receivable Products:</h6>
+                <h3>PHP 1000.00</h3>
+            </div>
+        </div>
+        <div class="receivableServicesDiv col-lg-3 col-md-6 col-sm-12">
+            <div class="receivableServicesCard card">
+                <h6>Receivable Services:</h6>
+                <h3>PHP 1500.00</h3>
+            </div>
+        </div>
+        <div class="totalProductsPaidDiv col-lg-3 col-md-6 col-sm-12">
+            <div class="totalProductsCard card">
+                <h6>Total Products Paid:</h6>
+                <h3>PHP 300.00</h3>
+            </div>
+        </div>
+        <div class="totalServicesPaidDiv col-lg-3 col-md-6 col-sm-12">
+            <div class="totalServicesCard card">
+                <h6>Total Services Paid:</h6>
+                <h3>PHP 500.00</h3>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Start of Services -->
 <div class="transsrvSection">
     <!-- table heading --> 
@@ -329,13 +369,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <tr>
                     <th>No.</th>
                     <th>Transaction ID</th>
-                    <!-- <th>Availed Service</th>
-                    <th>Service Price</th> -->
                     <th>First Name</th>
                     <th>Last Name</th>
-                    <!-- <th>Email Address</th> -->
+                    <th>Company Name</th>
+                    <th>Email Address</th>
                     <th>Phone no.</th>
-                    <!-- <th>With Loan?</th> -->
+                    <th>Availed Service</th>
+                    <th>Order Price</th>
+                    <th>Date Ordered</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -392,7 +433,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <th>Transaction ID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
+                    <th>Company Name</th>
                     <th>Phone No.</th>
+                    <th>Order Price</th>
+                    <th>Date Ordered</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>

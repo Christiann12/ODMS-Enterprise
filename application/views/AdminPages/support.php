@@ -173,6 +173,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <th>Email</th>
                     <th>First Name</th>
                     <th>Last Name</th>
+                    <th>Company Name</th>
+                    <th>Date Created</th>
                     <th>Action</th>
                 </tr>
             </thead>

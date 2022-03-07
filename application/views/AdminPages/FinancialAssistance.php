@@ -203,9 +203,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
             </div>
             <div class="form-group row d-flex justify-content-around">
+                <label for="company_name" class="col-3 ">Company Name</label>
+                <div class="col-9">
+                    <input name="company_name"  type="text" class="form-control" id="company_name" placeholder="Company Name" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
                 <label for="email_address" class="col-3 ">Email Address</label>
                 <div class="col-9">
                     <input name="email_address"  type="text" class="form-control" id="email_address" placeholder="Email Address" value="" readonly>
+                </div>
+            </div>
+            <div class="form-group row d-flex justify-content-around">
+                <label for="create_date" class="col-3 ">Create Date</label>
+                <div class="col-9">
+                    <input name="create_date"  type="text" class="form-control" id="create_date" placeholder="Create Date" value="" readonly>
                 </div>
             </div>
             <div class="form-group row d-flex justify-content-around">
@@ -337,7 +349,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <th>Availed Financial Company</th>
                     <th>First Name</th>
                     <th>Last Name</th>
+                    <th>Company Name</th>
                     <th>Email</th>
+                    <th>Date Created</th>
                     <th>Request Status</th>
                     <th>Action</th>
                 </tr>

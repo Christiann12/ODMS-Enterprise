@@ -47,6 +47,7 @@ class Main extends CI_Controller {
 		// form validations
 		$this->form_validation->set_rules('fAFName', 'First Name' ,'required|max_length[50]');
 		$this->form_validation->set_rules('fALName', 'Last Name' ,'required|max_length[50]');
+		$this->form_validation->set_rules('fACompName', 'Company Name' ,'required|max_length[50]');
 		$this->form_validation->set_rules('fASelectCompany', 'Select FA Company' ,'required');
 		$this->form_validation->set_rules('fAClientEmail', 'Email' ,'required|max_length[100]');
 		if (empty($_FILES['fAClientRequirement']['name'])){
@@ -67,6 +68,7 @@ class Main extends CI_Controller {
 		$availedFACompany = $this->input->post('fASelectCompany');
 		$clientFirstName = $this->input->post('fAFName');
 		$clientLastName = $this->input->post('fALName');
+		$clientCompanyName = $this->input->post('fACompName');
 		$clientEmail = $this->input->post('fAClientEmail');
 		$clientRequirement = $this->input->post('fAClientRequirement');
 		
@@ -76,6 +78,7 @@ class Main extends CI_Controller {
 			'fACompanyId' => $availedFACompany,
             'firstName' => $clientFirstName,
 			'lastName' => $clientLastName,
+			'clientCompanyName' => $clientCompanyName,
 			'emailAddress' => $clientEmail,
 			'requirements' => $clientRequirement,
 			'createDate' => date('Y-m-d')
@@ -154,6 +157,7 @@ class Main extends CI_Controller {
 		$this->form_validation->set_rules('lastName', 'Last Name' ,'required|max_length[50]');
 		$this->form_validation->set_rules('emailAddress', 'Email' ,'required|max_length[100]');
 		$this->form_validation->set_rules('contactNum', 'Contact No.' ,'required|max_length[20]');
+		$this->form_validation->set_rules('companyName', 'Company Name' ,'required|max_length[50]');
 		$this->form_validation->set_rules('locationCode', 'Location Code' ,'required|max_length[30]');
 		$this->form_validation->set_rules('emergencyNote', 'Emergency Note' ,'max_length[255]');
 		// $this->form_validation->set_rules('siteLocation', 'Site Location' ,'required');
@@ -164,6 +168,7 @@ class Main extends CI_Controller {
 		$lastName = $this->input->post('lastName');
 		$email = $this->input->post('emailAddress');
 		$contactNum = $this->input->post('contactNum');
+		$companyName = $this->input->post('companyName');
 		$locationCode = $this->input->post('locationCode');
 		$emergencyNote = $this->input->post('emergencyNote');
 
@@ -173,6 +178,7 @@ class Main extends CI_Controller {
 			'lastName' => $lastName,
 			'emailAddress' => $email,
 			'contactNum' => $contactNum,
+			'companyName' => $companyName,
             'locationcode' => $locationCode,
 			'note' => $emergencyNote,
 			'status' => 'Active',
@@ -183,20 +189,20 @@ class Main extends CI_Controller {
 			if($this->Ping_model->create($postData)){
 				$this->session->set_flashdata('success','Add Successful');
 				//-------------- SEND SMS -------------- // 
-				$basic  = new \Vonage\Client\Credentials\Basic("fbd703ae", "x7UUWUz2NR6t78fi");
-				$client = new \Vonage\Client($basic);
+				// $basic  = new \Vonage\Client\Credentials\Basic("fbd703ae", "x7UUWUz2NR6t78fi");
+				// $client = new \Vonage\Client($basic);
 
-				$response = $client->sms()->send(
-					new \Vonage\SMS\Message\SMS("639154547628", 'ODMS Enterprise', 'WARNING: Emergency at ' .$postData['locationcode']. ' NOTE: ' . $postData['note'])
-				);
+				// $response = $client->sms()->send(
+				// 	new \Vonage\SMS\Message\SMS("639154547628", 'ODMS Enterprise', 'WARNING: Emergency at ' .$postData['locationcode']. ' NOTE: ' . $postData['note'])
+				// );
 				
-				$message = $response->current();
+				// $message = $response->current();
 				
-				if ($message->getStatus() == 0) {
-					$this->session->set_flashdata('successLogin','text Successful');
-				} else {
-					$this->session->set_flashdata('errorLogin','text asdasd');
-				}
+				// if ($message->getStatus() == 0) {
+				// 	$this->session->set_flashdata('successLogin','text Successful');
+				// } else {
+				// 	$this->session->set_flashdata('errorLogin','text asdasd');
+				// }
 
 				// -------------- SEND EMAIL -------------- // 
 				$this->load->library('email');
@@ -223,6 +229,7 @@ class Main extends CI_Controller {
 				$emailInfo['lastName'] = $lastName;
 				$emailInfo['email'] = $email;
 				$emailInfo['contactNum'] = $contactNum;
+				$emailInfo['companyName'] = $companyName;
 				$emailInfo['locationCode'] = $locationCode;
 				$emailInfo['emergencyNote'] = $emergencyNote;
 				$emailInfo['createDate'] = date('Y-m-d');
@@ -248,6 +255,7 @@ class Main extends CI_Controller {
 		// validations
 		$this->form_validation->set_rules('faqfname', 'First Name' ,'required|max_length[50]');
 		$this->form_validation->set_rules('faqlname', 'Last Name' ,'required|max_length[50]');
+		$this->form_validation->set_rules('faqcompname', 'Company Name' ,'required|max_length[50]');
 		$this->form_validation->set_rules('faqemail', 'Email' ,'required|max_length[50]');
 		$this->form_validation->set_rules('faqqst', 'Concern' ,'required|max_length[255]');
 		$this->load->helper('url');
@@ -255,6 +263,7 @@ class Main extends CI_Controller {
 		$supportId = "SUP-".$this->randStrGen(2,7);
 		$firstName = $this->input->post('faqfname');
 		$lastName = $this->input->post('faqlname');
+		$companyName = $this->input->post('faqcompname');
 		$email = $this->input->post('faqemail');
 		$supportMessage = $this->input->post('faqqst');
 		$status = 'Active';
@@ -265,6 +274,7 @@ class Main extends CI_Controller {
 			'supportId' => $supportId,
 			'firstname' => $firstName,
 			'lastname' => $lastName,
+			'companyName' => $companyName,
 			'email' => $email,
 			'supportMessage' => $supportMessage,
 			'status' => $status,
@@ -298,6 +308,7 @@ class Main extends CI_Controller {
 				$emailInfo['supportId'] = $supportId;
 				$emailInfo['firstName'] = $firstName;
 				$emailInfo['lastName'] = $lastName;
+				$emailInfo['companyName'] = $companyName;
 				$emailInfo['createDate'] = $createDate;
 				$emailInfo['content'] = $this->db->select('*')->where('supportId',$supportId)->get('supportdetail')->result();
 				$body = $this->load->view('EmailTemplates/SupportEmailTemp.php',$emailInfo,TRUE);

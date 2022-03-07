@@ -4,7 +4,7 @@ class serviceTransaction_model extends CI_Model {
     //global variable for table name
     private $table = "services_transaction";
     //column order basis
-    var $column_order = array(null,'serviceTransactionId','fName','lName','emailAdd','contactnum','status'); //set column field database for datatable orderable
+    var $column_order = array(null,'serviceTransactionId','fName','lName', 'compName', 'emailAdd','contactnum', 'availedService', 'servicePrice', 'createDate', 'status'); //set column field database for datatable orderable
     //default column order
     var $order = array('services_transaction.serviceTransactionId' => 'asc');
 
@@ -109,7 +109,12 @@ class serviceTransaction_model extends CI_Model {
             $this->db->like("services_transaction.serviceTransactionId", $searchKey);
             $this->db->or_like("services_transaction.fName", $searchKey);
             $this->db->or_like("services_transaction.lName", $searchKey);
+            $this->db->or_like("services_transaction.compName", $searchKey);
+            $this->db->or_like("services_transaction.emailAdd", $searchKey);
             $this->db->or_like("services_transaction.contactNum", $searchKey);
+            $this->db->or_like("services_transaction.availedService", $searchKey);
+            $this->db->or_like("services_transaction.servicePrice", $searchKey);
+            $this->db->or_like("services_transaction.createDate", $searchKey);
             $this->db->or_like("services_transaction.status", $searchKey);
             $this->db->group_end();
         }

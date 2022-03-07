@@ -4,7 +4,7 @@ class loan_model extends CI_Model {
     //global variable for table name
     private $table = "loan";
     //column order basis
-    var $column_order = array(null,'loanId','fACompanyId','firstName','lastName','emailAddress','requestStatus'); //set column field database for datatable orderable
+    var $column_order = array(null,'loanId','fACompanyId','firstName','lastName', 'clientCompanyName', 'emailAddress', 'createDate', 'requestStatus'); //set column field database for datatable orderable
     //default column order
     var $order = array('loan.loanId' => 'asc');
 
@@ -30,6 +30,10 @@ class loan_model extends CI_Model {
                 'constraint' => 50
                 ),
                 'lastName' => array(
+                'type' => 'VARCHAR',
+                'constraint' => 50
+                ),
+                'clientCompanyName' => array(
                 'type' => 'VARCHAR',
                 'constraint' => 50
                 ),
@@ -75,7 +79,9 @@ class loan_model extends CI_Model {
             $this->db->or_like("loan.fACompanyId", $searchKey);
             $this->db->or_like("loan.firstName", $searchKey);
             $this->db->or_like("loan.lastName", $searchKey);
+            $this->db->or_like("loan.clientCompanyName", $searchKey);
             $this->db->or_like("loan.emailAddress", $searchKey);
+            $this->db->or_like("loan.createDate", $searchKey);
             $this->db->or_like("loan.requestStatus", $searchKey);
             $this->db->group_end();
         }
