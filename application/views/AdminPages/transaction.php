@@ -288,42 +288,85 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 </div>
 
 <!-- overview section -->
-<div class="transactionOverviewSection">
+<div class="transactionOverviewSection" id="printPanel">
     <div class="transactionOverviewTextRow row">
         <div class="transactionOverviewTextDiv">
             <p class="transactionOverviewText">Transaction Overview</p>
         </div>
         <div class="transactionOverviewBtnDiv">
-            <button type="button" class="btn btn-primary printReportBtn">
+            <button type="button" id="printButton" class="btn btn-primary printReportBtn">
                 Print Report
             </button>
         </div>
     </div>
     <div class="transactionReportSection row">
         <div class="receivableProductsDiv col-lg-3 col-md-6 col-sm-12">
-            <div class="receivableProductsCard card">
+            <div class="test receivableProductsCard card">
                 <h6>Receivable Products:</h6>
-                <h3>PHP 1000.00</h3>
+                <h3>PHP <?php echo number_format($prodTotalUnpaid,2); ?></h3>
             </div>
         </div>
         <div class="receivableServicesDiv col-lg-3 col-md-6 col-sm-12">
-            <div class="receivableServicesCard card">
+            <div class="test receivableServicesCard card">
                 <h6>Receivable Services:</h6>
-                <h3>PHP 1500.00</h3>
+                <h3>PHP <?php echo number_format($servTotalUnpaid,2); ?></h3>
             </div>
         </div>
         <div class="totalProductsPaidDiv col-lg-3 col-md-6 col-sm-12">
-            <div class="totalProductsCard card">
+            <div class="test totalProductsCard card">
                 <h6>Total Products Paid:</h6>
-                <h3>PHP 300.00</h3>
+                <h3>PHP <?php echo number_format($prodTotalPaid,2); ?></h3>
             </div>
         </div>
         <div class="totalServicesPaidDiv col-lg-3 col-md-6 col-sm-12">
-            <div class="totalServicesCard card">
+            <div class="test totalServicesCard card">
                 <h6>Total Services Paid:</h6>
-                <h3>PHP 500.00</h3>
+                <h3>PHP <?php echo number_format($servTotalPaid,2); ?></h3>
             </div>
         </div>
+
+        <div class="transactionOverviewTextRow">
+            <div class="transactionOverviewTextDiv">
+                <h2>Un-Paid Transaction</h2>
+                <table class="table">
+                    <thead class="thead">
+                        <tr>
+                            <th scope="col">Transaction No.</th>
+                            <th scope="col">Transaction Type</th>
+                            <th scope="col">Total Cost</th>
+                            <th scope="col">Loan Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            foreach($listProdUnpaid as $list){
+                                echo'
+                                <tr>                      
+                                    <td>'.$list->transactionId.'</td>
+                                    <td>Product</td>
+                                    <td>PHP '.number_format($list->totalPrice,2).'</td>
+                                    <td>'.$list->loanStatus.'</td>                              
+                                </tr>
+                                ';
+                            }
+                        ?>
+                        <?php
+                            foreach($listServUnpaid as $list){
+                                echo'
+                                <tr>                      
+                                    <td>'.$list->serviceTransactionId.'</td>
+                                    <td>Service</td>
+                                    <td>PHP '.number_format($list->totalPrice,2).'</td>  
+                                    <td>'.$list->loanStatus.'</td>                                   
+                                </tr>
+                                ';
+                            }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
     </div>
 </div>
 

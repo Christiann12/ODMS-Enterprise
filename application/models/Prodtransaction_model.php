@@ -160,7 +160,7 @@ class Prodtransaction_model extends CI_Model {
         return $this->db->where('transactionId',$data['transactionId'])->where('productId',$data['productId'])->update($this->table,$data); 
     }
     public function countEarningPerMonth(){
-        $query =  $this->db->select("*")->from($this->table)->get()->result();
+        $query =  $this->db->select("*")->from($this->table)->where('status', 'Paid')->get()->result();
         $counter = 0;
         $currentMonth = date('m');
         foreach($query as $list){
@@ -238,6 +238,30 @@ class Prodtransaction_model extends CI_Model {
     }
 
     public function getTopProduct($txtSearch = null){   
-        return $this->db->select('productId, COUNT(productId) as count, productTitle')->group_by('productId')->order_by('count','DESC')->get($this->table)->result();
+        return $this->db->select('productId, COUNT(productId) as count, productTitle')->where('status', 'Paid')->group_by('productId')->order_by('count','DESC')->get($this->table)->result();
+    }
+
+    public function countTotalUnpaid(){
+        $query =  $this->db->select("*")->from($this->table)->where('status', 'Not Paid')->get()->result();
+        $counter = 0;
+        if(!empty($query)){
+            foreach($query as $list){
+                $counter = $counter + $list->totalPrice;
+            }
+        }
+        return $counter;
+    }
+    public function countTotalPaid(){
+        $query =  $this->db->select("*")->from($this->table)->where('status', 'Paid')->get()->result();
+        $counter = 0;
+        if(!empty($query)){
+            foreach($query as $list){
+                $counter = $counter + $list->totalPrice;
+            }
+        }
+        return $counter;
+    }
+    public function getUnPaidTransaction(){
+        return $this->db->select('transactionId, sum(totalPrice) as totalPrice,loanStatus')->distinct()->from($this->table)->where('status', 'Not Paid')->group_by('transactionId')->get()->result();
     }
 }

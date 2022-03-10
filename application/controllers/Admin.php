@@ -178,6 +178,12 @@ class Admin extends CI_Controller {
 	public function transaction()
 	{
 		$data['param'] ='transaction';
+		$data['prodTotalUnpaid'] = $this->Prodtransaction_model->countTotalUnpaid();
+		$data['prodTotalPaid'] = $this->Prodtransaction_model->countTotalPaid();
+		$data['servTotalUnpaid'] = $this->ServiceTransaction_model->countTotalUnpaid();
+		$data['servTotalPaid'] = $this->ServiceTransaction_model->countTotalPaid();
+		$data['listProdUnpaid'] = $this->Prodtransaction_model->getUnPaidTransaction();
+		$data['listServUnpaid'] = $this->ServiceTransaction_model->getUnPaidTransaction();
 		$this->load->helper('url');
 		if($this->session->has_userdata('adminId') && ($this->session->userdata('userRole') == 'admin' || $this->session->userdata('userRole') == 'financial')){
 			$this->load->view('HeaderNFooter/HeaderAdmin.php');

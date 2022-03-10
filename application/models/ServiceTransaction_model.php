@@ -156,7 +156,7 @@ class serviceTransaction_model extends CI_Model {
     } 
 
     public function countEarningPerMonth(){
-        $query =  $this->db->select("*")->from($this->table)->get()->result();
+        $query =  $this->db->select("*")->from($this->table)->where('status', 'Paid')->get()->result();
         $counter = 0;
         $currentMonth = date('m');
         foreach($query as $list){
@@ -179,8 +179,33 @@ class serviceTransaction_model extends CI_Model {
     }
 
     public function getTopService(){
-        return $this->db->select('availedServiceId, COUNT(availedServiceId) as count, availedService')->group_by('availedServiceId')->order_by('count','DESC')->get($this->table)->result();
+        return $this->db->select('availedServiceId, COUNT(availedServiceId) as count, availedService')->where('status', 'Paid')->group_by('availedServiceId')->order_by('count','DESC')->get($this->table)->result();
     } 
+
+    public function countTotalUnpaid(){
+        $query =  $this->db->select("*")->from($this->table)->where('status', 'Not Paid')->get()->result();
+        $counter = 0;
+        if(!empty($query)){
+            foreach($query as $list){
+                $counter = $counter + $list->servicePrice;
+            }
+        }
+        return $counter;
+    }
+    public function countTotalPaid(){
+        $query =  $this->db->select("*")->from($this->table)->where('status', 'Paid')->get()->result();
+        $counter = 0;
+        if(!empty($query)){
+            foreach($query as $list){
+                $counter = $counter + $list->servicePrice;
+            }
+        }
+        return $counter;
+    }
+
+    public function getUnPaidTransaction(){
+        return $this->db->select('serviceTransactionId, sum(servicePrice) as totalPrice, loanStatus')->distinct()->from($this->table)->where('status', 'Not Paid')->group_by('serviceTransactionId')->get()->result();
+    }
 
 }
 

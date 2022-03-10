@@ -184,6 +184,7 @@ class Main extends CI_Controller {
 			'status' => 'Active',
 			'createDate' => date('Y-m-d')
         );
+		
 		// store data 
 		if($this->form_validation->run() === true){
 			if($this->Ping_model->create($postData)){

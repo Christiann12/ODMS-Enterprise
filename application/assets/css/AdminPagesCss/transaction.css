@@ -166,7 +166,9 @@ font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 34px; 
     /* Button text */
     font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 14px; line-height: 24px; align-items: center; text-align: center; letter-spacing: 1.25px;
 }
-
+.thead{
+    background-color: #bebebe;
+}
 /* MEDIA QUERIES */
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 100px) {

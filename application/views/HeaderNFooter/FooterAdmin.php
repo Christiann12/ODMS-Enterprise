@@ -1027,8 +1027,14 @@
 					"ordering": false,
 					"info":     false
 				});
-			
 			}
+			$("#printButton").click(function() {
+				var restorepage = $('body').html();
+				var printcontent = $('#' + 'printPanel').clone();
+				$('body').empty().html(printcontent);
+				window.print();
+				location.reload();
+			});
 		</script>
 	</body>
 </html>
