@@ -1,5 +1,42 @@
 /* START OF CSS FOR SERVICES */
 
+.transactionOverviewSection {
+    width: auto; height: auto; margin: 50px; padding: 20px; background: #FFFFFF; box-shadow: 5px 4px 70px 5px rgba(0, 0, 0, 0.1); border-radius: 20px; 
+}
+
+.transactionOverviewSection .transactionOverviewTextRow {
+    width: 100%; height: 100%; margin-top: 20px; margin-left: auto; margin-right: auto;
+}
+
+.transactionOverviewSection .transactionOverviewTextRow .transactionOverviewTextDiv {
+    padding-left: 20px;
+}
+
+.transactionOverviewSection .transactionOverviewTextRow .transactionOverviewBtnDiv {
+    margin-left: auto; margin-right: 0;
+}
+
+.transactionOverviewSection .transactionOverviewTextRow .transactionOverviewBtnDiv .printReportBtn {
+    flex-direction: column; align-items: center; padding: 10px 20px; width: 157px; height: 47px; background-color: #F6C510; border: none; box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); border-radius: 4px; 
+
+    /* Button text */
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 14px; line-height: 24px; align-items: center; text-align: center; letter-spacing: 1.25px;
+
+}
+
+.transactionOverviewText {
+    font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 34px; line-height: 41px; display: flex; align-items: center; letter-spacing: 0.25em; color: #000000; 
+
+}
+
+.transactionOverviewSection .transactionReportSection {
+    width: 100%; height: auto; margin-top: 10px; margin-bottom: 10px; margin-left: auto; margin-right: auto;
+}
+
+.receivableProductsCard, .receivableServicesCard, .totalProductsCard, .totalServicesCard {
+    background-color: #e9d787; padding: 10px; margin-top: 10px; margin-bottom: 10px; align-items: center;
+}
+
 .transsrvSection {
     width: auto; height: auto; margin: 50px; padding: 20px; background: #FFFFFF; box-shadow: 5px 4px 70px 5px rgba(0, 0, 0, 0.1); border-radius: 20px; 
 }
@@ -129,7 +166,9 @@ font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 34px; 
     /* Button text */
     font-family: Montserrat; font-style: normal; font-weight: 500; font-size: 14px; line-height: 24px; align-items: center; text-align: center; letter-spacing: 1.25px;
 }
-
+.thead{
+    background-color: #bebebe;
+}
 /* MEDIA QUERIES */
 /* Small devices (landscape phones, 576px and up) */
 @media (min-width: 100px) {

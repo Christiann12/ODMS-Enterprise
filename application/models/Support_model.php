@@ -2,7 +2,7 @@
 
 class Support_model extends CI_Model {
     private $table = "supportdetail";
-    var $column_order = array(null,'supportId', 'supportMessage', 'email', 'firstname','lastname','status'); //set column field database for datatable orderable
+    var $column_order = array(null,'supportId', 'supportMessage', 'email', 'firstName', 'lastName', 'companyName', 'status'); //set column field database for datatable orderable
     //default column order
     var $order = array('supportDetail.supportId' => 'asc');
     public function __construct() {
@@ -44,6 +44,10 @@ class Support_model extends CI_Model {
                 'type' => 'VARCHAR',
                 'constraint' => 50,
                 ),
+                'companyName' => array(
+                'type' => 'VARCHAR',
+                'constraint' => 50
+                ),
                 'createDate' => array(
                 'type' => 'VARCHAR',
                 'constraint' => 50,
@@ -72,6 +76,8 @@ class Support_model extends CI_Model {
 			$this->db->or_like("supportdetail.email", $searchKey);
             $this->db->or_like("supportdetail.firstname", $searchKey);
             $this->db->or_like("supportdetail.lastname", $searchKey);
+            $this->db->or_like("supportdetail.companyName", $searchKey);
+            $this->db->or_like("supportdetail.createDate", $searchKey);
 			$this->db->group_end();
 		}
         if(isset($_POST['order'])){

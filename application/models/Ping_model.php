@@ -4,7 +4,7 @@ class Ping_model extends CI_Model {
     //global variable for table name
     private $table = "pingdetail";
     //column order basis
-    var $column_order = array(null,'pingId', 'firstName', 'lastName', 'emailAddress', 'contactNum', 'locationcode', 'note', 'status'); //set column field database for datatable orderable
+    var $column_order = array(null,'pingId', 'emailAddress', 'contactNum', 'companyName', 'locationcode', 'note', 'status', 'createDate'); //set column field database for datatable orderable
     //default column order
     var $order = array('pingdetail.pingId' => 'asc');
     public function __construct() {
@@ -36,6 +36,10 @@ class Ping_model extends CI_Model {
                     'type' => 'VARCHAR',
                     'constraint' => 20,
                 ),
+                'companyName' => array(
+                    'type' => 'VARCHAR',
+                    'constraint' => 50
+                ),
                 'locationcode' => array(
                     'type' => 'VARCHAR',
                     'constraint' => 50
@@ -46,13 +50,13 @@ class Ping_model extends CI_Model {
                     'default' => 'inactive'
                 ),
                 'note' => array(
-                'type' => 'VARCHAR',
-                'constraint' => 255,
-                'default' => 'No Desc'
+                    'type' => 'VARCHAR',
+                    'constraint' => 255,
+                    'default' => 'No Desc'
                 ),
                 'createDate' => array(
-                'type' => 'VARCHAR',
-                'constraint' => 50,
+                    'type' => 'VARCHAR',
+                    'constraint' => 50,
                 ),
             ); 
             $this->dbforge->add_field($fields);
@@ -74,13 +78,13 @@ class Ping_model extends CI_Model {
         if ($searchKey!=''){
 			$this->db->group_start();
 			$this->db->like("pingdetail.pingId", $searchKey);
-            $this->db->or_like("pingdetail.firstName", $searchKey);
-            $this->db->or_like("pingdetail.lastName", $searchKey);
             $this->db->or_like("pingdetail.emailAddress", $searchKey);
             $this->db->or_like("pingdetail.contactNum", $searchKey);
+            $this->db->or_like("pingdetail.companyName", $searchKey);
             $this->db->or_like("pingdetail.locationcode", $searchKey);
             $this->db->or_like("pingdetail.note", $searchKey);
 			$this->db->or_like("pingdetail.status", $searchKey);
+            $this->db->or_like("pingdetail.createDate", $searchKey);
 			$this->db->group_end();
 		}
         if(isset($_POST['order'])){

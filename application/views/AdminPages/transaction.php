@@ -287,6 +287,89 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   </div>
 </div>
 
+<!-- overview section -->
+<div class="transactionOverviewSection" id="printPanel">
+    <div class="transactionOverviewTextRow row">
+        <div class="transactionOverviewTextDiv">
+            <p class="transactionOverviewText">Transaction Overview</p>
+        </div>
+        <div class="transactionOverviewBtnDiv">
+            <button type="button" id="printButton" class="btn btn-primary printReportBtn">
+                Print Report
+            </button>
+        </div>
+    </div>
+    <div class="transactionReportSection row">
+        <div class="receivableProductsDiv col-lg-3 col-md-6 col-sm-12">
+            <div class="test receivableProductsCard card">
+                <h6>Receivable Products:</h6>
+                <h3>PHP <?php echo number_format($prodTotalUnpaid,2); ?></h3>
+            </div>
+        </div>
+        <div class="receivableServicesDiv col-lg-3 col-md-6 col-sm-12">
+            <div class="test receivableServicesCard card">
+                <h6>Receivable Services:</h6>
+                <h3>PHP <?php echo number_format($servTotalUnpaid,2); ?></h3>
+            </div>
+        </div>
+        <div class="totalProductsPaidDiv col-lg-3 col-md-6 col-sm-12">
+            <div class="test totalProductsCard card">
+                <h6>Total Products Paid:</h6>
+                <h3>PHP <?php echo number_format($prodTotalPaid,2); ?></h3>
+            </div>
+        </div>
+        <div class="totalServicesPaidDiv col-lg-3 col-md-6 col-sm-12">
+            <div class="test totalServicesCard card">
+                <h6>Total Services Paid:</h6>
+                <h3>PHP <?php echo number_format($servTotalPaid,2); ?></h3>
+            </div>
+        </div>
+
+        <div class="transactionOverviewTextRow">
+            <div class="transactionOverviewTextDiv">
+                <h2>Un-Paid Transaction</h2>
+                <table class="table">
+                    <thead class="thead">
+                        <tr>
+                            <th scope="col">Transaction No.</th>
+                            <th scope="col">Transaction Type</th>
+                            <th scope="col">Total Cost</th>
+                            <th scope="col">Loan Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php
+                            foreach($listProdUnpaid as $list){
+                                echo'
+                                <tr>                      
+                                    <td>'.$list->transactionId.'</td>
+                                    <td>Product</td>
+                                    <td>PHP '.number_format($list->totalPrice,2).'</td>
+                                    <td>'.$list->loanStatus.'</td>                              
+                                </tr>
+                                ';
+                            }
+                        ?>
+                        <?php
+                            foreach($listServUnpaid as $list){
+                                echo'
+                                <tr>                      
+                                    <td>'.$list->serviceTransactionId.'</td>
+                                    <td>Service</td>
+                                    <td>PHP '.number_format($list->totalPrice,2).'</td>  
+                                    <td>'.$list->loanStatus.'</td>                                   
+                                </tr>
+                                ';
+                            }
+                        ?>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+</div>
+
 <!-- Start of Services -->
 <div class="transsrvSection">
     <!-- table heading --> 
@@ -329,13 +412,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <tr>
                     <th>No.</th>
                     <th>Transaction ID</th>
-                    <!-- <th>Availed Service</th>
-                    <th>Service Price</th> -->
                     <th>First Name</th>
                     <th>Last Name</th>
-                    <!-- <th>Email Address</th> -->
+                    <th>Company Name</th>
+                    <th>Email Address</th>
                     <th>Phone no.</th>
-                    <!-- <th>With Loan?</th> -->
+                    <th>Availed Service</th>
+                    <th>Order Price</th>
+                    <th>Date Ordered</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
@@ -392,7 +476,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     <th>Transaction ID</th>
                     <th>First Name</th>
                     <th>Last Name</th>
+                    <th>Company Name</th>
                     <th>Phone No.</th>
+                    <th>Order Price</th>
+                    <th>Date Ordered</th>
                     <th>Status</th>
                     <th>Action</th>
                 </tr>
