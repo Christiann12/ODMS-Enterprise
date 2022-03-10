@@ -160,6 +160,11 @@
             </div>
 
             <div class="form-label-group">
+                <input type="text" class="faqlname form-control" id="faqcompname" placeholder="Company Name" name="faqcompname" >
+                <label for="faqcompname" class="faqlabel">Company Name</label>
+            </div>
+
+            <div class="form-label-group">
                 <input type="email" class="faqemail form-control" id="faqemail" placeholder="Email Address" name="faqemail" >
                 <label for="faqemail" class="faqlabel">Email Address</label>
             </div>    

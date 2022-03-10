@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <div class="collapse multi-collapse"> 
             <div class="row" style="background-color: #F3F3F3; width: 100%; height: auto; margin: auto; border-radius: 20px 0px 20px 20px">
                 <!-- support notif section -->
-                <div class="supportNotifSection col-lg-4 col-md-12 col-sm-12" style=" <?php echo (!empty($supportNotif)? null: 'display: none;')?>">
+                <div class="supportNotifSection col-lg-4 col-md-12 col-sm-12" style=" <?php echo (!empty($supportNotif)? null: 'display: block;')?>">
                     <div class="notifDiv row" >
                         <div class="notifRow row col-12" >
                             <div class="col-lg-12" style="margin-left: auto; margin-right: auto; padding-top: 10px; padding-bottom: 10px;">
@@ -44,7 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                                 }
                                                             ?>
                                                         </ul>
-                                                        
+                                                        <?php echo (!empty($supportNotif)? null: '<center><p><i>All tickets are solved. Check back here again later.</i></p></center>')?>
                                                     </p>
                                                 </div>
                                             </div>
@@ -57,7 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
 
                 <!-- ping notif section -->
-                <div class="pingNotifSection col-lg-4 col-md-12 col-sm-12" style=" <?php echo (!empty($pingNotif)? null: 'display: none;')?>">
+                <div class="pingNotifSection col-lg-4 col-md-12 col-sm-12" style=" <?php echo (!empty($pingNotif)? null: 'display: block;')?>">
                     <div class="notifDiv row" >
                         <div class="notifRow row col-12" >
                             <div class="pingNotifDiv col-lg-12" style="margin-left: auto; margin-right: auto; padding-top: 10px; padding-bottom: 10px;">
@@ -89,8 +89,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                         ?> 
                                                         
                                                     </ul>
-                                                    <a href="<?php echo base_url('admin/ping') ?>">Click Here</a>
-                                                        to redirect to ping module.
+                                                    
+                                                    <?php echo (!empty($pingNotif)? '<a href="'.base_url('admin/ping').'">Click Here</a>
+                                                        to redirect to ping module.' : '<center><p><i>All pings are solved. Check back here again later.</i></p></center>')?>
                                                 </p>
                                             </div>
                                         </div>
@@ -102,7 +103,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 </div>
 
                 <!-- products inventory notif section -->
-                <div class="productsInvNotifSection col-lg-4 col-md-12 col-sm-12" style=" <?php echo (!empty($invNotif)? null: 'display: none;')?>">
+                <div class="productsInvNotifSection col-lg-4 col-md-12 col-sm-12" style=" <?php echo (!empty($invNotif)? null: 'display: block;')?>">
                     <div class="notifDiv row" >
                         <div class="notifRow row col-12" >
                             <div class="col-lg-12" style="margin-left: auto; margin-right: auto; padding-top: 10px; padding-bottom: 10px;">
@@ -134,7 +135,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                                             }
                                                         ?> 
                                                     </ul>
-                                                    
+                                                    <?php echo (!empty($invNotif)? null: '<center><p><i>There are no products that are need to be restocked at the moment. Check back again later.</i></p></center>')?>
                                         
                                                 </p>
                                             </div>

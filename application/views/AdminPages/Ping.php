@@ -87,13 +87,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 <tr>
                     <th>No. </th>
                     <th>Ping ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
                     <th>Email Address</th>
                     <th>Contact No.</th>
+                    <th>Company Name</th>
                     <th>Location Code</th>
                     <th>Note</th>
                     <th>Status</th>
+                    <th>Date Created</th>
                     <th>Action</th>
                 </tr>
             </thead>

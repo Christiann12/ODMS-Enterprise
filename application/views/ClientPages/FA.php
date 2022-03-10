@@ -62,7 +62,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
         </div>
         <div class="form-group row d-flex justify-content-around">
-            <label for="fASelectCompany" class="col-3 ">Select Financial Company<i class="text-danger">*</i></label>
+            <label for="fACompName" class="col-3 ">Your Company's Name<i class="text-danger">*</i></label>
+            <div class="col-9">
+                <input name="fACompName"  type="text" class="form-control" id="fACompName" placeholder="Company Name" value="">
+            </div>
+        </div>
+        <div class="form-group row d-flex justify-content-around">
+            <label for="fAClientEmail" class="col-3 ">Email<i class="text-danger">*</i></label>
+            <div class="col-9">
+                <input name="fAClientEmail"  type="email" class="form-control" id="fAClientEmail" placeholder="Email" value="">
+            </div>
+        </div>
+        <div class="form-group row d-flex justify-content-around">
+            <label for="fASelectCompany" class="col-3 ">Select Financial Company to avail<i class="text-danger">*</i></label>
             <div class="col-9">
                 <select class="form-control" id="fASelectCompany" name="fASelectCompany">
                     <option value="">Select Option</option>
@@ -74,12 +86,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         }
                     ?>
                 </select>
-            </div>
-        </div>
-        <div class="form-group row d-flex justify-content-around">
-            <label for="fAClientEmail" class="col-3 ">Email<i class="text-danger">*</i></label>
-            <div class="col-9">
-                <input name="fAClientEmail"  type="email" class="form-control" id="fAClientEmail" placeholder="Email" value="">
             </div>
         </div>
         <div class="form-group row d-flex justify-content-around">
